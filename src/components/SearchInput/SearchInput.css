@@ -1,0 +1,23 @@
+.bloom-busca {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border: 1px solid #e6e4d9;
+  border-radius: 999px;
+  background: #eeefe7;
+}
+
+.bloom-busca input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--cor-texto);
+  font-family: var(--familia-da-fonte);
+  font-size: clamp(10px, 1vw, 13px);
+}
+
+.bloom-busca input::placeholder {
+  color: var(--cor-texto-suave);
+}

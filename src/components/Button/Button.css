@@ -1,0 +1,38 @@
+.bloom-botao {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--arredondamento-pequeno);
+  font-family: var(--familia-da-fonte);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: opacity 0.15s ease;
+}
+
+.bloom-botao:hover {
+  opacity: 0.9;
+}
+
+.bloom-botao-principal {
+  background: var(--cor-principal);
+  color: #ffffff;
+}
+
+.bloom-botao-secundario {
+  background: var(--cor-neutro-fundo);
+  color: var(--cor-texto);
+}
+
+.bloom-botao-contorno {
+  background: transparent;
+  color: var(--cor-texto);
+  border-color: var(--cor-borda);
+}
+
+.bloom-botao-discreto {
+  background: transparent;
+  color: var(--cor-texto);
+}

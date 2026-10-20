@@ -1,0 +1,27 @@
+.bloom-resumo-indicadores {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.bloom-resumo-indicador {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--arredondamento-medio);
+  padding: 10px 16px;
+  font-family: var(--familia-da-fonte);
+}
+
+.bloom-resumo-indicador-valor {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--cor-texto);
+}
+
+.bloom-resumo-indicador-rotulo {
+  font-size: 13px;
+  color: var(--cor-texto-suave);
+}

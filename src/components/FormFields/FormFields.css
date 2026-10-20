@@ -1,0 +1,62 @@
+.bloom-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--familia-da-fonte);
+}
+
+.bloom-campo-rotulo {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cor-texto);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.bloom-campo-obrigatorio {
+  color: #d98c3f;
+  font-size: 10px;
+}
+
+.bloom-campo-entrada-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--arredondamento-pequeno);
+  padding: 10px 12px;
+  background: var(--cor-superficie);
+}
+
+.bloom-campo input,
+.bloom-campo select,
+.bloom-campo textarea {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--familia-da-fonte);
+  font-size: 13px;
+  color: var(--cor-texto);
+  width: 100%;
+}
+
+.bloom-campo textarea {
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--arredondamento-pequeno);
+  padding: 10px 12px;
+  resize: vertical;
+}
+
+.bloom-campo select {
+  flex: 1;
+  appearance: none;
+}
+
+.bloom-campo-alternancia {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  display: inline-flex;
+}

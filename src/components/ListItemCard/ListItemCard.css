@@ -1,0 +1,60 @@
+.bloom-lista-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6vw;
+  background: var(--cor-superficie);
+  border: 0.06vw solid var(--cor-borda);
+  border-radius: var(--arredondamento-medio);
+  padding: 0.7vh 0.7vw;
+  font-family: var(--familia-da-fonte);
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.bloom-lista-item.estado-clicavel {
+  cursor: pointer;
+}
+
+.bloom-lista-item-icone {
+  background: var(--cor-neutro-fundo);
+  border-radius: 50%;
+}
+
+.bloom-lista-item-corpo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.bloom-lista-item-titulo {
+  font-size: clamp(11px, 1.05vw, 14px);
+  font-weight: 600;
+  color: var(--cor-texto);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bloom-lista-item-subtitulo {
+  font-size: clamp(10px, 0.85vw, 12px);
+  color: var(--cor-texto-suave);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bloom-lista-item-detalhe {
+  font-size: clamp(10px, 0.85vw, 12px);
+  color: var(--cor-texto-suave);
+  text-align: right;
+}
+
+.bloom-lista-item-final {
+  display: flex;
+  align-items: center;
+  gap: 0.5vw;
+  font-size: clamp(11px, 1.05vw, 14px);
+  font-weight: 600;
+  color: var(--cor-texto);
+}

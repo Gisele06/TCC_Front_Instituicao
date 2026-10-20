@@ -1,0 +1,28 @@
+.bloom-pagina-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--arredondamento-grande);
+  padding: 18px 22px;
+  font-family: var(--familia-da-fonte);
+}
+
+.bloom-pagina-cabecalho h1 {
+  font-size: 20px;
+  margin: 0 0 4px;
+  color: var(--cor-texto);
+}
+
+.bloom-pagina-cabecalho p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--cor-texto-suave);
+}
+
+.bloom-pagina-cabecalho-acoes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

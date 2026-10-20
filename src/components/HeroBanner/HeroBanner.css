@@ -1,0 +1,99 @@
+.bloom-destaque-faixa {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: clamp(12px, 1.4vw, 18px);
+  box-sizing: border-box;
+}
+
+.bloom-destaque-faixa-imagem {
+  position: absolute;
+  inset: 0;
+  background: var(--cor-neutro-fundo);
+}
+
+.bloom-destaque-faixa-imagem img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.bloom-destaque-faixa-imagem::after {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgb(14 35 30 / 80%) 0%, rgb(14 35 30 / 58%) 34%, rgb(14 35 30 / 18%) 68%, transparent 88%),
+    linear-gradient(0deg, rgb(14 32 27 / 18%), transparent 55%);
+  content: "";
+}
+
+.bloom-destaque-faixa-conteudo {
+  position: relative;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 clamp(18px, 1.8vw, 30px);
+  color: #fff;
+  font-family: var(--familia-da-fonte);
+}
+
+.bloom-destaque-faixa-microtitulo {
+  display: block;
+  margin-bottom: 4px;
+  font-size: clamp(12px, 0.95vw, 14px);
+  line-height: 1.2;
+  opacity: 0.95;
+}
+
+.bloom-destaque-faixa-conteudo h2 {
+  margin: 0 0 4px;
+  font-size: clamp(26px, 2.6vw, 36px);
+  line-height: 1.1;
+}
+
+.bloom-destaque-faixa-conteudo p {
+  max-width: 150px;
+  margin: 0;
+  font-size: clamp(12px, 0.95vw, 14px);
+  line-height: 1.2;
+  opacity: 0.95;
+}
+
+.bloom-destaque-faixa-detalhe {
+  width: 38px;
+  height: 2px;
+  flex: 0 0 auto;
+  margin-top: clamp(16px, 3vh, 24px);
+  border-radius: 99px;
+  background: #d8b85d;
+}
+
+@media (max-height: 520px) {
+  .bloom-destaque-faixa-conteudo {
+    padding: 0 16px;
+  }
+
+  .bloom-destaque-faixa-microtitulo {
+    margin-bottom: 3px;
+    font-size: 11px;
+  }
+
+  .bloom-destaque-faixa-conteudo h2 {
+    margin-bottom: 3px;
+    font-size: clamp(24px, 2.6vw, 28px);
+  }
+
+  .bloom-destaque-faixa-conteudo p {
+    font-size: 11px;
+  }
+
+  .bloom-destaque-faixa-detalhe {
+    width: 34px;
+    margin-top: 10px;
+  }
+}

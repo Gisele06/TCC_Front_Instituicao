@@ -1,0 +1,33 @@
+.bloom-abas {
+  display: inline-flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.bloom-aba {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--cor-borda);
+  background: var(--cor-superficie);
+  color: var(--cor-texto);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-family: var(--familia-da-fonte);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.bloom-aba.estado-ativo {
+  background: var(--cor-principal);
+  border-color: var(--cor-principal);
+  color: #ffffff;
+}
+
+.bloom-aba-contagem {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 999px;
+  padding: 0 6px;
+  font-size: 11px;
+}

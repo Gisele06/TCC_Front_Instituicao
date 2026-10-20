@@ -1,0 +1,61 @@
+.bloom-menu-lateral {
+  width: clamp(44px, 5.5vw, 72px);
+  background: var(--cor-menu-lateral);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.1vh;
+  padding: 9px 0;
+  height: 100vh;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.bloom-menu-lateral-item {
+  width: clamp(30px, 3.7vw, 44px);
+  height: clamp(30px, 3.7vw, 44px);
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--cor-icone-menu);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.bloom-menu-lateral-item.estado-ativo {
+  background: var(--cor-fundo-menu-ativo);
+  color: var(--cor-icone-menu-ativo);
+}
+
+.bloom-menu-lateral-item.estado-inicio img {
+  filter: brightness(0) invert(0.82);
+}
+
+.bloom-menu-lateral-item.estado-inicio.estado-ativo {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.bloom-menu-lateral-menu {
+  width: 26px;
+  height: 26px;
+  border-radius: var(--arredondamento-medio);
+  border: none;
+  background: transparent;
+  color: var(--cor-icone-menu);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  margin-bottom: 9vh;
+}
+
+button.bloom-menu-lateral-menu {
+  cursor: pointer;
+}
+
+.bloom-menu-lateral-item + .bloom-menu-lateral-item {
+  margin-top: 2.7vh;
+}

@@ -1,0 +1,19 @@
+@import "./components/tokens.css";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--familia-da-fonte);
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}

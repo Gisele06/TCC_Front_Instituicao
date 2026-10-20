@@ -1,0 +1,35 @@
+.bloom-selo {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--familia-da-fonte);
+  white-space: nowrap;
+}
+
+.bloom-selo-bom {
+  background: var(--cor-bom-fundo);
+  color: var(--cor-bom-texto);
+}
+
+.bloom-selo-aviso {
+  background: var(--cor-aviso-fundo);
+  color: var(--cor-aviso-texto);
+}
+
+.bloom-selo-alerta {
+  background: var(--cor-alerta-fundo);
+  color: var(--cor-alerta-texto);
+}
+
+.bloom-selo-informacao {
+  background: var(--cor-informacao-fundo);
+  color: var(--cor-informacao-texto);
+}
+
+.bloom-selo-neutro {
+  background: var(--cor-neutro-fundo);
+  color: var(--cor-neutro-texto);
+}

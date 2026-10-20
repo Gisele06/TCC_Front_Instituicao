@@ -1,0 +1,100 @@
+import type { FormEvent } from "react";
+import Botao from "../../components/Button/Button";
+import iconeLogoBloom from "../../assets/icons/logo-b.png";
+import imagemDeFundoDoAcesso from "../../assets/images/login-hero.png";
+import iconeCarta from "../../assets/icons/carta.png";
+import iconeCadeado from "../../assets/icons/cadeado.png";
+import iconeGoogle from "../../assets/icons/google.png";
+import iconeFacebook from "../../assets/icons/facebook.png";
+import iconeOlho from "../../assets/icons/olho.png";
+import "../auth.css";
+
+interface PropriedadesAcesso {
+  aoEntrar: () => void;
+  aoCriarConta: () => void;
+}
+
+function Acesso({ aoEntrar, aoCriarConta }: PropriedadesAcesso) {
+  function entrar(evento: FormEvent<HTMLFormElement>) {
+    evento.preventDefault();
+    aoEntrar();
+  }
+
+  return (
+    <main className="acesso-pagina">
+      <img className="acesso-fundo" src={imagemDeFundoDoAcesso} alt="" />
+
+      <div className="acesso-marca" aria-label="Bloom Institucional">
+        <img className="acesso-marca-simbolo" src={iconeLogoBloom} alt="" />
+        <span className="acesso-marca-nome">
+          <strong>loom</strong>
+          <span>Institucional</span>
+        </span>
+      </div>
+
+      <h1 className="acesso-titulo-principal">
+        Bem estar que transforma<br />comunidades acadêmicas.
+      </h1>
+
+      <section className="acesso-cartao" aria-labelledby="login-title">
+        <div className="acesso-microtitulo">
+          <span>Acesse sua conta</span>
+          <span className="acesso-microtitulo-linha" />
+        </div>
+
+        <h2 className="acesso-titulo" id="login-title">Que bom ter você de volta.</h2>
+        <p className="acesso-subtitulo">Entre no Bloom para acompanhar o bem-estar da sua instituição.</p>
+
+        <form className="acesso-formulario" onSubmit={entrar}>
+          <div className="acesso-campos">
+            <label className="acesso-campo" htmlFor="email">
+              E-mail
+              <span className="acesso-entrada-area">
+                <img className="acesso-entrada-icone" src={iconeCarta} alt="" />
+                <input id="email" type="email" placeholder="seuemail@instituicao.com" />
+              </span>
+            </label>
+
+            <label className="acesso-campo" htmlFor="senha">
+              Senha
+              <span className="acesso-entrada-area">
+                <img className="acesso-entrada-icone" src={iconeCadeado} alt="" />
+                <input
+                  id="senha"
+                  type="password"
+                  placeholder="Digite sua senha"
+                />
+                <span className="acesso-senha-alternancia" aria-hidden="true">
+                  <img src={iconeOlho} alt="" />
+                </span>
+              </span>
+              <span className="acesso-recuperar">Esqueci a senha</span>
+            </label>
+          </div>
+
+          <div className="acesso-envio">
+            <Botao estilo="principal" type="submit">Entrar</Botao>
+          </div>
+        </form>
+
+        <div className="acesso-redes">
+          <div className="acesso-redes-botao">
+            <span className="bloom-botao bloom-botao-contorno"><img src={iconeGoogle} alt="" />Entrar com Google</span>
+          </div>
+          <div className="acesso-redes-botao">
+            <span className="bloom-botao bloom-botao-contorno"><img src={iconeFacebook} alt="" />Entrar com Facebook</span>
+          </div>
+        </div>
+
+        <p className="acesso-cadastro">
+          Ainda não possui uma conta?{" "}
+          <button className="acesso-texto-botao" type="button" onClick={aoCriarConta}>
+            Criar uma conta
+          </button>
+        </p>
+      </section>
+    </main>
+  );
+}
+
+export default Acesso;

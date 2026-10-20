@@ -1,0 +1,28 @@
+:root {
+  --cor-fundo: #f3efe2;
+  --cor-superficie: #faf9f2;
+  --cor-menu-lateral: #2a4036;
+  --cor-icone-menu: #c9d3c8;
+  --cor-icone-menu-ativo: #ffffff;
+  --cor-fundo-menu-ativo: #566e60;
+  --cor-principal: #2f4a34;
+  --cor-principal-escuro: #1e2f23;
+  --cor-borda: #e3ddc9;
+  --cor-texto: #202d1e;
+  --cor-texto-suave: #6f7a68;
+  --cor-bom-fundo: #e2f2df;
+  --cor-bom-texto: #2f7a3c;
+  --cor-aviso-fundo: #fdeecb;
+  --cor-aviso-texto: #a7711a;
+  --cor-alerta-fundo: #fbdede;
+  --cor-alerta-texto: #b23b3b;
+  --cor-informacao-fundo: #e4e9f5;
+  --cor-informacao-texto: #3c5aa6;
+  --cor-neutro-fundo: #edeae0;
+  --cor-neutro-texto: #55604f;
+  --arredondamento-pequeno: 0.45vw;
+  --arredondamento-medio: 0.7vw;
+  --arredondamento-grande: 1.1vw;
+  --sombra-do-cartao: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --familia-da-fonte: "Alice", serif;
+}

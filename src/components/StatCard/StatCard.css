@@ -1,0 +1,54 @@
+.bloom-indicador-cartao {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.8vh;
+  padding: 1.4vh 1.2vw;
+  border: 1px solid var(--cor-borda);
+  border-radius: 14px;
+  background: var(--cor-superficie);
+  box-sizing: border-box;
+  font-family: var(--familia-da-fonte);
+}
+
+.bloom-indicador-cartao-cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.bloom-indicador-cartao-rotulo {
+  min-width: 0;
+  flex: 1;
+  color: #153532;
+  font-size: clamp(11px, 1.05vw, 15px);
+  white-space: nowrap;
+}
+
+.bloom-indicador-cartao-valor {
+  color: #153532;
+  font-size: clamp(19px, 2.1vw, 27px);
+  font-weight: 700;
+}
+
+.bloom-indicador-cartao-rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bloom-indicador-cartao-variacao {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: #789493;
+  font-size: clamp(10px, 0.9vw, 13px);
+  white-space: nowrap;
+}
+
+.bloom-indicador-cartao .bloom-selo {
+  padding: 2px 8px;
+  background: #279777;
+  color: #fff;
+  font-size: 11px;
+}
