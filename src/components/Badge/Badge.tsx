@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import "./Badge.css";
 
-type EstiloSelo = "bom" | "aviso" | "alerta" | "informacao" | "neutro";
+type EstiloSelo = "bom" | "aviso" | "alerta" | "informacao" | "neutro" | "destaque";
 
 interface PropriedadesSelo {
   estilo?: EstiloSelo;

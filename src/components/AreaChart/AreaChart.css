@@ -1,0 +1,96 @@
+/* Os números abaixo (sem unidade) são multiplicados por --un. Dá para trocar por gráfico
+   usando uma classe própria, como faz a tela de Turmas. */
+.bloom-grafico {
+  --grafico-fonte: 16;
+  --grafico-largura-y: 23;
+  --grafico-folga-y: 8;
+  --grafico-espessura: 2.2;
+  --grafico-ponta: 7;
+  --grafico-recuo-direito: 7%;
+
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: calc(10 * var(--un));
+  color: var(--cor-texto-forte, #112d2b);
+  font-family: var(--familia-da-fonte);
+}
+
+.bloom-grafico-corpo {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  gap: calc(var(--grafico-folga-y) * var(--un));
+}
+
+.bloom-grafico-eixo-y {
+  position: relative;
+  width: calc(var(--grafico-largura-y) * var(--un));
+  flex-shrink: 0;
+}
+
+.bloom-grafico-eixo-y span {
+  position: absolute;
+  right: 0;
+  transform: translateY(-50%);
+  font-size: calc(var(--grafico-fonte) * var(--un));
+  font-weight: 700;
+  line-height: 1;
+}
+
+.bloom-grafico-area {
+  position: relative;
+  min-width: 0;
+  flex: 1;
+  background: linear-gradient(180deg, #fcfbf7, #f8f7f2);
+}
+
+.bloom-grafico-area svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.bloom-grafico-grade {
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: rgba(17, 45, 43, 0.07);
+}
+
+.bloom-grafico-linha {
+  fill: none;
+  stroke-width: var(--grafico-espessura);
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.bloom-grafico-ponta {
+  position: absolute;
+  width: calc(var(--grafico-ponta) * var(--un));
+  height: calc(var(--grafico-ponta) * var(--un));
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bloom-grafico-ponta-inicio {
+  left: 0;
+}
+
+.bloom-grafico-ponta-fim {
+  left: 100%;
+}
+
+.bloom-grafico-eixo-x {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 var(--grafico-recuo-direito) 0 calc((var(--grafico-largura-y) + var(--grafico-folga-y)) * var(--un));
+  font-size: calc(var(--grafico-fonte) * var(--un));
+  font-weight: 700;
+  line-height: 1;
+}

@@ -1,0 +1,34 @@
+.bloom-anel {
+  position: relative;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bloom-anel-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(0deg);
+}
+
+.bloom-anel-valor {
+  transition: stroke-dashoffset 0.6s ease;
+}
+
+.bloom-anel-centro {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--familia-da-fonte);
+}
+
+.bloom-anel-numero {
+  color: #1e2f23;
+  font-size: clamp(22px, 2.4vw, 34px);
+  font-weight: 700;
+  line-height: 1;
+}

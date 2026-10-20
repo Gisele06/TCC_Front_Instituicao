@@ -1,0 +1,23 @@
+.bloom-seletor-periodo {
+  --periodo-altura: 44;
+
+  display: inline-flex;
+  height: calc(var(--periodo-altura) * var(--un));
+  align-items: center;
+  gap: calc(9 * var(--un));
+  padding: 0 calc(21 * var(--un));
+  border: 1px solid #d3d1bf;
+  border-radius: 999px;
+  background: #faf9f4;
+  color: var(--cor-texto-suave-bemestar);
+  font-family: var(--familia-da-fonte);
+  font-size: calc(16 * var(--un));
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.bloom-seletor-periodo img {
+  width: calc(14 * var(--un));
+  height: calc(14 * var(--un));
+}

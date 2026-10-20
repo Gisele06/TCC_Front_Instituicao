@@ -1,0 +1,93 @@
+.bloom-linha-indicador {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  align-items: center;
+  gap: calc(13 * var(--un));
+  font-family: var(--familia-da-fonte);
+}
+
+.bloom-linha-indicador + .bloom-linha-indicador {
+  border-top: calc(2 * var(--un)) solid var(--cor-divisoria);
+}
+
+.bloom-linha-indicador-icone {
+  display: flex;
+  width: calc(70 * var(--un));
+  height: calc(70 * var(--un));
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d3d1bf;
+  border-radius: 50%;
+  background: var(--cor-fundo-painel);
+  box-shadow: 0 0 3px rgba(60, 60, 40, 0.1);
+}
+
+.bloom-linha-indicador-icone img {
+  width: calc(46 * var(--un));
+  height: calc(46 * var(--un));
+  object-fit: contain;
+}
+
+.bloom-linha-indicador-texto {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: calc(5 * var(--un));
+}
+
+.bloom-linha-indicador-texto strong {
+  color: var(--cor-texto-forte);
+  font-size: calc(24 * var(--un));
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.bloom-linha-indicador-texto span {
+  overflow: hidden;
+  color: var(--cor-texto-suave-bemestar);
+  font-size: calc(17 * var(--un));
+  line-height: 1.1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bloom-linha-indicador-valor {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: calc(3 * var(--un));
+}
+
+.bloom-linha-indicador-valor strong {
+  color: var(--cor-texto-forte);
+  font-size: calc(24 * var(--un));
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.bloom-linha-indicador-variacao {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(3 * var(--un));
+  font-size: calc(18 * var(--un));
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.bloom-linha-indicador-variacao svg {
+  width: calc(16 * var(--un));
+  height: calc(16 * var(--un));
+}
+
+.bloom-linha-indicador-variacao.tom-bom {
+  color: var(--cor-bem);
+}
+
+.bloom-linha-indicador-variacao.tom-ruim {
+  color: var(--cor-alerta-grafico);
+}

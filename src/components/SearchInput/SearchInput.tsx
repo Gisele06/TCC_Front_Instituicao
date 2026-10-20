@@ -7,13 +7,14 @@ interface PropriedadesCampoDeBusca {
   valor?: string;
   aoMudar?: (valor: string) => void;
   icone?: ReactNode;
+  tamanhoDoIcone?: number | string;
   className?: string;
 }
 
-function CampoDeBusca({ textoDeAjuda, valor, aoMudar, icone, className = "" }: PropriedadesCampoDeBusca) {
+function CampoDeBusca({ textoDeAjuda, valor, aoMudar, icone, tamanhoDoIcone = "clamp(14px, 1.6vw, 18px)", className = "" }: PropriedadesCampoDeBusca) {
   return (
     <label className={"bloom-busca " + className}>
-      <AreaIcone icone={icone} rotulo="busca" tamanho="clamp(14px, 1.6vw, 18px)" />
+      <AreaIcone icone={icone} rotulo="busca" tamanho={tamanhoDoIcone} />
       <input
         type="text"
         placeholder={textoDeAjuda}

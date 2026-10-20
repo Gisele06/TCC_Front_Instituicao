@@ -1,0 +1,39 @@
+.bloom-painel {
+  --painel-fonte-titulo: 28;
+  --painel-icone: 32;
+
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+  padding: calc(21 * var(--un)) calc(30 * var(--un));
+  border: 1px solid var(--cor-borda-cartao);
+  border-radius: calc(34 * var(--un));
+  background: var(--cor-fundo-painel);
+  box-shadow: 0 0 4px rgba(60, 60, 40, 0.1);
+  color: var(--cor-texto-forte);
+  font-family: var(--familia-da-fonte);
+}
+
+.bloom-painel-titulo {
+  display: flex;
+  margin: 0;
+  align-items: center;
+  gap: calc(10 * var(--un));
+  font-size: calc(var(--painel-fonte-titulo) * var(--un));
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.bloom-painel-titulo-icone {
+  display: inline-flex;
+  width: calc(var(--painel-icone) * var(--un));
+  height: calc(var(--painel-icone) * var(--un));
+  flex-shrink: 0;
+}
+
+.bloom-painel-titulo-icone img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

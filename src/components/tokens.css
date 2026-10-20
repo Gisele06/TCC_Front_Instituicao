@@ -25,4 +25,26 @@
   --arredondamento-grande: 1.1vw;
   --sombra-do-cartao: 0 1px 2px rgba(0, 0, 0, 0.06);
   --familia-da-fonte: "Alice", serif;
+
+  /* Unidade de medida das telas de Bem-estar: 1 "un" = 1px no layout de referência (1920x1080).
+     Ela acompanha o menor lado da janela, então a tela mantém as mesmas proporções em qualquer tamanho. */
+  --un: min(0.052083vw, 0.092593vh);
+
+  --cor-fundo-painel: #f5f4ec;
+  --cor-borda-cartao: #c8c7b5;
+  --cor-divisoria: #e5e5d9;
+  --cor-texto-forte: #112d2b;
+  --cor-texto-suave-bemestar: #7e9897;
+  --cor-aba-ativa: #2c4035;
+  --cor-contagem-sino: #7a4d12;
+
+  /* Situações de bem-estar usadas nos gráficos */
+  --cor-bem: #2d9d6c;
+  --cor-atencao: #f8af0d;
+  --cor-regular: #e57208;
+  --cor-alerta-grafico: #c53a19;
+
+  /* Anel de progresso */
+  --cor-anel-escuro: #13322f;
+  --cor-anel-claro: #66b091;
 }
