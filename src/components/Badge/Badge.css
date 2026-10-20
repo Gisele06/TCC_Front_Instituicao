@@ -29,6 +29,11 @@
   color: var(--cor-informacao-texto);
 }
 
+.bloom-selo-destaque {
+  background: #279777;
+  color: #ffffff;
+}
+
 .bloom-selo-neutro {
   background: var(--cor-neutro-fundo);
   color: var(--cor-neutro-texto);

@@ -1,0 +1,56 @@
+.bloom-barra-segmentada {
+  --barra-arredondamento: 10;
+
+  display: flex;
+  flex-direction: column;
+  gap: calc(12 * var(--un));
+  font-family: var(--familia-da-fonte);
+}
+
+.bloom-barra-segmentada-trilho {
+  position: relative;
+  height: calc(41 * var(--un));
+}
+
+.bloom-barra-segmentada-parte {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: calc(var(--barra-arredondamento) * var(--un));
+}
+
+.bloom-barra-segmentada-legenda {
+  display: flex;
+  margin: 0;
+  padding: 0 0 0 calc(39 * var(--un));
+  gap: calc(38 * var(--un));
+  list-style: none;
+}
+
+.bloom-barra-segmentada-legenda li {
+  display: flex;
+  flex-direction: column;
+  gap: calc(3 * var(--un));
+}
+
+.bloom-barra-segmentada-legenda strong {
+  color: var(--cor-texto-forte);
+  font-size: calc(22 * var(--un));
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.bloom-barra-segmentada-legenda span {
+  display: flex;
+  align-items: center;
+  gap: calc(8 * var(--un));
+  color: var(--cor-texto-suave-bemestar);
+  font-size: calc(17 * var(--un));
+  line-height: 1.1;
+}
+
+.bloom-barra-segmentada-legenda i {
+  width: calc(19 * var(--un));
+  height: calc(11 * var(--un));
+  border-radius: calc(5 * var(--un));
+}

@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import MenuLateral from "../Sidebar/Sidebar";
 import BarraSuperior from "../Topbar/Topbar";
+import FundoPrincipal from "../MainBackground/MainBackground";
 
 import iconeMenu from "../../assets/icons/menu.png";
 import iconeInicio from "../../assets/icons/home.png";
@@ -20,6 +21,10 @@ import "./InstitutionFrame.css";
 interface PropriedadesEstruturaInstitucional {
   paginaAtiva: string;
   aoNavegar: (pagina: string) => void;
+  /** Número mostrado no sino da barra superior. */
+  quantidadeDeAvisos?: number;
+  /** Endereço da foto do usuário. Sem ele, aparecem as iniciais. */
+  fotoUsuario?: string;
   children: ReactNode;
 }
 
@@ -32,7 +37,13 @@ const itensMenu = [
   { id: "academico", rotulo: "Acadêmico", icone: <img src={iconeGerenciamento} alt="Acadêmico" /> },
 ];
 
-function EstruturaInstitucional({ paginaAtiva, aoNavegar, children }: PropriedadesEstruturaInstitucional) {
+function EstruturaInstitucional({
+  paginaAtiva,
+  aoNavegar,
+  quantidadeDeAvisos = 2,
+  fotoUsuario,
+  children,
+}: PropriedadesEstruturaInstitucional) {
   return (
     <div className="inicio">
       <MenuLateral
@@ -43,24 +54,24 @@ function EstruturaInstitucional({ paginaAtiva, aoNavegar, children }: Propriedad
       />
 
       <div className="fundo">
-        <div className={`fundo-principal${paginaAtiva === "inicio" ? "" : " fundo-principal-compacto"}`}>
+        <FundoPrincipal compacto={paginaAtiva !== "inicio"}>
           <BarraSuperior
             tituloMarca="Bloom"
             iconeMarca={<img src={iconeLogoBloom} alt="" />}
             subtituloMarca="Institucional"
             iconeBusca={<img src={iconeBusca} alt="" />}
             rotuloDaData="06 jul, 2026"
-            quantidadeDeAvisos={2}
+            quantidadeDeAvisos={quantidadeDeAvisos}
             nomeUsuario="Fernando Leonid"
             cargoUsuario="Coordenador"
-            foto={<span>FL</span>}
+            foto={fotoUsuario ? <img src={fotoUsuario} alt="" /> : <span>FL</span>}
             iconeSino={<img src={iconeSino} alt="" />}
             iconeCalendario={<img src={iconeCalendario} alt="" />}
             iconeSeta={<img src={iconeSetaBaixo} alt="" />}
           />
 
           {children}
-        </div>
+        </FundoPrincipal>
       </div>
     </div>
   );

@@ -1,0 +1,119 @@
+/* Os números abaixo (sem unidade) são multiplicados por --un. Para ajustar uma tela específica,
+   troque as variáveis numa classe própria (veja Turmas.css). */
+.bloom-abas-segmentadas {
+  --aba-altura: 45;
+  --aba-recuo: 15;
+  --aba-recuo-ativo: 22;
+  --aba-gap: 10;
+  --aba-icone: 20;
+  --aba-fonte: 20;
+  --aba-arredondamento: 18;
+  --caixa-arredondamento: 26;
+  --caixa-recuo: 10;
+  --caixa-recuo-v: 9;
+
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  flex-shrink: 0;
+  align-items: center;
+  padding: calc(var(--caixa-recuo-v) * var(--un)) calc(var(--caixa-recuo) * var(--un));
+  border: 1px solid var(--cor-borda-cartao);
+  border-radius: calc(var(--caixa-arredondamento) * var(--un));
+  background: transparent;
+  box-shadow: 0 0 3px rgba(60, 60, 40, 0.1);
+  font-family: var(--familia-da-fonte);
+}
+
+.bloom-abas-segmentadas.abas-compactas {
+  --aba-altura: 39;
+  --aba-recuo-ativo: 21;
+  --aba-arredondamento: 14;
+  --caixa-arredondamento: 22;
+  --caixa-recuo: 8;
+  --caixa-recuo-v: 6.5;
+}
+
+.bloom-aba-segmentada {
+  position: relative;
+  display: inline-flex;
+  height: calc(var(--aba-altura) * var(--un));
+  align-items: center;
+  gap: calc(var(--aba-gap) * var(--un));
+  padding: 0 calc(var(--aba-recuo) * var(--un));
+  border: 0;
+  border-radius: calc(var(--aba-arredondamento) * var(--un));
+  background: transparent;
+  color: var(--cor-aba-ativa);
+  font-size: calc(var(--aba-fonte) * var(--un));
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.bloom-aba-segmentada:focus {
+  outline: none;
+}
+
+.bloom-aba-segmentada:focus-visible {
+  outline: 2px solid var(--cor-anel-claro);
+  outline-offset: 1px;
+}
+
+/* Linha fina entre uma aba e a próxima. */
+.bloom-aba-segmentada + .bloom-aba-segmentada::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: calc(2 * var(--un));
+  background: var(--cor-divisoria);
+  content: "";
+}
+
+.bloom-aba-segmentada.estado-ativo {
+  padding: 0 calc(var(--aba-recuo-ativo) * var(--un));
+  background: var(--cor-aba-ativa);
+  color: #ffffff;
+}
+
+/* A aba ativa afasta as vizinhas para a linha ficar no meio do espaço. */
+.bloom-aba-segmentada.estado-ativo:not(:first-child) {
+  margin-left: calc(var(--aba-recuo) * var(--un));
+}
+
+.bloom-aba-segmentada.estado-ativo:not(:last-child) {
+  margin-right: calc(var(--aba-recuo) * var(--un));
+}
+
+.bloom-aba-segmentada.estado-ativo::before {
+  left: calc(-1 * var(--aba-recuo) * var(--un));
+}
+
+.bloom-aba-segmentada.estado-ativo + .bloom-aba-segmentada::before {
+  left: 0;
+}
+
+.bloom-aba-segmentada-marcador {
+  width: calc(23 * var(--un));
+  height: calc(11 * var(--un));
+  border-radius: calc(4.5 * var(--un));
+}
+
+.bloom-aba-segmentada-icone {
+  display: inline-flex;
+  width: calc(var(--aba-icone) * var(--un));
+  height: calc(var(--aba-icone) * var(--un));
+  flex-shrink: 0;
+}
+
+.bloom-aba-segmentada-icone img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Na aba ativa o fundo é escuro, então o ícone escuro vira branco. */
+.bloom-aba-segmentada.estado-ativo .bloom-aba-segmentada-icone img {
+  filter: brightness(0) invert(1);
+}

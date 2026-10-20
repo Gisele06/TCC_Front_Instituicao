@@ -1,0 +1,179 @@
+/* Visão "Panorama geral". Os números com "un" seguem o layout de referência de 1920x1080. */
+.panorama-grade {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+  grid-template-columns: minmax(0, 1fr) calc(454 * var(--un));
+  gap: calc(27 * var(--un));
+}
+
+.panorama-coluna-principal {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+  gap: calc(22 * var(--un));
+}
+
+/* ----- Card principal: filtros, resumo e gráfico ----- */
+.panorama-painel-geral {
+  flex: 1;
+  padding: calc(21 * var(--un)) calc(40 * var(--un)) 0;
+}
+
+.panorama-filtros {
+  --aba-recuo: 12;
+  --aba-recuo-ativo: 22;
+  --aba-gap: 9;
+}
+
+.panorama-geral-corpo {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  margin-top: calc(25 * var(--un));
+}
+
+.panorama-subtitulo {
+  display: flex;
+  height: calc(35 * var(--un));
+  margin: 0;
+  align-items: center;
+  gap: calc(17 * var(--un));
+  font-size: calc(28 * var(--un));
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.panorama-subtitulo img {
+  height: calc(30 * var(--un));
+  object-fit: contain;
+}
+
+.panorama-subtitulo-resumo img {
+  width: calc(35 * var(--un));
+  height: calc(35 * var(--un));
+}
+
+.panorama-resumo {
+  display: flex;
+  width: calc(299 * var(--un));
+  flex-shrink: 0;
+  flex-direction: column;
+  padding: calc(5 * var(--un)) calc(38 * var(--un)) 0 calc(2 * var(--un));
+  border-right: calc(2 * var(--un)) solid var(--cor-divisoria);
+}
+
+.panorama-resumo-anel {
+  display: flex;
+  margin-top: calc(16 * var(--un));
+  justify-content: center;
+}
+
+.panorama-resumo-variacao {
+  display: flex;
+  height: calc(31 * var(--un));
+  margin-top: calc(7 * var(--un));
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0 0 calc(14 * var(--un));
+}
+
+.panorama-resumo-variacao strong {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(4 * var(--un));
+  font-size: calc(22 * var(--un));
+  font-weight: 700;
+}
+
+.panorama-resumo-variacao svg {
+  width: calc(18 * var(--un));
+  height: calc(18 * var(--un));
+}
+
+.panorama-resumo-variacao .bloom-selo {
+  height: calc(31 * var(--un));
+  padding: 0 calc(20 * var(--un));
+  font-size: calc(18 * var(--un));
+}
+
+.panorama-resumo-legenda {
+  margin: calc(2 * var(--un)) 0 0;
+  padding-left: calc(16 * var(--un));
+  color: var(--cor-texto-suave-bemestar);
+  font-size: calc(20 * var(--un));
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.panorama-visao {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  padding: 0 0 calc(33 * var(--un)) calc(28 * var(--un));
+}
+
+.panorama-visao-cabecalho {
+  display: flex;
+  height: calc(44 * var(--un));
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panorama-visao-cabecalho .panorama-subtitulo {
+  gap: calc(25 * var(--un));
+}
+
+.panorama-visao-cabecalho .panorama-subtitulo img {
+  width: calc(32 * var(--un));
+}
+
+.panorama-grafico {
+  margin-top: calc(21 * var(--un));
+}
+
+/* ----- Card de distribuição ----- */
+.panorama-painel-distribuicao {
+  --painel-fonte-titulo: 22;
+  --painel-icone: 32;
+
+  width: calc(534 * var(--un));
+  flex-shrink: 0;
+  padding: calc(18 * var(--un)) calc(32 * var(--un)) calc(16 * var(--un)) calc(33 * var(--un));
+}
+
+.panorama-painel-distribuicao .bloom-painel-titulo {
+  gap: calc(7 * var(--un));
+}
+
+.panorama-painel-distribuicao .bloom-barra-segmentada {
+  margin-top: calc(31 * var(--un));
+  margin-left: calc(-3 * var(--un));
+}
+
+/* ----- Card de indicadores ----- */
+.panorama-painel-indicadores {
+  --painel-fonte-titulo: 28;
+  --painel-icone: 33;
+
+  padding: calc(34 * var(--un)) calc(33 * var(--un)) calc(16 * var(--un)) calc(22 * var(--un));
+}
+
+.panorama-painel-indicadores .bloom-painel-titulo {
+  margin-left: calc(16 * var(--un));
+  gap: calc(9 * var(--un));
+}
+
+.panorama-indicadores-lista {
+  display: flex;
+  min-height: 0;
+  margin-top: calc(16 * var(--un));
+  flex: 1;
+  flex-direction: column;
+}

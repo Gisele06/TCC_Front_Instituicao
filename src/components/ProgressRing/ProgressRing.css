@@ -1,0 +1,34 @@
+.bloom-anel {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.bloom-anel svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bloom-anel circle {
+  fill: none;
+}
+
+.bloom-anel-trilho {
+  stroke: var(--cor-anel-claro, #6ab396);
+}
+
+.bloom-anel-progresso {
+  stroke: var(--cor-anel-escuro, #13322f);
+}
+
+.bloom-anel-conteudo {
+  position: relative;
+  color: var(--cor-anel-escuro, #13322f);
+  font-family: var(--familia-da-fonte);
+  font-weight: 700;
+  line-height: 1;
+}
