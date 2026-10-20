@@ -11,11 +11,8 @@ export interface SerieDoGrafico {
 
 interface PropriedadesGraficoDeArea {
   series: SerieDoGrafico[];
-  /** Datas (ou nomes) mostrados embaixo do gráfico. */
   rotulosDoEixoX: string[];
-  /** Mostra uma bolinha no começo e no fim de cada linha. */
   pontas?: boolean;
-  /** Força da cor do preenchimento embaixo de cada linha, de 0 a 1. */
   opacidadeDoPreenchimento?: number;
   className?: string;
 }
@@ -26,7 +23,6 @@ const marcasDoEixoY = [100, 75, 50, 25, 0];
 
 type Ponto = [number, number];
 
-// Transforma os pontos numa curva suave (Catmull-Rom convertida em Bézier).
 function criarCurva(pontos: Ponto[]) {
   let caminho = `M${pontos[0][0]},${pontos[0][1]}`;
 

@@ -19,7 +19,6 @@ interface PropriedadesAnelDeProgresso {
 const RAIO = 45;
 const CIRCUNFERENCIA = 2 * Math.PI * RAIO;
 
-// Anel de progresso circular (a "bolinha" com a porcentagem no centro).
 function AnelDeProgresso({
   valor,
   tamanho = "clamp(120px, 9vw, 170px)",
