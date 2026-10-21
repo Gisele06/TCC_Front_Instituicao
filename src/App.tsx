@@ -9,7 +9,7 @@ import BemEstar from "./pages/BemEstar/BemEstar";
 import CadastrarComunicados from "./pages/CadastrarComunicados/CadastrarComunicados";
 import "./App.css";
 
-type Tela = "acesso" | "cadastro" | "inicio" | "bem-estar" | "eventos" | "comunicados" | "cadastrar-evento" | "cadastrar-comunicados";
+type Tela = "acesso" | "cadastro" | "inicio" | "bem-estar" | "eventos" | "comunicados" | "cadastrar-evento" | "cadastrar-comunicados" | "salas";
 
 function Aplicativo() {
   const [tela, definirTela] = useState<Tela>("acesso");
@@ -20,6 +20,7 @@ function Aplicativo() {
     if (pagina === "eventos") definirTela("eventos");
     if (pagina === "comunicados") definirTela("comunicados");
     if (pagina === "cadastrar-comunicados") definirTela("cadastrar-comunicados")
+    if (pagina === "salas") definirTela("salas")
   }
 
   if (tela === "cadastro") {
