@@ -16,6 +16,7 @@ import "./Comunicados.css";
 
 interface PropriedadesComunicados {
   aoNavegar: (pagina: string) => void;
+  aoCriarComunicado: () => void;
 }
 
 const categorias = ["Todos", "Avisos", "Informativos", "Orientações", "Eventos"];
@@ -87,7 +88,7 @@ function criarSemanas(ano: number, mes: number) {
   return semanas;
 }
 
-function Comunicados({ aoNavegar }: PropriedadesComunicados) {
+function Comunicados({ aoNavegar, aoCriarComunicado }: PropriedadesComunicados) {
   const mes = 6;
   const ano = 2026;
   const diaSelecionado = 6;
@@ -125,7 +126,11 @@ function Comunicados({ aoNavegar }: PropriedadesComunicados) {
                 <img src={iconeBusca} alt="" />
                 <span>Buscar comunicado</span>
               </div>
-              <button type="button" className="comunicados-principal-botao">
+              <button
+                type="button"
+                className="comunicados-principal-botao"
+                onClick={aoCriarComunicado}
+              >
                 Novo comunicado
               </button>
             </div>
