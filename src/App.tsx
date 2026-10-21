@@ -6,10 +6,12 @@ import Eventos from "./pages/Eventos/Eventos";
 import Inicio from "./pages/Home/Home";
 import Acesso from "./pages/Login/Login";
 import BemEstar from "./pages/BemEstar/BemEstar";
+
+import Acolhimento from "./pages/Acolhimento/Denuncias";
 import CadastrarComunicados from "./pages/CadastrarComunicados/CadastrarComunicados";
 import "./App.css";
 
-type Tela = "acesso" | "cadastro" | "inicio" | "bem-estar" | "eventos" | "comunicados" | "cadastrar-evento" | "cadastrar-comunicados" | "salas";
+type Tela = "acesso" | "cadastro" | "inicio" | "bem-estar" | "eventos" | "comunicados" | "cadastrar-evento" | "acolhimento" |"cadastrar-comunicados" | "salas";
 
 function Aplicativo() {
   const [tela, definirTela] = useState<Tela>("acesso");
@@ -19,6 +21,7 @@ function Aplicativo() {
     if (pagina === "bem-estar") definirTela("bem-estar");
     if (pagina === "eventos") definirTela("eventos");
     if (pagina === "comunicados") definirTela("comunicados");
+    if (pagina === "acolhimento") definirTela("acolhimento");
     if (pagina === "cadastrar-comunicados") definirTela("cadastrar-comunicados")
     if (pagina === "salas") definirTela("salas")
   }
@@ -38,6 +41,10 @@ function Aplicativo() {
 
   if (tela === "bem-estar") {
     return <BemEstar aoNavegar={navegarPara} />;
+  }
+
+    if (tela === "acolhimento") {
+    return <Acolhimento aoNavegar={navegarPara} />;
   }
 
   if (tela === "eventos") {

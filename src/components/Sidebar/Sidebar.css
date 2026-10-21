@@ -1,61 +1,88 @@
+/* Barra lateral Bloom — referência visual */
 .bloom-menu-lateral {
-  width: clamp(44px, 5.5vw, 72px);
-  background: var(--cor-menu-lateral);
+  width: clamp(76px, 5.15vw, 94px);
+  height: 100vh;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  padding: 26px 0 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2.1vh;
-  padding: 9px 0;
-  height: 100vh;
-  justify-content: flex-start;
-  box-sizing: border-box;
-  flex-shrink: 0;
+  gap: clamp(24px, 3.4vh, 36px);
+  background: #293f35;
 }
 
+.bloom-menu-lateral-menu,
 .bloom-menu-lateral-item {
-  width: clamp(30px, 3.7vw, 44px);
-  height: clamp(30px, 3.7vw, 44px);
-  border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--cor-icone-menu);
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-}
-
-.bloom-menu-lateral-item.estado-ativo {
-  background: var(--cor-fundo-menu-ativo);
-  color: var(--cor-icone-menu-ativo);
-}
-
-.bloom-menu-lateral-item.estado-inicio img {
-  filter: brightness(0) invert(0.82);
-}
-
-.bloom-menu-lateral-item.estado-inicio.estado-ativo {
-  background: rgba(255, 255, 255, 0.08);
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  box-sizing: border-box;
+  transition: background-color .22s ease, transform .22s ease, box-shadow .22s ease;
 }
 
 .bloom-menu-lateral-menu {
-  width: 26px;
-  height: 26px;
-  border-radius: var(--arredondamento-medio);
-  border: none;
-  background: transparent;
-  color: var(--cor-icone-menu);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: clamp(24px, 5vh, 48px);
+  background: #405a4c;
   cursor: default;
-  margin-bottom: 9vh;
 }
+button.bloom-menu-lateral-menu { cursor: pointer; }
 
-button.bloom-menu-lateral-menu {
+.bloom-menu-lateral-item {
+  width: 62px;
+  height: 62px;
+  background: #405a4c;
   cursor: pointer;
+  position: relative;
 }
 
-.bloom-menu-lateral-item + .bloom-menu-lateral-item {
-  margin-top: 2.7vh;
+/* Ícones originais sem filtro: preserva suas cores */
+.bloom-menu-lateral-item img,
+.bloom-menu-lateral-menu img {
+  display: block;
+  max-width: 75%;
+  max-height: 75%;
+  object-fit: contain;
+}
+
+/* O destaque acompanha qualquer página selecionada */
+.bloom-menu-lateral-item.estado-ativo {
+  background: #405a4c;
+}
+.bloom-menu-lateral-item.estado-ativo::before {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border-radius: 50%;
+  background: #e6e5d2;
+  animation: bloom-ativar-nav .25s ease-out;
+}
+.bloom-menu-lateral-item.estado-ativo > * {
+  position: relative;
+  z-index: 1;
+}
+
+.bloom-menu-lateral-item:hover,
+button.bloom-menu-lateral-menu:hover { transform: scale(1.06); }
+.bloom-menu-lateral-item:focus-visible,
+button.bloom-menu-lateral-menu:focus-visible {
+  outline: 2px solid #e6e5d2;
+  outline-offset: 3px;
+}
+
+@keyframes bloom-ativar-nav {
+  from { opacity: 0; transform: scale(.75); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-height: 700px) {
+  .bloom-menu-lateral { gap: 12px; padding-top: 12px; }
+  .bloom-menu-lateral-menu { margin-bottom: 12px; }
+  .bloom-menu-lateral-item { width: 50px; height: 50px; }
 }
