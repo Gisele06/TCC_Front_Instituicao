@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import lock from "../../assets/icons/cadeado.png";
-import people from "../../assets/icons/Acolhimento/people.png";
+import people_chat from "../../assets/icons/Acolhimento/people_chat.svg";
 import sent from "../../assets/icons/Acolhimento/sent.png";
+import person from "../../assets/icons/Acolhimento/person.svg";
+
 import "./AnonymousChat.css";
 
 type Mensagem = {
@@ -41,7 +43,7 @@ export default function AnonymousChat({ aberto, aoFechar, denunciaId }: Props) {
     return () => window.removeEventListener("keydown", aoTeclar);
   }, [aberto, aoFechar]);
   if (!aberto) return null;
-  const enviar = (e: React.FormEvent) => {
+  const enviar = (e: React.SubmitEvent) => {
     e.preventDefault();
     if (!texto.trim()) return;
     setMensagens((atual) => [
@@ -82,7 +84,9 @@ export default function AnonymousChat({ aberto, aoFechar, denunciaId }: Props) {
           {mensagens.map((mensagem) => (
             <div key={mensagem.id} className={`chat-linha ${mensagem.autor}`}>
               {mensagem.autor === "aluno" && (
-                <div className="chat-avatar aluno" aria-label="Aluno"></div>
+                <div className="chat-avatar aluno" aria-label="Aluno">
+                  <img src={person} alt="Aluno" />
+                </div>
               )}
               <div className="chat-balao">
                 <small>
@@ -93,7 +97,7 @@ export default function AnonymousChat({ aberto, aoFechar, denunciaId }: Props) {
               </div>
               {mensagem.autor === "voce" && (
                 <div className="chat-avatar">
-                  <img src={people} alt="Você" />
+                  <img src={people_chat} alt="Você" />
                 </div>
               )}
             </div>
