@@ -174,54 +174,25 @@ function Inicio({ aoNavegar, aoCriarEvento }: PropriedadesInicio) {
           <div className="inicio-painel inicio-grafico-cartao">
             <div className="inicio-painel-cabecalho">
               <TituloDoPainel icone={iconeBarras} texto="Visão geral" />
-              <span className="inicio-grafico-periodo">Últimos 30 dias</span>
+              <span className="inicio-grafico-periodo">Últimos 30 dias <span aria-hidden="true">⌄</span></span>
             </div>
 
-            <svg
-              viewBox="0 0 600 170"
-              className="inicio-grafico-vetor"
-              preserveAspectRatio="none"
-            >
-              <g className="inicio-grafico-grade">
-                <path d="M48 20H598 M48 50H598 M48 80H598 M48 110H598 M48 140H598" />
-              </g>
+            <svg viewBox="0 0 600 180" className="inicio-grafico-vetor" preserveAspectRatio="none" role="img" aria-label="Gráfico de evolução: bem-estar, participação e turmas em atenção">
+              <defs>
+                <linearGradient id="inicio-area-verde" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#4baf94" stopOpacity=".22"/><stop offset="100%" stopColor="#4baf94" stopOpacity=".025"/></linearGradient>
+                <linearGradient id="inicio-area-azul" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#3479b8" stopOpacity=".18"/><stop offset="100%" stopColor="#3479b8" stopOpacity=".015"/></linearGradient>
+                <linearGradient id="inicio-area-roxa" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#a17bc8" stopOpacity=".20"/><stop offset="100%" stopColor="#a17bc8" stopOpacity=".025"/></linearGradient>
+              </defs>
+              <g className="inicio-grafico-grade"><path d="M44 15H596 M44 50H596 M44 85H596 M44 120H596 M44 155H596"/></g>
+              <path d="M44 100 C85 95 95 75 136 72 S196 57 228 56 S293 64 320 43 S383 27 412 34 S475 49 504 44 S560 49 596 32 L596 155 H44Z" fill="url(#inicio-area-verde)"/>
+              <path d="M44 76 C86 71 100 53 136 55 S193 58 228 45 S285 52 320 62 S381 70 412 60 S477 24 504 27 S564 35 596 29 L596 155 H44Z" fill="url(#inicio-area-azul)"/>
+              <path d="M44 129 C86 127 100 111 136 114 S195 128 228 123 S285 88 320 91 S384 102 412 113 S474 109 504 102 S565 112 596 96 L596 155 H44Z" fill="url(#inicio-area-roxa)"/>
+              <path className="inicio-linha inicio-linha-verde" d="M44 100 C85 95 95 75 136 72 S196 57 228 56 S293 64 320 43 S383 27 412 34 S475 49 504 44 S560 49 596 32"/>
+              <path className="inicio-linha inicio-linha-azul" d="M44 76 C86 71 100 53 136 55 S193 58 228 45 S285 52 320 62 S381 70 412 60 S477 24 504 27 S564 35 596 29"/>
+              <path className="inicio-linha inicio-linha-roxa" d="M44 129 C86 127 100 111 136 114 S195 128 228 123 S285 88 320 91 S384 102 412 113 S474 109 504 102 S565 112 596 96"/>
               <g className="inicio-grafico-eixo-rotulo">
-                <text x="4" y="24">
-                  100
-                </text>
-                <text x="9" y="54">
-                  75
-                </text>
-                <text x="9" y="84">
-                  50
-                </text>
-                <text x="9" y="114">
-                  25
-                </text>
-                <text x="16" y="144">
-                  0
-                </text>
-                <text x="48" y="163">
-                  15/06
-                </text>
-                <text x="132" y="163">
-                  22/06
-                </text>
-                <text x="218" y="163">
-                  29/06
-                </text>
-                <text x="304" y="163">
-                  06/07
-                </text>
-                <text x="390" y="163">
-                  13/07
-                </text>
-                <text x="476" y="163">
-                  20/07
-                </text>
-                <text x="562" y="163">
-                  27/07
-                </text>
+                <text x="21" y="19">100</text><text x="26" y="54">75</text><text x="26" y="89">50</text><text x="26" y="124">25</text><text x="33" y="159">0</text>
+                <text x="44" y="176">15/06</text><text x="136" y="176">22/06</text><text x="228" y="176">29/06</text><text x="320" y="176">06/07</text><text x="412" y="176">13/07</text><text x="504" y="176">20/07</text><text x="596" y="176" textAnchor="end">27/07</text>
               </g>
             </svg>
 

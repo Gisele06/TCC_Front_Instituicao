@@ -632,3 +632,42 @@ button.inicio-rapida-acao-botao {
     font-size: 13px;
   }
 }
+
+/* Ajustes da Home para a referência visual */
+.inicio-conteudo { --largura-cartoes-da-direita: 22%; gap: 2.2vh; }
+.inicio-superior-secao { flex: 1.38; gap: 1.45vw; }
+.inicio-superior-esquerdo { gap: 2.3vh; }
+.inicio-indicadores { flex-basis: 39%; gap: 1.1vw; }
+.inicio-inferior { flex: 1; gap: 1.45vw; }
+.inicio-painel { background: #f7f6ee; border-color: #d8d4c2; border-radius: clamp(18px, 1.7vw, 27px); box-shadow: 0 2px 5px rgb(29 49 39 / 4%); }
+.inicio-painel-titulo { font-size: clamp(16px, 1.45vw, 21px); gap: 10px; }
+.inicio-painel-titulo img { width: clamp(19px, 1.5vw, 24px); height: clamp(19px, 1.5vw, 24px); object-fit: contain; }
+.inicio-indicadores .bloom-indicador-cartao { border-radius: clamp(17px, 1.65vw, 25px); padding: clamp(12px, 1.5vw, 24px); justify-content: space-between; box-shadow: 0 2px 5px rgb(29 49 39 / 4%); }
+.inicio-indicadores .bloom-indicador-cartao-rotulo { font-size: clamp(14px, 1.3vw, 20px); font-weight: 700; }
+.inicio-indicadores .bloom-indicador-cartao-valor { font-size: clamp(27px, 2.35vw, 39px); }
+.inicio-indicadores .bloom-indicador-cartao-variacao { font-size: clamp(11px, 1.05vw, 15px); font-weight: 700; }
+.inicio-indicadores .bloom-indicador-cartao-cabecalho img { width: clamp(21px, 1.8vw, 29px); height: clamp(21px, 1.8vw, 29px); object-fit: contain; }
+.inicio-grafico-cartao { padding: clamp(14px, 1.4vw, 23px); }
+.inicio-grafico-vetor { display: block; width: 100%; min-height: 0; flex: 1; }
+.inicio-grafico-grade { stroke: #e4e4dc; stroke-width: .9; fill: none; }
+.inicio-grafico-eixo-rotulo { fill: #153532; font-size: 11px; font-weight: 700; }
+.inicio-grafico-eixo-rotulo text:nth-child(n+6) { text-anchor: middle; font-size: 10px; }
+.inicio-grafico-eixo-rotulo text:last-child { text-anchor: end; }
+.inicio-linha { fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.inicio-linha-verde { stroke: #4ba88c; }
+.inicio-linha-azul { stroke: #3078b5; }
+.inicio-linha-roxa { stroke: #9c79c5; }
+.inicio-grafico-periodo { display: inline-flex; gap: 12px; align-items: center; padding: 8px 12px; box-shadow: 0 2px 7px rgb(0 0 0 / 6%); font-weight: 700; }
+.inicio-grafico-legenda { gap: 1.7vw; }
+.inicio-grafico-legenda-item { font-weight: 700; font-size: clamp(11px, .95vw, 14px); }
+.inicio-grafico-ponto { width: 19px; height: 9px; }
+.inicio-grafico-ponto-verde { background: #4ba88c; }
+.inicio-grafico-ponto-azul { background: #3078b5; }
+.inicio-grafico-ponto-roxo { background: #9c79c5; }
+.inicio-rapida-acao-botao { cursor: pointer; transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease; }
+.inicio-rapida-acao-botao:hover { transform: translateX(3px); background: #fffdf7; box-shadow: 0 3px 8px rgb(0 0 0 / 8%); }
+.inicio-eventos-cartao .inicio-data-selo { width: clamp(40px, 3.2vw, 52px); height: clamp(40px, 3.2vw, 52px); flex-basis: clamp(40px, 3.2vw, 52px); }
+.inicio-evento-titulo { font-size: clamp(12px, 1vw, 15px); }
+.inicio-evento-informacao, .inicio-evento-local { font-size: clamp(9px, .8vw, 12px); }
+@media (max-width: 1050px) { .inicio-conteudo { --largura-cartoes-da-direita: 25%; } .inicio-indicadores .bloom-indicador-cartao { padding: 10px; } }
+@media (prefers-reduced-motion: reduce) { .inicio-rapida-acao-botao { transition: none; } }
