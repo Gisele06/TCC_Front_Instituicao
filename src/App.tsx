@@ -6,6 +6,7 @@ import Eventos from "./pages/Eventos/Eventos";
 import Inicio from "./pages/Home/Home";
 import Acesso from "./pages/Login/Login";
 import BemEstar from "./pages/BemEstar/BemEstar";
+import Salas from "./pages/Salas/Salas"
 
 import Acolhimento from "./pages/Acolhimento/Denuncias";
 import CadastrarComunicados from "./pages/CadastrarComunicados/CadastrarComunicados";
@@ -22,8 +23,9 @@ function Aplicativo() {
     if (pagina === "eventos") definirTela("eventos");
     if (pagina === "comunicados") definirTela("comunicados");
     if (pagina === "acolhimento") definirTela("acolhimento");
-    if (pagina === "cadastrar-comunicados") definirTela("cadastrar-comunicados")
-    if (pagina === "salas") definirTela("salas")
+    if (pagina === "cadastrar-comunicados") definirTela("cadastrar-comunicados");
+    if (pagina === "academico") definirTela("salas");
+
   }
 
   if (tela === "cadastro") {
@@ -81,6 +83,10 @@ function Aplicativo() {
         aoVoltar={() => definirTela("comunicados")}
       />
     )
+  }
+  if(tela === "salas"){
+    return <Salas aoNavegar={navegarPara}/>;
+
   }
 
   return (
