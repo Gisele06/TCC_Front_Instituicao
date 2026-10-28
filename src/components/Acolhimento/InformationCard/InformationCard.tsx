@@ -12,10 +12,17 @@ export default function InformationCard({
   label,
 }: InformationCardProps) {
   return (
-    <div className="complaint-stat-card">
-      <img src={icon} alt="" />
-      <strong>{value}</strong>
-      <span>{label}</span>
+    <div className="information-card">
+      <img
+        className="information-card-icon"
+        src={icon}
+        alt=""
+      />
+
+      <div className="information-card-content">
+        <strong>{value}</strong>
+        <span>{label}</span>
+      </div>
     </div>
   );
 }
