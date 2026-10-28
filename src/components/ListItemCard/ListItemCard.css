@@ -57,4 +57,5 @@
   font-size: clamp(11px, 1.05vw, 14px);
   font-weight: 600;
   color: var(--cor-texto);
+  
 }
