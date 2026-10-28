@@ -3,7 +3,6 @@ import MenuLateral from "../Sidebar/Sidebar";
 import BarraSuperior from "../Topbar/Topbar";
 import FundoPrincipal from "../MainBackground/MainBackground";
 
-import iconeMenu from "../../assets/icons/menu.png";
 import iconeInicio from "../../assets/icons/home.png";
 import iconeBemEstar from "../../assets/icons/bem-estar.png";
 import iconeAcolhimento from "../../assets/icons/acolhimento.png";
@@ -15,6 +14,14 @@ import iconeSino from "../../assets/icons/sino.png";
 import iconeBusca from "../../assets/icons/busca.png";
 import iconeCalendario from "../../assets/icons/calendario.png";
 import iconeSetaBaixo from "../../assets/icons/chevron-down-topbar.png";
+
+// Ícones selecionados (dark)
+import iconeInicioDark from "../../assets/icons/nav/home-page-light.svg";
+import iconeBemEstarDark from "../../assets/icons/nav/flower-dark.svg";
+import iconeAcolhimentoDark from "../../assets/icons/nav/trust-dark.svg";
+import iconeEventosDark from "../../assets/icons/nav/calendar-dark.svg";
+import iconeComunicadosDark from "../../assets/icons/nav/chat-dark.svg";
+import iconeGerenciamentoDark from "../../assets/icons/nav/graduation-cap-dark.svg";
 
 import "./InstitutionFrame.css";
 
@@ -29,12 +36,42 @@ interface PropriedadesEstruturaInstitucional {
 }
 
 const itensMenu = [
-  { id: "inicio", rotulo: "Início", icone: <img src={iconeInicio} alt="Início" /> },
-  { id: "bem-estar", rotulo: "Bem-estar", icone: <img src={iconeBemEstar} alt="Bem-estar" /> },
-  { id: "acolhimento", rotulo: "Acolhimento", icone: <img src={iconeAcolhimento} alt="Acolhimento" /> },
-  { id: "eventos", rotulo: "Eventos", icone: <img src={iconeEventos} alt="Eventos" /> },
-  { id: "comunicados", rotulo: "Comunicados", icone: <img src={iconeComunicados} alt="Comunicados" /> },
-  { id: "academico", rotulo: "Acadêmico", icone: <img src={iconeGerenciamento} alt="Acadêmico" /> },
+  {
+    id: "inicio",
+    rotulo: "Início",
+    icone: iconeInicio,
+    iconeDark: iconeInicioDark,
+  },
+  {
+    id: "bem-estar",
+    rotulo: "Bem-estar",
+    icone: iconeBemEstar,
+    iconeDark: iconeBemEstarDark,
+  },
+  {
+    id: "acolhimento",
+    rotulo: "Acolhimento",
+    icone: iconeAcolhimento,
+    iconeDark: iconeAcolhimentoDark,
+  },
+  {
+    id: "eventos",
+    rotulo: "Eventos",
+    icone: iconeEventos,
+    iconeDark: iconeEventosDark,
+  },
+  {
+    id: "comunicados",
+    rotulo: "Comunicados",
+    icone: iconeComunicados,
+    iconeDark: iconeComunicadosDark,
+  },
+  {
+    id: "academico",
+    rotulo: "Acadêmico",
+    icone: iconeGerenciamento,
+    iconeDark: iconeGerenciamentoDark,
+  },
 ];
 
 function EstruturaInstitucional({
@@ -47,12 +84,27 @@ function EstruturaInstitucional({
   return (
     <div className="inicio">
       <MenuLateral
-        itens={itensMenu}
+        itens={itensMenu.map((item) => ({
+          id: item.id,
+          rotulo: item.rotulo,
+          icone: (
+            <img
+              src={
+                item.id === "inicio"
+                  ? paginaAtiva === item.id
+                    ? item.icone
+                    : item.iconeDark
+                  : paginaAtiva === item.id
+                    ? item.iconeDark
+                    : item.icone
+              }
+              alt=""
+            />
+          ),
+        }))}
         idAtivo={paginaAtiva}
-        iconeMenu={<img src={iconeMenu} alt="Menu" />}
         aoSelecionar={aoNavegar}
       />
-
       <div className="fundo">
         <FundoPrincipal compacto={paginaAtiva !== "inicio"}>
           <BarraSuperior
