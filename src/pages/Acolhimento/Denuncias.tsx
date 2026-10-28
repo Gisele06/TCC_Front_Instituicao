@@ -48,7 +48,7 @@ function Acolhimento({ aoNavegar }: Props) {
       {visao === "denuncias" ? <>
         <div className="acolhimento-estatisticas">
 
-        <div className="complaint-stats">
+        <div className="information-cards">
             <InformationCard
               icon={clipboard}
               value={15}
@@ -66,23 +66,23 @@ function Acolhimento({ aoNavegar }: Props) {
               value={13}
               label="Resolvidas"
             />
-          </div>
+        </div>
            
-           <div><img src={check} alt="" /><strong>13</strong> Resolvidas</div></div>
-        <div className="acolhimento-colunas">
-          <section className="acolhimento-lista"><h2><img src={complaint} alt="" /> Denúncias</h2>
-            <label className="acolhimento-busca"><img src={busca} alt="" /><input placeholder="Buscar denúncia" value={buscaTexto} onChange={(e) => setBuscaTexto(e.target.value)} /></label>
-            <div className="acolhimento-itens">{denuncias.filter((item) => `${item.id} ${item.categoria} ${item.resumo}`.toLowerCase().includes(buscaTexto.toLowerCase())).map((item) => <button key={item.id} type="button" className={`acolhimento-item ${selecionada === item.id ? "selecionado" : ""}`} onClick={() => { setSelecionada(item.id); setExpandido(false); }}>
-              <div className="acolhimento-item-texto"><h3>#{item.id} <span>{item.categoria}</span></h3><p>“{item.resumo}”</p><small><img src={bubble} alt="" /> {item.mensagens} Mensagens</small></div>
-              <div className="acolhimento-item-lado"><small>{item.data}</small><span>{item.status}</span></div><img className="acolhimento-chevron" src={chevron} alt="" />
-            </button>)}</div>
-          </section>
-          
-          <aside className="acolhimento-detalhe"><h2>Denúncia #{denuncia.id}</h2><div className="acolhimento-detalhe-topo"><div><strong>{denuncia.categoria}</strong><small>Recebida em 06/07/2026, às 10:32</small></div><span>{denuncia.status}</span></div>
-            <h3>Relato</h3><p className={`acolhimento-relato ${expandido ? "expandido" : ""}`}>“{denuncia.relato}”</p><button className="acolhimento-vermais" type="button" onClick={() => setExpandido(!expandido)}>{expandido ? "⌃ Ver menos" : "⌄ Ver mais"}</button>
-            <h3>Informações</h3><div className="acolhimento-info"><span><img src={clock} alt="" /> Quando:</span><small>Hoje, às 10:32</small></div><div className="acolhimento-info"><span><img src={visit} alt="" /> Onde:</span><small>{denuncia.local}</small></div><div className="acolhimento-info"><span><img src={people} alt="" /> Envolvidos:</span><small>Outros estudantes</small></div>
-            <button type="button" className="acolhimento-abrir-chat" onClick={() => setChatAberto(true)}><img src={chat} alt="" /> Abrir chat</button>
-          </aside>
+        </div>
+          <div className="acolhimento-colunas">
+            <section className="acolhimento-lista"><h2><img src={complaint} alt="" /> Denúncias</h2>
+              <label className="acolhimento-busca"><img src={busca} alt="" /><input placeholder="Buscar denúncia" value={buscaTexto} onChange={(e) => setBuscaTexto(e.target.value)} /></label>
+              <div className="acolhimento-itens">{denuncias.filter((item) => `${item.id} ${item.categoria} ${item.resumo}`.toLowerCase().includes(buscaTexto.toLowerCase())).map((item) => <button key={item.id} type="button" className={`acolhimento-item ${selecionada === item.id ? "selecionado" : ""}`} onClick={() => { setSelecionada(item.id); setExpandido(false); }}>
+                <div className="acolhimento-item-texto"><h3>#{item.id} <span>{item.categoria}</span></h3><p>“{item.resumo}”</p><small><img src={bubble} alt="" /> {item.mensagens} Mensagens</small></div>
+                <div className="acolhimento-item-lado"><small>{item.data}</small><span>{item.status}</span></div><img className="acolhimento-chevron" src={chevron} alt="" />
+              </button>)}</div>
+            </section>
+            
+            <aside className="acolhimento-detalhe"><h2>Denúncia #{denuncia.id}</h2><div className="acolhimento-detalhe-topo"><div><strong>{denuncia.categoria}</strong><small>Recebida em 06/07/2026, às 10:32</small></div><span>{denuncia.status}</span></div>
+              <h3>Relato</h3><p className={`acolhimento-relato ${expandido ? "expandido" : ""}`}>“{denuncia.relato}”</p><button className="acolhimento-vermais" type="button" onClick={() => setExpandido(!expandido)}>{expandido ? "⌃ Ver menos" : "⌄ Ver mais"}</button>
+              <h3>Informações</h3><div className="acolhimento-info"><span><img src={clock} alt="" /> Quando:</span><small>Hoje, às 10:32</small></div><div className="acolhimento-info"><span><img src={visit} alt="" /> Onde:</span><small>{denuncia.local}</small></div><div className="acolhimento-info"><span><img src={people} alt="" /> Envolvidos:</span><small>Outros estudantes</small></div>
+              <button type="button" className="acolhimento-abrir-chat" onClick={() => setChatAberto(true)}><img src={chat} alt="" /> Abrir chat</button>
+            </aside>
         </div>
       </> : <div className="acolhimento-redes">Redes de apoio</div>}
     </main>
