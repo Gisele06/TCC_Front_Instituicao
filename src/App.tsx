@@ -7,6 +7,8 @@ import Inicio from "./pages/Home/Home";
 import Acesso from "./pages/Login/Login";
 import RecuperarSenha from "./pages/RecuperarSenha/RecuperarSenha";
 import BemEstar from "./pages/BemEstar/BemEstar";
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+
 import Salas from "./pages/Salas/Salas"
 
 import Acolhimento from "./pages/Acolhimento/Denuncias";
@@ -95,11 +97,12 @@ function Aplicativo() {
   }
 
   return (
-    <Acesso
-      aoEntrar={() => definirTela("inicio")}
-      aoCriarConta={() => definirTela("cadastro")}
-      aoRecuperarSenha={() => definirTela("recuperar-senha")}
-    />
+    <GoogleOAuthProvider clientId="COLE_AQUI_O_SEU_ID_DO_://googleusercontent.com">
+      <Acesso
+        aoEntrar={() => definirTela("inicio")}
+        aoCriarConta={() => definirTela("cadastro")}
+      />
+    </GoogleOAuthProvider>
   );
 }
 

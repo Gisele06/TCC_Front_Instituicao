@@ -7,6 +7,7 @@ import iconeCadeado from "../../assets/icons/cadeado.png";
 import iconeGoogle from "../../assets/icons/google.png";
 import iconeFacebook from "../../assets/icons/facebook.png";
 import iconeOlho from "../../assets/icons/olho.png";
+import { useGoogleLogin } from '@react-oauth/google'; // Alterado de GoogleLogin para useGoogleLogin
 import "../auth.css";
 
 interface PropriedadesAcesso {
@@ -20,6 +21,18 @@ function Acesso({ aoEntrar, aoCriarConta, aoRecuperarSenha }: PropriedadesAcesso
     evento.preventDefault();
     aoEntrar();
   }
+
+  // Configuração do gatilho de login para o seu botão customizado
+  const loginComGoogle = useGoogleLogin({
+    onSuccess: (tokenResponse) => {
+      console.log("Sucesso! Dados do token:", tokenResponse);
+      // Redireciona o usuário para a tela "inicio" após o login aceito
+      aoEntrar(); 
+    },
+    onError: (error) => {
+      console.log("Erro ao logar com o Google:", error);
+    },
+  });
 
   return (
     <main className="acesso-pagina">
@@ -86,10 +99,22 @@ function Acesso({ aoEntrar, aoCriarConta, aoRecuperarSenha }: PropriedadesAcesso
 
         <div className="acesso-redes">
           <div className="acesso-redes-botao">
-            <span className="bloom-botao bloom-botao-contorno"><img src={iconeGoogle} alt="" />Entrar com Google</span>
+            {/* Adicionado o onClick para disparar o login e cursor pointer para indicar clique */}
+            <span 
+              className="bloom-botao bloom-botao-contorno" 
+              onClick={() => loginComGoogle()}
+              style={{ cursor: 'pointer' }}
+            >
+              <img src={iconeGoogle} alt=""/>
+              Entrar com Google
+            </span>
           </div>
+
           <div className="acesso-redes-botao">
-            <span className="bloom-botao bloom-botao-contorno"><img src={iconeFacebook} alt="" />Entrar com Facebook</span>
+            <span className="bloom-botao bloom-botao-contorno">
+              <img src={iconeFacebook} alt="" />
+              Entrar com Facebook
+            </span>
           </div>
         </div>
 
