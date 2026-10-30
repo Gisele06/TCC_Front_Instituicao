@@ -235,10 +235,14 @@
 .acesso-recuperar {
   align-self: flex-end;
   margin-top: clamp(4px, 1vh, 8px);
+  padding: 0;
+  border: 0;
+  background: transparent;
   color: #548d72;
   font-size: clamp(13px, 1.1vw, 15px);
   font-weight: 700;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .acesso-envio,
@@ -383,12 +387,12 @@
 
 @media (max-width: 700px) {
   .acesso-pagina {
-    display: grid;
+    display: flex;
+    justify-content: center;
     min-height: 100vh;
     min-height: 100svh;
-    place-items: start center;
     overflow-y: auto;
-    padding: 80px 16px 24px;
+    padding: 0;
   }
 
   .acesso-fundo {
@@ -396,8 +400,7 @@
   }
 
   .acesso-marca {
-    top: 20px;
-    left: 20px;
+    display: none;
   }
 
   .acesso-titulo-principal {
@@ -405,20 +408,22 @@
   }
 
   .acesso-cartao,
-  .acesso-cartao-cadastro {
+  .acesso-cartao-cadastro,
+  .acesso-cartao-recuperacao {
     position: relative;
     top: auto;
     right: auto;
     transform: none;
-    width: min(100%, 440px);
+    width: calc(100% - 12px);
+    max-width: 560px;
     min-width: 0;
     height: auto;
-    min-height: 430px;
+    min-height: calc(100svh - 2px);
+    flex: 1 0 auto;
+    margin: 1px 6px;
     padding: 24px;
-  }
-
-  .acesso-cartao-cadastro {
-    min-height: 430px;
+    overflow: visible;
+    border-radius: 22px;
   }
 
   .cadastro-etapas {
@@ -442,5 +447,144 @@
 
   .acesso-redes-botao .bloom-botao {
     width: 100%;
+  }
+}
+
+.acesso-cartao-recuperacao {
+  right: 8%;
+}
+
+.acesso-cartao-fluxo.acesso-cartao-cadastro {
+  height: min(82vh, 570px);
+}
+
+.acesso-cartao-fluxo.acesso-cartao-recuperacao {
+  height: min(88vh, 570px);
+}
+
+.acesso-cartao-fluxo .acesso-titulo {
+  margin-top: clamp(15px, 3.3vh, 24px);
+  margin-bottom: 4px;
+  font-size: clamp(22px, 2.45vw, 30px);
+}
+
+.acesso-cartao-fluxo .acesso-subtitulo {
+  font-size: clamp(15px, 1.5vw, 19px);
+}
+
+.acesso-cartao-fluxo .acesso-microtitulo {
+  font-size: clamp(14px, 1.35vw, 18px);
+}
+
+.acesso-cartao-fluxo .acesso-entrada-area {
+  height: clamp(32px, 5.4vh, 40px);
+}
+
+.acesso-cartao-fluxo .acesso-envio .bloom-botao {
+  height: clamp(34px, 5.2vh, 44px);
+  font-size: clamp(16px, 1.5vw, 20px);
+}
+
+.acesso-cartao-fluxo .acesso-envio {
+  min-height: 42px;
+  flex-shrink: 0;
+}
+
+.cadastro-formulario-fluxo .acesso-envio,
+.recuperacao-formulario .acesso-envio {
+  padding-top: 4px;
+}
+
+.acesso-cartao-recuperacao .acesso-titulo {
+  margin-top: clamp(8px, 1.8vh, 14px);
+}
+
+.acesso-cartao-recuperacao .acesso-etapas {
+  margin-top: clamp(8px, 1.2vh, 14px);
+  margin-bottom: clamp(7px, 1vh, 10px);
+}
+
+.acesso-cartao-recuperacao .acesso-campo {
+  gap: 1px;
+}
+
+.acesso-cartao-recuperacao .acesso-entrada-area {
+  height: 42px;
+}
+
+.acesso-cartao-recuperacao .acesso-requisitos {
+  gap: 3px;
+  margin: 4px 0 6px;
+  line-height: 1.15;
+}
+
+.acesso-cartao-recuperacao .acesso-requisito {
+  min-height: 15px;
+}
+
+.acesso-cartao-recuperacao {
+  padding-top: clamp(14px, 3.5vh, 20px);
+}
+
+@media (max-width: 700px) {
+  .acesso-cartao-cadastro,
+  .acesso-cartao-recuperacao {
+    min-height: calc(100svh - 2px);
+    padding: clamp(24px, 6.5vh, 42px) clamp(22px, 7vw, 42px) 24px;
+    right: auto;
+  }
+
+  .acesso-cartao-fluxo.acesso-cartao-cadastro,
+  .acesso-cartao-fluxo.acesso-cartao-recuperacao {
+    height: auto;
+  }
+
+  .acesso-cartao-fluxo .acesso-titulo {
+    margin-top: clamp(24px, 5vh, 30px);
+    font-size: clamp(23px, 4.5vw, 32px);
+  }
+
+  .acesso-cartao-fluxo .acesso-subtitulo {
+    font-size: clamp(16px, 3.4vw, 20px);
+  }
+
+  .acesso-cartao-fluxo .acesso-campo {
+    font-size: 14px;
+  }
+
+  .acesso-cartao-fluxo .acesso-entrada-area {
+    height: 40px;
+  }
+
+  .acesso-cartao-recuperacao .acesso-entrada-area {
+    height: 42px;
+  }
+
+  .acesso-cartao-fluxo .acesso-entrada-area input,
+  .acesso-cartao-fluxo .acesso-entrada-area select {
+    font-size: 16px;
+  }
+
+  .acesso-cartao-fluxo .acesso-envio .bloom-botao {
+    height: 44px;
+    font-size: 20px;
+  }
+
+  .acesso-cartao-fluxo .acesso-envio {
+    min-height: 48px;
+  }
+
+  .acesso-cartao-recuperacao {
+    padding-top: clamp(24px, 6.5vh, 42px);
+  }
+
+  .acesso-cartao-recuperacao .acesso-requisito {
+    min-height: 16px;
+  }
+
+  .acesso-cartao-fluxo .acesso-etapas,
+  .acesso-cartao-recuperacao .acesso-etapas {
+    margin-top: clamp(24px, 5vh, 28px);
+    margin-bottom: clamp(26px, 5vh, 32px);
   }
 }

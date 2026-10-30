@@ -5,15 +5,17 @@ import Comunicados from "./pages/Comunicados/Comunicados";
 import Eventos from "./pages/Eventos/Eventos";
 import Inicio from "./pages/Home/Home";
 import Acesso from "./pages/Login/Login";
+import RecuperarSenha from "./pages/RecuperarSenha/RecuperarSenha";
 import BemEstar from "./pages/BemEstar/BemEstar";
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
+import Salas from "./pages/Salas/Salas"
 
 import Acolhimento from "./pages/Acolhimento/Denuncias";
 import CadastrarComunicados from "./pages/CadastrarComunicados/CadastrarComunicados";
 import "./App.css";
 
-type Tela = "acesso" | "cadastro" | "inicio" | "bem-estar" | "eventos" | "comunicados" | "cadastrar-evento" | "acolhimento" |"cadastrar-comunicados" | "salas";
+type Tela = "acesso" | "cadastro" | "recuperar-senha" | "inicio" | "bem-estar" | "eventos" | "comunicados" | "cadastrar-evento" | "acolhimento" | "cadastrar-comunicados" | "salas";
 
 function Aplicativo() {
   const [tela, definirTela] = useState<Tela>("acesso");
@@ -24,12 +26,17 @@ function Aplicativo() {
     if (pagina === "eventos") definirTela("eventos");
     if (pagina === "comunicados") definirTela("comunicados");
     if (pagina === "acolhimento") definirTela("acolhimento");
-    if (pagina === "cadastrar-comunicados") definirTela("cadastrar-comunicados")
-    if (pagina === "salas") definirTela("salas")
+    if (pagina === "cadastrar-comunicados") definirTela("cadastrar-comunicados");
+    if (pagina === "academico") definirTela("salas");
+
   }
 
   if (tela === "cadastro") {
     return <Cadastro aoVoltar={() => definirTela("acesso")} />;
+  }
+
+  if (tela === "recuperar-senha") {
+    return <RecuperarSenha aoVoltar={() => definirTela("acesso")} />;
   }
 
   if (tela === "inicio") {
@@ -83,6 +90,10 @@ function Aplicativo() {
         aoVoltar={() => definirTela("comunicados")}
       />
     )
+  }
+  if(tela === "salas"){
+    return <Salas aoNavegar={navegarPara}/>;
+
   }
 
   return (
