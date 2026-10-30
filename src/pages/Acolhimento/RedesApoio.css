@@ -1,0 +1,68 @@
+.redes-apoio-conteudo,.redes-apoio-cadastro{display:flex;flex-direction:column;gap:16px;min-height:0;flex:1;color:#17352f}
+.redes-apoio-indicadores{display:flex;gap:10px;flex-wrap:wrap}
+.redes-apoio-indicadores .information-card{min-height:62px;padding:12px 18px}
+.redes-apoio-colunas{display:grid;grid-template-columns:1.13fr 1fr;gap:20px;flex:1;min-height:0}
+.redes-apoio-painel{border:1px solid #d2d1c5;border-radius:26px;padding:23px 27px;background:#f5f4ec;min-width:0;box-shadow:0 1px 5px #00000008}
+.redes-apoio-painel .bloom-painel-titulo{display:flex;align-items:center;gap:10px;margin:0 0 15px;font-size:clamp(21px,1.8vw,30px);color:#17352f}
+.redes-apoio-painel .bloom-painel-titulo img{width:28px;height:28px;object-fit:contain}
+.redes-apoio-lista{display:flex;flex-direction:column;min-height:0}
+.redes-apoio-filtros.bloom-abas-segmentadas{--aba-altura:34;--aba-fonte:15;--aba-recuo:12;--aba-recuo-ativo:13;--caixa-recuo:5;--caixa-recuo-v:4;--caixa-arredondamento:15;display:flex;max-width:100%;width:fit-content;overflow-x:auto;overflow-y:hidden;flex-shrink:0;margin-bottom:14px;scrollbar-width:none}
+.redes-apoio-filtros.bloom-abas-segmentadas::-webkit-scrollbar{display:none}
+.redes-apoio-filtros .bloom-aba-segmentada{flex-shrink:0}
+.redes-apoio-pesquisa{display:flex;gap:10px;margin-bottom:17px}
+.redes-apoio-pesquisa label{display:flex;align-items:center;gap:10px;flex:1;min-width:0;border:1px solid #d2d1c5;border-radius:25px;padding:0 15px}
+.redes-apoio-pesquisa label img{width:19px}
+.redes-apoio-pesquisa input{border:0;outline:0;background:transparent;min-width:0;width:100%;font:700 14px Georgia,serif;color:#17352f}
+.redes-apoio-primario{background:#294438;border:0;border-radius:12px;color:white;font:700 16px Georgia,serif;padding:11px 25px;cursor:pointer}
+.redes-apoio-primario:disabled{opacity:.6;cursor:wait}
+.redes-apoio-resultados{display:flex;flex-direction:column;gap:12px;overflow:auto}
+.redes-apoio-item{display:flex;align-items:center;gap:13px;text-align:left;background:transparent;border:1px solid #d2d1c5;border-radius:22px;padding:15px 17px;min-height:120px;color:#17352f;cursor:pointer;width:100%;font-family:Georgia,serif}
+.redes-apoio-item:hover{background:#ffffff80}
+.redes-apoio-avatar{width:52px;height:52px;border:2px solid #8db4a7;border-radius:50%;display:grid;place-items:center;flex-shrink:0}
+.redes-apoio-avatar img{width:30px;height:30px;object-fit:contain}
+.redes-apoio-item-corpo{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1}
+.redes-apoio-item-corpo strong{font-size:17px}
+.redes-apoio-categoria{font-size:12px;font-weight:700}
+.redes-apoio-descricao,.redes-apoio-item small{font-size:12px;color:#79978f;font-weight:700}
+.redes-apoio-item small{margin-top:6px}
+.redes-apoio-painel-mapa{padding:25px;display:flex;align-items:center}
+.redes-apoio-mapa{width:100%;height:100%;min-height:290px;border:1px solid #d2d1c5;border-radius:24px;background:#efeee5}
+.redes-apoio-vazio{color:#79978f;font-weight:700}
+.redes-apoio-cabecalho{display:flex;align-items:center;position:relative;border:1px solid #d2d1c5;border-radius:25px;background:#f5f4ec;padding-left:74px}
+.redes-apoio-cabecalho .bloom-pagina-cabecalho{flex:1;border:0;background:transparent;padding-left:10px}
+.redes-apoio-voltar{position:absolute;left:20px;border:1px solid #d2d1c5;border-radius:50%;background:#efeee5;width:44px;height:44px;font-size:27px;color:#17352f;cursor:pointer}
+.redes-apoio-formulario{display:grid;grid-template-columns:1.13fr 1fr;gap:20px;flex:1;min-height:0}
+.redes-apoio-formulario .redes-apoio-painel{display:flex;flex-direction:column}
+.redes-apoio-campos{display:grid;grid-template-columns:1fr 1fr;gap:19px 14px}
+.redes-apoio-campos label{display:flex;flex-direction:column;gap:6px;font:700 15px Georgia,serif;color:#17352f;min-width:0}
+.redes-apoio-campos label b{display:inline;color:#ae693b}
+.redes-apoio-campos label small{display:inline;font-size:12px;color:#829d97}
+.redes-apoio-campos input,.redes-apoio-campos select,.redes-apoio-campos textarea{width:100%;box-sizing:border-box;background:transparent;border:1px solid #d2d1c5;border-radius:12px;padding:10px 16px;outline-color:#819d91;color:#17352f;font:700 14px Georgia,serif}
+.redes-apoio-campos input::placeholder,.redes-apoio-campos textarea::placeholder{color:#8aa29d}
+.redes-apoio-campos textarea{height:165px;resize:vertical}
+.redes-apoio-largura{grid-column:1/-1}
+.redes-apoio-mapa-cadastro{height:330px;min-height:200px;flex:1;margin-bottom:14px}
+.redes-apoio-endereco{grid-template-columns:1fr;gap:12px}
+.redes-apoio-acoes{grid-column:1/-1;display:flex;justify-content:flex-end;gap:12px}
+.redes-apoio-cancelar{border:2px solid #294438;border-radius:11px;padding:10px 25px;background:transparent;color:#294438;font:700 16px Georgia,serif;cursor:pointer}
+.redes-apoio-acoes .redes-apoio-primario{min-width:135px}
+@media(max-width:1050px){.redes-apoio-colunas,.redes-apoio-formulario{grid-template-columns:1fr}.redes-apoio-painel-mapa{min-height:350px}.redes-apoio-mapa-cadastro{height:300px}.redes-apoio-lista{min-height:420px}}
+@media(max-width:600px){.redes-apoio-painel{padding:17px}.redes-apoio-campos{grid-template-columns:1fr}.redes-apoio-pesquisa{flex-wrap:wrap}.redes-apoio-pesquisa label{min-height:44px}.redes-apoio-cabecalho{padding-left:55px}.redes-apoio-voltar{left:10px;width:36px;height:36px}.redes-apoio-item{padding:12px}.redes-apoio-avatar{width:38px;height:38px}}
+
+
+.redes-apoio-cadastro{overflow-y:auto;overflow-x:hidden;min-height:0;padding-bottom:8px}
+.redes-apoio-cabecalho{flex-shrink:0;min-height:76px;box-sizing:border-box}
+.redes-apoio-cabecalho .bloom-pagina-cabecalho{min-height:0;height:auto;box-sizing:border-box}
+.redes-apoio-voltar{font-size:0}
+.redes-apoio-formulario{flex:initial;align-content:start;align-items:start;grid-template-columns:minmax(0,1.13fr) minmax(0,1fr)}
+.redes-apoio-formulario .redes-apoio-painel{height:auto;min-height:0;box-sizing:border-box;overflow:visible}
+.redes-apoio-formulario .bloom-painel-titulo{margin-bottom:22px}
+.redes-apoio-campos label{gap:8px}
+.redes-apoio-campos label>span{display:block;line-height:1.35}
+.redes-apoio-campos label b{margin-left:3px}
+.redes-apoio-campos input,.redes-apoio-campos select{min-height:42px}
+.redes-apoio-campos textarea{min-height:130px;height:145px}
+.redes-apoio-mapa-cadastro{height:250px;min-height:250px;flex:none}
+.redes-apoio-acoes{position:relative;padding:4px 0 10px;align-self:end}
+@media(max-width:1050px){.redes-apoio-formulario{grid-template-columns:1fr}.redes-apoio-mapa-cadastro{height:260px}}
+@media(max-width:600px){.redes-apoio-cabecalho .bloom-pagina-cabecalho h1{font-size:18px}.redes-apoio-campos{grid-template-columns:1fr}}
