@@ -1,0 +1,378 @@
+.acesso-etapas {
+  display: flex;
+  align-items: center;
+  gap: clamp(5px, 0.7vw, 10px);
+  margin: clamp(16px, 2.5vh, 22px) 0 clamp(15px, 2.2vh, 21px);
+  padding: 0;
+  list-style: none;
+}
+
+.acesso-etapa {
+  display: flex;
+  min-width: 0;
+  flex: 0 1 auto;
+  align-items: center;
+  gap: clamp(5px, 0.7vw, 10px);
+  white-space: nowrap;
+}
+
+.acesso-etapa:last-child {
+  flex-shrink: 0;
+}
+
+.acesso-etapa-marcador {
+  display: grid;
+  width: clamp(22px, 2vw, 30px);
+  height: clamp(22px, 2vw, 30px);
+  flex: 0 0 clamp(22px, 2vw, 30px);
+  place-items: center;
+  border-radius: 6px;
+  background: #173733;
+  color: #fff;
+  font-size: clamp(13px, 1.1vw, 17px);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.acesso-etapa-marcador-concluida img {
+  width: 76%;
+  height: 76%;
+}
+
+.acesso-etapa-rotulo {
+  color: #183734;
+  font-size: clamp(12px, 1.1vw, 16px);
+  font-weight: 700;
+}
+
+.acesso-etapa-linha {
+  width: clamp(13px, 2vw, 34px);
+  height: 1px;
+  flex: 1 1 18px;
+  background: #c7c5b8;
+}
+
+.acesso-requisitos {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin: 5px 0 7px;
+  padding: 0 0 0 8px;
+  color: #86938f;
+  font-size: clamp(11px, 0.95vw, 13px);
+  font-weight: 700;
+  line-height: 1.2;
+  list-style: none;
+}
+
+.acesso-requisito {
+  display: flex;
+  min-height: 14px;
+  align-items: center;
+  gap: 8px;
+}
+
+.acesso-requisito-marcador {
+  display: grid;
+  width: 11px;
+  height: 11px;
+  flex: 0 0 11px;
+  place-items: center;
+  border-radius: 50%;
+  background: #929d99;
+}
+
+.acesso-requisito-marcador img {
+  width: 8px;
+  height: 8px;
+  color: #f6f5ed;
+}
+
+.acesso-requisito-atendido {
+  color: #183734;
+}
+
+.acesso-requisito-atendido .acesso-requisito-marcador {
+  background: #183734;
+}
+
+.acesso-icone-seta {
+  position: absolute;
+  right: 10px;
+  width: 16px;
+  height: 16px;
+  color: #183734;
+  pointer-events: none;
+}
+
+.acesso-icone {
+  color: #183734;
+}
+
+.acesso-campo-rotulo {
+  color: #183734;
+  font-size: inherit;
+  font-weight: 700;
+}
+
+.acesso-cartao-fluxo .acesso-microtitulo {
+  gap: 10px;
+  font-size: clamp(14px, 1.35vw, 18px);
+}
+
+.acesso-cartao-fluxo .acesso-voltar-botao {
+  width: clamp(22px, 1.9vw, 26px);
+  height: clamp(22px, 1.9vw, 26px);
+}
+
+.acesso-cartao-fluxo .acesso-titulo {
+  margin-top: clamp(15px, 3.3vh, 24px);
+  margin-bottom: 4px;
+  font-size: clamp(22px, 2.45vw, 30px);
+}
+
+.acesso-cartao-fluxo .acesso-subtitulo {
+  font-size: clamp(15px, 1.5vw, 19px);
+}
+
+.acesso-cartao-fluxo .acesso-campo {
+  gap: 4px;
+  font-size: clamp(12px, 1vw, 15px);
+}
+
+.acesso-cartao-fluxo .acesso-campo-rotulo {
+  font-size: inherit;
+}
+
+.acesso-cartao-fluxo .acesso-entrada-area {
+  height: clamp(32px, 5.4vh, 40px);
+  border-radius: 10px;
+}
+
+.acesso-cartao-fluxo .acesso-entrada-icone {
+  left: 10px;
+  width: clamp(15px, 1.35vw, 19px);
+  height: clamp(15px, 1.35vw, 19px);
+}
+
+.acesso-cartao-fluxo .acesso-entrada-area input,
+.acesso-cartao-fluxo .acesso-entrada-area select {
+  padding-left: clamp(32px, 3vw, 40px);
+  font-size: clamp(13px, 1.15vw, 16px);
+}
+
+.acesso-cartao-fluxo .acesso-entrada-area select {
+  padding-right: 30px;
+}
+
+.acesso-cartao-fluxo .acesso-envio {
+  min-height: 0;
+}
+
+.acesso-cartao-fluxo .acesso-envio .bloom-botao {
+  height: clamp(34px, 5.2vh, 44px);
+  font-size: clamp(16px, 1.5vw, 20px);
+}
+
+.acesso-cartao-fluxo .acesso-senha-alternancia {
+  right: 10px;
+  width: 22px;
+}
+
+.acesso-cartao-fluxo .acesso-senha-alternancia img {
+  width: 17px;
+  height: 17px;
+  color: #82918d;
+}
+
+.acesso-cartao-fluxo .acesso-entrada-area input[type="password"],
+.acesso-cartao-fluxo .acesso-entrada-area input[type="text"].acesso-senha-visivel {
+  padding-right: 42px;
+}
+
+.acesso-cartao-fluxo .acesso-erro {
+  margin: 3px 0 0;
+  color: #9f493e;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.acesso-cartao-cadastro {
+  height: min(82vh, 570px);
+  padding: clamp(18px, 4.5vh, 27px) clamp(24px, 3.5vw, 38px) clamp(18px, 3.5vh, 26px);
+}
+
+.cadastro-formulario-fluxo,
+.recuperacao-formulario {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+}
+
+.cadastro-formulario-fluxo .acesso-envio,
+.recuperacao-formulario .acesso-envio {
+  margin-top: auto;
+  padding-top: clamp(8px, 1.6vh, 14px);
+}
+
+.cadastro-campos-linha-fluxo {
+  display: flex;
+  gap: clamp(10px, 1.2vw, 16px);
+  margin-top: clamp(9px, 1.7vh, 14px);
+}
+
+.cadastro-campos-linha-fluxo > .acesso-campo {
+  flex: 1 1 0;
+}
+
+.cadastro-campo-instituicao .acesso-entrada-area {
+  height: clamp(32px, 5.4vh, 40px);
+}
+
+.acesso-campo-selecao .acesso-entrada-area {
+  background: #f3f2ea;
+}
+
+.acesso-campo-selecao select {
+  appearance: none;
+}
+
+.cadastro-formulario-fluxo .cadastro-campo-nome {
+  margin-bottom: clamp(9px, 1.7vh, 14px);
+}
+
+.cadastro-formulario-fluxo .acesso-campo-senha {
+  margin-bottom: 3px;
+}
+
+.cadastro-formulario-fluxo .acesso-campo-confirmacao {
+  margin-top: 1px;
+}
+
+.acesso-cartao-recuperacao {
+  width: min(47%, 480px);
+  min-width: 340px;
+  height: min(80vh, 570px);
+  padding: clamp(18px, 4.5vh, 27px) clamp(24px, 3.5vw, 38px) clamp(18px, 3.5vh, 26px);
+}
+
+.recuperacao-formulario .acesso-campo {
+  margin-top: 2px;
+}
+
+.recuperacao-formulario .recuperacao-campo-email .acesso-entrada-area {
+  height: 42px;
+}
+
+.recuperacao-formulario .recuperacao-campo-email input {
+  padding-left: 42px;
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.recuperacao-formulario .acesso-campo-senha {
+  margin-bottom: 3px;
+}
+
+.acesso-cartao-recuperacao .acesso-etapas {
+  gap: clamp(8px, 1.2vw, 16px);
+}
+
+.acesso-cartao-recuperacao .acesso-etapa-linha {
+  width: clamp(18px, 2.8vw, 42px);
+}
+
+@media (max-width: 700px) {
+  .acesso-etapas {
+    gap: clamp(4px, 1.2vw, 8px);
+  }
+
+  .acesso-etapa,
+  .acesso-etapa:last-child {
+    gap: clamp(4px, 1.2vw, 8px);
+  }
+
+  .acesso-etapa-linha {
+    width: clamp(8px, 3vw, 20px);
+    flex-basis: 8px;
+  }
+
+  .acesso-etapa-rotulo {
+    font-size: clamp(12px, 2.6vw, 16px);
+  }
+
+  .acesso-cartao-fluxo .acesso-titulo {
+    font-size: clamp(23px, 5.3vw, 32px);
+  }
+
+  .acesso-cartao-fluxo .acesso-subtitulo {
+    font-size: clamp(16px, 3.8vw, 20px);
+  }
+
+  .acesso-cartao-fluxo .acesso-campo {
+    font-size: 14px;
+  }
+
+  .acesso-cartao-fluxo .acesso-entrada-area {
+    height: 40px;
+  }
+
+  .acesso-cartao-fluxo .acesso-entrada-area input,
+  .acesso-cartao-fluxo .acesso-entrada-area select {
+    font-size: 16px;
+  }
+
+  .acesso-requisitos {
+    gap: 5px;
+    font-size: 13px;
+  }
+
+  .acesso-requisito {
+    min-height: 16px;
+  }
+
+  .acesso-cartao-fluxo .acesso-envio .bloom-botao {
+    height: 44px;
+    font-size: 20px;
+  }
+
+  .cadastro-campos-linha-fluxo {
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .cadastro-formulario-fluxo .cadastro-campo-nome {
+    margin-bottom: 12px;
+  }
+
+  .acesso-cartao-cadastro,
+  .acesso-cartao-recuperacao {
+    width: calc(100% - 12px);
+    min-width: 0;
+    height: auto;
+    min-height: calc(100svh - 2px);
+    margin: 1px 6px;
+    padding: clamp(24px, 6.5vh, 42px) clamp(22px, 7vw, 42px) 24px;
+    border-radius: 22px;
+  }
+}
+
+@media (max-width: 380px) {
+  .acesso-etapas {
+    gap: 3px;
+  }
+
+  .acesso-etapa,
+  .acesso-etapa:last-child {
+    gap: 4px;
+  }
+
+  .acesso-etapa-linha {
+    width: 7px;
+  }
+
+  .acesso-etapa-rotulo {
+    font-size: 11px;
+  }
+}
