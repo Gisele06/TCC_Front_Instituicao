@@ -5,13 +5,14 @@ import Comunicados from "./pages/Comunicados/Comunicados";
 import Eventos from "./pages/Eventos/Eventos";
 import Inicio from "./pages/Home/Home";
 import Acesso from "./pages/Login/Login";
+import RecuperarSenha from "./pages/RecuperarSenha/RecuperarSenha";
 import BemEstar from "./pages/BemEstar/BemEstar";
 
 import Acolhimento from "./pages/Acolhimento/Denuncias";
 import CadastrarComunicados from "./pages/CadastrarComunicados/CadastrarComunicados";
 import "./App.css";
 
-type Tela = "acesso" | "cadastro" | "inicio" | "bem-estar" | "eventos" | "comunicados" | "cadastrar-evento" | "acolhimento" |"cadastrar-comunicados" | "salas";
+type Tela = "acesso" | "cadastro" | "recuperar-senha" | "inicio" | "bem-estar" | "eventos" | "comunicados" | "cadastrar-evento" | "acolhimento" | "cadastrar-comunicados" | "salas";
 
 function Aplicativo() {
   const [tela, definirTela] = useState<Tela>("acesso");
@@ -28,6 +29,10 @@ function Aplicativo() {
 
   if (tela === "cadastro") {
     return <Cadastro aoVoltar={() => definirTela("acesso")} />;
+  }
+
+  if (tela === "recuperar-senha") {
+    return <RecuperarSenha aoVoltar={() => definirTela("acesso")} />;
   }
 
   if (tela === "inicio") {
@@ -87,6 +92,7 @@ function Aplicativo() {
     <Acesso
       aoEntrar={() => definirTela("inicio")}
       aoCriarConta={() => definirTela("cadastro")}
+      aoRecuperarSenha={() => definirTela("recuperar-senha")}
     />
   );
 }

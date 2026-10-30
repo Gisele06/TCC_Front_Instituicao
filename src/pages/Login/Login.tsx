@@ -12,9 +12,10 @@ import "../auth.css";
 interface PropriedadesAcesso {
   aoEntrar: () => void;
   aoCriarConta: () => void;
+  aoRecuperarSenha: () => void;
 }
 
-function Acesso({ aoEntrar, aoCriarConta }: PropriedadesAcesso) {
+function Acesso({ aoEntrar, aoCriarConta, aoRecuperarSenha }: PropriedadesAcesso) {
   function entrar(evento: FormEvent<HTMLFormElement>) {
     evento.preventDefault();
     aoEntrar();
@@ -55,8 +56,8 @@ function Acesso({ aoEntrar, aoCriarConta }: PropriedadesAcesso) {
               </span>
             </label>
 
-            <label className="acesso-campo" htmlFor="senha">
-              Senha
+            <div className="acesso-campo">
+              <label htmlFor="senha">Senha</label>
               <span className="acesso-entrada-area">
                 <img className="acesso-entrada-icone" src={iconeCadeado} alt="" />
                 <input
@@ -68,8 +69,14 @@ function Acesso({ aoEntrar, aoCriarConta }: PropriedadesAcesso) {
                   <img src={iconeOlho} alt="" />
                 </span>
               </span>
-              <span className="acesso-recuperar">Esqueci a senha</span>
-            </label>
+              <button
+                className="acesso-recuperar"
+                type="button"
+                onClick={aoRecuperarSenha}
+              >
+                Esqueci a senha
+              </button>
+            </div>
           </div>
 
           <div className="acesso-envio">
