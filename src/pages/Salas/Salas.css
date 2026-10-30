@@ -233,9 +233,9 @@
 
 .salas-busca {
   display: flex;
+  width: 35vw;
   min-width: 0;
   height: 40px;
-  flex: 1;
   align-items: center;
   gap: 8px;
   padding: 0 12px;
@@ -246,6 +246,7 @@
   color: #7e9897;
   font-size: 14px;
   font-weight: 700;
+  margin-right: 25vw;
 }
 
 .salas-busca img {
@@ -263,7 +264,7 @@
   justify-content: center;
   padding: 8px 14px;
   border-radius: 11px;
-  background: #2c4035;
+  background: #2C4035;
   color: #fff;
   font-size: 15px;
   font-weight: 700;

@@ -95,6 +95,8 @@ function Salas({ aoNavegar }: PropriedadesSalas) {
               ))}
             </section>
 
+            
+
             <section className="salas-painel" aria-label="Lista de salas">
               <div className="salas-controles">
                 <div className="salas-filtros" aria-label="Filtros de sala">
