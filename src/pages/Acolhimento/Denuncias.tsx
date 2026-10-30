@@ -4,6 +4,7 @@ import EstruturaInstitucional from "../../components/InstitutionFrame/Institutio
 import CabecalhoDePagina from "../../components/PageHeader/PageHeader";
 import AbasSegmentadas from "../../components/SegmentedTabs/SegmentedTabs";
 import AnonymousChat from "../../components/AnonymousChat/AnonymousChat";
+
 import InformationCard from "../../components/Acolhimento/InformationCard/InformationCard"; 
 
 
@@ -21,9 +22,13 @@ import busca from "../../assets/icons/busca.png";
 import chevron from "../../assets/icons/chevron-right.png";
 
 
+
+
 interface Props { aoNavegar: (pagina: string) => void }
 
+
 type Visao = "denuncias" | "redesApoio";
+
 
 const denuncias = [
   { id: 6767, categoria: "Violência/Agressão", resumo: "Gostaria de relatar uma situação que vem acontecendo...", relato: "Gostaria de relatar uma situação que vem acontecendo, no pátio do intervalo (não quero desenvolver uma situação de bullying finge que tem um relato escrito aqui)...", mensagens: 2, data: "Hoje, 10:32", status: "Em andamento", local: "Pátio" },
@@ -31,7 +36,9 @@ const denuncias = [
 ];
 const abas = [{ valor: "denuncias", rotulo: "Denúncias", icone: <img src={complaint} alt="" /> }, { valor: "redesApoio", rotulo: "Redes de apoio", icone: <img src={world} alt="" /> }];
 
+
 function Acolhimento({ aoNavegar }: Props) {
+
 
   const [visao, setVisao] = useState<Visao>("denuncias");
   const [buscaTexto, setBuscaTexto] = useState("");
@@ -40,11 +47,18 @@ function Acolhimento({ aoNavegar }: Props) {
   const [expandido, setExpandido] = useState(false);
   const denuncia = denuncias.find((item) => item.id === selecionada) ?? denuncias[0];
 
+
   return <EstruturaInstitucional paginaAtiva="acolhimento" aoNavegar={aoNavegar} quantidadeDeAvisos={3}>
+
 
     <main className="bem-estar-pagina acolhimento-pagina">
       <CabecalhoDePagina className="acolhimento-cabecalho" titulo="Acolhimento" subtitulo="Acompanhe o bem-estar dos estudantes" />
-      <AbasSegmentadas className="bem-estar-abas" itens={abas} valor={visao} aoMudar={(valor) => setVisao(valor as Visao)} />
+      
+      <AbasSegmentadas className="bem-estar-abas" 
+      itens={abas} 
+      valor={visao} 
+      aoMudar={(valor) => setVisao(valor as Visao)} />
+      
       {visao === "denuncias" ? <>
         <div className="acolhimento-estatisticas">
 
@@ -87,8 +101,10 @@ function Acolhimento({ aoNavegar }: Props) {
       </> : <div className="acolhimento-redes">Redes de apoio</div>}
     </main>
 
+
     <AnonymousChat aberto={chatAberto} aoFechar={() => setChatAberto(false)} denunciaId={selecionada} />
   </EstruturaInstitucional>;
 }
+
 
 export default Acolhimento;

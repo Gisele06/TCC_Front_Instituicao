@@ -16,18 +16,9 @@ interface PropriedadesMenuLateral {
   aoClicarMenu?: () => void;
 }
 
-function MenuLateral({ itens, idAtivo, aoSelecionar, iconeMenu, aoClicarMenu }: PropriedadesMenuLateral) {
+function MenuLateral({ itens, idAtivo, aoSelecionar }: PropriedadesMenuLateral) {
   return (
     <nav className="bloom-menu-lateral">
-      {aoClicarMenu ? (
-        <button type="button" className="bloom-menu-lateral-menu" onClick={aoClicarMenu}>
-          <AreaIcone icone={iconeMenu} rotulo="menu" tamanho="2.2vw" />
-        </button>
-      ) : (
-        <div className="bloom-menu-lateral-menu" aria-hidden="true">
-          <AreaIcone icone={iconeMenu} rotulo="menu" tamanho="2.2vw" />
-        </div>
-      )}
 
       {itens.map((item) => (
         <button

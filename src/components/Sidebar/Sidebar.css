@@ -4,11 +4,11 @@
   height: 100vh;
   flex-shrink: 0;
   box-sizing: border-box;
-  padding: 26px 0 20px;
+  padding: 15vh 0 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(24px, 3.4vh, 36px);
+  gap: clamp(5vh, 3.4vh, 36px);
   background: #293f35;
 }
 
