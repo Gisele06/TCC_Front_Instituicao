@@ -1,403 +1,486 @@
-.salas-pagina {
+.academico-pagina {
   display: flex;
   width: 100%;
   min-width: 0;
   min-height: 0;
   flex: 1 1 auto;
   flex-direction: column;
-  gap: clamp(9px, 1.2vh, 13px);
-  color: var(--cor-texto-forte, #143532);
+  gap: clamp(8px, 1.15vh, 13px);
+  color: #143532;
   font-family: var(--familia-da-fonte);
 }
 
-.salas-titulo-principal {
+.academico-titulo-principal,
+.academico-editor-titulo {
   display: flex;
+  min-width: 0;
   min-height: 50px;
   flex-shrink: 0;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
   padding: 7px clamp(13px, 1.7vw, 20px);
   border: 1px solid var(--cor-borda, #d8d5c6);
   border-radius: 17px;
   background: var(--cor-superficie, #faf9f2);
 }
 
-.salas-titulo-principal h1,
-.salas-titulo-principal p {
+.academico-titulo-principal {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.academico-titulo-principal h1,
+.academico-titulo-principal p,
+.academico-editor-titulo h1,
+.academico-editor-titulo p {
   margin: 0;
 }
 
-.salas-titulo-principal h1 {
+.academico-titulo-principal h1,
+.academico-editor-titulo h1 {
   color: #143532;
-  font-size: clamp(17px, 1.6vw, 22px);
+  font-size: clamp(17px, 1.55vw, 22px);
   line-height: 1.1;
 }
 
-.salas-titulo-principal p {
+.academico-titulo-principal p,
+.academico-editor-titulo p {
   margin-top: 2px;
   color: #7e9897;
   font-size: clamp(10px, 0.95vw, 13px);
   font-weight: 700;
+  line-height: 1.25;
 }
 
-.salas-layout {
-  display: grid;
-  width: 100%;
-  min-width: 0;
-  min-height: 0;
-  flex: 1;
-  grid-template-columns: minmax(0, 1fr) clamp(210px, 26vw, 370px);
-  grid-template-rows: auto auto minmax(0, 1fr);
-  column-gap: clamp(10px, 1.2vw, 16px);
-  row-gap: clamp(8px, 1.1vh, 12px);
-}
-
-.salas-coluna-principal {
-  display: contents;
-}
-
-.salas-abas {
+.academico-abas {
   display: flex;
   width: fit-content;
   max-width: 100%;
   flex-shrink: 0;
-  grid-column: 1;
-  grid-row: 1;
+  gap: 2px;
   overflow-x: auto;
   padding: 4px;
   border: 1px solid var(--cor-borda, #d8d5c6);
-  border-radius: 999px;
+  border-radius: 15px;
   background: #f6f5ee;
-  box-shadow: 0 2px 6px rgba(36, 51, 39, 0.04);
+  box-shadow: 0 2px 6px rgb(36 51 39 / 4%);
 }
 
-.salas-abas > span {
+.academico-abas button {
   display: inline-flex;
-  min-height: 30px;
+  min-height: 29px;
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  padding: 5px 11px;
-  border-radius: 999px;
+  gap: 5px;
+  padding: 5px 10px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
   color: #263e35;
-  font-size: 13px;
+  font: inherit;
+  font-size: clamp(10px, 0.9vw, 13px);
   font-weight: 700;
+  cursor: pointer;
 }
 
-.salas-abas > span > img,
-.salas-abas > span > svg {
+.academico-abas button img {
   display: block;
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
   object-fit: contain;
 }
 
-.salas-abas > span > svg {
-  fill: #2c4035;
+.academico-abas button:hover {
+  background: #eceee5;
 }
 
-.salas-abas > span.estado-selecionado {
+.academico-abas button.selecionada {
   background: #2c4035;
   color: #fff;
 }
 
-.salas-abas > span.estado-selecionado > svg {
-  fill: #fff;
+.academico-abas button.selecionada img {
+  filter: brightness(0) invert(1);
 }
 
-.salas-resumos {
+.academico-resumos {
   display: flex;
   flex-shrink: 0;
-  grid-column: 1;
-  grid-row: 2;
   flex-wrap: wrap;
-  gap: 9px;
-}
-
-.salas-resumo {
-  display: flex;
-  min-height: 50px;
-  align-items: center;
   gap: 8px;
-  padding: 8px 15px;
-  border: 1px solid var(--cor-borda, #d8d5c6);
-  border-radius: 16px;
-  background: var(--cor-superficie, #faf9f2);
-  box-shadow: 0 2px 5px rgba(36, 51, 39, 0.035);
 }
 
-.salas-resumo > img,
-.salas-resumo > svg {
-  width: 24px;
-  height: 24px;
+.academico-resumo {
+  display: flex;
+  min-height: 42px;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 12px;
+  border: 1px solid var(--cor-borda, #d8d5c6);
+  border-radius: 14px;
+  background: var(--cor-superficie, #faf9f2);
+  box-shadow: 0 2px 5px rgb(36 51 39 / 3.5%);
+}
+
+.academico-resumo > img,
+.academico-resumo > svg {
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
   object-fit: contain;
 }
 
-.salas-resumo > svg {
+.academico-resumo > svg {
   fill: #2c4035;
 }
 
-.salas-resumo > svg .salas-icone-detalhe {
+.academico-resumo > svg path:not(.academico-grafico-base) {
   fill: none;
   stroke: #f5f4ec;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 3;
+  stroke-width: 2.5;
 }
 
-.salas-resumo > svg .salas-icone-base {
+.academico-resumo > svg .academico-grafico-base {
   fill: none;
   stroke: #2c4035;
   stroke-linecap: round;
-  stroke-width: 3;
+  stroke-width: 2;
 }
 
-.salas-resumo strong {
+.academico-resumo strong {
   color: #143532;
-  font-size: 25px;
+  font-size: clamp(18px, 1.5vw, 23px);
   line-height: 1;
 }
 
-.salas-resumo span {
+.academico-resumo span {
   color: #173b35;
-  font-size: 15px;
+  font-size: clamp(11px, 0.95vw, 14px);
   font-weight: 700;
   white-space: nowrap;
 }
 
-.salas-painel {
+.academico-layout {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex: 1 1 0;
+  grid-template-columns: minmax(0, 1fr) clamp(190px, 26vw, 310px);
+  gap: clamp(9px, 1.2vw, 15px);
+}
+
+.academico-layout-materias {
+  display: block;
+}
+
+.academico-lista-painel,
+.academico-cronograma {
   display: flex;
   min-width: 0;
   min-height: 0;
-  grid-column: 1;
-  grid-row: 3;
   flex-direction: column;
-  gap: 13px;
-  padding: 16px;
+  padding: clamp(10px, 1.4vw, 16px);
   overflow: hidden;
   border: 1px solid var(--cor-borda-cartao, #d8d5c6);
-  border-radius: 22px;
+  border-radius: 20px;
   background: var(--cor-fundo-painel, #f5f4ec);
-  box-shadow: 0 2px 5px rgba(36, 51, 39, 0.035);
+  box-shadow: 0 2px 5px rgb(36 51 39 / 3.5%);
 }
 
-.salas-controles {
+.academico-layout-materias .academico-lista-painel {
+  width: min(72%, 760px);
+  min-height: 0;
+}
+
+.academico-controles {
   display: flex;
   flex-shrink: 0;
   flex-direction: column;
-  gap: 11px;
+  gap: 9px;
 }
 
-.salas-filtros {
+.academico-filtros {
   display: flex;
   width: fit-content;
   max-width: 100%;
   overflow: hidden;
   padding: 3px;
   border: 1px solid var(--cor-borda-cartao, #d8d5c6);
-  border-radius: 14px;
+  border-radius: 13px;
   background: #f6f5ee;
-  box-shadow: 0 2px 5px rgba(36, 51, 39, 0.035);
+  box-shadow: 0 2px 5px rgb(36 51 39 / 3.5%);
 }
 
-.salas-filtros > span {
+.academico-filtros button {
   display: inline-flex;
-  min-height: 28px;
+  min-height: 26px;
   align-items: center;
-  padding: 4px 12px;
-  border-radius: 10px;
+  padding: 4px 11px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
   color: #263e35;
-  font-size: 12px;
+  font: inherit;
+  font-size: clamp(10px, 0.85vw, 12px);
   font-weight: 700;
+  cursor: pointer;
 }
 
-.salas-filtros > span + span {
+.academico-filtros button + button {
   border-left: 1px solid #e5e2d7;
   border-radius: 0;
 }
 
-.salas-filtros > span.estado-selecionado {
-  border-radius: 10px;
+.academico-filtros button.selecionado {
+  border-radius: 9px;
   background: #2c4035;
   color: #fff;
 }
 
-.salas-busca-linha {
+.academico-busca-linha {
   display: flex;
   min-width: 0;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
 }
 
-.salas-busca {
+.academico-busca {
   display: flex;
   min-width: 0;
-  height: 40px;
-  flex: 1;
+  height: 36px;
+  flex: 1 1 auto;
   align-items: center;
-  gap: 8px;
-  padding: 0 12px;
+  gap: 7px;
+  padding: 0 10px;
   border: 1px solid var(--cor-borda-cartao, #d8d5c6);
   border-radius: 999px;
   background: #f7f6ef;
-  box-shadow: 0 2px 5px rgba(36, 51, 39, 0.035);
+  box-shadow: 0 2px 5px rgb(36 51 39 / 3.5%);
   color: #7e9897;
-  font-size: 14px;
-  font-weight: 700;
 }
 
-.salas-busca img {
-  width: 17px;
-  height: 17px;
+.academico-busca img {
+  width: 15px;
+  height: 15px;
   flex-shrink: 0;
   object-fit: contain;
 }
 
-.salas-botao-nova {
-  display: inline-flex;
-  min-width: 145px;
-  min-height: 40px;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 14px;
-  border-radius: 11px;
-  background: #2c4035;
-  color: #fff;
-  font-size: 15px;
-  font-weight: 700;
+.academico-busca input {
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #143532;
+  font: inherit;
+  font-size: clamp(11px, 0.9vw, 13px);
 }
 
-.salas-lista {
+.academico-busca input::placeholder {
+  color: #7e9897;
+  opacity: 1;
+}
+
+.academico-botao-principal,
+.academico-botao-secundario {
+  display: inline-flex;
+  min-width: 116px;
+  min-height: 36px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 13px;
+  border: 1px solid #2a4036;
+  border-radius: 10px;
+  font: inherit;
+  font-size: clamp(11px, 0.9vw, 13px);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+
+.academico-botao-principal {
+  background: #2c4035;
+  color: #fff;
+}
+
+.academico-botao-principal:hover {
+  border-color: #143532;
+  background: #143532;
+}
+
+.academico-botao-secundario {
+  background: transparent;
+  color: #2a4036;
+}
+
+.academico-botao-secundario:hover {
+  background: #e9ede5;
+}
+
+.academico-botao-novo {
+  min-width: clamp(95px, 12vw, 140px);
+}
+
+.academico-lista {
   display: flex;
   min-width: 0;
   min-height: 0;
-  flex: 1;
+  flex: 1 1 auto;
   flex-direction: column;
-  gap: 9px;
+  gap: 8px;
   overflow-y: auto;
+  margin-top: 9px;
   padding: 1px;
 }
 
-.salas-item {
+.academico-item {
   display: flex;
   min-width: 0;
-  min-height: 72px;
+  min-height: 58px;
   flex-shrink: 0;
   align-items: center;
-  gap: 12px;
-  padding: 8px 14px;
+  gap: clamp(6px, 0.9vw, 11px);
+  padding: 6px 9px;
   border: 1px solid var(--cor-borda-cartao, #d8d5c6);
-  border-radius: 18px;
+  border-radius: 16px;
   background: #f7f6ef;
-  box-shadow: 0 2px 5px rgba(36, 51, 39, 0.04);
+  box-shadow: 0 2px 5px rgb(36 51 39 / 3.5%);
 }
 
-.salas-item-icone {
+.academico-item-principal {
   display: flex;
-  width: 54px;
-  height: 54px;
+  min-width: 0;
+  flex: 1 1 auto;
+  align-items: center;
+  gap: 9px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.academico-item-icone {
+  display: flex;
+  width: 42px;
+  height: 42px;
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
   border: 1px solid #e1e3d8;
-  border-radius: 15px;
+  border-radius: 12px;
   background: #eff0e8;
-  box-shadow: 0 2px 5px rgba(36, 51, 39, 0.06);
+  box-shadow: 0 2px 5px rgb(36 51 39 / 5%);
 }
 
-.salas-item-icone svg {
-  width: 31px;
-  height: 31px;
-  overflow: visible;
-  fill: #2c4035;
-  stroke: #2c4035;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 2.5;
+.academico-item-icone img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
 }
 
-.salas-item-icone svg .salas-icone-detalhe {
-  fill: none;
-  stroke: #f5f4ec;
-  stroke-width: 3;
-}
-
-.salas-item-icone svg .salas-icone-base {
-  fill: none;
-  stroke: #2c4035;
-  stroke-width: 3;
-}
-
-.salas-item-informacoes {
+.academico-item-informacoes {
   display: flex;
   min-width: 0;
-  flex: 1;
   flex-direction: column;
-  gap: 3px;
+  gap: 2px;
 }
 
-.salas-item-informacoes h2 {
-  margin: 0;
-  color: #253b34;
-  font-size: 17px;
-  line-height: 1.2;
-}
-
-.salas-item-informacoes p {
-  margin: 0;
+.academico-item-informacoes strong {
   overflow: hidden;
-  color: #7e9897;
-  font-size: 13px;
-  font-weight: 700;
+  color: #253b34;
+  font-size: clamp(12px, 1vw, 15px);
+  line-height: 1.15;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.salas-capacidade {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  margin-top: 5px;
+.academico-item-informacoes span,
+.academico-item-informacoes small {
+  overflow: hidden;
   color: #7e9897;
-  font-size: 12px;
+  font-size: clamp(9px, 0.75vw, 11px);
   font-weight: 700;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.salas-capacidade img {
-  width: 13px;
-  height: 13px;
-  object-fit: contain;
+.academico-item-informacoes small {
+  font-size: clamp(8px, 0.7vw, 10px);
+  font-weight: 400;
 }
 
-.salas-status {
+.academico-status {
   display: inline-flex;
-  min-width: 64px;
+  min-width: 54px;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  padding: 3px 9px;
+  padding: 3px 7px;
   border: 1px solid #d8d5c6;
   border-radius: 999px;
+  background: transparent;
   color: #18352f;
-  font-size: 12px;
+  font-family: inherit;
+  font-size: clamp(8px, 0.7vw, 10px);
   font-weight: 700;
   line-height: 1.2;
 }
 
-.salas-item-seta {
-  display: flex;
-  width: 20px;
-  height: 22px;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  color: #143532;
+.academico-status:where(button) {
+  cursor: pointer;
 }
 
-.salas-item-seta svg {
-  width: 19px;
-  height: 19px;
+.academico-status.inativo {
+  border-color: #e4d2c7;
+  background: #f4e9e2;
+  color: #895d45;
+}
+
+.academico-botao-status {
+  min-width: 66px;
+  flex-shrink: 0;
+  padding: 5px 8px;
+  border: 1px solid #2c4035;
+  border-radius: 9px;
+  background: #2c4035;
+  color: #fff;
+  font: inherit;
+  font-size: clamp(9px, 0.78vw, 11px);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.academico-botao-status:hover {
+  background: #143532;
+}
+
+.academico-seta {
+  display: grid;
+  width: 20px;
+  height: 26px;
+  flex-shrink: 0;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #143532;
+  cursor: pointer;
+}
+
+.academico-seta svg {
+  width: 17px;
+  height: 17px;
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
@@ -405,429 +488,917 @@
   stroke-width: 3;
 }
 
-.salas-uso {
-  display: flex;
-  min-width: 0;
-  min-height: 0;
-  grid-column: 2;
-  grid-row: 3;
-  flex-direction: column;
-  padding: clamp(10px, 1.2vw, 16px);
-  overflow: hidden;
-  border: 1px solid var(--cor-borda-cartao, #d8d5c6);
-  border-radius: 22px;
-  background: var(--cor-fundo-painel, #f5f4ec);
-  box-shadow: 0 2px 5px rgba(36, 51, 39, 0.035);
+.academico-item-materia {
+  min-height: 68px;
 }
 
-.salas-uso-titulo {
+.academico-cursos-resumo {
+  display: flex;
+  width: min(31%, 205px);
+  min-width: 82px;
+  flex-shrink: 0;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.academico-cursos-resumo strong {
+  color: #253b34;
+  font-size: clamp(9px, 0.75vw, 11px);
+}
+
+.academico-cursos-resumo span {
+  display: -webkit-box;
+  overflow: hidden;
+  color: #7e9897;
+  font-size: clamp(8px, 0.68vw, 10px);
+  font-weight: 700;
+  line-height: 1.35;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.academico-lista-vazia {
+  display: flex;
+  min-height: 100px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: #7e9897;
+  text-align: center;
+}
+
+.academico-lista-vazia strong {
+  color: #143532;
+}
+
+.academico-lista-vazia span {
+  font-size: 12px;
+}
+
+.academico-cronograma {
+  padding: clamp(10px, 1.2vw, 15px);
+}
+
+.academico-cronograma h2 {
   display: flex;
   flex-shrink: 0;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   margin: 0;
   color: #143532;
-  font-size: clamp(18px, 1.65vw, 24px);
-  line-height: 1.15;
+  font-size: clamp(16px, 1.5vw, 21px);
+  line-height: 1.2;
 }
 
-.salas-uso-titulo svg {
-  width: clamp(27px, 2.3vw, 34px);
-  height: clamp(29px, 2.4vw, 36px);
+.academico-cronograma h2 svg {
+  width: 23px;
+  height: 23px;
   flex-shrink: 0;
   fill: #2c4035;
 }
 
-.salas-uso-titulo .salas-uso-porta-detalhe {
+.academico-cronograma h2 svg .detalhe {
   fill: none;
   stroke: #f5f4ec;
   stroke-linecap: round;
-  stroke-width: 2;
+  stroke-width: 1.8;
 }
 
-.salas-uso-lista {
+.academico-cronograma ol {
   position: relative;
   display: flex;
   min-height: 0;
   flex: 1;
   flex-direction: column;
-  gap: 12px;
-  margin: 10px 0 0;
-  padding: 0 0 0 14px;
-  overflow: hidden;
+  gap: 8px;
+  margin: 8px 0 0;
+  padding: 0 0 0 13px;
+  overflow-y: auto;
   list-style: none;
 }
 
-.salas-uso-item {
+.academico-cronograma li {
   position: relative;
   display: flex;
-  min-width: 0;
   flex-direction: column;
   gap: 3px;
 }
 
-.salas-uso-item::before {
+.academico-cronograma li::before {
   position: absolute;
-  top: 5px;
-  bottom: 1px;
-  left: -11px;
-  z-index: 0;
+  top: 8px;
+  bottom: -8px;
+  left: -9px;
   width: 2px;
   background: #d7dfd5;
   content: "";
 }
 
-.salas-uso-marcador {
+.academico-cronograma li::after {
   position: absolute;
-  z-index: 1;
-  display: block;
-  border-radius: 50%;
-}
-
-.salas-uso-marcador-horario {
   top: 1px;
-  left: -14px;
-  width: 8px;
-  height: 8px;
-  border: 1.5px solid #9bbcb2;
+  left: -12px;
+  width: 7px;
+  height: 7px;
+  border: 1px solid #9bbcb2;
+  border-radius: 50%;
   background: #f5f4ec;
+  content: "";
 }
 
-.salas-uso-marcador-meio {
-  top: 50%;
-  left: -13px;
-  width: 6px;
-  height: 6px;
-  transform: translateY(-50%);
-  background: #c8d8d0;
-}
-
-.salas-uso-marcador-fim {
-  bottom: -3px;
-  left: -14px;
-  width: 8px;
-  height: 8px;
-  border: 1.5px solid #c2d1ca;
-  background: #dce5dd;
-}
-
-.salas-uso-horario {
-  display: block;
-  margin: 0 0 1px;
+.academico-cronograma-horario {
   color: #18352f;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
   line-height: 1.2;
 }
 
-.salas-uso-cartao {
-  position: relative;
+.academico-cronograma li article {
   display: flex;
   min-width: 0;
-  min-height: clamp(42px, 3.8vw, 50px);
-  box-sizing: border-box;
+  min-height: 45px;
   align-items: center;
-  gap: 8px;
-  padding: 5px 9px 5px 12px;
+  gap: 7px;
+  padding: 5px 7px;
   border: 1px solid var(--cor-borda-cartao, #d8d5c6);
-  border-radius: 16px;
+  border-radius: 13px;
   background: #f8f7f0;
-  box-shadow: 0 2px 5px rgba(36, 51, 39, 0.045);
+  box-shadow: 0 2px 5px rgb(36 51 39 / 4%);
 }
 
-.salas-uso-sala-icone {
-  display: flex;
-  width: clamp(32px, 2.8vw, 38px);
-  height: clamp(32px, 2.8vw, 38px);
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #e1e3d8;
-  border-radius: 11px;
-  background: #eff0e8;
-  box-shadow: 0 2px 5px rgba(36, 51, 39, 0.06);
-}
-
-.salas-uso-sala-icone svg {
-  width: 65%;
-  height: 65%;
-  fill: #2c4035;
-}
-
-.salas-uso-sala-icone svg .salas-icone-detalhe {
-  fill: none;
-  stroke: #f5f4ec;
-  stroke-width: 3;
-}
-
-.salas-uso-sala-icone svg .salas-icone-base {
-  fill: none;
-  stroke: #2c4035;
-  stroke-width: 3;
-}
-
-.salas-uso-informacoes {
+.academico-cronograma-icone {
   display: grid;
-  min-width: 0;
-  flex: 1;
-  grid-template-columns: minmax(0, 1fr) max-content;
-  grid-template-rows: auto auto;
-  align-content: center;
-  align-items: center;
-  column-gap: 7px;
-  row-gap: 4px;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  place-items: center;
+  border: 1px solid #e1e3d8;
+  border-radius: 9px;
+  background: #eff0e8;
 }
 
-.salas-uso-nome {
-  min-width: 0;
-  grid-column: 1;
-  grid-row: 1;
-  overflow: hidden;
-  color: #253b34;
-  font-size: 12px;
-  line-height: 1.1;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.salas-uso-status {
-  grid-column: 2;
-  grid-row: 1;
-  justify-self: end;
-  padding: 3px 9px;
-  border-radius: 999px;
-  background: #279777;
-  color: #fff;
-  font-size: 9px;
-  font-weight: 700;
-  line-height: 1.1;
-  white-space: nowrap;
-}
-
-.salas-uso-informacoes p {
-  min-width: 0;
-  grid-column: 1;
-  grid-row: 2;
-  margin: 0;
-  overflow: hidden;
-  color: #7e9897;
-  font-size: 10px;
-  font-weight: 700;
-  line-height: 1.1;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.salas-uso-alunos {
-  display: inline-flex;
-  grid-column: 2;
-  grid-row: 2;
-  align-items: center;
-  justify-self: end;
-  gap: 3px;
-  color: #7e9897;
-  font-size: 9px;
-  font-weight: 700;
-  line-height: 1.1;
-  white-space: nowrap;
-}
-
-.salas-uso-alunos img {
-  width: 10px;
-  height: 10px;
+.academico-cronograma-icone img {
+  width: 20px;
+  height: 20px;
   object-fit: contain;
 }
 
+.academico-cronograma li article > span:last-child {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.academico-cronograma li article strong {
+  overflow: hidden;
+  color: #253b34;
+  font-size: clamp(10px, 0.8vw, 12px);
+  line-height: 1.1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.academico-cronograma li article small {
+  overflow: hidden;
+  color: #7e9897;
+  font-size: clamp(8px, 0.65vw, 10px);
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.academico-editor-titulo {
+  min-height: 52px;
+  gap: 11px;
+  padding: 7px 13px;
+}
+
+.academico-editor-titulo > button {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #e9ede5;
+  cursor: pointer;
+}
+
+.academico-editor-titulo > button:hover {
+  background: #dce5dc;
+}
+
+.academico-editor-titulo > button img {
+  width: 21px;
+  height: 21px;
+  object-fit: contain;
+}
+
+.academico-formulario {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.academico-form-area {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex: 1 1 auto;
+  grid-template-columns: minmax(0, 1.25fr) minmax(220px, 0.78fr);
+  gap: clamp(9px, 1.2vw, 14px);
+}
+
+.academico-form-area-turma {
+  grid-template-columns: minmax(0, 1.18fr) minmax(260px, 0.82fr);
+}
+
+.academico-card {
+  min-width: 0;
+  min-height: 0;
+  padding: clamp(10px, 1.5vw, 18px);
+  overflow: auto;
+  border: 1px solid var(--cor-borda, #d8d5c6);
+  border-radius: 17px;
+  background: var(--cor-superficie, #faf9f2);
+}
+
+.academico-card-campos {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(9px, 1.3vh, 14px);
+}
+
+.academico-campos-duplos {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(8px, 1vw, 12px);
+}
+
+.academico-campo {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 5px;
+  color: #143532;
+  font-size: clamp(10px, 0.9vw, 13px);
+  font-weight: 700;
+}
+
+.academico-campo > span:first-child {
+  display: flex;
+  min-height: 14px;
+  align-items: center;
+  gap: 4px;
+}
+
+.academico-campo i {
+  color: #c17a43;
+  font-size: 10px;
+  font-style: normal;
+}
+
+.academico-campo small {
+  color: #789493;
+  font-size: 9px;
+  font-weight: 400;
+}
+
+.academico-campo input,
+.academico-campo textarea,
+.academico-campo select {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #dedbcf;
+  border-radius: 9px;
+  outline: none;
+  background: #f7f6ef;
+  color: #143532;
+  font: inherit;
+  font-size: clamp(10px, 0.82vw, 12px);
+}
+
+.academico-campo input,
+.academico-campo select {
+  height: 34px;
+  padding: 0 10px;
+}
+
+.academico-campo textarea {
+  min-height: 82px;
+  padding: 9px 11px;
+  line-height: 1.4;
+  resize: vertical;
+}
+
+.academico-campo input::placeholder,
+.academico-campo textarea::placeholder {
+  color: #839795;
+  opacity: 1;
+}
+
+.academico-campo select {
+  cursor: pointer;
+}
+
+.academico-campo input:focus,
+.academico-campo textarea:focus,
+.academico-campo select:focus,
+.academico-intervalo input:focus {
+  border-color: #9eb5aa;
+  box-shadow: 0 0 0 2px rgb(42 64 54 / 8%);
+}
+
+.academico-campos-sala {
+  max-width: 100%;
+}
+
+.academico-card-icones,
+.academico-card-cursos,
+.academico-card-materias {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.academico-card h2 {
+  margin: 0;
+  color: #143532;
+  font-size: clamp(12px, 1vw, 15px);
+  line-height: 1.25;
+}
+
+.academico-grade-icones {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.academico-grade-icones button {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 1;
+  place-items: center;
+  padding: 5px;
+  border: 1px solid #e1e3d8;
+  border-radius: 11px;
+  background: #eff0e8;
+  cursor: pointer;
+  transition: border-color 120ms ease, background-color 120ms ease, transform 120ms ease;
+}
+
+.academico-grade-icones button:hover {
+  transform: translateY(-1px);
+  border-color: #9eb5aa;
+}
+
+.academico-grade-icones button.selecionado {
+  border-color: #2c4035;
+  background: #e1e9df;
+  box-shadow: inset 0 0 0 1px #2c4035;
+}
+
+.academico-grade-icones button img {
+  width: min(100%, 25px);
+  height: min(100%, 25px);
+  object-fit: contain;
+}
+
+.academico-acoes {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.academico-acoes button {
+  min-width: clamp(92px, 10vw, 112px);
+  min-height: 36px;
+}
+
+.academico-botao-pequeno {
+  min-height: 28px;
+  flex-shrink: 0;
+  padding: 4px 11px;
+  border: 1px solid #2c4035;
+  border-radius: 8px;
+  background: #2c4035;
+  color: #fff;
+  font: inherit;
+  font-size: clamp(9px, 0.75vw, 11px);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.academico-botao-pequeno:hover {
+  background: #143532;
+}
+
+.academico-linha-titulo {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.academico-linha-titulo h2 {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 6px;
+}
+
+.academico-linha-titulo h2 img {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.academico-intervalos {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.academico-intervalo {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: minmax(62px, 0.8fr) minmax(80px, 1fr) minmax(80px, 1fr) 24px;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 7px;
+  border: 1px solid #dedbcf;
+  border-radius: 10px;
+  background: #f7f6ef;
+}
+
+.academico-intervalo strong,
+.academico-intervalo label {
+  color: #143532;
+  font-size: clamp(8px, 0.7vw, 10px);
+  font-weight: 700;
+}
+
+.academico-intervalo label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #7e9897;
+}
+
+.academico-intervalo input {
+  width: 100%;
+  min-width: 0;
+  height: 26px;
+  padding: 0 5px;
+  border: 1px solid #dedbcf;
+  border-radius: 7px;
+  outline: 0;
+  background: #f7f6ef;
+  color: #143532;
+  font: inherit;
+  font-size: 9px;
+}
+
+.academico-excluir {
+  display: grid;
+  width: 24px;
+  height: 25px;
+  flex-shrink: 0;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #143532;
+  cursor: pointer;
+}
+
+.academico-excluir:hover {
+  background: #f2e5df;
+  color: #944c3a;
+}
+
+.academico-excluir svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.academico-ajuda {
+  margin: 0;
+  color: #7e9897;
+  font-size: clamp(9px, 0.72vw, 11px);
+  line-height: 1.4;
+}
+
+.academico-horarios-lista {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  padding-right: 1px;
+}
+
+.academico-horario-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 9px;
+  border: 1px solid #dedbcf;
+  border-radius: 14px;
+  background: #f8f7f0;
+}
+
+.academico-horario-cabecalho {
+  display: flex;
+  min-width: 0;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.academico-campo-materia {
+  flex: 1;
+}
+
+.academico-dias {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.academico-dias > span {
+  color: #143532;
+  font-size: clamp(9px, 0.74vw, 11px);
+  font-weight: 700;
+}
+
+.academico-dias > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.academico-dias button {
+  min-width: 31px;
+  min-height: 23px;
+  padding: 3px 7px;
+  border: 1px solid #dedbcf;
+  border-radius: 999px;
+  background: #f7f6ef;
+  color: #143532;
+  font: inherit;
+  font-size: 9px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.academico-dias button.selecionado {
+  border-color: #279777;
+  background: #279777;
+  color: #fff;
+}
+
+.academico-horario-duplo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.academico-erro {
+  flex-shrink: 0;
+  margin: 0;
+  color: #a64d3c;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.academico-cursos-controles {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 8px;
+}
+
+.academico-cursos-controles .academico-busca {
+  height: 33px;
+}
+
+.academico-cursos-controles > button {
+  flex-shrink: 0;
+  padding: 4px 3px;
+  border: 0;
+  background: transparent;
+  color: #789493;
+  font: inherit;
+  font-size: clamp(9px, 0.75vw, 11px);
+  cursor: pointer;
+}
+
+.academico-cursos-controles > button:hover {
+  color: #143532;
+  text-decoration: underline;
+}
+
+.academico-lista-cursos {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  gap: 6px;
+  overflow-y: auto;
+}
+
+.academico-curso-opcao {
+  display: flex;
+  min-height: 35px;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 8px;
+  border: 1px solid #dedbcf;
+  border-radius: 9px;
+  background: #f8f7f0;
+  color: #143532;
+  font-size: clamp(10px, 0.82vw, 12px);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.academico-curso-opcao input {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  margin: 0;
+  accent-color: #2c4035;
+}
+
+.academico-campo-status {
+  max-width: 48%;
+}
+
 @media (max-width: 900px) {
-  .salas-uso {
-    padding: 10px;
+  .academico-layout {
+    grid-template-columns: minmax(0, 1fr) clamp(175px, 27vw, 230px);
   }
 
-  .salas-uso-titulo {
-    font-size: 18px;
+  .academico-layout-materias .academico-lista-painel {
+    width: min(78%, 680px);
   }
 
-  .salas-uso-titulo svg {
-    width: 27px;
-    height: 29px;
+  .academico-item {
+    gap: 6px;
+    padding: 6px;
   }
 
-  .salas-uso-cartao {
-    min-height: 42px;
-    gap: 7px;
-    padding: 5px 8px 5px 11px;
+  .academico-botao-status {
+    min-width: 58px;
+    padding-right: 5px;
+    padding-left: 5px;
   }
 
-  .salas-uso-sala-icone {
-    width: 31px;
-    height: 31px;
+  .academico-form-area,
+  .academico-form-area-turma {
+    grid-template-columns: minmax(0, 1.15fr) minmax(205px, 0.85fr);
   }
 
-  .salas-uso-informacoes {
-    column-gap: 5px;
-  }
-
-  .salas-uso-nome {
-    font-size: 11px;
-  }
-
-  .salas-uso-informacoes p {
-    font-size: 9px;
-  }
-
-  .salas-uso-alunos {
-    font-size: 8px;
+  .academico-campo input,
+  .academico-campo select {
+    height: 32px;
   }
 }
 
 @media (max-width: 760px) {
-  .salas-pagina {
+  .academico-pagina {
     overflow-y: auto;
+    padding-bottom: 2px;
   }
 
-  .salas-layout {
+  .academico-layout {
     display: flex;
     flex: 0 0 auto;
     flex-direction: column;
     overflow: visible;
   }
 
-  .salas-coluna-principal {
-    display: flex;
-    flex: 0 0 auto;
-    flex-direction: column;
-    gap: 10px;
+  .academico-layout-materias .academico-lista-painel {
+    width: 100%;
   }
 
-  .salas-abas,
-  .salas-resumos,
-  .salas-painel,
-  .salas-uso {
-    grid-column: auto;
-    grid-row: auto;
+  .academico-lista-painel {
+    min-height: 320px;
   }
 
-  .salas-painel {
-    min-height: 300px;
-  }
-
-  .salas-lista,
-  .salas-uso-lista {
+  .academico-lista {
     overflow: visible;
   }
 
-  .salas-uso {
-    min-height: 250px;
+  .academico-cronograma {
+    min-height: 230px;
+  }
+
+  .academico-formulario {
+    min-height: auto;
+    flex: 0 0 auto;
+  }
+
+  .academico-form-area,
+  .academico-form-area-turma {
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+  }
+
+  .academico-card {
+    min-height: 0;
+    overflow: visible;
     padding: 14px;
   }
 
-  .salas-uso-titulo {
-    font-size: 20px;
+  .academico-card-icones {
+    min-height: 146px;
   }
 
-  .salas-uso-titulo svg {
-    width: 29px;
-    height: 31px;
+  .academico-card-materias {
+    min-height: 250px;
   }
 
-  .salas-uso-cartao {
-    min-height: 44px;
+  .academico-card-cursos {
+    min-height: 280px;
   }
 
-  .salas-uso-sala-icone {
-    width: 34px;
-    height: 34px;
+  .academico-horarios-lista,
+  .academico-lista-cursos {
+    overflow: visible;
   }
 }
 
 @media (max-width: 520px) {
-  .salas-resumo {
-    min-height: 44px;
+  .academico-resumo {
+    min-height: 40px;
     flex: 1 1 calc(50% - 5px);
     justify-content: center;
-    padding: 7px;
+    padding: 6px 8px;
   }
 
-  .salas-resumo:last-child {
+  .academico-resumo:last-child {
     flex-grow: 0;
   }
 
-  .salas-painel {
-    padding: 10px;
-  }
-
-  .salas-filtros > span {
-    padding-right: 9px;
-    padding-left: 9px;
-  }
-
-  .salas-busca-linha {
-    gap: 7px;
-  }
-
-  .salas-botao-nova {
-    min-width: 94px;
-    padding-right: 9px;
-    padding-left: 9px;
-    font-size: 12px;
-  }
-
-  .salas-item {
-    gap: 7px;
-    padding: 7px;
-  }
-
-  .salas-item-icone {
-    width: 42px;
-    height: 42px;
-  }
-
-  .salas-item-icone svg {
-    width: 25px;
-    height: 25px;
-  }
-
-  .salas-status {
-    min-width: 50px;
-    padding: 3px 6px;
-  }
-
-  .salas-uso {
-    padding: 12px;
-  }
-
-  .salas-uso-titulo {
-    font-size: 19px;
-  }
-
-  .salas-uso-titulo svg {
-    width: 27px;
-    height: 29px;
-  }
-
-  .salas-uso-cartao {
+  .academico-busca-linha {
     gap: 6px;
-    padding: 5px 6px 5px 9px;
   }
 
-  .salas-uso-sala-icone {
-    width: 30px;
-    height: 30px;
+  .academico-botao-novo {
+    min-width: 95px;
+    padding-right: 8px;
+    padding-left: 8px;
   }
 
-  .salas-uso-informacoes {
-    column-gap: 4px;
+  .academico-item-icone {
+    width: 36px;
+    height: 36px;
   }
 
-  .salas-uso-nome {
+  .academico-item-icone img {
+    width: 21px;
+    height: 21px;
+  }
+
+  .academico-status {
+    min-width: 46px;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+
+  .academico-cursos-resumo {
+    display: none;
+  }
+
+  .academico-form-area,
+  .academico-form-area-turma {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .academico-campos-duplos {
+    gap: 7px;
+  }
+
+  .academico-campo {
     font-size: 11px;
   }
 
-  .salas-uso-informacoes p {
-    font-size: 9px;
+  .academico-campo input,
+  .academico-campo select,
+  .academico-campo textarea {
+    font-size: 11px;
   }
 
-  .salas-uso-alunos {
-    font-size: 8px;
+  .academico-campo-status {
+    max-width: 100%;
+  }
+
+  .academico-intervalo {
+    grid-template-columns: minmax(52px, 0.75fr) minmax(68px, 1fr) minmax(68px, 1fr) 24px;
+    gap: 4px;
+    padding: 5px;
+  }
+
+  .academico-intervalo label {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-height: 560px) and (min-width: 761px) {
+  .academico-pagina {
+    gap: 7px;
+  }
+
+  .academico-titulo-principal,
+  .academico-editor-titulo {
+    min-height: 44px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  .academico-abas {
+    padding: 3px;
+  }
+
+  .academico-abas button {
+    min-height: 25px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+
+  .academico-resumo {
+    min-height: 36px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  .academico-controles {
+    gap: 6px;
+  }
+
+  .academico-busca {
+    height: 31px;
+  }
+
+  .academico-item {
+    min-height: 50px;
+  }
+
+  .academico-item-icone {
+    width: 36px;
+    height: 36px;
+  }
+
+  .academico-item-icone img {
+    width: 21px;
+    height: 21px;
+  }
+
+  .academico-card {
+    padding: 10px;
+  }
+
+  .academico-card-campos {
+    gap: 8px;
+  }
+
+  .academico-campo input,
+  .academico-campo select {
+    height: 30px;
+  }
+
+  .academico-campo textarea {
+    min-height: 68px;
+  }
+
+  .academico-horario-card {
+    gap: 6px;
+    padding: 7px;
+  }
+
+  .academico-acoes button {
+    min-height: 32px;
   }
 }
