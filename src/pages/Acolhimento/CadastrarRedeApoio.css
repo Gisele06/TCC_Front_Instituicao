@@ -1,0 +1,103 @@
+.cadastrar-rede-pagina {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  flex-direction: column;
+  gap: 17px;
+  margin-top: 15px;
+  color: #153830;
+  font-family: var(--familia-da-fonte);
+}
+.cadastrar-rede-formulario {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+  gap: 12px;
+}
+.cadastrar-rede-grid {
+  display: grid;
+  flex: 1;
+  min-height: 0;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.cadastrar-rede-grid .bloom-form-painel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow-y: auto;
+}
+.cadastrar-rede-grid .bloom-form-painel > h2 {
+  margin-bottom: 1px;
+}
+.cadastrar-rede-grid label {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+  font-size: clamp(12px,.9vw,15px);
+  font-weight: 700;
+}
+.cadastrar-rede-grid label b {
+  display: inline;
+  color: #be7d42;
+}
+.cadastrar-rede-grid label small {
+  font-size: 11px;
+  color: #78958a;
+}
+.cadastrar-rede-grid input,.cadastrar-rede-grid textarea,.cadastrar-rede-grid select {
+  width: 100%;
+  min-height: 37px;
+  min-width: 0;
+  padding: 8px 12px;
+  border: 1px solid #deddd1;
+  border-radius: 10px;
+  outline-color: #638674;
+  background: #f8f7f1;
+  color: #153830;
+  font: 400 13px var(--familia-da-fonte);
+}
+.cadastrar-rede-grid textarea {
+  flex: 1;
+  min-height: 100px;
+  resize: vertical;
+}
+.cadastrar-rede-campos-duplos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.cadastrar-rede-mapa {
+  flex: 1;
+  min-height: 200px;
+}
+.cadastrar-rede-erro {
+  margin: 0;
+  color: #ba3d35;
+  font-size: 13px;
+}
+@media (max-width: 850px) {
+  .cadastrar-rede-grid {
+    grid-template-columns: 1fr;
+    overflow-y: auto;
+  }
+  .cadastrar-rede-grid .bloom-form-painel {
+    overflow: visible;
+  }
+  .cadastrar-rede-mapa {
+    min-height: 240px;
+  }
+}
+@media (max-width: 540px) {
+  .cadastrar-rede-campos-duplos {
+    grid-template-columns: 1fr;
+  }
+}
+.cadastrar-rede-grid label > span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

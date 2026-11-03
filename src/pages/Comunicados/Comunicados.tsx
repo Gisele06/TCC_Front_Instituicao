@@ -1,17 +1,17 @@
-import EstruturaInstitucional from "../../components/InstitutionFrame/InstitutionFrame";
-import CalendarioPequeno from "../../components/MiniCalendar/MiniCalendar";
+import { fonteDisponivel } from "../../services/recursos";
+import { useEffect, useMemo, useState } from "react";
+import EstruturaInstitucional from "../../components/Geral/InstitutionFrame/InstitutionFrame";
+import CalendarioPequeno from "../../components/Geral/MiniCalendar/MiniCalendar";
 
-import iconeAviso from "../../assets/icons/comunicado-aviso.png";
-import iconeOrientacao from "../../assets/icons/comunicado-orientacao.png";
-import iconeComunicadoEvento from "../../assets/icons/comunicado-evento.png";
-import iconeCalendario from "../../assets/icons/calendario.png";
-import iconeCalendarioDaLista from "../../assets/icons/calendario-evento.png";
-import iconeRelogio from "../../assets/icons/relogio-evento.png";
-import iconeOcultar from "../../assets/icons/ocultar-evento.png";
-import iconeReenviar from "../../assets/icons/reenviar-evento.png";
-import iconeSeta from "../../assets/icons/chevron-evento.png";
-import iconeBusca from "../../assets/icons/busca.png";
+import iconeCalendario from "../../assets/icons/Geral/calendario.png";
+import iconeCalendarioDaLista from "../../assets/icons/Geral/calendario-evento.png";
+import iconeRelogio from "../../assets/icons/Geral/relogio-evento.png";
+import iconeOcultar from "../../assets/icons/Geral/ocultar-evento.png";
+import iconeReenviar from "../../assets/icons/Geral/reenviar-evento.png";
+import iconeSeta from "../../assets/icons/Geral/chevron-evento.png";
+import iconeBusca from "../../assets/icons/Geral/busca.png";
 
+import { carregarComunicados, type Comunicado } from "./data/comunicados";
 import "./Comunicados.css";
 
 interface PropriedadesComunicados {
@@ -19,37 +19,9 @@ interface PropriedadesComunicados {
   aoCriarComunicado: () => void;
 }
 
-const categorias = ["Todos", "Avisos", "Informativos", "Orientações", "Eventos"];
+const categorias = ["Todos", "Comunicado", "Evento"];
 
-const comunicadosDeExemplo = [
-  {
-    id: "comunicado-aviso",
-    categoria: "Aviso",
-    titulo: "Porque me sinto triste?",
-    descricao: "Você já se sentiu triste? Isso é comum e pode acontecer por vários motivos.",
-    data: "6 jul, 2026",
-    hora: "14:00 - 16:00",
-    icone: iconeAviso,
-  },
-  {
-    id: "comunicado-orientacao",
-    categoria: "Orientação",
-    titulo: "Porque me sinto triste?",
-    descricao: "Você já se sentiu triste? Isso é comum e pode acontecer por vários motivos.",
-    data: "6 jul, 2026",
-    hora: "14:00 - 16:00",
-    icone: iconeOrientacao,
-  },
-  {
-    id: "comunicado-evento",
-    categoria: "Evento",
-    titulo: "Porque me sinto triste?",
-    descricao: "Você já se sentiu triste? Isso é comum e pode acontecer por vários motivos.",
-    data: "6 jul, 2026",
-    hora: "14:00 - 16:00",
-    icone: iconeComunicadoEvento,
-  },
-];
+
 
 const meses = [
   "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
@@ -89,14 +61,34 @@ function criarSemanas(ano: number, mes: number) {
 }
 
 function Comunicados({ aoNavegar, aoCriarComunicado }: PropriedadesComunicados) {
-  const mes = 6;
-  const ano = 2026;
-  const diaSelecionado = 6;
-
-  const comunicadosDoDia = [
-    { id: "aviso-do-dia", horario: "14:00", titulo: "Porque me sinto triste?", categoria: "Aviso" },
-    { id: "evento-do-dia", horario: "16:00", titulo: "Porque me sinto triste?", categoria: "Evento" },
-  ];
+  const [comunicados, definirComunicados] = useState<Comunicado[]>([]);
+  const [carregando, definirCarregando] = useState(true);
+  const [erro, definirErro] = useState("");
+  useEffect(() => {
+    let ativo = true;
+    carregarComunicados()
+      .then((lista) => { if (ativo) definirComunicados(lista); })
+      .catch((falha: unknown) => {
+        if (ativo) definirErro(falha instanceof Error ? falha.message : "Não foi possível carregar comunicados.");
+      })
+      .finally(() => { if (ativo) definirCarregando(false); });
+    return () => { ativo = false; };
+  }, []);
+  const [categoriaAtiva, definirCategoriaAtiva] = useState("Todos");
+  const [busca, definirBusca] = useState("");
+  const [ocultos, definirOcultos] = useState<number[]>([]);
+  const comunicadosFiltrados = useMemo(() => comunicados.filter((item) => {
+    const categoriaCorresponde = categoriaAtiva === "Todos" || item.categoria === categoriaAtiva;
+    const buscaCorresponde = `${item.titulo} ${item.descricao}`.toLocaleLowerCase("pt-BR")
+      .includes(busca.trim().toLocaleLowerCase("pt-BR"));
+    return categoriaCorresponde && buscaCorresponde && !ocultos.includes(item.id);
+  }), [comunicados, categoriaAtiva, busca, ocultos]);
+  const hoje = new Date();
+  const mes = hoje.getMonth();
+  const ano = hoje.getFullYear();
+  const diaSelecionado = hoje.getDate();
+  // A tabela de comunicados não possui data/hora para alimentar o calendário.
+  const comunicadosDoDia: { id: string; horario: string; titulo: string; categoria: string }[] = [];
 
   return (
     <EstruturaInstitucional paginaAtiva="comunicados" aoNavegar={aoNavegar}>
@@ -112,20 +104,23 @@ function Comunicados({ aoNavegar, aoCriarComunicado }: PropriedadesComunicados) 
           <section className="comunicados-lista-painel" aria-label="Lista de comunicados">
             <div className="comunicados-categoria-abas" aria-label="Categorias de comunicados">
               {categorias.map((categoria) => (
-                <span
+                <button
+                  type="button"
                   key={categoria}
-                  className={categoria === "Todos" ? "estado-selecionado" : ""}
+                  className={categoria === categoriaAtiva ? "estado-selecionado" : ""}
+                  aria-pressed={categoria === categoriaAtiva}
+                  onClick={() => definirCategoriaAtiva(categoria)}
                 >
                   {categoria}
-                </span>
+                </button>
               ))}
             </div>
 
             <div className="comunicados-lista-ferramentas">
-              <div className="comunicados-busca">
+              <label className="comunicados-busca">
                 <img src={iconeBusca} alt="" />
-                <span>Buscar comunicado</span>
-              </div>
+                <input type="search" value={busca} onChange={(evento) => definirBusca(evento.target.value)} placeholder="Buscar comunicado" />
+              </label>
               <button
                 type="button"
                 className="comunicados-principal-botao"
@@ -136,7 +131,10 @@ function Comunicados({ aoNavegar, aoCriarComunicado }: PropriedadesComunicados) 
             </div>
 
             <div className="comunicados-lista">
-              {comunicadosDeExemplo.map((comunicado) => (
+              {!fonteDisponivel() && <p className="comunicados-vazio">Configure VITE_API_BASE_URL no modo API para consultar comunicados.</p>}
+              {carregando && <p className="comunicados-vazio">Carregando comunicados...</p>}
+              {erro && <p role="alert" className="comunicados-vazio">{erro}</p>}
+              {comunicadosFiltrados.map((comunicado) => (
                 <article className="comunicados-lista-item" key={comunicado.id}>
                   <div className="comunicados-lista-icone" aria-hidden="true">
                     <img src={comunicado.icone} alt="" />
@@ -153,20 +151,21 @@ function Comunicados({ aoNavegar, aoCriarComunicado }: PropriedadesComunicados) 
                     <span><img src={iconeRelogio} alt="" />{comunicado.hora}</span>
                   </div>
 
-                  <span className="comunicados-situacao">Em breve</span>
+                  <span className="comunicados-situacao">Sem status</span>
 
                   <div className="comunicados-lista-acoes">
-                    <span className="comunicados-acao-botao">
+                    <button type="button" className="comunicados-acao-botao" onClick={() => definirOcultos((lista) => [...lista, comunicado.id])}>
                       <img src={iconeOcultar} alt="" /> Ocultar
-                    </span>
-                    <span className="comunicados-acao-botao">
+                    </button>
+                    <button type="button" className="comunicados-acao-botao" disabled title="Aguardando integração com o backend">
                       <img src={iconeReenviar} alt="" /> Reenviar
-                    </span>
+                    </button>
                   </div>
 
                   <img className="comunicados-item-seta" src={iconeSeta} alt="" />
                 </article>
               ))}
+              {!carregando && !erro && fonteDisponivel() && comunicadosFiltrados.length === 0 && <p className="comunicados-vazio">Nenhum comunicado cadastrado ou encontrado.</p>}
             </div>
           </section>
 
@@ -179,8 +178,8 @@ function Comunicados({ aoNavegar, aoCriarComunicado }: PropriedadesComunicados) 
               mesExibido={`${meses[mes]} ${ano}`}
               semanas={criarSemanas(ano, mes)}
               diaSelecionado={diaSelecionado}
-              diaDeHoje={10}
-              diasComEvento={[diaSelecionado]}
+              diaDeHoje={diaSelecionado}
+              diasComEvento={[]}
               iconeAnterior={<img src={iconeSeta} alt="" />}
               iconeProximo={<img src={iconeSeta} alt="" />}
               tituloDosEventos="Comunicados do dia"

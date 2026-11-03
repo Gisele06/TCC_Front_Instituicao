@@ -1,15 +1,17 @@
-import EstruturaInstitucional from "../../components/InstitutionFrame/InstitutionFrame";
-import CalendarioPequeno from "../../components/MiniCalendar/MiniCalendar";
-import type { Evento } from "../../types/Evento";
+import { fonteDisponivel } from "../../services/recursos";
+import { useEffect, useMemo, useState } from "react";
+import EstruturaInstitucional from "../../components/Geral/InstitutionFrame/InstitutionFrame";
+import CalendarioPequeno from "../../components/Geral/MiniCalendar/MiniCalendar";
+import { carregarEventos, type Evento } from "./data/eventos";
 
-import iconeCalendarioEscuro from "../../assets/icons/calendario.png";
-import iconeCalendarioDaLista from "../../assets/icons/calendario-evento.png";
-import iconeRelogio from "../../assets/icons/relogio-evento.png";
-import iconeLocalDoEvento from "../../assets/icons/local-evento.png";
-import iconeOcultarEvento from "../../assets/icons/ocultar-evento.png";
-import iconeReenviarEvento from "../../assets/icons/reenviar-evento.png";
-import iconeSetaDoEvento from "../../assets/icons/chevron-evento.png";
-import iconeBusca from "../../assets/icons/busca.png";
+import iconeCalendarioEscuro from "../../assets/icons/Geral/calendario.png";
+import iconeCalendarioDaLista from "../../assets/icons/Geral/calendario-evento.png";
+import iconeRelogio from "../../assets/icons/Geral/relogio-evento.png";
+import iconeLocalDoEvento from "../../assets/icons/Eventos/local-evento.png";
+import iconeOcultarEvento from "../../assets/icons/Geral/ocultar-evento.png";
+import iconeReenviarEvento from "../../assets/icons/Geral/reenviar-evento.png";
+import iconeSetaDoEvento from "../../assets/icons/Geral/chevron-evento.png";
+import iconeBusca from "../../assets/icons/Geral/busca.png";
 
 import "./Eventos.css";
 
@@ -18,46 +20,9 @@ interface PropriedadesEventos {
   aoCriarEvento: () => void;
 }
 
-const categorias = ["Todos", "Palestras", "Oficinas", "Campanhas", "Festas", "Reuniões"];
+// Tipos são cadastrados em tbl_tipo_evento e vêm da API.
 
-const eventosDeExemplo: Evento[] = [
-  {
-    id: "evento-pizza",
-    categoria: "Festa",
-    titulo: "Vai uma pizza aí?",
-    descricao: "Pensando no bem-estar dos alunos hoje nossa escola.",
-    data: "2026-07-06",
-    horaInicio: "14:00",
-    horaFim: "16:00",
-    local: "Refeitório",
-    recorrencia: "Não se repete",
-    turmas: "Todas as salas",
-  },
-  {
-    id: "evento-palestra-1",
-    categoria: "Palestra",
-    titulo: "Prevenção Setembro amarelo",
-    descricao: "Palestra com um psicólogo sobre saúde mental e cuidado no dia a dia.",
-    data: "2026-07-10",
-    horaInicio: "14:30",
-    horaFim: "15:30",
-    local: "Auditório",
-    recorrencia: "Não se repete",
-    turmas: "Todas as salas",
-  },
-  {
-    id: "evento-palestra-2",
-    categoria: "Palestra",
-    titulo: "Prevenção Setembro amarelo",
-    descricao: "Palestra com um psicólogo sobre saúde mental e cuidado no dia a dia.",
-    data: "2026-07-10",
-    horaInicio: "14:30",
-    horaFim: "15:30",
-    local: "Auditório",
-    recorrencia: "Não se repete",
-    turmas: "Todas as salas",
-  },
-];
+
 
 const meses = [
   "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
@@ -108,24 +73,51 @@ function formatarData(data: string) {
 }
 
 function Eventos({ aoNavegar, aoCriarEvento }: PropriedadesEventos) {
-  const mes = 6;
-  const ano = 2026;
-  const diaSelecionado = 10;
+  const [eventos, definirEventos] = useState<Evento[]>([]);
+  const [carregando, definirCarregando] = useState(true);
+  const [erro, definirErro] = useState("");
+  useEffect(() => {
+    let ativo = true;
+    carregarEventos()
+      .then((lista) => { if (ativo) definirEventos(lista); })
+      .catch((falha: unknown) => {
+        if (ativo) definirErro(falha instanceof Error ? falha.message : "Não foi possível buscar eventos.");
+      })
+      .finally(() => { if (ativo) definirCarregando(false); });
+    return () => { ativo = false; };
+  }, []);
+  const categorias = ["Todos", ...new Set(eventos.map((evento) => evento.categoria))];
+  const [categoriaAtiva, definirCategoriaAtiva] = useState("Todos");
+  const [busca, definirBusca] = useState("");
+  const [ocultos, definirOcultos] = useState<number[]>([]);
+  const eventosFiltrados = useMemo(() => eventos.filter((evento) => {
+    const correspondeCategoria = categoriaAtiva === "Todos" || evento.categoria === categoriaAtiva;
+    return correspondeCategoria &&
+      !ocultos.includes(evento.id) &&
+      `${evento.titulo} ${evento.descricao}`.toLocaleLowerCase("pt-BR")
+        .includes(busca.trim().toLocaleLowerCase("pt-BR"));
+  }), [eventos, categoriaAtiva, busca, ocultos]);
 
-  const eventosDoDia = eventosDeExemplo
+  const hoje = new Date();
+  const mes = hoje.getMonth();
+  const ano = hoje.getFullYear();
+  const diaSelecionado = hoje.getDate();
+  const dataHoje = `${ano}-${String(mes + 1).padStart(2, "0")}-${String(diaSelecionado).padStart(2, "0")}`;
+
+  const eventosDoDia = eventos
     .filter((evento) => {
       const [anoDoEvento, mesDoEvento, diaDoEvento] = evento.data.split("-").map(Number);
       return anoDoEvento === ano && mesDoEvento === mes + 1 && diaDoEvento === diaSelecionado;
     })
     .map((evento) => ({
-      id: evento.id,
+      id: String(evento.id),
       horario: evento.horaInicio,
       titulo: evento.titulo,
       categoria: evento.categoria,
       local: evento.local,
     }));
 
-  const diasComEvento = eventosDeExemplo
+  const diasComEvento = eventos
     .filter((evento) => {
       const [anoDoEvento, mesDoEvento] = evento.data.split("-").map(Number);
       return anoDoEvento === ano && mesDoEvento === mes + 1;
@@ -146,27 +138,33 @@ function Eventos({ aoNavegar, aoCriarEvento }: PropriedadesEventos) {
           <section className="eventos-lista-painel" aria-label="Lista de eventos">
             <div className="eventos-categoria-abas" aria-label="Filtrar por categoria">
               {categorias.map((categoria) => (
-                <span
+                <button
+                  type="button"
                   key={categoria}
-                  className={categoria === "Todos" ? "estado-selecionado" : ""}
+                  className={categoria === categoriaAtiva ? "estado-selecionado" : ""}
+                  aria-pressed={categoria === categoriaAtiva}
+                  onClick={() => definirCategoriaAtiva(categoria)}
                 >
                   {categoria}
-                </span>
+                </button>
               ))}
             </div>
 
             <div className="eventos-lista-ferramentas">
-              <div className="eventos-busca">
+              <label className="eventos-busca">
                 <img src={iconeBusca} alt="" />
-                <span>Buscar evento</span>
-              </div>
+                <input type="search" value={busca} onChange={(evento) => definirBusca(evento.target.value)} placeholder="Buscar evento" />
+              </label>
               <button type="button" className="eventos-principal-botao" onClick={aoCriarEvento}>
                 Novo evento
               </button>
             </div>
 
             <div className="eventos-lista">
-              {eventosDeExemplo.map((evento) => (
+              {!fonteDisponivel() && <p className="eventos-vazio">Configure VITE_API_BASE_URL no modo API para consultar eventos.</p>}
+              {carregando && <p className="eventos-vazio">Carregando eventos...</p>}
+              {erro && <p className="eventos-vazio" role="alert">{erro}</p>}
+              {eventosFiltrados.map((evento) => (
                 <article className="eventos-lista-item" key={evento.id}>
                   <div className="eventos-lista-foto" aria-hidden="true"></div>
 
@@ -182,20 +180,23 @@ function Eventos({ aoNavegar, aoCriarEvento }: PropriedadesEventos) {
                     <span className="eventos-local"><img src={iconeLocalDoEvento} alt="" />{evento.local}</span>
                   </div>
 
-                  <span className="eventos-situacao">Em breve</span>
+                  <span className="eventos-situacao">
+                    {evento.data < dataHoje ? "Data passada" : evento.data === dataHoje ? "Hoje" : "Agendado"}
+                  </span>
 
                   <div className="eventos-lista-acoes">
-                    <span className="eventos-acao-botao">
+                    <button type="button" className="eventos-acao-botao" onClick={() => definirOcultos((itens) => [...itens, evento.id])}>
                       <img src={iconeOcultarEvento} alt="" /> Ocultar
-                    </span>
-                    <span className="eventos-acao-botao">
+                    </button>
+                    <button type="button" className="eventos-acao-botao" title="Aguardando integração com o backend" disabled>
                       <img src={iconeReenviarEvento} alt="" /> Reenviar
-                    </span>
+                    </button>
                   </div>
 
                   <img className="eventos-item-seta" src={iconeSetaDoEvento} alt="" />
                 </article>
               ))}
+              {!carregando && !erro && fonteDisponivel() && eventosFiltrados.length === 0 && <p className="eventos-vazio">Nenhum evento cadastrado ou encontrado.</p>}
             </div>
           </section>
 
@@ -208,7 +209,7 @@ function Eventos({ aoNavegar, aoCriarEvento }: PropriedadesEventos) {
               mesExibido={`${meses[mes]} ${ano}`}
               semanas={criarSemanas(ano, mes)}
               diaSelecionado={diaSelecionado}
-              diaDeHoje={mes === 6 && ano === 2026 ? 10 : undefined}
+              diaDeHoje={diaSelecionado}
               diasComEvento={diasComEvento}
               iconeAnterior={<img src={iconeSetaDoEvento} alt="" />}
               iconeProximo={<img src={iconeSetaDoEvento} alt="" />}

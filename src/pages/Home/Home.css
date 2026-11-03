@@ -674,3 +674,16 @@ button.inicio-rapida-acao-botao {
 .inicio-evento-informacao, .inicio-evento-local { font-size: clamp(9px, .8vw, 12px); }
 @media (max-width: 1050px) { .inicio-conteudo { --largura-cartoes-da-direita: 25%; } .inicio-indicadores .bloom-indicador-cartao { padding: 10px; } }
 @media (prefers-reduced-motion: reduce) { .inicio-rapida-acao-botao { transition: none; } }
+
+
+/* Mantém o espaço do gráfico sem exibir números ou curvas fictícias. */
+.inicio-grafico-sem-dados {
+  display: flex;
+  min-height: calc(180 * var(--un));
+  align-items: center;
+  justify-content: center;
+  padding: calc(20 * var(--un));
+  color: #68717a;
+  text-align: center;
+  font-size: calc(16 * var(--un));
+}

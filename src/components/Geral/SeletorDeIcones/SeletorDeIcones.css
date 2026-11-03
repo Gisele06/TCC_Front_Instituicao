@@ -1,0 +1,34 @@
+.bloom-seletor-icones h2 {
+  margin: 0 0 12px;
+  color: #15372f;
+  font-size: clamp(13px, 1vw, 16px);
+}
+.bloom-seletor-icones-grade {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+.bloom-seletor-icones-grade button {
+  display: grid;
+  width: 100%;
+  aspect-ratio: 1.05;
+  place-items: center;
+  border: 1px solid transparent;
+  border-radius: 11px;
+  background: #edf0e8;
+  cursor: pointer;
+}
+.bloom-seletor-icones-grade button:hover,
+.bloom-seletor-icones-grade button.selecionado {
+  border-color: #355747;
+  background: #dce9dc;
+}
+.bloom-seletor-icones-grade button:focus-visible {
+  outline: 2px solid #355747;
+  outline-offset: 2px;
+}
+.bloom-seletor-icones-grade img {
+  width: 52%;
+  height: 52%;
+  object-fit: contain;
+}

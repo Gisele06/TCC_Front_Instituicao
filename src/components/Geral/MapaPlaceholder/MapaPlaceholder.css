@@ -1,0 +1,14 @@
+.bloom-mapa-placeholder {
+  display: grid;
+  width: 100%;
+  min-height: 220px;
+  place-items: center;
+  padding: 20px;
+  border: 1px solid #deded2;
+  border-radius: 16px;
+  background: #f5f4ed;
+  color: #849891;
+  text-align: center;
+  font: 400 clamp(12px, 0.9vw, 15px)/1.45 var(--familia-da-fonte);
+}
+.bloom-mapa-placeholder > span { max-width: 255px; }

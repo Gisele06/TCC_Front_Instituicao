@@ -1,14 +1,20 @@
-import type { FormEvent } from "react";
-import EstruturaInstitucional from "../../components/InstitutionFrame/InstitutionFrame";
+import { useEffect, useState, type FormEvent } from "react";
+import EstruturaInstitucional from "../../components/Geral/InstitutionFrame/InstitutionFrame";
 
-import iconeCalendario from "../../assets/icons/calendario-evento.png";
-import iconeRelogio from "../../assets/icons/relogio-evento.png";
-import iconeRecorrencia from "../../assets/icons/recorrencia-evento.png";
-import iconeTurmas from "../../assets/icons/turmas-evento.png";
-import iconeSetaBaixo from "../../assets/icons/seta-baixo-evento.png";
-import iconeSetaVoltar from "../../assets/icons/seta-voltar-evento.png";
-import iconeCalendarioComSinal from "../../assets/icons/calendario-adicionar.png";
+import iconeCalendario from "../../assets/icons/Geral/calendario-evento.png";
+import iconeRelogio from "../../assets/icons/Geral/relogio-evento.png";
+import iconeRecorrencia from "../../assets/icons/Geral/recorrencia-evento.png";
+import iconeTurmas from "../../assets/icons/Geral/turmas-evento.png";
+import iconeSetaBaixo from "../../assets/icons/Geral/seta-baixo-evento.png";
+import iconeSetaVoltar from "../../assets/icons/Geral/seta-voltar-evento.png";
+import iconeCalendarioComSinal from "../../assets/icons/CadastrarEvento/calendario-adicionar.png";
+import SeletorDeIcones from "../../components/Geral/SeletorDeIcones/SeletorDeIcones";
+import { opcoesDeIcones } from "../../components/Geral/SeletorDeIcones/opcoes";
 
+import { adicionarEvento, listarTiposEvento } from "../Eventos/data/eventos";
+import { ambiente } from "../../config/ambiente";
+import { idObrigatorio } from "../../services/recursos";
+import type { TipoEventoRegistro } from "../../types/banco";
 import "./CadastrarEvento.css";
 
 interface PropriedadesCadastroDeEvento {
@@ -17,9 +23,57 @@ interface PropriedadesCadastroDeEvento {
 }
 
 function CadastrarEvento({ aoNavegar, aoVoltar }: PropriedadesCadastroDeEvento) {
-  function voltarParaEventos(evento: FormEvent<HTMLFormElement>) {
+  const [icone, definirIcone] = useState("calendario");
+  const [erro, definirErro] = useState("");
+  const [salvando, definirSalvando] = useState(false);
+  const [tipos, definirTipos] = useState<TipoEventoRegistro[]>([]);
+
+  useEffect(() => {
+    let ativo = true;
+    listarTiposEvento().then((lista) => {
+      if (ativo) definirTipos(lista);
+    }).catch((falha: unknown) => {
+      if (ativo) definirErro(falha instanceof Error ? falha.message : "Não foi possível carregar tipos de evento.");
+    });
+    return () => { ativo = false; };
+  }, []);
+
+  async function salvarEvento(evento: FormEvent<HTMLFormElement>) {
     evento.preventDefault();
-    aoVoltar();
+    const dados = new FormData(evento.currentTarget);
+    const inicio = String(dados.get("horaInicio") ?? "");
+    const fim = String(dados.get("horaFim") ?? "");
+    if (inicio >= fim) {
+      definirErro("O término precisa ser depois do horário de início.");
+      return;
+    }
+
+    const tipoId = Number(dados.get("categoria"));
+    if (!tipos.some((tipo) => tipo.id === tipoId)) {
+      definirErro("Selecione um tipo de evento cadastrado no banco.");
+      return;
+    }
+    definirSalvando(true);
+    try {
+      await adicionarEvento({
+        nome: String(dados.get("titulo") ?? "").trim(),
+        id_tipo_evento: tipoId,
+        id_instituicao: idObrigatorio(ambiente.idInstituicao, "ID da instituição"),
+        descricao: String(dados.get("descricao") ?? "").trim() || null,
+        observacoes: String(dados.get("observacoes") ?? "").trim() || null,
+        data_evento: String(dados.get("data") ?? ""),
+        horario_inicio: inicio,
+        horario_fim: fim,
+        local_do_evento: String(dados.get("local") ?? "").trim() || null,
+        custo: 0,
+        id_sala: null,
+      });
+      aoVoltar();
+    } catch (falha) {
+      definirErro(falha instanceof Error ? falha.message : "Não foi possível cadastrar o evento.");
+    } finally {
+      definirSalvando(false);
+    }
   }
 
   return (
@@ -35,27 +89,21 @@ function CadastrarEvento({ aoNavegar, aoVoltar }: PropriedadesCadastroDeEvento) 
           </div>
         </header>
 
-        <form className="cadastrar-evento-formulario" onSubmit={voltarParaEventos}>
+        <form className="cadastrar-evento-formulario" onSubmit={salvarEvento}>
           <div className="cadastrar-evento-area">
             <section className="cadastrar-evento-campos" aria-label="Informações do evento">
               <div className="cadastrar-evento-campo-par">
                 <label className="cadastrar-evento-campo">
                   <span>Nome do evento <i>•</i></span>
-                  <input
-                    placeholder="Nome do evento"
-                  />
+                  <input name="titulo" required maxLength={90} placeholder="Nome do evento" />
                 </label>
 
                 <label className="cadastrar-evento-campo">
                   <span>Tipo <i>•</i></span>
                   <span className="cadastrar-evento-selecao-area">
-                    <select defaultValue="">
+                    <select name="categoria" defaultValue="" required>
                       <option value="" disabled>Selecione os tipos do evento</option>
-                      <option>Palestra</option>
-                      <option>Oficina</option>
-                      <option>Campanha</option>
-                      <option>Festa</option>
-                      <option>Reunião</option>
+                      {tipos.map((tipo) => <option key={tipo.id} value={tipo.id}>{tipo.nome}</option>)}
                     </select>
                     <img src={iconeSetaBaixo} alt="" />
                   </span>
@@ -65,16 +113,12 @@ function CadastrarEvento({ aoNavegar, aoVoltar }: PropriedadesCadastroDeEvento) 
               <div className="cadastrar-evento-campo-par">
                 <label className="cadastrar-evento-campo">
                   <span>Descrição <i>•</i></span>
-                  <textarea
-                    placeholder="Descreva o evento, objetivo e informações."
-                  />
+                  <textarea name="descricao" required placeholder="Descreva o evento, objetivo e informações." />
                 </label>
 
                 <label className="cadastrar-evento-campo">
                   <span>Observações <small>(opcional)</small></span>
-                  <textarea
-                    placeholder="Descreva observações importantes sobre o evento."
-                  />
+                  <textarea name="observacoes" placeholder="Descreva observações importantes sobre o evento." />
                 </label>
               </div>
 
@@ -83,7 +127,7 @@ function CadastrarEvento({ aoNavegar, aoVoltar }: PropriedadesCadastroDeEvento) 
                   <span>Data do evento <i>•</i></span>
                   <span className="cadastrar-evento-entrada-com-icone">
                     <img src={iconeCalendario} alt="" />
-                    <input type="text" placeholder="dd/mm/aa" />
+                    <input name="data" type="date" required />
                   </span>
                 </label>
 
@@ -91,7 +135,7 @@ function CadastrarEvento({ aoNavegar, aoVoltar }: PropriedadesCadastroDeEvento) 
                   <span>Hora de início <i>•</i></span>
                   <span className="cadastrar-evento-entrada-com-icone">
                     <img src={iconeRelogio} alt="" />
-                    <input type="text" placeholder="--:--" />
+                    <input name="horaInicio" type="time" required />
                   </span>
                 </label>
 
@@ -99,35 +143,26 @@ function CadastrarEvento({ aoNavegar, aoVoltar }: PropriedadesCadastroDeEvento) 
                   <span>Hora de término <i>•</i></span>
                   <span className="cadastrar-evento-entrada-com-icone">
                     <img src={iconeRelogio} alt="" />
-                    <input type="text" placeholder="--:--" />
+                    <input name="horaFim" type="time" required />
                   </span>
                 </label>
               </div>
 
               <div className="cadastrar-evento-campo-par">
                 <label className="cadastrar-evento-campo">
-                  <span>Recorrência <small>(opcional)</small></span>
+                  <span>Local do evento <small>(opcional)</small></span>
                   <span className="cadastrar-evento-selecao-area cadastrar-evento-selecao-icone">
                     <img src={iconeRecorrencia} alt="" />
-                    <select defaultValue="Não se repete">
-                      <option>Não se repete</option>
-                      <option>Todo dia</option>
-                      <option>Toda semana</option>
-                      <option>Todo mês</option>
-                    </select>
-                    <img src={iconeSetaBaixo} alt="" />
+                    <input name="local" maxLength={150} placeholder="Ex.: auditório ou pátio" />
                   </span>
                 </label>
 
                 <label className="cadastrar-evento-campo">
-                  <span>Turmas participantes</span>
+                  <span>Turmas participantes <small>(ainda sem tabela de vínculo)</small></span>
                   <span className="cadastrar-evento-selecao-area cadastrar-evento-selecao-icone">
                     <img src={iconeTurmas} alt="" />
-                    <select defaultValue="">
-                      <option value="">Selecione as turmas que vão participar</option>
-                      <option>Turma 1</option>
-                      <option>Turma 2</option>
-                      <option>Todas as salas</option>
+                    <select disabled title="O SQL ainda não relaciona eventos e turmas.">
+                      <option>Integração pendente</option>
                     </select>
                     <img src={iconeSetaBaixo} alt="" />
                   </span>
@@ -136,9 +171,14 @@ function CadastrarEvento({ aoNavegar, aoVoltar }: PropriedadesCadastroDeEvento) 
             </section>
 
             <aside className="cadastrar-evento-lateral">
-              <div className="cadastrar-evento-adicionar-imagem">
-                <span>Adicionar imagem</span>
-              </div>
+              <SeletorDeIcones
+                className="cadastrar-evento-icones"
+                selecionado={icone}
+                aoSelecionar={definirIcone}
+                opcoes={opcoesDeIcones}
+              />
+              <input type="hidden" name="icone" value={icone} />
+              <p>O ícone é apenas visual; tbl_evento não possui campo de ícone.</p>
 
               <section className="cadastrar-evento-comunicado">
                 <h2>Comunicado do evento</h2>
@@ -149,6 +189,8 @@ function CadastrarEvento({ aoNavegar, aoVoltar }: PropriedadesCadastroDeEvento) 
             </aside>
           </div>
 
+          {erro && <p role="alert" className="cadastrar-evento-erro">{erro}</p>}
+          {salvando && <p aria-live="polite">Salvando evento...</p>}
           <footer className="cadastrar-evento-acoes">
             <button type="button" className="cadastrar-evento-cancelar" onClick={aoVoltar}>Cancelar</button>
             <button type="submit" className="cadastrar-evento-salvar">Salvar</button>

@@ -1,13 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import type { ChangeEvent, FormEvent, MouseEvent } from "react";
-import EstruturaInstitucional from "../../components/InstitutionFrame/InstitutionFrame";
+import EstruturaInstitucional from "../../components/Geral/InstitutionFrame/InstitutionFrame";
 
-import iconeCalendario from "../../assets/icons/calendario-evento.png";
-import iconeTurmas from "../../assets/icons/turmas-evento.png";
-import iconeSetaBaixo from "../../assets/icons/seta-baixo-evento.png";
-import iconeSetaVoltar from "../../assets/icons/seta-voltar-evento.png";
-import iconeRecorrencia from "../../assets/icons/recorrencia-evento.png";
+import iconeCalendario from "../../assets/icons/Geral/calendario-evento.png";
+import iconeTurmas from "../../assets/icons/Geral/turmas-evento.png";
+import iconeSetaBaixo from "../../assets/icons/Geral/seta-baixo-evento.png";
+import iconeSetaVoltar from "../../assets/icons/Geral/seta-voltar-evento.png";
+import iconeRecorrencia from "../../assets/icons/Geral/recorrencia-evento.png";
 
+import { adicionarComunicado } from "../Comunicados/data/comunicados";
+import { ambiente } from "../../config/ambiente";
+import { idObrigatorio } from "../../services/recursos";
 import "./CadastrarComunicados.css";
 
 interface PropriedadesCadastrarComunicados {
@@ -25,6 +28,8 @@ function CadastrarComunicados({
     const editorCorpoRef = useRef<HTMLDivElement>(null);
     const campoCorpoRef = useRef<HTMLInputElement>(null);
     const [imagemSelecionada, setImagemSelecionada] = useState<string | null>(null);
+    const [erro, definirErro] = useState("");
+    const [salvando, definirSalvando] = useState(false);
 
     useEffect(() => {
         return () => {
@@ -34,10 +39,31 @@ function CadastrarComunicados({
         };
     }, [imagemSelecionada]);
 
-    function cadastrarComunicado(evento: FormEvent<HTMLFormElement>) {
+    async function cadastrarComunicado(evento: FormEvent<HTMLFormElement>) {
         evento.preventDefault();
         sincronizarCorpo();
-        aoVoltar();
+        const dados = new FormData(evento.currentTarget);
+        definirErro("");
+        definirSalvando(true);
+        try {
+            const nome = String(dados.get("nome") ?? "").trim();
+            await adicionarComunicado({
+                nome,
+                titulo: nome.slice(0, 100),
+                descricao: String(dados.get("descricao") ?? "").trim() ||
+                    editorCorpoRef.current?.textContent?.slice(0, 150) || null,
+                observacoes: String(dados.get("observacoes") ?? "").trim() || null,
+                url_banner: null, // Envio de arquivos será definido com o backend.
+                id_instituicao: idObrigatorio(ambiente.idInstituicao, "ID da instituição"),
+                id_funcionario: idObrigatorio(ambiente.idFuncionario, "ID do funcionário"),
+                id_evento: null,
+            });
+            aoVoltar();
+        } catch (falha) {
+            definirErro(falha instanceof Error ? falha.message : "Não foi possível cadastrar o comunicado.");
+        } finally {
+            definirSalvando(false);
+        }
     }
 
     function selecionarImagem(evento: ChangeEvent<HTMLInputElement>) {
@@ -122,14 +148,11 @@ function CadastrarComunicados({
                                     </span>
 
                                     <span className="cadastrar-comunicados-selecao-area">
-                                        <select name="tipo" defaultValue="" required>
+                                        <select name="tipo" defaultValue="" disabled title="O banco ainda não possui categoria do comunicado.">
                                             <option value="" disabled>
                                                 Selecione os tipos de comunicado
                                             </option>
-                                            <option value="aviso">Aviso</option>
-                                            <option value="informativo">Informativo</option>
-                                            <option value="orientacao">Orientação</option>
-                                            <option value="evento">Evento</option>
+                                            <option value="sem-tipo">O banco não possui tipo de comunicado</option>
                                         </select>
 
                                         <img src={iconeSetaBaixo} alt="" />
@@ -170,7 +193,7 @@ function CadastrarComunicados({
 
                                     <span className="cadastrar-comunicados-entrada-com-icone">
                                         <img src={iconeCalendario} alt="" />
-                                        <input type="date" name="data" required />
+                                        <input type="date" name="data" disabled title="O banco ainda não possui data do comunicado." />
                                     </span>
                                 </label>
 
@@ -180,7 +203,7 @@ function CadastrarComunicados({
                                     </span>
 
                                     <span className="cadastrar-comunicados-entrada-com-icone">
-                                        <input type="time" name="horaInicio" required />
+                                        <input type="time" name="horaInicio" disabled title="O banco ainda não possui horário do comunicado." />
                                     </span>
                                 </label>
 
@@ -190,7 +213,7 @@ function CadastrarComunicados({
                                     </span>
 
                                     <span className="cadastrar-comunicados-entrada-com-icone">
-                                        <input type="time" name="horaTermino" />
+                                        <input type="time" name="horaTermino" disabled title="O banco ainda não possui horário do comunicado." />
                                     </span>
                                 </label>
                             </div>
@@ -206,6 +229,8 @@ function CadastrarComunicados({
 
                                         <select
                                             name="recorrencia"
+                                            disabled
+                                            title="O SQL ainda não suporta essa informação para comunicados."
                                             defaultValue="unica"
                                             required
                                         >
@@ -230,16 +255,14 @@ function CadastrarComunicados({
 
                                         <select
                                             name="turmas"
+                                            disabled
+                                            title="O SQL ainda não suporta essa informação para comunicados."
                                             defaultValue=""
                                             required
                                         >
                                             <option value="" disabled>
                                                 Selecione as turmas
                                             </option>
-                                            <option value="todas">Todas as turmas</option>
-                                            <option value="turma-a">Turma A</option>
-                                            <option value="turma-b">Turma B</option>
-                                            <option value="turma-c">Turma C</option>
                                         </select>
 
                                         <img src={iconeSetaBaixo} alt="" />
@@ -381,6 +404,11 @@ function CadastrarComunicados({
                         </aside>
                     </div>
 
+                    <p className="cadastrar-comunicados-ajuda">
+                        Data, horário, tipo, turmas, recorrência e upload de imagem dependem de alterações na API ou no banco.
+                    </p>
+                    {erro && <p role="alert" className="cadastrar-comunicados-erro">{erro}</p>}
+                    {salvando && <p aria-live="polite">Salvando comunicado...</p>}
                     <footer className="cadastrar-comunicados-acoes">
                         <button
                             type="button"

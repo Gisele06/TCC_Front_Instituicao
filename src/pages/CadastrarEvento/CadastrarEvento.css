@@ -350,3 +350,9 @@
     min-height: 135px;
   }
 }
+
+/* O seletor também é utilizado em outras telas, mas o espaçamento daqui é próprio. */
+.cadastrar-evento-icones { margin-bottom: 18px; }
+.cadastrar-evento-icones .bloom-seletor-icones-grade button { aspect-ratio: 1.12; }
+
+.cadastrar-evento-erro { margin: 0; color: #a63d32; font-size: 12px; }

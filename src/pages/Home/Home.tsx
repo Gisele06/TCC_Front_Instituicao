@@ -1,22 +1,27 @@
-import EstruturaInstitucional from "../../components/InstitutionFrame/InstitutionFrame";
-import FaixaDeDestaque from "../../components/HeroBanner/HeroBanner";
-import CartaoDeIndicador from "../../components/StatCard/StatCard";
-import CartaoDeLista from "../../components/ListItemCard/ListItemCard";
+import { useEffect, useState } from "react";
+import { carregarEventos, type Evento } from "../Eventos/data/eventos";
+import { fonteDisponivel } from "../../services/recursos";
+import { carregarPainelHome, type PainelHome } from "../../services/indicadores";
+import GraficoHome from "./components/GraficoHome";
+import iconeSetaCima from "../../assets/icons/Geral/seta-cima.png";
+import EstruturaInstitucional from "../../components/Geral/InstitutionFrame/InstitutionFrame";
+import FaixaDeDestaque from "../../components/Geral/HeroBanner/HeroBanner";
+import CartaoDeIndicador from "../../components/Geral/StatCard/StatCard";
+import CartaoDeLista from "../../components/Geral/ListItemCard/ListItemCard";
 
-import iconeSetaDireita from "../../assets/icons/chevron-right.png";
-import iconeSorriso from "../../assets/icons/sorriso.png";
-import iconePessoas from "../../assets/icons/pessoas.png";
-import iconeSetaCima from "../../assets/icons/seta-cima.png";
-import imagemDeMontanhas from "../../assets/images/hero-mountains.png";
-import iconeCoracao from "../../assets/icons/coracao.png";
-import iconeBarras from "../../assets/icons/barras.png";
-import iconeCalendarioComPontos from "../../assets/icons/calendario-pontos.png";
-import iconeTituloCalendario from "../../assets/icons/calendario-titulo.png";
-import iconeHistorico from "../../assets/icons/historico.png";
-import iconeMensagem from "../../assets/icons/mensagem.png";
-import iconeComunidade from "../../assets/icons/comunidade.png";
-import iconeNota from "../../assets/icons/nota.png";
-import iconeRaio from "../../assets/icons/raio.png";
+import iconeSetaDireita from "../../assets/icons/Geral/chevron-right.png";
+import iconeSorriso from "../../assets/icons/Geral/sorriso.png";
+import iconePessoas from "../../assets/icons/Geral/pessoas.png";
+import imagemDeMontanhas from "../../assets/images/Home/hero-mountains.png";
+import iconeCoracao from "../../assets/icons/Geral/coracao.png";
+import iconeBarras from "../../assets/icons/Home/barras.png";
+import iconeCalendarioComPontos from "../../assets/icons/Home/calendario-pontos.png";
+import iconeTituloCalendario from "../../assets/icons/Geral/calendario-titulo.png";
+import iconeHistorico from "../../assets/icons/Home/historico.png";
+import iconeMensagem from "../../assets/icons/Home/mensagem.png";
+import iconeComunidade from "../../assets/icons/Home/comunidade.png";
+import iconeNota from "../../assets/icons/Home/nota.png";
+import iconeRaio from "../../assets/icons/Home/raio.png";
 
 import "./Home.css";
 
@@ -61,39 +66,57 @@ function Inicio({ aoNavegar, aoCriarEvento }: PropriedadesInicio) {
     { rotulo: "Criar turma", icone: iconeNota },
   ];
 
-  const eventos = [
-    {
-      dia: "06",
-      mes: "Jul",
-      titulo: "Dia da pizza",
-      informacao: "13:00 - 14:00 | D83T, T4, M2",
-      local: "Refeitório",
-    },
-    {
-      dia: "10",
-      mes: "Jul",
-      titulo: "Porque me sinto triste?",
-      informacao: "14:00 - 16:00 | Todas as salas",
-      local: "B09",
-    },
-    {
-      dia: "20",
-      mes: "Ago",
-      titulo: "Festival de talentos",
-      informacao: "O dia todo | Adm, D83T, DS2M, T1...",
-      local: "Auditório",
-    },
-  ];
+  const [eventos, definirEventos] = useState<Evento[]>([]);
+  const [painel, definirPainel] = useState<PainelHome | null>(null);
+
+  useEffect(() => {
+    let ativo = true;
+    carregarPainelHome()
+      .then((dados) => { if (ativo) definirPainel(dados); })
+      .catch(() => { if (ativo) definirPainel(null); });
+    return () => { ativo = false; };
+  }, []);
+
+  const [erro, definirErro] = useState("");
+  const [carregando, definirCarregando] = useState(true);
+
+  useEffect(() => {
+    let ativo = true;
+    carregarEventos()
+      .then((lista) => { if (ativo) definirEventos(lista); })
+      .catch((falha: unknown) => {
+        if (ativo) definirErro(falha instanceof Error ? falha.message : "Não foi possível carregar eventos.");
+      })
+      .finally(() => { if (ativo) definirCarregando(false); });
+    return () => { ativo = false; };
+  }, []);
+
+  const hoje = new Date();
+  const eventosDoMes = eventos.filter((evento) => {
+    const [ano, mes] = evento.data.split("-").map(Number);
+    return ano === hoje.getFullYear() && mes === hoje.getMonth() + 1;
+  }).length;
+  const eventosRecentes = [...eventos]
+    .sort((a, b) => a.data.localeCompare(b.data))
+    .slice(0, 3)
+    .map((evento) => {
+      const [, mes, dia] = evento.data.split("-");
+      const meses = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+      return {
+        id: evento.id,
+        dia,
+        mes: meses[Number(mes) - 1] ?? "—",
+        titulo: evento.titulo,
+        informacao: `${evento.horaInicio} - ${evento.horaFim}`,
+        local: evento.local,
+      };
+    });
 
   const dadosRecentes = [
-    { rotulo: "Total de alunos", valor: "345", icone: iconeHistorico },
-    { rotulo: "Avaliações realizadas", valor: "428", icone: iconeNota },
-    {
-      rotulo: "Eventos feitos no mês",
-      valor: "9",
-      icone: iconeCalendarioComPontos,
-    },
-    { rotulo: "Mensagens enviadas", valor: "3", icone: iconeMensagem },
+    { rotulo: "Total de alunos", valor: painel ? String(painel.totais.alunos) : "—", icone: iconeHistorico },
+    { rotulo: "Avaliações realizadas", valor: painel ? String(painel.totais.avaliacoes) : "—", icone: iconeNota },
+    { rotulo: "Eventos neste mês", valor: fonteDisponivel() && !erro && !carregando ? String(eventosDoMes) : "—", icone: iconeCalendarioComPontos },
+    { rotulo: "Mensagens enviadas", valor: painel ? String(painel.totais.mensagens) : "—", icone: iconeMensagem },
   ];
 
   return (
@@ -103,8 +126,8 @@ function Inicio({ aoNavegar, aoCriarEvento }: PropriedadesInicio) {
           <div className="inicio-superior-esquerdo">
             <FaixaDeDestaque
               textoAcimaDoTitulo="Bem-vindo de volta,"
-              tituloDeBoasVindas="Olá, Manoel!"
-              textoDeBoasVindas="Algum outro texto legal vai ficar aqui."
+              tituloDeBoasVindas="Olá! Bem-vindo ao Bloom"
+              textoDeBoasVindas="Acompanhe as atividades da sua instituição."
               imagemDeFundo={<img src={imagemDeMontanhas} alt="" />}
             />
 
@@ -112,28 +135,30 @@ function Inicio({ aoNavegar, aoCriarEvento }: PropriedadesInicio) {
               <CartaoDeIndicador
                 icone={<img src={iconeSorriso} alt="" />}
                 rotulo="Índice bem-estar"
-                textoDoSelo="Bom"
-                valor="78%"
-                iconeDaVariacao={<img src={iconeSetaCima} alt="" />}
-                textoDaVariacao="8% de aumento nesse mês"
+                textoDoSelo={painel?.bemEstar.selo ?? "Sem dados"}
+                estiloDoSelo={painel ? "bom" : "neutro"}
+                valor={painel?.bemEstar.valor ?? "—"}
+                textoDaVariacao={painel?.bemEstar.variacao ?? "Aguardando métricas da API"}
+                iconeDaVariacao={painel ? <img src={iconeSetaCima} alt="" /> : undefined}
                 iconeSeta={<img src={iconeSetaDireita} alt="" />}
               />
               <CartaoDeIndicador
                 icone={<img src={iconePessoas} alt="" />}
                 rotulo="Participação"
-                textoDoSelo="Bom"
-                valor="67%"
-                iconeDaVariacao={<img src={iconeSetaCima} alt="" />}
-                textoDaVariacao="12% de aumento nesse mês"
+                textoDoSelo={painel?.participacao.selo ?? "Sem dados"}
+                estiloDoSelo={painel ? "bom" : "neutro"}
+                valor={painel?.participacao.valor ?? "—"}
+                textoDaVariacao={painel?.participacao.variacao ?? "Aguardando métricas da API"}
+                iconeDaVariacao={painel ? <img src={iconeSetaCima} alt="" /> : undefined}
                 iconeSeta={<img src={iconeSetaDireita} alt="" />}
               />
               <CartaoDeIndicador
                 icone={<img src={iconeCoracao} alt="" />}
                 rotulo="Turmas em atenção"
-                textoDoSelo="Bom"
-                valor="3"
-                iconeDaVariacao={<img src={iconeSetaCima} alt="" />}
-                textoDaVariacao="2% de aumento nesse mês"
+                textoDoSelo={painel?.turmasEmAtencao.selo ?? "Sem dados"}
+                estiloDoSelo={painel ? "aviso" : "neutro"}
+                valor={painel?.turmasEmAtencao.valor ?? "—"}
+                textoDaVariacao={painel?.turmasEmAtencao.variacao ?? "Aguardando métricas da API"}
                 iconeSeta={<img src={iconeSetaDireita} alt="" />}
               />
             </div>
@@ -177,24 +202,13 @@ function Inicio({ aoNavegar, aoCriarEvento }: PropriedadesInicio) {
               <span className="inicio-grafico-periodo">Últimos 30 dias <span aria-hidden="true">⌄</span></span>
             </div>
 
-            <svg viewBox="0 0 600 180" className="inicio-grafico-vetor" preserveAspectRatio="none" role="img" aria-label="Gráfico de evolução: bem-estar, participação e turmas em atenção">
-              <defs>
-                <linearGradient id="inicio-area-verde" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#4baf94" stopOpacity=".22"/><stop offset="100%" stopColor="#4baf94" stopOpacity=".025"/></linearGradient>
-                <linearGradient id="inicio-area-azul" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#3479b8" stopOpacity=".18"/><stop offset="100%" stopColor="#3479b8" stopOpacity=".015"/></linearGradient>
-                <linearGradient id="inicio-area-roxa" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#a17bc8" stopOpacity=".20"/><stop offset="100%" stopColor="#a17bc8" stopOpacity=".025"/></linearGradient>
-              </defs>
-              <g className="inicio-grafico-grade"><path d="M44 15H596 M44 50H596 M44 85H596 M44 120H596 M44 155H596"/></g>
-              <path d="M44 100 C85 95 95 75 136 72 S196 57 228 56 S293 64 320 43 S383 27 412 34 S475 49 504 44 S560 49 596 32 L596 155 H44Z" fill="url(#inicio-area-verde)"/>
-              <path d="M44 76 C86 71 100 53 136 55 S193 58 228 45 S285 52 320 62 S381 70 412 60 S477 24 504 27 S564 35 596 29 L596 155 H44Z" fill="url(#inicio-area-azul)"/>
-              <path d="M44 129 C86 127 100 111 136 114 S195 128 228 123 S285 88 320 91 S384 102 412 113 S474 109 504 102 S565 112 596 96 L596 155 H44Z" fill="url(#inicio-area-roxa)"/>
-              <path className="inicio-linha inicio-linha-verde" d="M44 100 C85 95 95 75 136 72 S196 57 228 56 S293 64 320 43 S383 27 412 34 S475 49 504 44 S560 49 596 32"/>
-              <path className="inicio-linha inicio-linha-azul" d="M44 76 C86 71 100 53 136 55 S193 58 228 45 S285 52 320 62 S381 70 412 60 S477 24 504 27 S564 35 596 29"/>
-              <path className="inicio-linha inicio-linha-roxa" d="M44 129 C86 127 100 111 136 114 S195 128 228 123 S285 88 320 91 S384 102 412 113 S474 109 504 102 S565 112 596 96"/>
-              <g className="inicio-grafico-eixo-rotulo">
-                <text x="21" y="19">100</text><text x="26" y="54">75</text><text x="26" y="89">50</text><text x="26" y="124">25</text><text x="33" y="159">0</text>
-                <text x="44" y="176">15/06</text><text x="136" y="176">22/06</text><text x="228" y="176">29/06</text><text x="320" y="176">06/07</text><text x="412" y="176">13/07</text><text x="504" y="176">20/07</text><text x="596" y="176" textAnchor="end">27/07</text>
-              </g>
-            </svg>
+            {painel ? (
+              <GraficoHome dados={painel.grafico} />
+            ) : (
+              <div className="inicio-grafico-sem-dados" role="status">
+                O gráfico será exibido quando o backend disponibilizar os indicadores.
+              </div>
+            )}
 
             <div className="inicio-grafico-legenda">
               <span className="inicio-grafico-legenda-item">
@@ -228,8 +242,8 @@ function Inicio({ aoNavegar, aoCriarEvento }: PropriedadesInicio) {
               </button>
             </div>
             <div className="inicio-evento-lista">
-              {eventos.map((evento) => (
-                <div className="inicio-evento-linha" key={evento.titulo}>
+              {eventosRecentes.map((evento) => (
+                <div className="inicio-evento-linha" key={evento.id}>
                   <EtiquetaDeData dia={evento.dia} mes={evento.mes} />
                   <div className="inicio-evento-detalhes">
                     <span className="inicio-evento-titulo">
@@ -250,6 +264,9 @@ function Inicio({ aoNavegar, aoCriarEvento }: PropriedadesInicio) {
                   />
                 </div>
               ))}
+              {carregando && <p>Carregando eventos...</p>}
+              {erro && <p role="alert">{erro}</p>}
+              {!carregando && !erro && eventosRecentes.length === 0 && <p>Nenhum evento cadastrado.</p>}
             </div>
           </div>
 

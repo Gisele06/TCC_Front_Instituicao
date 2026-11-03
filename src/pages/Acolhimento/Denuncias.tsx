@@ -1,110 +1,137 @@
-import { useState } from "react";
+import { fonteDisponivel } from "../../services/recursos";
+import { useEffect, useState } from "react";
+import EstruturaInstitucional from "../../components/Geral/InstitutionFrame/InstitutionFrame";
+import CabecalhoDePagina from "../../components/Geral/PageHeader/PageHeader";
+import AbasSegmentadas from "../../components/Geral/SegmentedTabs/SegmentedTabs";
+import AnonymousChat from "./components/AnonymousChat/AnonymousChat";
+import InformationCard from "./components/InformationCard/InformationCard";
+import CartaoDenuncia from "./components/CartaoDenuncia";
+import DetalheDenuncia from "./components/DetalheDenuncia";
+import RedesApoio from "./RedesApoio";
+import { carregarDenuncias, type Denuncia } from "./data/denuncias";
+
+import iconeDenuncia from "../../assets/icons/Acolhimento/complaint.png";
+import iconeRede from "../../assets/icons/Acolhimento/world-markets.png";
+import iconeRepetir from "../../assets/icons/Acolhimento/repeat.png";
+import iconeConcluido from "../../assets/icons/Acolhimento/check-mark.png";
+import iconeLista from "../../assets/icons/Geral/clipboard.png";
+import iconeBusca from "../../assets/icons/Geral/busca.png";
 import "./Denuncia.css";
-import EstruturaInstitucional from "../../components/InstitutionFrame/InstitutionFrame";
-import CabecalhoDePagina from "../../components/PageHeader/PageHeader";
-import AbasSegmentadas from "../../components/SegmentedTabs/SegmentedTabs";
-import AnonymousChat from "../../components/AnonymousChat/AnonymousChat";
-
-import InformationCard from "../../components/Acolhimento/InformationCard/InformationCard"; 
-
-
-import complaint from "../../assets/icons/Acolhimento/complaint.png";
-import world from "../../assets/icons/Acolhimento/world-markets.png";
-import bubble from "../../assets/icons/Acolhimento/chat-bubble.png";
-import repeat from "../../assets/icons/Acolhimento/repeat.png";
-import check from "../../assets/icons/Acolhimento/check-mark.png";
-import clock from "../../assets/icons/Acolhimento/clock.png";
-import visit from "../../assets/icons/Acolhimento/visit.png";
-import people from "../../assets/icons/Acolhimento/people.png";
-import chat from "../../assets/icons/Acolhimento/chat.png";
-import clipboard from "../../assets/icons/Clipboard.png";
-import busca from "../../assets/icons/busca.png";
-import chevron from "../../assets/icons/chevron-right.png";
-
-
-
-
-interface Props { aoNavegar: (pagina: string) => void }
-
 
 type Visao = "denuncias" | "redesApoio";
 
-
-const denuncias = [
-  { id: 6767, categoria: "Violência/Agressão", resumo: "Gostaria de relatar uma situação que vem acontecendo...", relato: "Gostaria de relatar uma situação que vem acontecendo, no pátio do intervalo (não quero desenvolver uma situação de bullying finge que tem um relato escrito aqui)...", mensagens: 2, data: "Hoje, 10:32", status: "Em andamento", local: "Pátio" },
-  { id: 6214, categoria: "Convivência/Bullying", resumo: "Estou contando isso porque já é a 5 vez que acontece com...", relato: "Estou contando isso porque já é a 5 vez que acontece comigo...", mensagens: 5, data: "2 dias atrás, 21:48", status: "Em andamento", local: "Escola" },
-];
-const abas = [{ valor: "denuncias", rotulo: "Denúncias", icone: <img src={complaint} alt="" /> }, { valor: "redesApoio", rotulo: "Redes de apoio", icone: <img src={world} alt="" /> }];
-
-
-function Acolhimento({ aoNavegar }: Props) {
-
-
-  const [visao, setVisao] = useState<Visao>("denuncias");
-  const [buscaTexto, setBuscaTexto] = useState("");
-  const [selecionada, setSelecionada] = useState(6767);
-  const [chatAberto, setChatAberto] = useState(false);
-  const [expandido, setExpandido] = useState(false);
-  const denuncia = denuncias.find((item) => item.id === selecionada) ?? denuncias[0];
-
-
-  return <EstruturaInstitucional paginaAtiva="acolhimento" aoNavegar={aoNavegar} quantidadeDeAvisos={3}>
-
-
-    <main className="bem-estar-pagina acolhimento-pagina">
-      <CabecalhoDePagina className="acolhimento-cabecalho" titulo="Acolhimento" subtitulo="Acompanhe o bem-estar dos estudantes" />
-      
-      <AbasSegmentadas className="bem-estar-abas" 
-      itens={abas} 
-      valor={visao} 
-      aoMudar={(valor) => setVisao(valor as Visao)} />
-      
-      {visao === "denuncias" ? <>
-        <div className="acolhimento-estatisticas">
-
-        <div className="information-cards">
-            <InformationCard
-              icon={clipboard}
-              value={15}
-              label="Recebidas"
-            />
-
-            <InformationCard
-              icon={repeat}
-              value={8}
-              label="Em andamento"
-            />
-
-            <InformationCard
-              icon={check}
-              value={13}
-              label="Resolvidas"
-            />
-        </div>
-           
-        </div>
-          <div className="acolhimento-colunas">
-            <section className="acolhimento-lista"><h2><img src={complaint} alt="" /> Denúncias</h2>
-              <label className="acolhimento-busca"><img src={busca} alt="" /><input placeholder="Buscar denúncia" value={buscaTexto} onChange={(e) => setBuscaTexto(e.target.value)} /></label>
-              <div className="acolhimento-itens">{denuncias.filter((item) => `${item.id} ${item.categoria} ${item.resumo}`.toLowerCase().includes(buscaTexto.toLowerCase())).map((item) => <button key={item.id} type="button" className={`acolhimento-item ${selecionada === item.id ? "selecionado" : ""}`} onClick={() => { setSelecionada(item.id); setExpandido(false); }}>
-                <div className="acolhimento-item-texto"><h3>#{item.id} <span>{item.categoria}</span></h3><p>“{item.resumo}”</p><small><img src={bubble} alt="" /> {item.mensagens} Mensagens</small></div>
-                <div className="acolhimento-item-lado"><small>{item.data}</small><span>{item.status}</span></div><img className="acolhimento-chevron" src={chevron} alt="" />
-              </button>)}</div>
-            </section>
-            
-            <aside className="acolhimento-detalhe"><h2>Denúncia #{denuncia.id}</h2><div className="acolhimento-detalhe-topo"><div><strong>{denuncia.categoria}</strong><small>Recebida em 06/07/2026, às 10:32</small></div><span>{denuncia.status}</span></div>
-              <h3>Relato</h3><p className={`acolhimento-relato ${expandido ? "expandido" : ""}`}>“{denuncia.relato}”</p><button className="acolhimento-vermais" type="button" onClick={() => setExpandido(!expandido)}>{expandido ? "⌃ Ver menos" : "⌄ Ver mais"}</button>
-              <h3>Informações</h3><div className="acolhimento-info"><span><img src={clock} alt="" /> Quando:</span><small>Hoje, às 10:32</small></div><div className="acolhimento-info"><span><img src={visit} alt="" /> Onde:</span><small>{denuncia.local}</small></div><div className="acolhimento-info"><span><img src={people} alt="" /> Envolvidos:</span><small>Outros estudantes</small></div>
-              <button type="button" className="acolhimento-abrir-chat" onClick={() => setChatAberto(true)}><img src={chat} alt="" /> Abrir chat</button>
-            </aside>
-        </div>
-      </> : <div className="acolhimento-redes">Redes de apoio</div>}
-    </main>
-
-
-    <AnonymousChat aberto={chatAberto} aoFechar={() => setChatAberto(false)} denunciaId={selecionada} />
-  </EstruturaInstitucional>;
+interface Props {
+  aoNavegar: (pagina: string) => void;
+  aoCadastrarRede?: () => void;
+  visaoInicial?: Visao;
 }
 
+const abas = [
+  { valor: "denuncias", rotulo: "Denúncias", icone: <img src={iconeDenuncia} alt="" /> },
+  { valor: "redesApoio", rotulo: "Redes de apoio", icone: <img src={iconeRede} alt="" /> },
+];
 
-export default Acolhimento;
+export default function Acolhimento({
+  aoNavegar,
+  aoCadastrarRede = () => {},
+  visaoInicial = "denuncias",
+}: Props) {
+  const [visao, definirVisao] = useState<Visao>(visaoInicial);
+  const [busca, definirBusca] = useState("");
+  const [idSelecionado, definirSelecionado] = useState<number | null>(null);
+  const [chatAberto, definirChatAberto] = useState(false);
+  const [denuncias, definirDenuncias] = useState<Denuncia[]>([]);
+  const [erro, definirErro] = useState("");
+  const [carregando, definirCarregando] = useState(true);
+
+  useEffect(() => {
+    let ativo = true;
+    carregarDenuncias()
+      .then((lista) => {
+        if (!ativo) return;
+        definirDenuncias(lista);
+        definirSelecionado(lista[0]?.id ?? null);
+      })
+      .catch((falha: unknown) => {
+        if (ativo) definirErro(falha instanceof Error ? falha.message : "Erro ao carregar denúncias.");
+      })
+      .finally(() => { if (ativo) definirCarregando(false); });
+    return () => { ativo = false; };
+  }, []);
+
+  const denuncia = denuncias.find((item) => item.id === idSelecionado) ?? null;
+  const denunciasFiltradas = denuncias.filter((item) =>
+    `${item.id} ${item.categoria} ${item.resumo}`.toLocaleLowerCase("pt-BR")
+      .includes(busca.toLocaleLowerCase("pt-BR")),
+  );
+
+  return (
+    <EstruturaInstitucional paginaAtiva="acolhimento" aoNavegar={aoNavegar}>
+      <main className="acolhimento-pagina">
+        <CabecalhoDePagina
+          className="acolhimento-cabecalho"
+          titulo="Acolhimento"
+          subtitulo="Acompanhe o bem-estar dos estudantes"
+        />
+        <AbasSegmentadas
+          className="acolhimento-abas"
+          itens={abas}
+          valor={visao}
+          aoMudar={(valor) => definirVisao(valor as Visao)}
+        />
+
+        {visao === "redesApoio" ? (
+          <RedesApoio aoCadastrar={aoCadastrarRede} />
+        ) : (
+          <>
+            <div className="acolhimento-estatisticas">
+              <div className="information-cards">
+                <InformationCard icon={iconeLista} value={fonteDisponivel() && !erro && !carregando ? denuncias.length : "—"} label="Recebidas" />
+                <InformationCard icon={iconeRepetir} value={fonteDisponivel() && !erro && !carregando ? denuncias.filter((item) => item.status.toLocaleLowerCase("pt-BR") === "em andamento").length : "—"} label="Em andamento" />
+                <InformationCard icon={iconeConcluido} value={fonteDisponivel() && !erro && !carregando ? denuncias.filter((item) => item.status.toLocaleLowerCase("pt-BR") === "resolvida").length : "—"} label="Resolvidas" />
+              </div>
+            </div>
+
+            <div className="acolhimento-colunas">
+              <section className="acolhimento-lista" aria-label="Denúncias">
+                <h2><img src={iconeDenuncia} alt="" /> Denúncias</h2>
+                <label className="acolhimento-busca">
+                  <img src={iconeBusca} alt="" />
+                  <input
+                    type="search"
+                    value={busca}
+                    placeholder="Buscar denúncia"
+                    onChange={(evento) => definirBusca(evento.target.value)}
+                  />
+                </label>
+                <div className="acolhimento-itens">
+                  {!fonteDisponivel() && <p>Configure VITE_API_BASE_URL no modo API para consultar denúncias.</p>}
+                  {carregando && <p>Carregando denúncias...</p>}
+                  {erro && <p role="alert">{erro}</p>}
+                  {denunciasFiltradas.map((item) => (
+                    <CartaoDenuncia
+                      key={item.id}
+                      denuncia={item}
+                      selecionada={item.id === idSelecionado}
+                      aoSelecionar={() => definirSelecionado(item.id)}
+                    />
+                  ))}
+                  {!carregando && !erro && fonteDisponivel() && denunciasFiltradas.length === 0 && <p>Nenhuma denúncia registrada ou encontrada.</p>}
+                </div>
+              </section>
+              {denuncia ? <DetalheDenuncia key={denuncia.id} denuncia={denuncia} aoAbrirChat={() => definirChatAberto(true)} /> :
+                <aside className="acolhimento-detalhe"><h2>Detalhes da denúncia</h2><p>Selecione uma denúncia para ver os detalhes.</p></aside>}
+            </div>
+          </>
+        )}
+      </main>
+      {idSelecionado != null && (
+        <AnonymousChat
+          aberto={chatAberto}
+          aoFechar={() => definirChatAberto(false)}
+          denunciaId={idSelecionado}
+        />
+      )}
+    </EstruturaInstitucional>
+  );
+}

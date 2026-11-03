@@ -1,0 +1,66 @@
+.bloom-form-cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-height: 84px;
+  padding: 14px 22px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 18px;
+  background: var(--cor-superficie);
+}
+.bloom-form-cabecalho button {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: #e9eee6;
+  color: #294438;
+  font-size: 22px;
+  cursor: pointer;
+}
+.bloom-form-cabecalho h1 {
+  margin: 0;
+  font-size: clamp(20px, 1.6vw, 30px);
+}
+.bloom-form-cabecalho p {
+  margin: 2px 0 0;
+  color: #829891;
+  font-size: clamp(11px, .85vw, 14px);
+}
+.bloom-form-painel {
+  min-width: 0;
+  padding: clamp(16px, 1.5vw, 28px);
+  border: 1px solid var(--cor-borda);
+  border-radius: 22px;
+  background: var(--cor-superficie);
+}
+.bloom-form-painel h2 {
+  margin: 0 0 15px;
+  font-size: clamp(17px, 1.2vw, 23px);
+}
+.bloom-form-acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.bloom-form-acoes button {
+  min-width: 104px;
+  min-height: 39px;
+  padding: 0 15px;
+  border: 1px solid #294438;
+  border-radius: 9px;
+  background: transparent;
+  color: #294438;
+  font-weight: 700;
+  cursor: pointer;
+}
+.bloom-form-acoes button[type=submit] {
+  background: #294438;
+  color: #fff;
+}
+.bloom-form-acoes button:disabled {
+  opacity: .6;
+  cursor: wait;
+}

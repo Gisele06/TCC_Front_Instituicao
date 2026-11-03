@@ -1,16 +1,16 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
-import Botao from "../../components/Button/Button";
+import Botao from "../../components/Geral/Button/Button";
 import {
   CampoAcesso,
   EtapasAcesso,
   IconeAcesso,
   RequisitosSenha,
-} from "../../components/AcessoFluxo/AcessoFluxo";
-import iconeLogoBloom from "../../assets/icons/logo-b.png";
-import imagemDeFundoDoAcesso from "../../assets/images/login-hero.png";
-import iconeSetaVoltar from "../../assets/icons/seta-voltar.png";
-import "../auth.css";
+} from "../../components/Geral/AcessoFluxo/AcessoFluxo";
+import iconeLogoBloom from "../../assets/icons/Geral/logo-b.png";
+import imagemDeFundoDoAcesso from "../../assets/images/Geral/login-hero.png";
+import iconeSetaVoltar from "../../assets/icons/Geral/seta-voltar.png";
+import "./Cadastro.css";
 
 interface PropriedadesCadastro {
   aoVoltar: () => void;

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import EstruturaInstitucional from "../../components/InstitutionFrame/InstitutionFrame";
-import CabecalhoDePagina from "../../components/PageHeader/PageHeader";
-import AbasSegmentadas from "../../components/SegmentedTabs/SegmentedTabs";
-import { iconesBemEstar } from "../../components/Icons/IconesBemEstar";
+import EstruturaInstitucional from "../../components/Geral/InstitutionFrame/InstitutionFrame";
+import CabecalhoDePagina from "../../components/Geral/PageHeader/PageHeader";
+import AbasSegmentadas from "../../components/Geral/SegmentedTabs/SegmentedTabs";
+import { iconesBemEstar } from "./icons/IconesBemEstar";
 import PanoramaGeral from "./PanoramaGeral";
 import Turmas from "./Turmas";
 
@@ -23,7 +23,7 @@ function BemEstar({ aoNavegar }: PropriedadesBemEstar) {
   const [visao, definirVisao] = useState<VisaoDoBemEstar>("panorama");
 
   return (
-    <EstruturaInstitucional paginaAtiva="bem-estar" aoNavegar={aoNavegar} quantidadeDeAvisos={3}>
+    <EstruturaInstitucional paginaAtiva="bem-estar" aoNavegar={aoNavegar}>
       <main className="bem-estar-pagina">
         <CabecalhoDePagina
           className="bem-estar-cabecalho"
