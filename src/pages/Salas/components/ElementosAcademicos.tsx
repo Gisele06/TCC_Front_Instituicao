@@ -1,5 +1,5 @@
 import iconePessoas from "../../../assets/icons/Geral/pessoas.png";
-import iconeVoltar from "../../../assets/icons/Geral/seta-voltar.png";
+import iconeVoltar from "../../../assets/icons/Geral/seta-voltar-evento.png";
 
 export function Resumo({ valor, rotulo, icone }: { valor: string; rotulo: string; icone: string }) {
   return (

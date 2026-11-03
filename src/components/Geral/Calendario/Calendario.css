@@ -1,0 +1,209 @@
+
+.calendario {
+    width: 100%;
+    padding: 30px 38px;
+    box-sizing: border-box;
+    border: 2px solid #e6dfc9;
+    border-radius: 34px;
+    background: #f9f8f2;
+    color: #19342e;
+  }
+  
+  .calendario-titulo {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin: 0 0 24px;
+    font-size: 36px;
+    font-weight: 600;
+  }
+  
+  .calendario-titulo span {
+    font-size: 30px;
+  }
+  
+  .calendario .rdp-root {
+    --rdp-accent-color: #8ead9a;
+    --rdp-day-height: 52px;
+    --rdp-day-width: 52px;
+    --rdp-day_button-height: 48px;
+    --rdp-day_button-width: 48px;
+    --rdp-day_button-border-radius: 50%;
+    width: 100%;
+  }
+  
+  .calendario .rdp-months,
+  .calendario .rdp-month,
+  .calendario .rdp-month_grid {
+    width: 100%;
+    max-width: none;
+  }
+  
+  .calendario .rdp-month_caption {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 18px;
+    width: fit-content;
+    min-width: 240px;
+    height: 45px;
+    border: 2px solid #e6dfc9;
+    border-radius: 30px;
+  }
+  
+  .calendario .rdp-caption_label {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+  
+  .calendario .rdp-nav {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 240px;
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none;
+  }
+  
+  .calendario .rdp-button_previous,
+  .calendario .rdp-button_next {
+    width: 40px;
+    height: 40px;
+    pointer-events: auto;
+    color: #19342e;
+  }
+  
+  .calendario .rdp-weekday {
+    font-size: 19px;
+    font-weight: 600;
+    color: #26382f;
+    padding-bottom: 10px;
+  }
+  
+  .calendario .rdp-day {
+    position: relative;
+    text-align: center;
+  }
+  
+  .calendario .rdp-day_button {
+    font-size: 19px;
+    color: #19342e;
+    border: none;
+    margin: auto;
+  }
+  
+  .calendario .rdp-selected .rdp-day_button {
+    background: #8ead9a;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+  }
+  
+  .calendario .rdp-outside .rdp-day_button {
+    color: #8ead9a;
+    opacity: 0.85;
+  }
+  
+  .calendario .rdp-day_button:hover:not(:disabled) {
+    background: #dce6dc;
+  }
+  
+  .calendario .rdp-selected .rdp-day_button:hover {
+    background: #8ead9a;
+  }
+  
+  .calendario .dia-com-evento .rdp-day_button::after {
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #19342e;
+    bottom: 1px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .calendario-eventos {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 2px solid #e6dfc9;
+  }
+  
+  .calendario-eventos-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  
+  .calendario-eventos-cabecalho h3 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 600;
+  }
+  
+  .calendario-eventos-cabecalho span {
+    color: #80a897;
+    font-size: 17px;
+    font-weight: 600;
+  }
+  
+  .calendario-eventos-lista {
+    margin-top: 20px;
+  }
+  
+  .calendario-eventos-lista p {
+    font-size: 15px;
+    color: #83948c;
+  }
+  
+  .calendario-evento {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid #e6dfc9;
+    font-size: 15px;
+  }
+  
+  .calendario-evento span {
+    color: #80a897;
+  }
+  
+  @media (max-width: 600px) {
+    .calendario {
+      padding: 20px 14px;
+      border-radius: 24px;
+    }
+  
+    .calendario-titulo {
+      font-size: 28px;
+    }
+  
+    .calendario .rdp-root {
+      --rdp-day-height: 40px;
+      --rdp-day-width: 40px;
+      --rdp-day_button-height: 38px;
+      --rdp-day_button-width: 38px;
+    }
+  
+    .calendario .rdp-day_button,
+    .calendario .rdp-weekday {
+      font-size: 14px;
+    }
+  
+    .calendario-eventos-cabecalho h3 {
+      font-size: 20px;
+    }
+  
+    .calendario-eventos-cabecalho span {
+      font-size: 13px;
+    }
+  }
+  

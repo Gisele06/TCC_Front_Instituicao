@@ -1,13 +1,13 @@
 import calendario from "../../../assets/icons/Geral/calendar.png";
-import comunicado from "../../../assets/icons/Geral/comunicados.png";
+import comunicado from "../../../assets/icons/Geral/Megaphone.png";
 import pessoa from "../../../assets/icons/Geral/pessoa.png";
 import coracao from "../../../assets/icons/Geral/coracao.png";
 import formacao from "../../../assets/icons/Geral/formacao.png";
 import pessoas from "../../../assets/icons/Geral/pessoas.png";
 import escudo from "../../../assets/icons/Geral/cadeado.png";
 import livro from "../../../assets/icons/Geral/materia.png";
-import folha from "../../../assets/icons/Geral/bem-estar.png";
-import flor from "../../../assets/icons/Geral/acolhimento.png";
+import folha from "../../../assets/icons/Geral/Leaf.png";
+import flor from "../../../assets/icons/Geral/flower_bouquet.png";
 import type { OpcaoDeIcone } from "./SeletorDeIcones";
 
 /** Ícones que podem ser usados em diferentes cadastros do Bloom. */
