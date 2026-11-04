@@ -1,10 +1,9 @@
-/* 
 .bloom-pequeno-calendario {
-  width: 100px;
-  box-sizing: border-box;
+  width: 320px;
   background: var(--cor-fundo);
   border: 1px solid var(--cor-borda);
   border-radius: var(--arredondamento-grande);
+  padding: 20px;
   font-family: var(--familia-da-fonte);
 }
 
@@ -13,12 +12,6 @@
   align-items: center;
   gap: 10px;
   margin-bottom: 16px;
-}
-
-.bloom-pequeno-calendario-titulo img {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
 }
 
 .bloom-pequeno-calendario-titulo h2 {
@@ -31,8 +24,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 130px;
-  box-sizing: border-box;
+  width: 200px;
   margin: 0 auto 16px;
   padding: 8px 16px;
   border: 1px solid var(--cor-borda);
@@ -42,111 +34,72 @@
   color: var(--cor-texto);
 }
 
-.bloom-pequeno-calendario-navegacao span {
-  text-transform: capitalize;
-  white-space: nowrap;
-}
-
 .bloom-pequeno-calendario-navegacao button {
   border: none;
   background: transparent;
-  color: inherit;
   cursor: pointer;
-  font-size: 24px;
-  line-height: 14px;
-  padding: 0;
 }
 
-.bloom-pequeno-calendario-daypicker {
-  --rdp-accent-color: #8fae9a;
-  width: 100%;
-  margin: 0;
+.bloom-pequeno-calendario-navegacao button:disabled,
+.bloom-pequeno-calendario-dia:disabled {
+  color: inherit;
+  opacity: 1;
+  cursor: default;
 }
 
-.bloom-pequeno-calendario-daypicker .rdp-months,
-.bloom-pequeno-calendario-daypicker .rdp-month {
-  width: 100%;
-  max-width: none;
+.bloom-pequeno-calendario-anterior {
+  transform: rotate(180deg);
 }
 
-.bloom-pequeno-calendario-daypicker .rdp-month_caption,
-.bloom-pequeno-calendario-daypicker .rdp-nav {
-  display: none;
-}
-
-.bloom-pequeno-calendario-tabela {
-  width: 100%;
-  table-layout: fixed;
-  border-collapse: separate;
-  border-spacing: 0 6px;
+.bloom-pequeno-calendario-grade {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  text-align: center;
 }
 
 .bloom-pequeno-calendario-dia-semana {
   font-size: 13px;
   font-weight: 700;
   color: var(--cor-texto);
-  text-align: center;
   padding-bottom: 6px;
 }
 
-.bloom-pequeno-calendario-celula {
-  position: relative;
-  padding: 0;
-  text-align: center;
-}
-
 .bloom-pequeno-calendario-dia {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
   border: none;
   background: transparent;
   border-radius: 999px;
-  width: 25px;
   height: 30px;
-  margin: auto;
-  padding: 0;
-  font-family: inherit;
   font-size: 13px;
   font-weight: 700;
   color: var(--cor-texto);
   cursor: pointer;
 }
 
-.bloom-pequeno-calendario-celula.estado-outro-mes
-.bloom-pequeno-calendario-dia {
+.bloom-pequeno-calendario-dia.estado-outro-mes {
   color: #8aa39a;
 }
 
-.bloom-pequeno-calendario-celula.estado-hoje
-.bloom-pequeno-calendario-dia {
+.bloom-pequeno-calendario-dia.estado-hoje {
   background: var(--cor-principal-escuro);
   color: #ffffff;
 }
 
-.bloom-pequeno-calendario-celula.estado-selecionado
-.bloom-pequeno-calendario-dia {
+.bloom-pequeno-calendario-dia.estado-selecionado {
   background: #8fae9a;
   color: #ffffff;
 }
 
-.bloom-pequeno-calendario-celula.estado-com-evento
-.bloom-pequeno-calendario-dia::after {
-  content: "";
+.bloom-pequeno-calendario-ponto {
   position: absolute;
   bottom: -5px;
   left: 50%;
   width: 4px;
   height: 4px;
-  transform: translateX(-50%);
+  margin-left: -2px;
   border-radius: 999px;
   background: var(--cor-principal-escuro);
-}
-
-.bloom-pequeno-calendario-dia:focus-visible {
-  outline: 2px solid var(--cor-principal-escuro);
-  outline-offset: 2px;
 }
 
 .bloom-pequeno-calendario-eventos {
@@ -159,7 +112,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
   margin-bottom: 12px;
 }
 
@@ -173,7 +125,6 @@
   font-size: 11px;
   font-weight: 700;
   color: #6f9a8a;
-  text-align: right;
 }
 
 .bloom-pequeno-calendario-evento {
@@ -208,9 +159,3 @@
   font-size: 11px;
   background: var(--cor-superficie);
 }
-
-.bloom-pequeno-calendario-vazio {
-  font-size: 12px;
-  color: var(--cor-texto);
-  opacity: 0.7;
-} */
