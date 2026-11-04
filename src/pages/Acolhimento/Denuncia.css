@@ -1,4 +1,4 @@
-/* Estilos próprios de Acolhimento (sem importar o CSS de Bem-estar). */ .acolhimento-pagina {
+.acolhimento-pagina {
   display: flex;
   width: 100%;
   min-width: 0;

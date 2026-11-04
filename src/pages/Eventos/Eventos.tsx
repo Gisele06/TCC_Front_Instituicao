@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import EstruturaInstitucional from "../../components/Geral/InstitutionFrame/InstitutionFrame";
 import CalendarioPequeno from "../../components/Geral/MiniCalendar/MiniCalendar";
 import { carregarEventos, type Evento } from "./data/eventos";
+import CabecalhoDePagina from "../../components/Geral/PageHeader/PageHeader";
 
 import iconeCalendarioEscuro from "../../assets/icons/Geral/calendario.png";
 import iconeCalendarioDaLista from "../../assets/icons/Geral/calendario-evento.png";
@@ -127,12 +128,11 @@ function Eventos({ aoNavegar, aoCriarEvento }: PropriedadesEventos) {
   return (
     <EstruturaInstitucional paginaAtiva="eventos" aoNavegar={aoNavegar}>
       <main className="eventos-pagina">
-        <header className="eventos-titulo-principal">
-          <div>
-            <h1>Eventos</h1>
-            <p>Acompanhe os eventos da instituição e mantenha seus alunos informados.</p>
-          </div>
-        </header>
+        <CabecalhoDePagina
+          className="eventos-titulo-principal"
+          titulo="Eventos"
+          subtitulo="Acompanhe os eventos da instituição e mantenha seus alunos informados."
+        />
 
         <div className="eventos-area">
           <section className="eventos-lista-painel" aria-label="Lista de eventos">
