@@ -1,4 +1,4 @@
-// Dados fictícios para testar a interface antes da integração.
+// Dados mockados para testar a interface antes da integração.
 // Os nomes dos campos seguem o SQL; IDs simulam as chaves estrangeiras.
 export const registrosIniciais: Record<string, object[]> = {
   "categorias-redes-apoio": [
@@ -17,11 +17,14 @@ export const registrosIniciais: Record<string, object[]> = {
     { id: 2, nome: "Palestra" },
     { id: 3, nome: "Oficina" },
     { id: 4, nome: "Campanha" },
+    { id: 5, nome: "Passeio" },
+    { id: 6, nome: "Reuniões" }
   ],
   eventos: [
     { id: 1, nome: "Dia da pizza", descricao: "Encontro de integração entre as turmas.", observacoes: null, custo: 0, data_evento: "2026-11-06", horario_inicio: "13:00:00", horario_fim: "14:00:00", local_do_evento: "Refeitório", id_instituicao: 1, id_sala: null, id_tipo_evento: 1 },
     { id: 2, nome: "Cuidando da saúde mental", descricao: "Palestra sobre emoções e bem-estar no ambiente escolar.", observacoes: null, custo: 0, data_evento: "2026-11-10", horario_inicio: "14:00:00", horario_fim: "16:00:00", local_do_evento: "Auditório", id_instituicao: 1, id_sala: 2, id_tipo_evento: 2 },
-    { id: 3, nome: "Festival de talentos", descricao: "Atividade cultural dos estudantes.", observacoes: null, custo: 0, data_evento: "2026-11-20", horario_inicio: "09:00:00", horario_fim: "12:00:00", local_do_evento: "Auditório", id_instituicao: 1, id_sala: 2, id_tipo_evento: 1 },
+    { id: 3, nome: "Festival de talentos", descricao: "Atividade cultural dos estudantes.", observacoes: null, custo: 0, data_evento: "2026-11-20", horario_inicio: "09:00:00", horario_fim: "12:00:00", local_do_evento: "Auditório", id_instituicao: 1, id_sala: 2, id_tipo_evento: 3 },
+
   ],
   comunicados: [
     { id: 1, nome: "Acolhimento emocional", titulo: "Como lidar com dias difíceis?", descricao: "Conheça os espaços de acolhimento disponíveis na instituição.", observacoes: null, url_banner: null, id_instituicao: 1, id_evento: null, id_funcionario: 1 },

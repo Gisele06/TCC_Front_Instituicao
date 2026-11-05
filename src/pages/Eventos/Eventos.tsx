@@ -4,6 +4,8 @@ import EstruturaInstitucional from "../../components/Geral/InstitutionFrame/Inst
 import CalendarioPequeno from "../../components/Geral/MiniCalendar/MiniCalendar";
 import { carregarEventos, type Evento } from "./data/eventos";
 import CabecalhoDePagina from "../../components/Geral/PageHeader/PageHeader";
+import AbasSegmentadas from "../../components/Geral/SegmentedTabs/SegmentedTabs";
+
 
 import iconeCalendarioEscuro from "../../assets/icons/Geral/calendario.png";
 import iconeCalendarioDaLista from "../../assets/icons/Geral/calendario-evento.png";
@@ -88,9 +90,17 @@ function Eventos({ aoNavegar, aoCriarEvento }: PropriedadesEventos) {
     return () => { ativo = false; };
   }, []);
   const categorias = ["Todos", ...new Set(eventos.map((evento) => evento.categoria))];
+
+  const abasCategorias = categorias.map((categoria) => ({
+    valor: categoria,
+    rotulo: categoria,
+  }));
+
+
   const [categoriaAtiva, definirCategoriaAtiva] = useState("Todos");
   const [busca, definirBusca] = useState("");
   const [ocultos, definirOcultos] = useState<number[]>([]);
+
   const eventosFiltrados = useMemo(() => eventos.filter((evento) => {
     const correspondeCategoria = categoriaAtiva === "Todos" || evento.categoria === categoriaAtiva;
     return correspondeCategoria &&
@@ -98,6 +108,7 @@ function Eventos({ aoNavegar, aoCriarEvento }: PropriedadesEventos) {
       `${evento.titulo} ${evento.descricao}`.toLocaleLowerCase("pt-BR")
         .includes(busca.trim().toLocaleLowerCase("pt-BR"));
   }), [eventos, categoriaAtiva, busca, ocultos]);
+
 
   const hoje = new Date();
   const mes = hoje.getMonth();
@@ -136,19 +147,14 @@ function Eventos({ aoNavegar, aoCriarEvento }: PropriedadesEventos) {
 
         <div className="eventos-area">
           <section className="eventos-lista-painel" aria-label="Lista de eventos">
-            <div className="eventos-categoria-abas" aria-label="Filtrar por categoria">
-              {categorias.map((categoria) => (
-                <button
-                  type="button"
-                  key={categoria}
-                  className={categoria === categoriaAtiva ? "estado-selecionado" : ""}
-                  aria-pressed={categoria === categoriaAtiva}
-                  onClick={() => definirCategoriaAtiva(categoria)}
-                >
-                  {categoria}
-                </button>
-              ))}
-            </div>
+            
+            <AbasSegmentadas
+              className="eventos-categoria-abas"
+              itens={abasCategorias}
+              valor={categoriaAtiva}
+              aoMudar={definirCategoriaAtiva}
+            />
+
 
             <div className="eventos-lista-ferramentas">
               <label className="eventos-busca">
@@ -217,6 +223,7 @@ function Eventos({ aoNavegar, aoCriarEvento }: PropriedadesEventos) {
               eventos={eventosDoDia}
             />
           </aside>
+          
         </div>
       </main>
     </EstruturaInstitucional>

@@ -64,24 +64,6 @@
   background: #f6f5ee;
 }
 
-.eventos-categoria-abas button {
-  flex-shrink: 0;
-  padding: 8px 12px;
-  border: 0;
-  border-radius: 8px;
-  background: transparent;
-  color: #143532;
-  font: inherit;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.eventos-categoria-abas button.estado-selecionado {
-  background: #2a4036;
-  color: white;
-}
-
 .eventos-lista-ferramentas {
   display: flex;
   align-items: center;
@@ -90,16 +72,15 @@
 
 .eventos-busca {
   display: flex;
-  flex: 1;
   align-items: center;
-  min-width: 0;
+  width: 679px;
   height: 61px;
-  width: 600px;
   gap: 8px;
   padding: 0 12px;
   border: 1px solid var(--cor-borda);
   border-radius: 100px;
   background: #f7f6ef;
+  margin-right: 28vh;
 }
 
 .eventos-busca img,
@@ -126,13 +107,13 @@
 .eventos-principal-botao {
   flex-shrink: 0;
   height: 56px;
-  padding: 0 18px;
+  padding: 0 40px;
   border: 0;
-  border-radius: 10px;
+  border-radius: 18px;
   background: #2a4036;
   color: white;
   font: inherit;
-  font-size: 14px;
+  font-size: 24px;
   font-weight: 700;
   cursor: pointer;
 }
@@ -153,15 +134,15 @@
   align-items: center;
   min-width: 0;
   gap: 12px;
-  padding: 14px;
+  padding: 25px;
   border: 1px solid #dedbcf;
-  border-radius: 16px;
+  border-radius: 29px;
   background: #f8f7f0;
 }
 
 .eventos-lista-foto {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   border-radius: 18px;
   background: #ecede5;
   box-shadow: 0px 0px 4px 3px rgba(0, 0, 0, 0.023);
@@ -177,24 +158,26 @@
 
 .eventos-categoria-rotulo {
   width: fit-content;
-  padding: 0 15px;
+  padding: 3px 17px;
   border: 1px solid var(--cor-borda);
   box-shadow: 0px 0px 4px 3px rgba(0, 0, 0, 0.023);
   border-radius: 20px;
   color: #2C4035;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight:900;
+  margin: 0 0 15px 22px;
+
 }
 
 .eventos-lista-descricao h2 {
-  margin: 4px 0 0 2px;
+  margin: 0 0 0 26px;
   color: #143532;
   font-size: 20px;
   overflow-wrap: anywhere;
 }
 
 .eventos-lista-descricao p {
-  margin: 2px 0 0 2px;
+  margin: 2px 0 0 26px;
   color: #789493;
   font-size: 16px;
   font-weight:600;
