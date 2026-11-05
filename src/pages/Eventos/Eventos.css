@@ -241,75 +241,48 @@
 .eventos-item-seta { width: 41px; height: 41px; object-fit: contain; padding-right: 10px;}
 .eventos-vazio { margin: auto; color: #789493; font-size: 13px; }
 
-.eventos-calendario-painel { padding: 20px; }
+/* O painel determina a altura; o calendário distribui o espaço dentro dele. */
+.eventos-calendario-painel {
+  display: flex;
+  overflow: hidden;
+}
 
 .eventos-pequeno-calendario {
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
-  padding: 0;
+  min-height: 0;
+  padding: 31px 27px 30px;
   border: 0;
   background: transparent;
 }
 
-.eventos-pequeno-calendario .bloom-pequeno-calendario-titulo { gap: 7px; margin-bottom: 13px; }
-.eventos-pequeno-calendario .bloom-pequeno-calendario-titulo h2 { font-size: 21px; }
-.eventos-pequeno-calendario .bloom-pequeno-calendario-navegacao {
-  max-width: 100%;
-  width: 140px;
-  margin-bottom: 12px;
-  padding: 4px 7px;
-  font-size: 12px;
+.eventos-pequeno-calendario .bloom-pequeno-calendario-grade {
+  flex: 1;
+  min-height: 0;
+  grid-template-rows: 34px;
+  grid-auto-rows: minmax(44px, 1fr);
 }
-.eventos-pequeno-calendario .bloom-pequeno-calendario-navegacao button { display: flex; padding: 0; }
-.eventos-pequeno-calendario .bloom-pequeno-calendario-grade { gap: 2px; }
-.eventos-pequeno-calendario .bloom-pequeno-calendario-dia-semana { padding-bottom: 4px; font-size: 12px; }
-.eventos-pequeno-calendario .bloom-pequeno-calendario-dia { height: 26px; font-size: 12px; }
 
 .eventos-pequeno-calendario .bloom-pequeno-calendario-eventos {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  min-height: 155px;
-  margin-top: 12px;
-  padding: 10px 0 8px;
+  flex: 0 0 38%;
+  min-height: 235px;
+  margin-top: 15px;
+  padding: 14px 10px 0;
   overflow-y: auto;
 }
 
-.eventos-pequeno-calendario .bloom-pequeno-calendario-eventos-cabecalho { gap: 5px; margin-bottom: 12px; }
-.eventos-pequeno-calendario .bloom-pequeno-calendario-eventos-cabecalho h3 { font-size: 15px; }
-.eventos-pequeno-calendario .bloom-pequeno-calendario-eventos-cabecalho span { font-size: 11px; }
-.eventos-pequeno-calendario .bloom-pequeno-calendario-evento {
-  display: grid;
-  grid-template-columns: 44px 1fr 12px;
-  gap: 8px;
-  padding: 9px 0;
-}
-.eventos-pequeno-calendario .bloom-pequeno-calendario-evento:last-child { border-bottom: 0; }
-.eventos-pequeno-calendario .bloom-pequeno-calendario-evento-horario { align-self: start; padding-top: 1px; font-size: 14px; }
-.eventos-pequeno-calendario .bloom-pequeno-calendario-evento-corpo { min-width: 0; gap: 4px; font-size: 13px; }
-.eventos-pequeno-calendario .bloom-pequeno-calendario-evento-corpo > span:first-child,
-.eventos-pequeno-calendario .bloom-pequeno-calendario-evento-local {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.eventos-pequeno-calendario .bloom-pequeno-calendario-evento-detalhe {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  min-width: 0;
-}
-.eventos-pequeno-calendario .bloom-pequeno-calendario-evento-local { color: #789493; font-size: 10px; }
-.eventos-pequeno-calendario .bloom-pequeno-calendario-evento-categoria { flex-shrink: 0; padding: 1px 8px; font-size: 11px; }
-.eventos-pequeno-calendario .bloom-pequeno-calendario-evento > .icone-espaco {
-  width: 12px !important;
-  height: 14px !important;
-  align-self: center;
-}
+@media (max-width: 650px) {
+  .eventos-pequeno-calendario {
+    padding: 24px 14px;
+    min-height: 650px;
+  }
 
-/* REVISAR */
+  .eventos-pequeno-calendario .bloom-pequeno-calendario-eventos {
+    flex-basis: 35%;
+  }
+}
 
 @media (max-width: 1450px) {
   .eventos-lista-item {
@@ -323,13 +296,14 @@
 }
 
 @media (max-width: 1050px) {
-  .eventos-area { grid-template-columns: 1fr; }
+  .eventos-area { grid-template-columns: 1fr; overflow-y: auto; }
   .eventos-lista-painel { min-height: 400px; }
-  .eventos-calendario-painel { min-height: 400px; }
+  .eventos-calendario-painel { min-height: 740px; }
 }
 
 @media (max-width: 650px) {
-  .eventos-lista-painel, .eventos-calendario-painel { padding: 14px; }
+  .eventos-lista-painel { padding: 14px; }
+  .eventos-calendario-painel { padding: 0; }
   .eventos-lista-ferramentas { flex-wrap: wrap; }
   .eventos-lista-item { grid-template-columns: 60px 1fr 22px; }
   .eventos-lista-foto { width: 60px; height: 60px; }

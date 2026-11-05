@@ -6,7 +6,6 @@ import { carregarEventos, type Evento } from "./data/eventos";
 import CabecalhoDePagina from "../../components/Geral/PageHeader/PageHeader";
 import AbasSegmentadas from "../../components/Geral/SegmentedTabs/SegmentedTabs";
 
-
 import iconeCalendarioEscuro from "../../assets/icons/Geral/calendario.png";
 import iconeCalendarioDaLista from "../../assets/icons/Geral/calendario-evento.png";
 import iconeRelogio from "../../assets/icons/Geral/relogio-evento.png";
@@ -22,10 +21,6 @@ interface PropriedadesEventos {
   aoNavegar: (pagina: string) => void;
   aoCriarEvento: () => void;
 }
-
-// Tipos são cadastrados em tbl_tipo_evento e vêm da API.
-
-
 
 const meses = [
   "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
@@ -79,10 +74,37 @@ function Eventos({ aoNavegar, aoCriarEvento }: PropriedadesEventos) {
   const [eventos, definirEventos] = useState<Evento[]>([]);
   const [carregando, definirCarregando] = useState(true);
   const [erro, definirErro] = useState("");
+  const [mesVisivel, definirMesVisivel] = useState(() => {
+    const hoje = new Date();
+    return new Date(hoje.getFullYear(), hoje.getMonth(), 1);
+  });
+  const [dataSelecionada, definirDataSelecionada] = useState(() => {
+    const hoje = new Date();
+    return new Date(hoje.getFullYear(), hoje.getMonth(), hoje.getDate());
+  });
+
   useEffect(() => {
     let ativo = true;
     carregarEventos()
-      .then((lista) => { if (ativo) definirEventos(lista); })
+      .then((lista) => {
+        if (!ativo) return;
+        definirEventos(lista);
+
+        const hoje = new Date();
+        const inicioDeHoje = new Date(hoje.getFullYear(), hoje.getMonth(), hoje.getDate());
+        const dataAtual = `${hoje.getFullYear()}-${String(hoje.getMonth() + 1).padStart(2, "0")}-${String(hoje.getDate()).padStart(2, "0")}`;
+        const proximo = lista
+          .filter((evento) => evento.data >= dataAtual && evento.data.startsWith(dataAtual.slice(0, 7)))
+          .sort((a, b) => a.data.localeCompare(b.data))[0];
+
+        if (proximo) {
+          definirDataSelecionada((anterior) =>
+            anterior.getTime() === inicioDeHoje.getTime()
+              ? new Date(hoje.getFullYear(), hoje.getMonth(), Number(proximo.data.split("-")[2]))
+              : anterior
+          );
+        }
+      })
       .catch((falha: unknown) => {
         if (ativo) definirErro(falha instanceof Error ? falha.message : "Não foi possível buscar eventos.");
       })
@@ -111,16 +133,16 @@ function Eventos({ aoNavegar, aoCriarEvento }: PropriedadesEventos) {
 
 
   const hoje = new Date();
-  const mes = hoje.getMonth();
-  const ano = hoje.getFullYear();
-  const diaSelecionado = hoje.getDate();
-  const dataHoje = `${ano}-${String(mes + 1).padStart(2, "0")}-${String(diaSelecionado).padStart(2, "0")}`;
+  const mes = mesVisivel.getMonth();
+  const ano = mesVisivel.getFullYear();
+  const diaSelecionado = dataSelecionada.getDate();
+  const dataHoje = `${hoje.getFullYear()}-${String(hoje.getMonth() + 1).padStart(2, "0")}-${String(hoje.getDate()).padStart(2, "0")}`;
+  const dataSelecionadaTexto = `${ano}-${String(mes + 1).padStart(2, "0")}-${String(diaSelecionado).padStart(2, "0")}`;
+  const mesTexto = `${ano}-${String(mes + 1).padStart(2, "0")}`;
 
   const eventosDoDia = eventos
-    .filter((evento) => {
-      const [anoDoEvento, mesDoEvento, diaDoEvento] = evento.data.split("-").map(Number);
-      return anoDoEvento === ano && mesDoEvento === mes + 1 && diaDoEvento === diaSelecionado;
-    })
+    .filter((evento) => evento.data === dataSelecionadaTexto)
+    .sort((a, b) => a.horaInicio.localeCompare(b.horaInicio))
     .map((evento) => ({
       id: String(evento.id),
       horario: evento.horaInicio,
@@ -130,11 +152,19 @@ function Eventos({ aoNavegar, aoCriarEvento }: PropriedadesEventos) {
     }));
 
   const diasComEvento = eventos
-    .filter((evento) => {
-      const [anoDoEvento, mesDoEvento] = evento.data.split("-").map(Number);
-      return anoDoEvento === ano && mesDoEvento === mes + 1;
-    })
+    .filter((evento) => evento.data.startsWith(mesTexto))
     .map((evento) => Number(evento.data.split("-")[2]));
+
+  function mudarMes(direcao: number) {
+    const novoMes = new Date(ano, mes + direcao, 1);
+    definirMesVisivel(novoMes);
+    const prefixo = `${novoMes.getFullYear()}-${String(novoMes.getMonth() + 1).padStart(2, "0")}`;
+    const primeiroEvento = eventos
+      .filter((evento) => evento.data.startsWith(prefixo))
+      .sort((a, b) => a.data.localeCompare(b.data))[0];
+    const dia = primeiroEvento ? Number(primeiroEvento.data.split("-")[2]) : 1;
+    definirDataSelecionada(new Date(novoMes.getFullYear(), novoMes.getMonth(), dia));
+  }
 
   return (
     <EstruturaInstitucional paginaAtiva="eventos" aoNavegar={aoNavegar}>
@@ -207,21 +237,25 @@ function Eventos({ aoNavegar, aoCriarEvento }: PropriedadesEventos) {
           </section>
 
           <aside className="eventos-calendario-painel">
-            <CalendarioPequeno
-              className="eventos-pequeno-calendario"
-              titulo="Calendário"
-              iconeDoTitulo={<img src={iconeCalendarioEscuro} alt="" />}
-              tamanhoDoIconeDoTitulo={22}
-              mesExibido={`${meses[mes]} ${ano}`}
-              semanas={criarSemanas(ano, mes)}
-              diaSelecionado={diaSelecionado}
-              diaDeHoje={diaSelecionado}
-              diasComEvento={diasComEvento}
-              iconeAnterior={<img src={iconeSetaDoEvento} alt="" />}
-              iconeProximo={<img src={iconeSetaDoEvento} alt="" />}
-              dataDosEventos={`${diaSelecionado} de ${meses[mes].toLowerCase()} de ${ano}`}
-              eventos={eventosDoDia}
-            />
+          <CalendarioPequeno
+            className="eventos-pequeno-calendario"
+            titulo="Calendário"
+            iconeDoTitulo={<img src={iconeCalendarioEscuro} alt="" />}
+            tamanhoDoIconeDoTitulo={36}
+            mesExibido={`${meses[mes]} ${ano}`}
+            semanas={criarSemanas(ano, mes)}
+            diaSelecionado={diaSelecionado}
+            diaDeHoje={hoje.getMonth() === mes && hoje.getFullYear() === ano ? hoje.getDate() : undefined}
+            diasComEvento={diasComEvento}
+            aoSelecionarDia={(dia) => definirDataSelecionada(new Date(ano, mes, dia))}
+            aoVoltarMes={() => mudarMes(-1)}
+            aoAvancarMes={() => mudarMes(1)}
+            iconeAnterior={<img src={iconeSetaDoEvento} alt="" />}
+            iconeProximo={<img src={iconeSetaDoEvento} alt="" />}
+            dataDosEventos={`${diaSelecionado} de ${meses[mes].toLowerCase()} de ${ano}`}
+            eventos={eventosDoDia}
+            mensagemSemEventos={carregando ? "Carregando eventos..." : erro || "Nenhum evento nesta data."}
+          />
           </aside>
           
         </div>
