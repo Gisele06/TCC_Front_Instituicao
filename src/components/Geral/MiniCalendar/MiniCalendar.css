@@ -40,7 +40,7 @@
   color: #102e2a;
   font-size: 30px;
   line-height: 1.3;
-  font-weight: 900;
+  font-weight: bolder;
 }
 
 .bloom-pequeno-calendario-navegacao {
@@ -52,11 +52,11 @@
   height: 48px;
   box-sizing: border-box;
   margin: 0 auto 29px;
-  padding: 0 16px;
+  padding: 10px 16px;
   border: 1px solid #d2cfb9;
   border-radius: 999px;
-  box-shadow: 0 2px 5px #22362912;
-  font-size: 18px;
+  box-shadow: 0 2px 5px #0000001c;
+  font-size: 20px;
   font-weight: 900;
   white-space: nowrap;
 }

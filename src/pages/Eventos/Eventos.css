@@ -34,7 +34,7 @@
   width: 100%;
   min-width: 0;
   min-height: 0;
-  gap: 16px;
+  gap: 10px;
 }
 
 .eventos-lista-painel,
@@ -60,7 +60,7 @@
   max-width: 100%;
   overflow-x: auto;
   border: 1px solid var(--cor-borda);
-  border-radius: 10px;
+  border-radius: 24px;
   background: #f6f5ee;
 }
 
@@ -134,10 +134,11 @@
   align-items: center;
   min-width: 0;
   gap: 12px;
-  padding: 25px;
+  padding: 18px;
   border: 1px solid #dedbcf;
   border-radius: 29px;
   background: #f8f7f0;
+  box-shadow: 0 2px 5px #22362912;
 }
 
 .eventos-lista-foto {
@@ -258,6 +259,7 @@
   background: transparent;
 }
 
+.bloom-pequeno-calendario-eventos-cabecalho
 .eventos-pequeno-calendario .bloom-pequeno-calendario-grade {
   flex: 1;
   min-height: 0;
@@ -268,8 +270,8 @@
 .eventos-pequeno-calendario .bloom-pequeno-calendario-eventos {
   flex: 0 0 38%;
   min-height: 235px;
-  margin-top: 15px;
-  padding: 14px 10px 0;
+  margin-top: 10px;
+  padding: 40px 10px 0;
   overflow-y: auto;
 }
 
