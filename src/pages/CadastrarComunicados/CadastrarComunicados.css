@@ -5,7 +5,7 @@
     min-height: 0;
     flex: 1;
     flex-direction: column;
-    gap: clamp(10px, 1.5vh, 16px);
+    gap: 16px;
     font-family: var(--familia-da-fonte);
 }
 
@@ -50,13 +50,13 @@
 
 .cadastrar-comunicados-titulo-principal h1 {
     color: #143532;
-    font-size: clamp(18px, 1.6vw, 22px);
+    font-size: 22px;
 }
 
 .cadastrar-comunicados-titulo-principal p {
     margin-top: 2px;
     color: #789493;
-    font-size: clamp(11px, 1vw, 13px);
+    font-size: 13px;
 }
 
 .cadastrar-comunicados-formulario {
@@ -75,8 +75,8 @@
     min-width: 0;
     min-height: 0;
     flex: 1;
-    grid-template-columns: minmax(0, 1fr) clamp(170px, 31vw, 360px);
-    gap: clamp(10px, 1vw, 14px);
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 14px;
 }
 
 .cadastrar-comunicados-campos,
@@ -93,8 +93,8 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: clamp(10px, 1.5vh, 16px);
-    padding: clamp(10px, 1.5vw, 20px);
+    gap: 16px;
+    padding: 20px;
     overflow-y: auto;
 }
 
@@ -102,7 +102,7 @@
     display: grid;
     min-width: 0;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(10px, 1vw, 14px);
+    gap: 14px;
 }
 
 .cadastrar-comunicados-campo {
@@ -111,7 +111,7 @@
     flex-direction: column;
     gap: 6px;
     color: #143532;
-    font-size: clamp(12px, 1vw, 14px);
+    font-size: 14px;
     font-weight: 700;
 }
 
@@ -242,7 +242,7 @@
     flex-direction: column;
     align-items: stretch;
     gap: 8px;
-    padding: clamp(9px, 1.5vw, 18px);
+    padding: 18px;
     overflow: hidden;
 }
 
@@ -250,7 +250,7 @@
     flex: 0 0 auto;
     margin: 0;
     color: #143532;
-    font-size: clamp(11px, 1.1vw, 16px);
+    font-size: 16px;
     line-height: 1.25;
 }
 
@@ -286,8 +286,8 @@
 }
 
 .cadastrar-comunicados-icone-imagem {
-    width: clamp(20px, 5vw, 42px);
-    height: clamp(20px, 5vw, 42px);
+    width: 42px;
+    height: 42px;
     flex: 0 0 auto;
     color: #143532;
 }
@@ -308,7 +308,7 @@
     border-radius: 4px;
     background: rgb(247 246 239 / 88%);
     color: #789493;
-    font-size: clamp(8px, 0.75vw, 11px);
+    font-size: 11px;
     font-weight: 600;
     text-align: center;
 }
@@ -336,7 +336,7 @@
     background: transparent;
     color: #143532;
     font: inherit;
-    font-size: clamp(9px, 0.85vw, 12px);
+    font-size: 12px;
     cursor: pointer;
 }
 
@@ -367,7 +367,7 @@
     outline: none;
     background: #f7f6ef;
     color: #143532;
-    font-size: clamp(11px, 1vw, 14px);
+    font-size: 14px;
     line-height: 1.5;
     overflow-y: auto;
     overflow-wrap: anywhere;
@@ -475,3 +475,23 @@
     }
 }
 .cadastrar-comunicados-erro { margin: 0; color: #a63d32; font-size: 12px; }
+
+
+/* Ajustes da tela Criar Comunicado, referência 1920 x 1080. */
+.cadastrar-comunicados-pagina { gap: 18px; }
+.cadastrar-comunicados-titulo-principal { min-height: 78px; padding: 14px 22px; }
+.cadastrar-comunicados-area { grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.85fr); gap: 18px; }
+.cadastrar-comunicados-campos { padding: 22px; gap: 17px; }
+.cadastrar-comunicados-lateral { padding: 20px; gap: 12px; }
+.cadastrar-comunicados-adicionar-imagem { min-height: 110px; max-height: 140px; }
+.cadastrar-comunicados-campo input,
+.cadastrar-comunicados-selecao-area,
+.cadastrar-comunicados-entrada-com-icone { height: 42px; }
+.cadastrar-comunicados-campo textarea { height: 125px; }
+.cadastrar-comunicados-corpo-titulo { font-size: 17px; }
+.cadastrar-comunicados-editor-corpo { min-height: 180px; }
+.cadastrar-comunicados-acoes button { height: 42px; }
+@media (max-width: 900px) {
+ .cadastrar-comunicados-area { grid-template-columns: minmax(0, 1fr) 280px; gap: 12px; }
+ .cadastrar-comunicados-campos, .cadastrar-comunicados-lateral { padding: 14px; }
+}
