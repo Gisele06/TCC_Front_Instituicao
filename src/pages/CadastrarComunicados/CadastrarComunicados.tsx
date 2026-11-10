@@ -187,33 +187,26 @@ function CadastrarComunicados({
 
                             <div className="cadastrar-comunicados-horario-linha">
                                 <label className="cadastrar-comunicados-campo">
-                                    <span>
-                                        Data do comunicado <i>•</i>
-                                    </span>
-
-                                    <span className="cadastrar-comunicados-entrada-com-icone">
-                                        <img src={iconeCalendario} alt="" />
-                                        <input type="date" name="data" disabled title="O banco ainda não possui data do comunicado." />
-                                    </span>
+                                   <label className="cadastrar-comunicado-campo">
+                                        <span>Data do evento <i>•</i></span>
+                                        <span className="cadastrar-comunicados-entrada-com-icone">
+                                            <img src={iconeCalendario} alt="" />
+                                            <input name="data" type="date" required />
+                                        </span>
+                                    </label>
                                 </label>
 
-                                <label className="cadastrar-comunicados-campo">
-                                    <span>
-                                        Hora de início <i>•</i>
-                                    </span>
-
+                                <label className="cadastrar-comunicado-campo">
+                                    <span>Hora de início <i>•</i></span>
                                     <span className="cadastrar-comunicados-entrada-com-icone">
-                                        <input type="time" name="horaInicio" disabled title="O banco ainda não possui horário do comunicado." />
+                                        <input name="horaInicio" type="time" required />
                                     </span>
-                                </label>
+                                    </label>
 
-                                <label className="cadastrar-comunicados-campo">
-                                    <span>
-                                        Hora de término <small>(opcional)</small>
-                                    </span>
-
+                                    <label className="cadastrar-comunicados-campo">
+                                    <span>Hora de término <small>(opcional)</small> <i>•</i></span>
                                     <span className="cadastrar-comunicados-entrada-com-icone">
-                                        <input type="time" name="horaTermino" disabled title="O banco ainda não possui horário do comunicado." />
+                                        <input name="horaFim" type="time" required />
                                     </span>
                                 </label>
                             </div>
@@ -404,9 +397,6 @@ function CadastrarComunicados({
                         </aside>
                     </div>
 
-                    <p className="cadastrar-comunicados-ajuda">
-                        Data, horário, tipo, turmas, recorrência e upload de imagem dependem de alterações na API ou no banco.
-                    </p>
                     {erro && <p role="alert" className="cadastrar-comunicados-erro">{erro}</p>}
                     {salvando && <p aria-live="polite">Salvando comunicado...</p>}
                     <footer className="cadastrar-comunicados-acoes">

@@ -13,15 +13,14 @@
     display: flex;
     width: 100%;
     min-width: 0;
-    min-height: 60px;
     flex-shrink: 0;
     align-items: center;
     gap: 12px;
+    min-height: 60px;
     padding: 10px 18px;
     border: 1px solid var(--cor-borda);
     border-radius: 17px;
     background: var(--cor-superficie);
-    box-sizing: border-box;
 }
 
 .cadastrar-comunicados-voltar {
@@ -86,7 +85,6 @@
     border: 1px solid var(--cor-borda);
     border-radius: 17px;
     background: var(--cor-superficie);
-    box-sizing: border-box;
 }
 
 .cadastrar-comunicados-campos {
@@ -144,7 +142,6 @@
     color: #143532;
     font: inherit;
     font-size: 12px;
-    box-sizing: border-box;
 }
 
 .cadastrar-comunicados-campo input,
@@ -193,7 +190,6 @@
 }
 
 .cadastrar-comunicados-selecao-area select {
-    flex: 1;
     appearance: none;
 }
 
@@ -211,7 +207,6 @@
 
 .cadastrar-comunicados-horario-linha {
     display: grid;
-    min-width: 0;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 12px;
 }

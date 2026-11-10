@@ -127,12 +127,14 @@
   gap:12px;
   background:transparent;
   border:1px solid #d2d1c5;
-  border-radius:23px;
+  border-radius:29px;
   padding:15px 20px;
   min-height:108px;
   color:#14362f;
   cursor:pointer;
-  transition:background .2s,transform .2s,box-shadow .2s
+  padding: 18px;
+  background: #f8f7f0;
+  box-shadow: 0 2px 5px #22362912;
 }
 .acolhimento-item:hover {
   background:#ffffff65;

@@ -1,7 +1,8 @@
 import { useState, type FormEvent } from "react";
 import Botao from "../../components/Geral/Button/Button";
 import iconeLogoBloom from "../../assets/icons/Geral/logo-b.png";
-import imagemDeFundoDoAcesso from "../../assets/images/Geral/login-hero.png";
+import videoLogin from "../../assets/images/Login/video-login.mp4"
+
 import iconeCarta from "../../assets/icons/Geral/carta.png";
 import iconeCadeado from "../../assets/icons/Geral/cadeado.png";
 import iconeGoogle from "../../assets/icons/Login/google.png";
@@ -52,8 +53,14 @@ function Acesso({ aoEntrar, aoCriarConta, aoRecuperarSenha, googleDisponivel = f
 
   return (
     <main className="acesso-pagina">
-      <img className="acesso-fundo" src={imagemDeFundoDoAcesso} alt="" />
-
+      {/* <video
+        src={videoLogin}
+        autoPlay
+        loop
+        muted
+        playsInline
+        controls
+      /> */}
       <div className="acesso-marca" aria-label="Bloom Institucional">
         <img className="acesso-marca-simbolo" src={iconeLogoBloom} alt="" />
         <span className="acesso-marca-nome">

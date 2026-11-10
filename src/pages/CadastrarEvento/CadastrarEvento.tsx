@@ -150,19 +150,21 @@ function CadastrarEvento({ aoNavegar, aoVoltar }: PropriedadesCadastroDeEvento) 
 
               <div className="cadastrar-evento-campo-par">
                 <label className="cadastrar-evento-campo">
-                  <span>Local do evento <small>(opcional)</small></span>
+                  <span>Recorrência <small>(opcional)</small></span>
                   <span className="cadastrar-evento-selecao-area cadastrar-evento-selecao-icone">
                     <img src={iconeRecorrencia} alt="" />
-                    <input name="local" maxLength={150} placeholder="Ex.: auditório ou pátio" />
+                    <select>
+                      <option>Sobra nada...</option>
+                    </select>
                   </span>
                 </label>
 
                 <label className="cadastrar-evento-campo">
-                  <span>Turmas participantes <small>(ainda sem tabela de vínculo)</small></span>
+                  <span>Turmas participantes</span>
                   <span className="cadastrar-evento-selecao-area cadastrar-evento-selecao-icone">
                     <img src={iconeTurmas} alt="" />
-                    <select disabled title="O SQL ainda não relaciona eventos e turmas.">
-                      <option>Integração pendente</option>
+                    <select>
+                      <option>Sobra nada...</option>
                     </select>
                     <img src={iconeSetaBaixo} alt="" />
                   </span>
