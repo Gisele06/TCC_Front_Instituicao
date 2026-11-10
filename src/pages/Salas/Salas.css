@@ -5,7 +5,7 @@
   min-height: 0;
   flex: 1 1 auto;
   flex-direction: column;
-  gap: clamp(8px, 1.15vh, 13px);
+  gap: 13px;
   color: #143532;
   font-family: var(--familia-da-fonte);
 }
@@ -17,7 +17,7 @@
   min-height: 50px;
   flex-shrink: 0;
   align-items: center;
-  padding: 7px clamp(13px, 1.7vw, 20px);
+  padding: 7px 20px;
   border: 1px solid var(--cor-borda, #d8d5c6);
   border-radius: 17px;
   background: var(--cor-superficie, #faf9f2);
@@ -39,7 +39,7 @@
 .academico-titulo-principal h1,
 .academico-editor-titulo h1 {
   color: #143532;
-  font-size: clamp(17px, 1.55vw, 22px);
+  font-size: 22px;
   line-height: 1.1;
 }
 
@@ -47,7 +47,7 @@
 .academico-editor-titulo p {
   margin-top: 2px;
   color: #7e9897;
-  font-size: clamp(10px, 0.95vw, 13px);
+  font-size: 13px;
   font-weight: 700;
   line-height: 1.25;
 }
@@ -79,7 +79,7 @@
   background: transparent;
   color: #263e35;
   font: inherit;
-  font-size: clamp(10px, 0.9vw, 13px);
+  font-size: 13px;
   font-weight: 700;
   cursor: pointer;
 }
@@ -152,13 +152,13 @@
 
 .academico-resumo strong {
   color: #143532;
-  font-size: clamp(18px, 1.5vw, 23px);
+  font-size: 23px;
   line-height: 1;
 }
 
 .academico-resumo span {
   color: #173b35;
-  font-size: clamp(11px, 0.95vw, 14px);
+  font-size: 14px;
   font-weight: 700;
   white-space: nowrap;
 }
@@ -169,8 +169,8 @@
   min-width: 0;
   min-height: 0;
   flex: 1 1 0;
-  grid-template-columns: minmax(0, 1fr) clamp(190px, 26vw, 310px);
-  gap: clamp(9px, 1.2vw, 15px);
+  grid-template-columns: minmax(0, 1fr) 310px;
+  gap: 15px;
 }
 
 .academico-layout-materias {
@@ -183,7 +183,7 @@
   min-width: 0;
   min-height: 0;
   flex-direction: column;
-  padding: clamp(10px, 1.4vw, 16px);
+  padding: 16px;
   overflow: hidden;
   border: 1px solid var(--cor-borda-cartao, #d8d5c6);
   border-radius: 20px;
@@ -225,7 +225,7 @@
   background: transparent;
   color: #263e35;
   font: inherit;
-  font-size: clamp(10px, 0.85vw, 12px);
+  font-size: 12px;
   font-weight: 700;
   cursor: pointer;
 }
@@ -279,7 +279,7 @@
   background: transparent;
   color: #143532;
   font: inherit;
-  font-size: clamp(11px, 0.9vw, 13px);
+  font-size: 13px;
 }
 
 .academico-busca input::placeholder {
@@ -299,7 +299,7 @@
   border: 1px solid #2a4036;
   border-radius: 10px;
   font: inherit;
-  font-size: clamp(11px, 0.9vw, 13px);
+  font-size: 13px;
   font-weight: 700;
   cursor: pointer;
   transition: background-color 120ms ease, border-color 120ms ease;
@@ -325,7 +325,7 @@
 }
 
 .academico-botao-novo {
-  min-width: clamp(95px, 12vw, 140px);
+  min-width: 140px;
 }
 
 .academico-lista {
@@ -346,7 +346,7 @@
   min-height: 58px;
   flex-shrink: 0;
   align-items: center;
-  gap: clamp(6px, 0.9vw, 11px);
+  gap: 11px;
   padding: 6px 9px;
   border: 1px solid var(--cor-borda-cartao, #d8d5c6);
   border-radius: 16px;
@@ -398,7 +398,7 @@
 .academico-item-informacoes strong {
   overflow: hidden;
   color: #253b34;
-  font-size: clamp(12px, 1vw, 15px);
+  font-size: 15px;
   line-height: 1.15;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -408,7 +408,7 @@
 .academico-item-informacoes small {
   overflow: hidden;
   color: #7e9897;
-  font-size: clamp(9px, 0.75vw, 11px);
+  font-size: 11px;
   font-weight: 700;
   line-height: 1.2;
   text-overflow: ellipsis;
@@ -416,7 +416,7 @@
 }
 
 .academico-item-informacoes small {
-  font-size: clamp(8px, 0.7vw, 10px);
+  font-size: 10px;
   font-weight: 400;
 }
 
@@ -432,7 +432,7 @@
   background: transparent;
   color: #18352f;
   font-family: inherit;
-  font-size: clamp(8px, 0.7vw, 10px);
+  font-size: 10px;
   font-weight: 700;
   line-height: 1.2;
 }
@@ -456,7 +456,7 @@
   background: #2c4035;
   color: #fff;
   font: inherit;
-  font-size: clamp(9px, 0.78vw, 11px);
+  font-size: 11px;
   font-weight: 700;
   cursor: pointer;
 }
@@ -503,14 +503,14 @@
 
 .academico-cursos-resumo strong {
   color: #253b34;
-  font-size: clamp(9px, 0.75vw, 11px);
+  font-size: 11px;
 }
 
 .academico-cursos-resumo span {
   display: -webkit-box;
   overflow: hidden;
   color: #7e9897;
-  font-size: clamp(8px, 0.68vw, 10px);
+  font-size: 10px;
   font-weight: 700;
   line-height: 1.35;
   -webkit-box-orient: vertical;
@@ -537,7 +537,7 @@
 }
 
 .academico-cronograma {
-  padding: clamp(10px, 1.2vw, 15px);
+  padding: 15px;
 }
 
 .academico-cronograma h2 {
@@ -547,7 +547,7 @@
   gap: 7px;
   margin: 0;
   color: #143532;
-  font-size: clamp(16px, 1.5vw, 21px);
+  font-size: 21px;
   line-height: 1.2;
 }
 
@@ -654,7 +654,7 @@
 .academico-cronograma li article strong {
   overflow: hidden;
   color: #253b34;
-  font-size: clamp(10px, 0.8vw, 12px);
+  font-size: 12px;
   line-height: 1.1;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -663,7 +663,7 @@
 .academico-cronograma li article small {
   overflow: hidden;
   color: #7e9897;
-  font-size: clamp(8px, 0.65vw, 10px);
+  font-size: 10px;
   font-weight: 700;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -715,7 +715,7 @@
   min-height: 0;
   flex: 1 1 auto;
   grid-template-columns: minmax(0, 1.25fr) minmax(220px, 0.78fr);
-  gap: clamp(9px, 1.2vw, 14px);
+  gap: 14px;
 }
 
 .academico-form-area-turma {
@@ -725,7 +725,7 @@
 .academico-card {
   min-width: 0;
   min-height: 0;
-  padding: clamp(10px, 1.5vw, 18px);
+  padding: 18px;
   overflow: auto;
   border: 1px solid var(--cor-borda, #d8d5c6);
   border-radius: 17px;
@@ -735,14 +735,14 @@
 .academico-card-campos {
   display: flex;
   flex-direction: column;
-  gap: clamp(9px, 1.3vh, 14px);
+  gap: 14px;
 }
 
 .academico-campos-duplos {
   display: grid;
   min-width: 0;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(8px, 1vw, 12px);
+  gap: 12px;
 }
 
 .academico-campo {
@@ -751,7 +751,7 @@
   flex-direction: column;
   gap: 5px;
   color: #143532;
-  font-size: clamp(10px, 0.9vw, 13px);
+  font-size: 13px;
   font-weight: 700;
 }
 
@@ -785,7 +785,7 @@
   background: #f7f6ef;
   color: #143532;
   font: inherit;
-  font-size: clamp(10px, 0.82vw, 12px);
+  font-size: 12px;
 }
 
 .academico-campo input,
@@ -834,7 +834,7 @@
 .academico-card h2 {
   margin: 0;
   color: #143532;
-  font-size: clamp(12px, 1vw, 15px);
+  font-size: 15px;
   line-height: 1.25;
 }
 
@@ -883,7 +883,7 @@
 }
 
 .academico-acoes button {
-  min-width: clamp(92px, 10vw, 112px);
+  min-width: 112px;
   min-height: 36px;
 }
 
@@ -896,7 +896,7 @@
   background: #2c4035;
   color: #fff;
   font: inherit;
-  font-size: clamp(9px, 0.75vw, 11px);
+  font-size: 11px;
   font-weight: 700;
   cursor: pointer;
 }
@@ -948,7 +948,7 @@
 .academico-intervalo strong,
 .academico-intervalo label {
   color: #143532;
-  font-size: clamp(8px, 0.7vw, 10px);
+  font-size: 10px;
   font-weight: 700;
 }
 
@@ -1005,7 +1005,7 @@
 .academico-ajuda {
   margin: 0;
   color: #7e9897;
-  font-size: clamp(9px, 0.72vw, 11px);
+  font-size: 11px;
   line-height: 1.4;
 }
 
@@ -1047,7 +1047,7 @@
 
 .academico-dias > span {
   color: #143532;
-  font-size: clamp(9px, 0.74vw, 11px);
+  font-size: 11px;
   font-weight: 700;
 }
 
@@ -1109,7 +1109,7 @@
   background: transparent;
   color: #789493;
   font: inherit;
-  font-size: clamp(9px, 0.75vw, 11px);
+  font-size: 11px;
   cursor: pointer;
 }
 
@@ -1136,7 +1136,7 @@
   border-radius: 9px;
   background: #f8f7f0;
   color: #143532;
-  font-size: clamp(10px, 0.82vw, 12px);
+  font-size: 12px;
   font-weight: 700;
   cursor: pointer;
 }
@@ -1155,7 +1155,7 @@
 
 @media (max-width: 900px) {
   .academico-layout {
-    grid-template-columns: minmax(0, 1fr) clamp(175px, 27vw, 230px);
+    grid-template-columns: minmax(0, 1fr) 230px;
   }
 
   .academico-layout-materias .academico-lista-painel {
@@ -1252,7 +1252,7 @@
 @media (max-width: 520px) {
   .academico-resumo {
     min-height: 40px;
-    flex: 1 1 calc(50% - 5px);
+    flex: 1 1 48%;
     justify-content: center;
     padding: 6px 8px;
   }
@@ -1401,4 +1401,37 @@
   .academico-acoes button {
     min-height: 32px;
   }
+}
+
+
+/* Proporções das telas Gerenciamento e Cadastrar Sala. */
+.academico-pagina { gap: 16px; }
+.academico-titulo-principal, .academico-editor-titulo { min-height: 76px; padding: 14px 22px; }
+.academico-titulo-principal h1, .academico-editor-titulo h1 { font-size: 23px; }
+.academico-titulo-principal p, .academico-editor-titulo p { font-size: 13px; }
+.academico-abas button { min-height: 34px; padding: 7px 13px; }
+.academico-resumo { min-height: 53px; padding: 10px 16px; }
+.academico-layout { grid-template-columns: minmax(0, 1.65fr) minmax(280px, 0.75fr); gap: 18px; }
+.academico-lista-painel, .academico-cronograma { padding: 22px; }
+.academico-item { min-height: 77px; padding: 10px 14px; }
+.academico-item-icone { width: 49px; height: 49px; }
+.academico-busca { height: 43px; }
+.academico-form-area { grid-template-columns: minmax(0, 1.2fr) minmax(310px, 0.85fr); gap: 18px; align-items: start; }
+.academico-form-area > .academico-card { padding: 23px; }
+.academico-form-area > .academico-card-campos { min-height: 420px; }
+.academico-form-area > .academico-card-icones { min-height: 0; align-self: start; }
+.academico-card-campos { gap: 19px; }
+.academico-campo input, .academico-campo select { height: 42px; }
+.academico-campo textarea { min-height: 160px; }
+.academico-grade-icones { gap: 9px; }
+.academico-acoes button { min-height: 43px; }
+@media (max-width: 900px) {
+ .academico-layout { grid-template-columns: minmax(0, 1fr) 240px; gap: 12px; }
+ .academico-form-area { grid-template-columns: minmax(0, 1fr) 250px; gap: 12px; }
+ .academico-form-area > .academico-card { padding: 14px; }
+}
+@media (max-width: 760px) {
+ .academico-layout, .academico-form-area { display: flex; flex-direction: column; }
+ .academico-form-area > .academico-card { width: 100%; }
+ .academico-form-area > .academico-card-campos { min-height: 0; }
 }

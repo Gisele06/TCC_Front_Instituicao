@@ -1,500 +1,415 @@
 .comunicados-pagina {
   display: flex;
+  flex: 1;
+  flex-direction: column;
   width: 100%;
   min-width: 0;
   min-height: 0;
-  flex: 1;
-  flex-direction: column;
-  gap: clamp(10px, 1.5vh, 16px);
+  gap: 16px;
   color: #143532;
   font-family: var(--familia-da-fonte);
 }
+
 .comunicados-titulo-principal {
-  display: flex;
-  width: 100%;
-  min-width: 0;
-  min-height: 56px;
+  height: 100px;
   flex-shrink: 0;
-  align-items: center;
-  padding: 10px 18px;
-  border: 1px solid var(--cor-borda);
-  border-radius: 17px;
-  background: var(--cor-superficie);
+  padding: 0 39px;
+  border: 1px solid var(--cor-borda-cartao);
+  border-radius: 30px;
+  background: var(--cor-fundo-painel);
+  box-shadow: 0 0 4px rgba(60, 60, 40, 0.1);
 }
-.comunicados-titulo-principal h1, .comunicados-titulo-principal p {
-  margin: 0;
-}
+
 .comunicados-titulo-principal h1 {
-  font-size: clamp(18px, 1.6vw, 22px);
+  font-size: 25px;
 }
+
 .comunicados-titulo-principal p {
-  margin-top: 2px;
   color: #789493;
-  font-size: clamp(12px, 1vw, 14px);
+  font-size: 22px;
+  font-weight: 700;
 }
+
 .comunicados-area {
   display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
+  flex: 1;
   width: 100%;
   min-width: 0;
   min-height: 0;
-  flex: 1;
-  grid-template-columns: minmax(0, 1fr) clamp(185px, 22vw, 280px);
-  gap: clamp(10px, 1vw, 14px);
+  gap: 10px;
 }
-.comunicados-lista-painel, .comunicados-calendario-painel {
+
+.comunicados-lista-painel,
+.comunicados-calendario-painel {
   min-width: 0;
   min-height: 0;
   border: 1px solid var(--cor-borda);
-  border-radius: 18px;
+  border-radius: 30px;
   background: var(--cor-superficie);
+  box-shadow: 0 0 4px 3px rgba(0, 0, 0, 0.023);
 }
+
 .comunicados-lista-painel {
   display: flex;
-  width: 100%;
-  min-width: 0;
   flex-direction: column;
-  gap: clamp(10px, 1.2vh, 14px);
-  padding: clamp(14px, 1.5vh, 18px) clamp(16px, 1.5vw, 22px);
+  gap: 16px;
+  padding: 20px;
 }
+
 .comunicados-categoria-abas {
   display: flex;
   width: fit-content;
   max-width: 100%;
   overflow-x: auto;
   border: 1px solid var(--cor-borda);
-  border-radius: 10px;
+  border-radius: 24px;
   background: #f6f5ee;
 }
-.comunicados-categoria-abas span {
-  flex-shrink: 0;
-  padding: 8px 12px;
-  border: 0;
-  border-radius: 8px;
-  background: transparent;
-  color: #143532;
-  font-family: inherit;
-  font-size: clamp(13px, 1.05vw, 15px);
-  font-weight: 700;
-  cursor: default;
-}
-.comunicados-categoria-abas span.estado-selecionado {
-  background: #2a4036;
-  color: #fff;
-}
+
 .comunicados-lista-ferramentas {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: space-between;
+  gap: 12px;
 }
+
 .comunicados-busca {
   display: flex;
-  width: auto;
-  min-width: 0;
-  height: 38px;
   flex: 1;
   align-items: center;
-  gap: 7px;
-  padding: 0 9px;
-  border: 1px solid var(--cor-borda);
-  border-radius: 999px;
-  background: #f7f6ef;
-  color: #789493;
-}
-.comunicados-busca img {
-  width: 14px;
-  height: 14px;
-  object-fit: contain;
-}
-.comunicados-busca span {
-  color: #789493;
-  font-size: clamp(11px, 0.95vw, 13px);
-}
-.comunicados-principal-botao {
-  min-width: 116px;
-  height: 38px;
-  margin-left: auto;
+  min-width: 0;
+  max-width: 679px;
+  height: 61px;
+  gap: 8px;
   padding: 0 12px;
-  border: 0;
-  border-radius: 9px;
-  background: #2a4036;
-  color: #fff;
-  font-family: inherit;
-  font-size: clamp(13px, 1vw, 15px);
-  font-weight: 700;
-  cursor: pointer;
-}
-.comunicados-lista {
-  display: flex;
-  width: 100%;
-  min-width: 0;
-  min-height: 0;
-  flex: 1;
-  flex-direction: column;
-  gap: clamp(10px, 1.1vh, 14px);
-  overflow-y: auto;
-}
-.comunicados-lista-item {
-  display: grid;
-  width: 100%;
-  min-width: 0;
-  min-height: 104px;
-  grid-template-columns: 64px minmax(0, 250px) 105px 70px 70px 28px;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  border: 1px solid #dedbcf;
-  border-radius: 15px;
-  background: #f8f7f0;
-}
-.comunicados-lista-foto {
-  width: 64px;
-  height: 64px;
-  max-width: 100%;
-  border-radius: 11px;
-  background: #ecede5;
-}
-.comunicados-lista-descricao, .comunicados-lista-detalhes {
-  display: flex;
-  min-width: 0;
-  flex-direction: column;
-}
-.comunicados-categoria-rotulo {
-  width: fit-content;
-  margin-bottom: 1px;
-  padding: 1px 6px;
   border: 1px solid var(--cor-borda);
-  border-radius: 999px;
-  color: #789493;
-  font-size: 10px;
-  font-weight: 700;
-  line-height: 1.2;
+  border-radius: 100px;
+  background: #f7f6ef;
 }
-.comunicados-lista-descricao h2 {
-  margin: 0;
-  overflow: hidden;
-  color: #143532;
-  font-size: clamp(13px, 1.05vw, 15px);
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.comunicados-lista-descricao p {
-  display: -webkit-box;
-  margin: 1px 0 0;
-  overflow: hidden;
-  color: #789493;
-  font-size: clamp(11px, 0.85vw, 13px);
-  line-height: 1.25;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
-.comunicados-lista-detalhes {
-  gap: 3px;
-  color: #789493;
-  font-size: clamp(11px, 0.85vw, 13px);
-}
-.comunicados-lista-detalhes > span {
-  display: flex;
-  min-width: 0;
-  align-items: center;
-  gap: 4px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
+
+.comunicados-busca img,
 .comunicados-lista-detalhes img {
-  width: 14px;
-  height: 14px;
+  width: 25px;
+  height: 25px;
   flex-shrink: 0;
   object-fit: contain;
+  margin: 0 10px;
 }
-.comunicados-situacao {
-  align-self: start;
-  margin-top: 5px;
-  padding: 4px 8px;
-  border: 1px solid #d4d8cc;
-  border-radius: 999px;
-  color: #45695d;
-  font-size: 10px;
-  font-weight: 700;
-  text-align: center;
-  white-space: nowrap;
-}
-.comunicados-lista-acoes {
-  display: flex;
-  flex-direction: column;
-  gap: 19px;
-}
-.comunicados-acao-botao {
-  display: flex;
-  min-width: 70px;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  padding: 6px 7px;
-  border: 0;
-  border-radius: 8px;
-  background: #2a4036;
-  color: #fff;
-  font-family: inherit;
-  font-size: 10px;
-  line-height: 1;
-  white-space: nowrap;
-}
-.comunicados-acao-botao img {
-  width: 11px;
-  height: 11px;
-  flex-shrink: 0;
-  object-fit: contain;
-}
-.comunicados-item-seta {
-  width: 28px;
-  height: 36px;
-  object-fit: contain;
-}
-.comunicados-vazio {
-  margin: auto;
-  color: #789493;
-  font-size: 11px;
-}
-.comunicados-calendario-painel {
-  width: 100%;
-  min-width: 0;
-  padding: 14px 20px;
-}
-.comunicados-pequeno-calendario {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  flex-direction: column;
-  padding: 0;
-  border: 0;
-  background: transparent;
-}
-.comunicados-pequeno-calendario .bloom-pequeno-calendario-titulo {
-  gap: 7px;
-  margin-bottom: 13px;
-}
-.comunicados-pequeno-calendario .bloom-pequeno-calendario-titulo h2 {
-  font-size: clamp(19px, 1.45vw, 21px);
-}
-.comunicados-pequeno-calendario .bloom-pequeno-calendario-navegacao {
-  width: min(100%, 140px);
-  margin-bottom: 12px;
-  padding: 4px 7px;
-  font-size: 12px;
-}
-.comunicados-pequeno-calendario .bloom-pequeno-calendario-navegacao button {
-  display: flex;
-  padding: 0;
-}
-.comunicados-pequeno-calendario .bloom-pequeno-calendario-grade {
-  gap: 2px;
-}
-.comunicados-pequeno-calendario .bloom-pequeno-calendario-dia-semana {
-  padding-bottom: 4px;
-  font-size: 12px;
-}
-.comunicados-pequeno-calendario .bloom-pequeno-calendario-dia {
-  height: 26px;
-  font-size: 12px;
-}
-.comunicados-pequeno-calendario .bloom-pequeno-calendario-eventos {
-  min-height: 155px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  margin-top: 12px;
-  padding-top: 10px;
-  padding-bottom: 8px;
-  overflow-y: auto;
-}
-.comunicados-pequeno-calendario .bloom-pequeno-calendario-eventos-cabecalho {
-  gap: 5px;
-  margin-bottom: 12px;
-}
-.comunicados-pequeno-calendario .bloom-pequeno-calendario-eventos-cabecalho h3 {
-  font-size: 15px;
-}
-.comunicados-pequeno-calendario .bloom-pequeno-calendario-eventos-cabecalho span {
-  font-size: 11px;
-}
-.comunicados-pequeno-calendario .bloom-pequeno-calendario-evento {
-  display: grid;
-  grid-template-columns: 44px minmax(0, 1fr) 12px;
-  gap: 8px;
-  padding: 9px 0;
-}
-.comunicados-pequeno-calendario .bloom-pequeno-calendario-evento:last-child {
-  border-bottom: 0;
-}
-.comunicados-pequeno-calendario .bloom-pequeno-calendario-evento-horario {
-  align-self: start;
-  padding-top: 1px;
-  font-size: 14px;
-}
-.comunicados-pequeno-calendario .bloom-pequeno-calendario-evento-corpo {
-  min-width: 0;
-  gap: 4px;
-  font-size: 13px;
-}
-.comunicados-pequeno-calendario .bloom-pequeno-calendario-evento-corpo > span:first-child {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.comunicados-pequeno-calendario .bloom-pequeno-calendario-evento-detalhe {
-  display: flex;
-  min-width: 0;
-  align-items: center;
-  gap: 7px;
-}
-.comunicados-pequeno-calendario .bloom-pequeno-calendario-evento-local {
-  overflow: hidden;
-  color: #789493;
-  font-size: 10px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.comunicados-pequeno-calendario .bloom-pequeno-calendario-evento-categoria {
-  flex-shrink: 0;
-  padding: 1px 8px;
-  font-size: 11px;
-}
-.comunicados-pequeno-calendario .bloom-pequeno-calendario-evento > .icone-espaco {
-  width: 12px !important;
-  height: 14px !important;
-  align-self: center;
-}
-@media (max-width: 900px) {
-  .comunicados-area {
-    grid-template-columns: minmax(0, 1fr) clamp(185px, 22vw, 280px);
-  }
-  .comunicados-lista-item {
-    grid-template-columns: 60px minmax(0, 250px) 105px 70px 70px 28px;
-    justify-content: space-between;
-    gap: 6px;
-    padding: 8px 10px;
-  }
-  .comunicados-lista-foto {
-    width: 60px;
-    height: 60px;
-  }
-  .comunicados-lista-descricao h2 {
-    font-size: 13px;
-  }
-  .comunicados-lista-descricao p, .comunicados-lista-detalhes {
-    font-size: 11px;
-  }
-  .comunicados-situacao {
-    padding: 4px 6px;
-  }
-  .comunicados-pequeno-calendario .bloom-pequeno-calendario-eventos {
-    min-height: 180px;
-  }
-}
-@media (max-width: 660px) {
-  .comunicados-area {
-    grid-template-columns: minmax(0, 1fr);
-    overflow-y: auto;
-  }
-  .comunicados-calendario-painel {
-    min-height: 300px;
-  }
-}
-.comunicados-lista-item {
-  min-height: 104px;
-  grid-template-columns: 64px minmax(0, 250px) 105px 70px 70px 28px;
-}
-.comunicados-lista-icone {
-  display: flex;
-  width: 64px;
-  height: 64px;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #e1e2d8;
-  border-radius: 11px;
-  background: #ecede5;
-}
-.comunicados-lista-icone img {
-  width: 34px;
-  height: 34px;
-  object-fit: contain;
-}
-.comunicados-categoria-rotulo {
-  color: #45695d;
-  font-size: 10px;
-}
-.comunicados-lista-descricao h2 {
-  font-size: clamp(13px, 1.05vw, 15px);
-}
-.comunicados-lista-descricao p {
-  font-size: clamp(11px, 0.85vw, 13px);
-  line-height: 1.25;
-  -webkit-line-clamp: 2;
-}
-.comunicados-lista-detalhes {
-  gap: 3px;
-  font-size: clamp(11px, 0.85vw, 13px);
-}
-.comunicados-lista-detalhes img {
-  width: 14px;
-  height: 14px;
-}
-@media (max-width: 900px) {
-  .comunicados-lista-item {
-    grid-template-columns: 60px minmax(0, 250px) 105px 70px 70px 28px;
-    gap: 6px;
-    padding: 8px 10px;
-  }
-  .comunicados-lista-icone {
-    width: 60px;
-    height: 60px;
-  }
-  .comunicados-lista-icone img {
-    width: 32px;
-    height: 32px;
-  }
-}
-@media (max-width: 660px) {
-  .comunicados-situacao, .comunicados-lista-acoes {
-    display: none;
-  }
-}
-/* Filtros e busca da listagem de comunicados. */ .comunicados-categoria-abas button {
-  flex-shrink: 0;
-  padding: 8px 12px;
-  border: 0;
-  border-radius: 8px;
-  background: transparent;
-  color: #143532;
-  font-family: inherit;
-  font-size: clamp(13px,1.05vw,15px);
-  font-weight: 700;
-  cursor: pointer;
-}
-.comunicados-categoria-abas button.estado-selecionado {
-  background: #2a4036;
-  color: white;
-}
+
 .comunicados-busca input {
-  flex: 1;
+  width: 100%;
   min-width: 0;
   border: 0;
   outline: 0;
   background: transparent;
-  color: #143532;
-  font-size: clamp(11px,.95vw,13px);
+  color: #7e9897;
+  font-family: inherit;
+  font-size: 22px;
+  font-weight: 800;
 }
-.comunicados-acao-botao {
+
+.comunicados-principal-botao {
+  flex-shrink: 0;
+  height: 56px;
+  padding: 0 40px;
+  border: 0;
+  border-radius: 18px;
+  background: #2a4036;
+  color: white;
+  font: inherit;
+  font-size: 24px;
+  font-weight: 700;
   cursor: pointer;
 }
+
+.comunicados-lista {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  gap: 12px;
+  overflow-y: auto;
+}
+
+.comunicados-lista-item {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 2fr) minmax(0, 1fr) 90px 106px 30px;
+  align-items: center;
+  min-width: 0;
+  gap: 12px;
+  padding: 18px;
+  border: 1px solid #dedbcf;
+  border-radius: 29px;
+  background: #f8f7f0;
+  box-shadow: 0 2px 5px #22362912;
+}
+
+.comunicados-lista-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #d7dfd6;
+  border-radius: 18px;
+  background: #ecede5;
+  box-shadow: 0 0 4px 3px rgba(0, 0, 0, 0.023);
+}
+
+.comunicados-lista-icone img {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+}
+
+.comunicados-lista-descricao,
+.comunicados-lista-detalhes {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.comunicados-categoria-rotulo {
+  width: fit-content;
+  margin: 0 0 15px 22px;
+  padding: 3px 17px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 20px;
+  box-shadow: 0 0 4px 3px rgba(0, 0, 0, 0.023);
+  color: #2c4035;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.comunicados-lista-descricao h2 {
+  margin: 0 0 0 26px;
+  color: #143532;
+  font-size: 20px;
+  overflow-wrap: anywhere;
+}
+
+.comunicados-lista-descricao p {
+  margin: 2px 0 0 26px;
+  color: #789493;
+  font-size: 16px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.comunicados-lista-detalhes {
+  gap: 5px;
+  color: #789493;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.comunicados-lista-detalhes > span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.comunicados-situacao {
+  justify-self: center;
+  align-self: start;
+  margin-top: 7px;
+  padding: 4px 12px;
+  border: 1px solid #d4d8cc;
+  border-radius: 20px;
+  color: #112d2b;
+  font-size: 14px;
+  font-weight: 800;
+  white-space: nowrap;
+  box-shadow: 0 0 4px 3px rgba(0, 0, 0, 0.023);
+}
+
+.comunicados-lista-acoes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.comunicados-acao-botao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  gap: 4px;
+  padding: 3px;
+  border: 0;
+  border-radius: 8px;
+  background: #2a4036;
+  color: white;
+  font: inherit;
+  font-size: 13px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
 .comunicados-acao-botao:disabled {
-  opacity: .55;
+  opacity: 0.55;
   cursor: not-allowed;
 }
+
+.comunicados-acao-botao img {
+  width: 19px;
+  height: 19px;
+  object-fit: contain;
+}
+
+.comunicados-item-seta {
+  width: 30px;
+  height: 41px;
+  object-fit: contain;
+}
+
 .comunicados-vazio {
   margin: auto;
   color: #789493;
-  font-size: 12px;
+  font-size: 13px;
+}
+
+.comunicados-calendario-painel {
+  display: flex;
+  overflow: hidden;
+}
+
+.comunicados-pequeno-calendario {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding: 31px 27px 30px;
+  border: 0;
+  background: transparent;
+}
+
+.comunicados-pequeno-calendario .bloom-pequeno-calendario-grade {
+  flex: 1;
+  min-height: 0;
+  grid-template-rows: 34px;
+  grid-auto-rows: minmax(44px, 1fr);
+}
+
+.comunicados-pequeno-calendario .bloom-pequeno-calendario-eventos {
+  flex: 0 0 38%;
+  min-height: 200px;
+  margin-top: 10px;
+  padding: 80px 10px 0;
+  overflow-y: auto;
+}
+
+@media (max-width: 1450px) {
+  .comunicados-lista-item {
+    grid-template-columns: 70px minmax(0, 2fr) minmax(0, 1fr) 106px 22px;
+    gap: 10px;
+  }
+
+  .comunicados-lista-icone {
+    width: 70px;
+    height: 70px;
+  }
+
+  .comunicados-lista-icone img {
+    width: 38px;
+    height: 38px;
+  }
+
+  .comunicados-situacao {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: start;
+  }
+
+  .comunicados-lista-acoes {
+    grid-column: 4;
+    grid-row: 1 / 3;
+  }
+
+  .comunicados-item-seta {
+    grid-column: 5;
+    grid-row: 1 / 3;
+  }
+}
+
+@media (max-width: 1050px) {
+  .comunicados-area {
+    grid-template-columns: 1fr;
+    overflow-y: auto;
+  }
+
+  .comunicados-lista-painel {
+    min-height: 400px;
+  }
+
+  .comunicados-calendario-painel {
+    min-height: 740px;
+  }
+}
+
+@media (max-width: 650px) {
+  .comunicados-lista-painel {
+    padding: 14px;
+  }
+
+  .comunicados-lista-ferramentas {
+    flex-wrap: wrap;
+  }
+
+  .comunicados-busca {
+    flex-basis: 100%;
+  }
+
+  .comunicados-principal-botao {
+    margin-left: auto;
+  }
+
+  .comunicados-lista-item {
+    grid-template-columns: 60px minmax(0, 1fr) 22px;
+  }
+
+  .comunicados-lista-icone {
+    width: 60px;
+    height: 60px;
+  }
+
+  .comunicados-lista-descricao {
+    grid-column: 2;
+  }
+
+  .comunicados-lista-detalhes {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .comunicados-situacao {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  .comunicados-lista-acoes {
+    grid-column: 2;
+    grid-row: 4;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .comunicados-item-seta {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .comunicados-pequeno-calendario {
+    min-height: 650px;
+    padding: 24px 14px;
+  }
+
+  .comunicados-pequeno-calendario .bloom-pequeno-calendario-eventos {
+    flex-basis: 35%;
+  }
 }

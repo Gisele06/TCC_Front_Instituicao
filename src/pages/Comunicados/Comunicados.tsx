@@ -1,7 +1,9 @@
-import { fonteDisponivel } from "../../services/recursos";
 import { useEffect, useMemo, useState } from "react";
+import { fonteDisponivel } from "../../services/recursos";
 import EstruturaInstitucional from "../../components/Geral/InstitutionFrame/InstitutionFrame";
 import CalendarioPequeno from "../../components/Geral/MiniCalendar/MiniCalendar";
+import CabecalhoDePagina from "../../components/Geral/PageHeader/PageHeader";
+import AbasSegmentadas from "../../components/Geral/SegmentedTabs/SegmentedTabs";
 
 import iconeCalendario from "../../assets/icons/Geral/calendario.png";
 import iconeCalendarioDaLista from "../../assets/icons/Geral/calendario-evento.png";
@@ -19,14 +21,13 @@ interface PropriedadesComunicados {
   aoCriarComunicado: () => void;
 }
 
-const categorias = ["Todos", "Comunicado", "Evento"];
-
-
-
 const meses = [
   "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
   "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro",
 ];
+
+const categorias = ["Todos", "Comunicado", "Evento"];
+const abasCategorias = categorias.map((categoria) => ({ valor: categoria, rotulo: categoria }));
 
 function criarSemanas(ano: number, mes: number) {
   const primeiroDia = new Date(ano, mes, 1).getDay();
@@ -39,10 +40,8 @@ function criarSemanas(ano: number, mes: number) {
 
   for (let semana = 0; semana < quantidadeDeSemanas; semana += 1) {
     const dias = [];
-
     for (let coluna = 0; coluna < 7; coluna += 1) {
       const posicao = semana * 7 + coluna;
-
       if (posicao < primeiroDia) {
         dias.push({ dia: diasNoMesAnterior - primeiroDia + posicao + 1, outroMes: true });
       } else if (diaAtual <= diasNoMes) {
@@ -53,10 +52,8 @@ function criarSemanas(ano: number, mes: number) {
         diaDoProximoMes += 1;
       }
     }
-
     semanas.push(dias);
   }
-
   return semanas;
 }
 
@@ -64,6 +61,18 @@ function Comunicados({ aoNavegar, aoCriarComunicado }: PropriedadesComunicados) 
   const [comunicados, definirComunicados] = useState<Comunicado[]>([]);
   const [carregando, definirCarregando] = useState(true);
   const [erro, definirErro] = useState("");
+  const [categoriaAtiva, definirCategoriaAtiva] = useState("Todos");
+  const [busca, definirBusca] = useState("");
+  const [ocultos, definirOcultos] = useState<number[]>([]);
+  const [mesVisivel, definirMesVisivel] = useState(() => {
+    const hoje = new Date();
+    return new Date(hoje.getFullYear(), hoje.getMonth(), 1);
+  });
+  const [dataSelecionada, definirDataSelecionada] = useState(() => {
+    const hoje = new Date();
+    return new Date(hoje.getFullYear(), hoje.getMonth(), hoje.getDate());
+  });
+
   useEffect(() => {
     let ativo = true;
     carregarComunicados()
@@ -74,58 +83,52 @@ function Comunicados({ aoNavegar, aoCriarComunicado }: PropriedadesComunicados) 
       .finally(() => { if (ativo) definirCarregando(false); });
     return () => { ativo = false; };
   }, []);
-  const [categoriaAtiva, definirCategoriaAtiva] = useState("Todos");
-  const [busca, definirBusca] = useState("");
-  const [ocultos, definirOcultos] = useState<number[]>([]);
+
   const comunicadosFiltrados = useMemo(() => comunicados.filter((item) => {
     const categoriaCorresponde = categoriaAtiva === "Todos" || item.categoria === categoriaAtiva;
     const buscaCorresponde = `${item.titulo} ${item.descricao}`.toLocaleLowerCase("pt-BR")
       .includes(busca.trim().toLocaleLowerCase("pt-BR"));
     return categoriaCorresponde && buscaCorresponde && !ocultos.includes(item.id);
   }), [comunicados, categoriaAtiva, busca, ocultos]);
+
   const hoje = new Date();
-  const mes = hoje.getMonth();
-  const ano = hoje.getFullYear();
-  const diaSelecionado = hoje.getDate();
-  // A tabela de comunicados não possui data/hora para alimentar o calendário.
+  const ano = mesVisivel.getFullYear();
+  const mes = mesVisivel.getMonth();
+  const diaSelecionado = dataSelecionada.getDate();
+
+  function mudarMes(direcao: number) {
+    const novoMes = new Date(ano, mes + direcao, 1);
+    definirMesVisivel(novoMes);
+    definirDataSelecionada(new Date(novoMes.getFullYear(), novoMes.getMonth(), 1));
+  }
+
+  // Os dados atuais de comunicados não fornecem uma data normalizada para montar a agenda.
   const comunicadosDoDia: { id: string; horario: string; titulo: string; categoria: string }[] = [];
 
   return (
     <EstruturaInstitucional paginaAtiva="comunicados" aoNavegar={aoNavegar}>
       <main className="comunicados-pagina">
-        <header className="comunicados-titulo-principal">
-          <div>
-            <h1>Comunicados</h1>
-            <p>Acompanhe os comunicados publicados pela instituição.</p>
-          </div>
-        </header>
+        <CabecalhoDePagina
+          className="comunicados-titulo-principal"
+          titulo="Comunicados"
+          subtitulo="Acompanhe os comunicados publicados pela instituição."
+        />
 
         <div className="comunicados-area">
           <section className="comunicados-lista-painel" aria-label="Lista de comunicados">
-            <div className="comunicados-categoria-abas" aria-label="Categorias de comunicados">
-              {categorias.map((categoria) => (
-                <button
-                  type="button"
-                  key={categoria}
-                  className={categoria === categoriaAtiva ? "estado-selecionado" : ""}
-                  aria-pressed={categoria === categoriaAtiva}
-                  onClick={() => definirCategoriaAtiva(categoria)}
-                >
-                  {categoria}
-                </button>
-              ))}
-            </div>
+            <AbasSegmentadas
+              className="comunicados-categoria-abas"
+              itens={abasCategorias}
+              valor={categoriaAtiva}
+              aoMudar={definirCategoriaAtiva}
+            />
 
             <div className="comunicados-lista-ferramentas">
               <label className="comunicados-busca">
                 <img src={iconeBusca} alt="" />
                 <input type="search" value={busca} onChange={(evento) => definirBusca(evento.target.value)} placeholder="Buscar comunicado" />
               </label>
-              <button
-                type="button"
-                className="comunicados-principal-botao"
-                onClick={aoCriarComunicado}
-              >
+              <button type="button" className="comunicados-principal-botao" onClick={aoCriarComunicado}>
                 Novo comunicado
               </button>
             </div>
@@ -139,20 +142,16 @@ function Comunicados({ aoNavegar, aoCriarComunicado }: PropriedadesComunicados) 
                   <div className="comunicados-lista-icone" aria-hidden="true">
                     <img src={comunicado.icone} alt="" />
                   </div>
-
                   <div className="comunicados-lista-descricao">
                     <span className="comunicados-categoria-rotulo">{comunicado.categoria}</span>
                     <h2>{comunicado.titulo}</h2>
                     <p>{comunicado.descricao}</p>
                   </div>
-
                   <div className="comunicados-lista-detalhes">
                     <span><img src={iconeCalendarioDaLista} alt="" />{comunicado.data}</span>
                     <span><img src={iconeRelogio} alt="" />{comunicado.hora}</span>
                   </div>
-
                   <span className="comunicados-situacao">Sem status</span>
-
                   <div className="comunicados-lista-acoes">
                     <button type="button" className="comunicados-acao-botao" onClick={() => definirOcultos((lista) => [...lista, comunicado.id])}>
                       <img src={iconeOcultar} alt="" /> Ocultar
@@ -161,11 +160,12 @@ function Comunicados({ aoNavegar, aoCriarComunicado }: PropriedadesComunicados) 
                       <img src={iconeReenviar} alt="" /> Reenviar
                     </button>
                   </div>
-
                   <img className="comunicados-item-seta" src={iconeSeta} alt="" />
                 </article>
               ))}
-              {!carregando && !erro && fonteDisponivel() && comunicadosFiltrados.length === 0 && <p className="comunicados-vazio">Nenhum comunicado cadastrado ou encontrado.</p>}
+              {!carregando && !erro && fonteDisponivel() && comunicadosFiltrados.length === 0 && (
+                <p className="comunicados-vazio">Nenhum comunicado cadastrado ou encontrado.</p>
+              )}
             </div>
           </section>
 
@@ -174,17 +174,21 @@ function Comunicados({ aoNavegar, aoCriarComunicado }: PropriedadesComunicados) 
               className="comunicados-pequeno-calendario"
               titulo="Calendário"
               iconeDoTitulo={<img src={iconeCalendario} alt="" />}
-              tamanhoDoIconeDoTitulo={22}
+              tamanhoDoIconeDoTitulo={36}
               mesExibido={`${meses[mes]} ${ano}`}
               semanas={criarSemanas(ano, mes)}
               diaSelecionado={diaSelecionado}
-              diaDeHoje={diaSelecionado}
+              diaDeHoje={hoje.getMonth() === mes && hoje.getFullYear() === ano ? hoje.getDate() : undefined}
               diasComEvento={[]}
+              aoSelecionarDia={(dia) => definirDataSelecionada(new Date(ano, mes, dia))}
+              aoVoltarMes={() => mudarMes(-1)}
+              aoAvancarMes={() => mudarMes(1)}
               iconeAnterior={<img src={iconeSeta} alt="" />}
               iconeProximo={<img src={iconeSeta} alt="" />}
               tituloDosEventos="Comunicados do dia"
               dataDosEventos={`${diaSelecionado} de ${meses[mes].toLowerCase()} de ${ano}`}
               eventos={comunicadosDoDia}
+              mensagemSemEventos={carregando ? "Carregando comunicados..." : erro || "Nenhum comunicado nesta data."}
             />
           </aside>
         </div>

@@ -1,34 +1,34 @@
-/* Estilos próprios de Acolhimento (sem importar o CSS de Bem-estar). */ .acolhimento-pagina {
+.acolhimento-pagina {
   display: flex;
   width: 100%;
   min-width: 0;
   min-height: 0;
   flex: 1;
   flex-direction: column;
-  gap: calc(22 * var(--un));
-  margin-top: calc(18 * var(--un));
+  gap: 22px;
+  margin-top: 18px;
   overflow: hidden;
   color: var(--cor-texto-forte);
   font-family: var(--familia-da-fonte);
 }
 .acolhimento-pagina .acolhimento-cabecalho {
   flex-shrink: 0;
-  height: calc(114 * var(--un));
-  padding: 0 calc(39 * var(--un));
+  height: 114px;
+  padding: 0 39px;
   border: 1px solid var(--cor-borda-cartao);
-  border-radius: calc(30 * var(--un));
+  border-radius: 30px;
   background: var(--cor-fundo-painel);
   box-shadow: 0 0 4px rgba(60, 60, 40, 0.1);
 }
 .acolhimento-pagina .acolhimento-cabecalho h1 {
-  margin: 0 0 calc(3 * var(--un));
+  margin: 0 0 3px;
   color: var(--cor-texto-forte);
-  font-size: calc(36 * var(--un));
+  font-size: 36px;
   line-height: 1.1;
 }
 .acolhimento-pagina .acolhimento-cabecalho p {
   color: var(--cor-texto-suave-bemestar);
-  font-size: calc(22 * var(--un));
+  font-size: 22px;
   line-height: 1.1;
 }
 .acolhimento-abas {
@@ -38,14 +38,14 @@
   --aba-icone: 19;
 }
 .acolhimento-pagina {
-  gap:clamp(10px,1.5vh,18px)
+  gap:18px
 }
 .acolhimento-pagina .acolhimento-cabecalho {
-  height:clamp(75px,9.5vh,105px);
+  height:105px;
   flex-shrink:0
 }
 .acolhimento-pagina .acolhimento-cabecalho h1 {
-  font-size:clamp(22px,2.2vw,34px)
+  font-size:34px
 }
 .acolhimento-estatisticas {
   display:flex;
@@ -53,7 +53,7 @@
   flex-shrink:0
 }
 .acolhimento-estatisticas .acolhimento-estatisticas strong {
-  font-size:clamp(23px,2vw,29px)
+  font-size:29px
 }
 .acolhimento-estatisticas img {
   width:25px;
@@ -75,7 +75,7 @@
   box-shadow:0 1px 5px #00000008
 }
 .acolhimento-lista h2,.acolhimento-detalhe h2 {
-  font-size:clamp(22px,2vw,30px);
+  font-size:30px;
   margin:0 0 20px;
   display:flex;
   align-items:center;
@@ -337,4 +337,23 @@
   align-items: center;
   gap: 7px;
   flex-wrap: wrap;
+}
+
+
+/* Ajustes de proporção da tela Acolhimento / Denúncias. */
+.acolhimento-pagina { margin-top: 0; gap: 18px; }
+.acolhimento-pagina .acolhimento-cabecalho { height: 86px; padding: 15px 25px; border-radius: 22px; }
+.acolhimento-pagina .acolhimento-cabecalho h1 { font-size: 27px; }
+.acolhimento-pagina .acolhimento-cabecalho p { font-size: 15px; }
+.acolhimento-colunas { grid-template-columns: minmax(0, 1.65fr) minmax(320px, 0.7fr); gap: 18px; }
+.acolhimento-lista, .acolhimento-detalhe { padding: 22px 26px; border-radius: 21px; }
+.acolhimento-lista h2, .acolhimento-detalhe h2 { font-size: 24px; margin-bottom: 17px; }
+.acolhimento-busca { height: 42px; max-width: 450px; }
+.acolhimento-item { min-height: 99px; padding: 13px 18px; border-radius: 17px; }
+.acolhimento-item h3 { font-size: 18px; }
+.acolhimento-item p { font-size: 14px; }
+.acolhimento-detalhe h3 { font-size: 18px; }
+.acolhimento-abrir-chat { min-height: 48px; }
+@media (max-width: 950px) {
+ .acolhimento-colunas { display: flex; flex-direction: column; }
 }

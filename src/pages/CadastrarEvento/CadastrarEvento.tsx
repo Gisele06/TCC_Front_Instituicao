@@ -178,7 +178,6 @@ function CadastrarEvento({ aoNavegar, aoVoltar }: PropriedadesCadastroDeEvento) 
                 opcoes={opcoesDeIcones}
               />
               <input type="hidden" name="icone" value={icone} />
-              <p>O ícone é apenas visual; tbl_evento não possui campo de ícone.</p>
 
               <section className="cadastrar-evento-comunicado">
                 <h2>Comunicado do evento</h2>
