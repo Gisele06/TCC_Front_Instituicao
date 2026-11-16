@@ -1,3 +1,4 @@
+import { ambiente } from "../../../config/ambiente";
 import type { CursoRegistro, SalaRegistro, TipoSalaRegistro, TurmaRegistro, MateriaRegistro } from "../../../types/banco";
 import { listarRegistros, salvarRegistro } from "../../../services/recursos";
 import { rotasApi } from "../../../services/rotasApi";
@@ -28,7 +29,7 @@ export async function carregarAcademico() {
     tipoId: sala.id_tipo_sala,
     idIcone: sala.id_icone,
     icone: "formacao", // O SQL guarda id_icone; o seletor visual ainda precisa desse mapeamento.
-    ativa: true,       // tbl_sala não possui coluna de status.
+    ativa: ambiente.fonteDados === "mock" ? sala.id !== 4 : true,
   }));
   const turmasDaApi: Turma[] = turmas.map((turma) => ({
     id: String(turma.id),

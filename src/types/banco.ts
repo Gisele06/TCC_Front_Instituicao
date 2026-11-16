@@ -50,6 +50,11 @@ export interface ComunicadoRegistro {
   id_funcionario: number;
 }
 
+export interface CargoRegistro { id: number; nome: string; }
+export interface UsuarioRegistro { id: number; nome: string; email: string; data_de_cadastro: string; status_conta: number | boolean; id_tipo_perfil: number; }
+export interface FuncionarioRegistro { id: number; id_cargo: number; id_usuario: number; url_foto: string | null; }
+export interface FuncionarioInstituicaoRegistro { id: number; id_instituicao: number; id_funcionario: number; }
+
 export interface SalaRegistro {
   id: number;
   nome: string;

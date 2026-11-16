@@ -1,5 +1,3 @@
-// Só os caminhos ficam aqui. Troque-os de acordo com as rotas reais do backend.
-// O SQL define tabelas, mas não define endpoints HTTP.
 export const rotasApi = {
   redesApoio: "redes-apoio",
   categoriasRede: "categorias-redes-apoio",
@@ -11,8 +9,12 @@ export const rotasApi = {
   turmas: "turmas",
   materias: "materias",
   cursos: "cursos",
+  funcionarios: "funcionarios",
+  redefinirSenhaFuncionario: (id: number) => `funcionarios/${id}/redefinir-senha`,
+  cargos: "cargos",
+  usuarios: "usuarios",
+  funcionariosInstituicoes: "funcionarios-instituicoes",
   denuncias: "denuncias",
-  // Indicadores são agregações calculadas pelo backend, não tabelas do SQL.
   indicadoresHome: "indicadores/home",
   indicadoresBemEstar: "indicadores/bem-estar",
   indicadoresTurmas: "indicadores/bem-estar/turmas",

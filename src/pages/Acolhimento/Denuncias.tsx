@@ -113,25 +113,18 @@ export default function Acolhimento({
                       key={item.id}
                       denuncia={item}
                       selecionada={item.id === idSelecionado}
-                      aoSelecionar={() => definirSelecionado(item.id)}
+                      aoSelecionar={() => { definirSelecionado(item.id); definirChatAberto(false); }}
                     />
                   ))}
                   {!carregando && !erro && fonteDisponivel() && denunciasFiltradas.length === 0 && <p>Nenhuma denúncia registrada ou encontrada.</p>}
                 </div>
               </section>
-              {denuncia ? <DetalheDenuncia key={denuncia.id} denuncia={denuncia} aoAbrirChat={() => definirChatAberto(true)} /> :
+              {denuncia && chatAberto ? <AnonymousChat aberto={true} aoFechar={() => definirChatAberto(false)} denunciaId={denuncia.id} /> : denuncia ? <DetalheDenuncia key={denuncia.id} denuncia={denuncia} aoAbrirChat={() => definirChatAberto(true)} /> :
                 <aside className="acolhimento-detalhe"><h2>Detalhes da denúncia</h2><p>Selecione uma denúncia para ver os detalhes.</p></aside>}
             </div>
           </>
         )}
       </main>
-      {idSelecionado != null && (
-        <AnonymousChat
-          aberto={chatAberto}
-          aoFechar={() => definirChatAberto(false)}
-          denunciaId={idSelecionado}
-        />
-      )}
     </EstruturaInstitucional>
   );
 }

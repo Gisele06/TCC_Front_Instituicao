@@ -10,7 +10,10 @@ import iconeRecorrencia from "../../assets/icons/Geral/recorrencia-evento.png";
 
 import { adicionarComunicado } from "../Comunicados/data/comunicados";
 import { ambiente } from "../../config/ambiente";
-import { idObrigatorio } from "../../services/recursos";
+import { idObrigatorio, listarRegistros } from "../../services/recursos";
+import { rotasApi } from "../../services/rotasApi";
+import { salvarProgramacao } from "../Comunicados/data/programacao";
+import type { TurmaRegistro } from "../../types/banco";
 import "./CadastrarComunicados.css";
 
 interface PropriedadesCadastrarComunicados {
@@ -28,8 +31,14 @@ function CadastrarComunicados({
     const editorCorpoRef = useRef<HTMLDivElement>(null);
     const campoCorpoRef = useRef<HTMLInputElement>(null);
     const [imagemSelecionada, setImagemSelecionada] = useState<string | null>(null);
+    const [turmas, definirTurmas] = useState<TurmaRegistro[]>([]);
+    const [turmasSelecionadas, definirTurmasSelecionadas] = useState<string[]>([]);
     const [erro, definirErro] = useState("");
     const [salvando, definirSalvando] = useState(false);
+
+    useEffect(() => {
+        listarRegistros<TurmaRegistro>(rotasApi.turmas).then(definirTurmas).catch(() => definirTurmas([]));
+    }, []);
 
     useEffect(() => {
         return () => {
@@ -43,20 +52,34 @@ function CadastrarComunicados({
         evento.preventDefault();
         sincronizarCorpo();
         const dados = new FormData(evento.currentTarget);
+        if (!turmasSelecionadas.length) {
+            definirErro("Selecione pelo menos uma turma.");
+            return;
+        }
         definirErro("");
         definirSalvando(true);
         try {
             const nome = String(dados.get("nome") ?? "").trim();
-            await adicionarComunicado({
+            const comunicado = await adicionarComunicado({
                 nome,
                 titulo: nome.slice(0, 100),
                 descricao: String(dados.get("descricao") ?? "").trim() ||
                     editorCorpoRef.current?.textContent?.slice(0, 150) || null,
                 observacoes: String(dados.get("observacoes") ?? "").trim() || null,
-                url_banner: null, // Envio de arquivos será definido com o backend.
+                url_banner: null,
                 id_instituicao: idObrigatorio(ambiente.idInstituicao, "ID da instituição"),
                 id_funcionario: idObrigatorio(ambiente.idFuncionario, "ID do funcionário"),
                 id_evento: null,
+            });
+            await salvarProgramacao({
+                comunicadoId: comunicado.id,
+                tipo: String(dados.get("tipo") ?? "aviso"),
+                data: String(dados.get("data") ?? ""),
+                horaInicio: String(dados.get("horaInicio") ?? ""),
+                horaFim: String(dados.get("horaFim") ?? ""),
+                recorrencia: String(dados.get("recorrencia") ?? "unica"),
+                turmas: turmasSelecionadas,
+                corpo: String(dados.get("corpo") ?? ""),
             });
             aoVoltar();
         } catch (falha) {
@@ -148,11 +171,8 @@ function CadastrarComunicados({
                                     </span>
 
                                     <span className="cadastrar-comunicados-selecao-area">
-                                        <select name="tipo" defaultValue="" disabled title="O banco ainda não possui categoria do comunicado.">
-                                            <option value="" disabled>
-                                                Selecione os tipos de comunicado
-                                            </option>
-                                            <option value="sem-tipo">O banco não possui tipo de comunicado</option>
+                                        <select name="tipo" defaultValue="aviso">
+                                            <option value="aviso">Aviso</option><option value="informativo">Informativo</option><option value="orientacao">Orientação</option><option value="evento">Evento</option>
                                         </select>
 
                                         <img src={iconeSetaBaixo} alt="" />
@@ -187,16 +207,14 @@ function CadastrarComunicados({
 
                             <div className="cadastrar-comunicados-horario-linha">
                                 <label className="cadastrar-comunicados-campo">
-                                   <label className="cadastrar-comunicado-campo">
-                                        <span>Data do evento <i>•</i></span>
+                                        <span>Data do comunicado <i>•</i></span>
                                         <span className="cadastrar-comunicados-entrada-com-icone">
                                             <img src={iconeCalendario} alt="" />
                                             <input name="data" type="date" required />
                                         </span>
-                                    </label>
                                 </label>
 
-                                <label className="cadastrar-comunicado-campo">
+                                <label className="cadastrar-comunicados-campo">
                                     <span>Hora de início <i>•</i></span>
                                     <span className="cadastrar-comunicados-entrada-com-icone">
                                         <input name="horaInicio" type="time" required />
@@ -204,7 +222,7 @@ function CadastrarComunicados({
                                     </label>
 
                                     <label className="cadastrar-comunicados-campo">
-                                    <span>Hora de término <small>(opcional)</small> <i>•</i></span>
+                                    <span>Hora de término <i>•</i></span>
                                     <span className="cadastrar-comunicados-entrada-com-icone">
                                         <input name="horaFim" type="time" required />
                                     </span>
@@ -222,8 +240,6 @@ function CadastrarComunicados({
 
                                         <select
                                             name="recorrencia"
-                                            disabled
-                                            title="O SQL ainda não suporta essa informação para comunicados."
                                             defaultValue="unica"
                                             required
                                         >
@@ -238,29 +254,22 @@ function CadastrarComunicados({
                                     </span>
                                 </label>
 
-                                <label className="cadastrar-comunicados-campo">
+                                <div className="cadastrar-comunicados-campo">
                                     <span>
                                         Turmas participantes <i>•</i>
                                     </span>
 
-                                    <span className="cadastrar-comunicados-selecao-area cadastrar-comunicados-selecao-icone">
-                                        <img src={iconeTurmas} alt="" />
-
-                                        <select
-                                            name="turmas"
-                                            disabled
-                                            title="O SQL ainda não suporta essa informação para comunicados."
-                                            defaultValue=""
-                                            required
-                                        >
-                                            <option value="" disabled>
-                                                Selecione as turmas
-                                            </option>
-                                        </select>
-
-                                        <img src={iconeSetaBaixo} alt="" />
-                                    </span>
-                                </label>
+                                    <details className="cadastrar-comunicados-turmas">
+                                        <summary><img src={iconeTurmas} alt="" />{turmasSelecionadas.length ? `${turmasSelecionadas.length} turma(s) selecionada(s)` : "Selecione as turmas"}<img src={iconeSetaBaixo} alt="" /></summary>
+                                        <div className="cadastrar-comunicados-turmas-lista">
+                                            {turmas.filter(turma => Boolean(turma.ativa)).map(turma => <label key={turma.id}>
+                                                <input type="checkbox" name="turmas" value={turma.id} checked={turmasSelecionadas.includes(String(turma.id))} onChange={evento => definirTurmasSelecionadas(atuais => evento.target.checked ? [...atuais, String(turma.id)] : atuais.filter(id => id !== String(turma.id)))} />
+                                                <span>{turma.nome}</span>
+                                            </label>)}
+                                            {turmas.length === 0 && <p>Nenhuma turma disponível.</p>}
+                                        </div>
+                                    </details>
+                                </div>
                             </div>
                         </section>
 
@@ -411,6 +420,7 @@ function CadastrarComunicados({
                         <button
                             type="submit"
                             className="cadastrar-comunicados-salvar"
+                            disabled={salvando}
                         >
                             Salvar
                         </button>

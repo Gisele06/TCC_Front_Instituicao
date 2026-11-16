@@ -101,3 +101,17 @@
   align-items: center;
   gap: 4px;
 }
+
+
+/* Campos de cadastro alinhados aos cartões da referência. */
+@media (min-width: 1150px) {
+  .cadastrar-rede-pagina { gap: 22px; margin-top: 0; }
+  .cadastrar-rede-grid { gap: 24px; }
+  .cadastrar-rede-grid .bloom-form-painel { gap: 19px; padding: 28px; border-radius: 29px; }
+  .cadastrar-rede-grid .bloom-form-painel > h2 { font-size: 28px; }
+  .cadastrar-rede-grid label { gap: 9px; font-size: 18px; }
+  .cadastrar-rede-grid label small { font-size: 13px; }
+  .cadastrar-rede-grid input, .cadastrar-rede-grid select { min-height: 46px; padding: 10px 17px; border-radius: 15px; font-size: 17px; }
+  .cadastrar-rede-grid textarea { min-height: 155px; padding: 15px 17px; border-radius: 15px; font-size: 17px; }
+  .cadastrar-rede-campos-duplos { gap: 16px; }
+}

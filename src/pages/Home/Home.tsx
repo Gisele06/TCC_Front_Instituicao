@@ -174,21 +174,13 @@ function Inicio({ aoNavegar, aoCriarEvento }: PropriedadesInicio) {
                   <span className="inicio-rapida-acao-icone">
                     <img src={acao.icone} alt="" />
                   </span>
-                  {acao.rotulo === "Criar evento" ? (
-                    <button
-                      className="inicio-rapida-acao-botao"
-                      type="button"
-                      onClick={aoCriarEvento}
-                    >
-                      <span>{acao.rotulo}</span>
-                      <img src={iconeSetaDireita} alt="" />
-                    </button>
-                  ) : (
-                    <div className="inicio-rapida-acao-botao">
-                      <span>{acao.rotulo}</span>
-                      <img src={iconeSetaDireita} alt="" />
-                    </div>
-                  )}
+                  <button className="inicio-rapida-acao-botao" type="button" onClick={() => {
+                    if (acao.rotulo === "Criar evento") aoCriarEvento();
+                    else if (acao.rotulo === "Criar turma") aoNavegar("salas");
+                    else if (acao.rotulo === "Locais de acolhimento") aoNavegar("redesApoio");
+                    else if (acao.rotulo === "Enviar mensagem") aoNavegar("acolhimento");
+                    else aoNavegar("bemEstar");
+                  }}><span>{acao.rotulo}</span><img src={iconeSetaDireita} alt="" /></button>
                 </div>
               ))}
             </div>

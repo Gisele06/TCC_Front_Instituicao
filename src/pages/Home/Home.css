@@ -687,3 +687,25 @@ button.inicio-rapida-acao-botao {
   text-align: center;
   font-size: calc(16 * var(--un));
 }
+
+/* Legibilidade e proporção dos cartões no desktop */
+.inicio-painel { border-radius: 26px; }
+.inicio-rapida-acao-botao { min-height: 38px; border-radius: 22px; font-size: 16px; }
+.inicio-rapida-acao-icone { min-width: 40px; min-height: 40px; }
+.inicio-grafico-periodo select { margin-left: 8px; border: 1px solid #d6d3c8; border-radius: 12px; padding: 6px; background: #f7f6ef; color: #25443c; font: inherit; }
+
+
+/* Home: proporções de cartões, ações rápidas e painéis da referência. */
+@media (min-width: 1200px) and (min-height: 780px) {
+  .inicio-conteudo { --largura-cartoes-da-direita: 23%; gap: 21px; }
+  .inicio-superior-secao { flex: 1.45; gap: 21px; }
+  .inicio-superior-esquerdo { gap: 20px; }
+  .inicio-indicadores { flex-basis: 40%; gap: 15px; }
+  .inicio-inferior { gap: 20px; }
+  .inicio-painel { border-radius: 29px; padding: 20px; }
+  .inicio-indicadores .bloom-indicador-cartao { border-radius: 28px; padding: 20px; }
+  .inicio-rapida-acao-lista { margin-top: 17px; gap: 10px; }
+  .inicio-rapida-acao-icone { width: 42px; height: 42px; flex-basis: 42px; }
+  .inicio-rapida-acao-botao { height: 44px; min-height: 44px; border-radius: 24px; font-size: 16px; }
+  .inicio-painel-titulo { font-size: 22px; }
+}

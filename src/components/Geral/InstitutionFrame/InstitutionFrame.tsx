@@ -28,9 +28,7 @@ import "./InstitutionFrame.css";
 interface PropriedadesEstruturaInstitucional {
   paginaAtiva: string;
   aoNavegar: (pagina: string) => void;
-  /** Número mostrado no sino da barra superior. */
   quantidadeDeAvisos?: number;
-  /** Endereço da foto do usuário. Sem ele, aparecem as iniciais. */
   fotoUsuario?: string;
   children: ReactNode;
 }

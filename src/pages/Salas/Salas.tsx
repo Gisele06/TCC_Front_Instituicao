@@ -3,13 +3,16 @@ import { useEffect, useMemo, useState } from "react";
 import EstruturaInstitucional from "../../components/Geral/InstitutionFrame/InstitutionFrame";
 import { ambiente } from "../../config/ambiente";
 import { idObrigatorio } from "../../services/recursos";
-import type { SecaoAcademica, FiltroStatus, EditorAtual, Sala, Turma, Materia, PropriedadesSalas } from "./types";
+import type { SecaoAcademica, FiltroStatus, EditorAtual, Sala, Turma, Materia, Funcionario, PropriedadesSalas } from "./types";
 import { carregarAcademico, gravarSala, gravarTurma, gravarMateria, type CursoOpcao } from "./data/academico";
 import type { TipoSalaRegistro } from "../../types/banco";
 import { filtrarItens, atualizarLista, nomeDoCurso, iconeDeSala } from "./utils";
 import EditorSala from "./components/EditorSala";
 import EditorTurma from "./components/EditorTurma";
 import EditorMateria from "./components/EditorMateria";
+import EditorFuncionario from "./components/EditorFuncionario";
+import { carregarFuncionarios, gravarFuncionario, solicitarRedefinicaoSenha } from "./data/funcionarios";
+import type { CargoRegistro, UsuarioRegistro } from "../../types/banco";
 import { Resumo, SetaDireita, IconePorta } from "./components/ElementosAcademicos";
 import iconeBusca from "../../assets/icons/Geral/busca.png";
 import iconePessoas from "../../assets/icons/Geral/pessoas.png";
@@ -25,10 +28,15 @@ function Salas({ aoNavegar }: PropriedadesSalas) {
   const [salas, definirSalas] = useState<Sala[]>([]);
   const [turmas, definirTurmas] = useState<Turma[]>([]);
   const [materias, definirMaterias] = useState<Materia[]>([]);
+  const [funcionarios, definirFuncionarios] = useState<Funcionario[]>([]);
+  const [cargos, definirCargos] = useState<CargoRegistro[]>([]);
+  const [usuarios, definirUsuarios] = useState<UsuarioRegistro[]>([]);
+  const [usuariosUtilizados, definirUsuariosUtilizados] = useState<number[]>([]);
   const [cursos, definirCursos] = useState<CursoOpcao[]>([]);
   const [tiposSala, definirTiposSala] = useState<TipoSalaRegistro[]>([]);
   const [carregando, definirCarregando] = useState(true);
   const [erro, definirErro] = useState("");
+  const [aviso, definirAviso] = useState("");
 
   useEffect(() => {
     let ativo = true;
@@ -47,6 +55,39 @@ function Salas({ aoNavegar }: PropriedadesSalas) {
       .finally(() => { if (ativo) definirCarregando(false); });
     return () => { ativo = false; };
   }, []);
+
+  useEffect(() => {
+    let ativo = true;
+    carregarFuncionarios().then(dados => {
+      if (!ativo) return;
+      definirFuncionarios(dados.funcionarios);
+      definirCargos(dados.cargos);
+      definirUsuarios(dados.usuarios);
+      definirUsuariosUtilizados(dados.funcionarios.map(pessoa => pessoa.usuarioId));
+    }).catch(falha => { if (ativo) definirErro(falha instanceof Error ? falha.message : "Não foi possível carregar os funcionários."); });
+    return () => { ativo = false; };
+  }, []);
+
+  async function salvarFuncionario(item: Omit<Funcionario, "nome" | "email" | "cargo" | "ativa">) {
+    try {
+      await gravarFuncionario({ id_usuario: item.usuarioId, id_cargo: item.cargoId, url_foto: item.foto || null }, item.id ? Number(item.id) : undefined);
+      const dados = await carregarFuncionarios();
+      definirFuncionarios(dados.funcionarios);
+      definirUsuariosUtilizados(dados.funcionarios.map(pessoa => pessoa.usuarioId));
+      definirEditor(null);
+    } catch (falha) { definirErro(falha instanceof Error ? falha.message : "Não foi possível salvar o funcionário."); }
+  }
+
+  async function redefinirSenha(pessoa: Funcionario) {
+    definirAviso("");
+    try {
+      const retorno = await solicitarRedefinicaoSenha(Number(pessoa.id));
+      definirAviso(retorno.demonstracao ? `Solicitação simulada para ${pessoa.email}. Nenhum e-mail foi enviado.` : `Solicitação de redefinição registrada para ${pessoa.email}.`);
+    } catch (falha) { definirErro(falha instanceof Error ? falha.message : "Não foi possível solicitar a redefinição."); }
+  }
+
+  const funcionariosFiltrados = useMemo(() => filtrarItens(funcionarios, busca, filtro, item => [item.nome, item.email, item.cargo]), [funcionarios, busca, filtro]);
+  const itemFuncionario = editor?.secao === "funcionarios" ? funcionarios.find(item => item.id === editor.id) : undefined;
 
   const itemSala = editor?.secao === "salas" ? salas.find((item) => item.id === editor.id) : undefined;
   const itemTurma = editor?.secao === "turmas" ? turmas.find((item) => item.id === editor.id) : undefined;
@@ -71,9 +112,8 @@ function Salas({ aoNavegar }: PropriedadesSalas) {
     definirBusca("");
   }
 
-  // IDs novos são criados pelo banco; o frontend só usa o ID recebido da API.
   function idParaEdicao(id: string) {
-    return /^\\d+$/.test(id) ? Number(id) : undefined;
+    return /^\d+$/.test(id) ? Number(id) : undefined;
   }
 
   async function salvarSala(sala: Sala) {
@@ -83,7 +123,7 @@ function Salas({ aoNavegar }: PropriedadesSalas) {
         nome: sala.nome,
         capacidade: sala.capacidade,
         descricao: sala.descricao || null,
-        id_icone: sala.idIcone ?? null, // Preserva o ícone atual até mapear o seletor com tbl_icone.
+        id_icone: sala.idIcone ?? null,
         id_instituicao: idObrigatorio(ambiente.idInstituicao, "ID da instituição"),
         id_tipo_sala: idObrigatorio(sala.tipoId ?? 0, "tipo de sala"),
       }, idParaEdicao(sala.id));
@@ -148,22 +188,24 @@ function Salas({ aoNavegar }: PropriedadesSalas) {
   }
 
   const dadosDisponiveis = fonteDisponivel() && !erro && !carregando;
-  const quantidadeTotal = secao === "salas" ? salas.length : secao === "turmas" ? turmas.length : materias.length;
+  const quantidadeTotal = secao === "salas" ? salas.length : secao === "turmas" ? turmas.length : secao === "funcionarios" ? funcionarios.length : materias.length;
   const quantidadeAtivas = secao === "salas"
     ? salas.filter((item) => item.ativa).length
     : secao === "turmas"
       ? turmas.filter((item) => item.ativa).length
+      : secao === "funcionarios" ? funcionarios.filter((item) => item.ativa).length
       : materias.filter((item) => item.ativa).length;
   const quantidadeInativas = quantidadeTotal - quantidadeAtivas;
-  const rotuloEntidade = secao === "salas" ? "sala" : secao === "turmas" ? "turma" : "matéria";
-  const rotuloPlural = secao === "salas" ? "salas" : secao === "turmas" ? "turmas" : "matérias";
+  const rotuloEntidade = secao === "salas" ? "sala" : secao === "turmas" ? "turma" : secao === "funcionarios" ? "funcionário" : "matéria";
+  const rotuloPlural = secao === "salas" ? "salas" : secao === "turmas" ? "turmas" : secao === "funcionarios" ? "funcionários" : "matérias";
 
   return (
     <EstruturaInstitucional paginaAtiva="academico" aoNavegar={aoNavegar}>
       <main className="academico-pagina" aria-label="Gerenciamento acadêmico">
-        {!fonteDisponivel() && <p role="status">Configure VITE_API_BASE_URL no modo API para consultar os dados acadêmicos.</p>}
+        {!fonteDisponivel() && <p role="status">Dados indisponíveis no momento.</p>}
         {carregando && <p role="status">Carregando dados acadêmicos...</p>}
         {erro && <p role="alert">{erro}</p>}
+        {aviso && <p role="status">{aviso}</p>}
         {editor ? (
           <>
             {editor.secao === "salas" && (
@@ -184,6 +226,7 @@ function Salas({ aoNavegar }: PropriedadesSalas) {
                 aoSalvar={salvarTurma}
               />
             )}
+            {editor.secao === "funcionarios" && <EditorFuncionario existente={itemFuncionario} cargos={cargos} usuarios={usuarios} usados={usuariosUtilizados} aoVoltar={() => definirEditor(null)} aoSalvar={salvarFuncionario} />}
             {editor.secao === "materias" && (
               <EditorMateria
                 existente={itemMateria}
@@ -197,7 +240,7 @@ function Salas({ aoNavegar }: PropriedadesSalas) {
           <>
             <header className="academico-titulo-principal">
               <h1>Gerenciamento</h1>
-              <p>Organize as salas, turmas e matérias.</p>
+              <p>Organize salas, turmas, matérias e funcionários.</p>
             </header>
 
             <div className="academico-abas" role="tablist" aria-label="Gerenciamento acadêmico">
@@ -205,6 +248,7 @@ function Salas({ aoNavegar }: PropriedadesSalas) {
                 { id: "salas", rotulo: "Salas", imagem: iconeSala },
                 { id: "turmas", rotulo: "Turmas", imagem: iconePessoas },
                 { id: "materias", rotulo: "Matérias", imagem: iconeLivro },
+                { id: "funcionarios", rotulo: "Funcionários", imagem: iconePessoas },
               ] as const).map((aba) => (
                 <button
                   key={aba.id}
@@ -221,9 +265,9 @@ function Salas({ aoNavegar }: PropriedadesSalas) {
             </div>
 
             <section className="academico-resumos" aria-label={"Resumo de " + rotuloPlural}>
-              <Resumo valor={dadosDisponiveis ? String(quantidadeTotal) : "—"} rotulo="Cadastradas" icone="grafico" />
-              <Resumo valor={secao === "salas" || !dadosDisponiveis ? "—" : String(quantidadeAtivas)} rotulo="Ativas" icone="pessoas" />
-              <Resumo valor={secao === "salas" || !dadosDisponiveis ? "—" : String(quantidadeInativas)} rotulo="Inativas" icone="pausado" />
+              <Resumo valor={dadosDisponiveis ? String(quantidadeTotal) : "—"} rotulo={secao === "salas" || secao === "materias" ? "Cadastradas" : "Cadastrados"} icone="grafico" />
+              <Resumo valor={dadosDisponiveis ? String(quantidadeAtivas) : "—"} rotulo="Ativas" icone="pessoas" />
+              <Resumo valor={dadosDisponiveis ? String(quantidadeInativas) : "—"} rotulo="Inativas" icone="pausado" />
             </section>
 
             <div className={"academico-layout " + (secao === "materias" ? "academico-layout-materias" : "")}>
@@ -241,8 +285,8 @@ function Salas({ aoNavegar }: PropriedadesSalas) {
                         className={filtro === opcao.id ? "selecionado" : ""}
                         aria-pressed={filtro === opcao.id}
                         onClick={() => definirFiltro(opcao.id)}
-                        disabled={secao === "salas" && opcao.id !== "todas"}
-                        title={secao === "salas" ? "O banco não possui status de sala." : undefined}
+                        
+                        
                       >
                         {opcao.rotulo}
                       </button>
@@ -265,12 +309,23 @@ function Salas({ aoNavegar }: PropriedadesSalas) {
                       className="academico-botao-principal academico-botao-novo"
                       onClick={() => definirEditor({ secao })}
                     >
-                      Nova {secao === "salas" ? "Sala" : secao === "turmas" ? "Turma" : "Matéria"}
+                      {secao === "salas" ? "Nova Sala" : secao === "turmas" ? "Nova Turma" : secao === "funcionarios" ? "Novo Funcionário" : "Nova Matéria"}
                     </button>
                   </div>
                 </div>
 
                 <div className="academico-lista">
+                  {secao === "funcionarios" && funcionariosFiltrados.map(pessoa => (
+                    <article className="academico-item" key={pessoa.id}>
+                      <button type="button" className="academico-item-principal" onClick={() => definirEditor({secao, id: pessoa.id})}>
+                        <span className="academico-item-icone">{pessoa.foto ? <img src={pessoa.foto} alt="" /> : <img src={iconePessoas} alt="" />}</span>
+                        <span className="academico-item-informacoes"><strong>{pessoa.nome}</strong><span>{pessoa.email}</span><small>{pessoa.cargo}</small></span>
+                      </button>
+                      <span className={"academico-status " + (!pessoa.ativa ? "inativo" : "")}>{pessoa.ativa ? "Ativo" : "Inativo"}</span>
+                      <button type="button" className="academico-botao-status" onClick={() => redefinirSenha(pessoa)}>Redefinir senha</button>
+                      <button type="button" className="academico-seta" onClick={() => definirEditor({secao, id: pessoa.id})} aria-label={"Editar " + pessoa.nome}><SetaDireita /></button>
+                    </article>
+                  ))}
                   {secao === "salas" && salasFiltradas.map((sala) => (
                     <article className="academico-item" key={sala.id}>
                       <button className="academico-item-principal" type="button" onClick={() => definirEditor({ secao, id: sala.id })} aria-label={"Editar sala " + sala.nome}>
@@ -281,7 +336,7 @@ function Salas({ aoNavegar }: PropriedadesSalas) {
                           <small>{sala.descricao}</small>
                         </span>
                       </button>
-                      <span className="academico-status">Cadastrada</span>
+                      <span className={"academico-status " + (!sala.ativa ? "inativo" : "")}>{sala.ativa ? "Ativa" : "Inativa"}</span>
                       <button className="academico-seta" type="button" onClick={() => definirEditor({ secao, id: sala.id })} aria-label={"Abrir " + sala.nome}>
                         <SetaDireita />
                       </button>
@@ -343,7 +398,8 @@ function Salas({ aoNavegar }: PropriedadesSalas) {
 
                   {((secao === "salas" && salasFiltradas.length === 0)
                     || (secao === "turmas" && turmasFiltradas.length === 0)
-                    || (secao === "materias" && materiasFiltradas.length === 0)) && (
+                    || (secao === "materias" && materiasFiltradas.length === 0)
+                    || (secao === "funcionarios" && funcionariosFiltrados.length === 0)) && (
                     <div className="academico-lista-vazia">
                       <strong>Nenhum resultado encontrado</strong>
                       <span>Altere a busca ou o filtro para ver outros registros.</span>
@@ -352,7 +408,7 @@ function Salas({ aoNavegar }: PropriedadesSalas) {
                 </div>
               </section>
 
-              {secao !== "materias" && (
+              {secao !== "materias" && secao !== "funcionarios" && (
                 <aside className="academico-cronograma" aria-label="Cronograma de aulas">
                   <h2><IconePorta /> Cronograma</h2>
                   <ol>

@@ -490,3 +490,15 @@
  .cadastrar-comunicados-area { grid-template-columns: minmax(0, 1fr) 280px; gap: 12px; }
  .cadastrar-comunicados-campos, .cadastrar-comunicados-lateral { padding: 14px; }
 }
+
+
+/* Cadastro de comunicados com as mesmas dimensões dos cartões de Eventos. */
+@media (min-width: 1150px) {
+  .cadastrar-comunicados-pagina { gap: 24px; }
+  .cadastrar-comunicados-titulo-principal { min-height: 98px; padding: 16px 30px; gap: 22px; border-radius: 29px; }
+  .cadastrar-comunicados-titulo-principal h1 { font-size: 30px; }
+  .cadastrar-comunicados-titulo-principal p { font-size: 18px; }
+  .cadastrar-comunicados-voltar { width: 54px; height: 54px; }
+  .cadastrar-comunicados-area { grid-template-columns: minmax(0, 1.6fr) minmax(360px, 1fr); gap: 22px; }
+  .cadastrar-comunicados-campos, .cadastrar-comunicados-lateral { border-radius: 29px; }
+}

@@ -1,6 +1,23 @@
-// Dados mockados para testar a interface antes da integração.
-// Os nomes dos campos seguem o SQL; IDs simulam as chaves estrangeiras.
 export const registrosIniciais: Record<string, object[]> = {
+  cargos: [
+    { id: 1, nome: "Coordenador" },
+    { id: 2, nome: "Professor" },
+    { id: 3, nome: "Orientador" },
+  ],
+  usuarios: [
+    { id: 1, nome: "Manoel Gomes", email: "manoel@exemplo.com", data_de_cadastro: "2026-01-01", status_conta: 1, id_tipo_perfil: 2 },
+    { id: 2, nome: "Semog Leonam", email: "semog@exemplo.com", data_de_cadastro: "2026-01-01", status_conta: 1, id_tipo_perfil: 2 },
+    { id: 3, nome: "Beatriz Oliveira", email: "beatriz@exemplo.com", data_de_cadastro: "2026-01-01", status_conta: 0, id_tipo_perfil: 2 },
+  ],
+  funcionarios: [
+    { id: 1, id_cargo: 1, id_usuario: 1, url_foto: "/funcionario-manoel.png" },
+    { id: 2, id_cargo: 2, id_usuario: 2, url_foto: "/funcionario-semog.png" },
+  ],
+  "funcionarios-instituicoes": [
+    { id: 1, id_instituicao: 1, id_funcionario: 1 },
+    { id: 2, id_instituicao: 1, id_funcionario: 2 },
+  ],
+
   "categorias-redes-apoio": [
     { id: 1, nome: "Saúde mental" },
     { id: 2, nome: "Saúde" },

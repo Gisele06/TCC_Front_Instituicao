@@ -210,3 +210,12 @@
   height: 100%;
   object-fit: cover;
 }
+.bloom-barra-superior-notificacoes { position: relative; flex-shrink: 0; }
+.bloom-barra-superior-notificacoes .bloom-barra-superior-sino { border: 0; background: transparent; cursor: pointer; }
+.bloom-notificacoes-painel { position: absolute; z-index: 100; right: 0; top: calc(100% + 14px); width: 350px; max-width: 90vw; padding: 20px; border-radius: 22px; border: 1px solid #d8d4bd; background: #f7f6f0; box-shadow: 0 8px 24px #152d2530; }
+.bloom-notificacoes-cabecalho { display: flex; align-items: center; justify-content: space-between; font-size: 21px; }
+.bloom-notificacoes-cabecalho button, .bloom-notificacoes-item button { border: 0; background: transparent; color: #233e33; cursor: pointer; font-size: 24px; }
+.bloom-notificacoes-item { display: flex; align-items: start; justify-content: space-between; gap: 8px; border-top: 1px solid #dbd9cd; padding: 15px 0; }
+.bloom-notificacoes-item strong { font-size: 16px; }
+.bloom-notificacoes-item p { margin: 5px 0 0; color: #788f87; font-size: 13px; }
+.bloom-notificacoes-limpar { width: 100%; padding: 11px; border: 0; border-radius: 12px; color: white; background: #293f34; cursor: pointer; }

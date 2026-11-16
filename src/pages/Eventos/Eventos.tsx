@@ -122,14 +122,16 @@ function Eventos({ aoNavegar, aoCriarEvento }: PropriedadesEventos) {
   const [categoriaAtiva, definirCategoriaAtiva] = useState("Todos");
   const [busca, definirBusca] = useState("");
   const [ocultos, definirOcultos] = useState<number[]>([]);
+  const [mostrarOcultos, definirMostrarOcultos] = useState(false);
+  const [eventoSelecionado, definirEventoSelecionado] = useState<Evento | null>(null);
 
   const eventosFiltrados = useMemo(() => eventos.filter((evento) => {
     const correspondeCategoria = categoriaAtiva === "Todos" || evento.categoria === categoriaAtiva;
     return correspondeCategoria &&
-      !ocultos.includes(evento.id) &&
+      (mostrarOcultos ? ocultos.includes(evento.id) : !ocultos.includes(evento.id)) &&
       `${evento.titulo} ${evento.descricao}`.toLocaleLowerCase("pt-BR")
         .includes(busca.trim().toLocaleLowerCase("pt-BR"));
-  }), [eventos, categoriaAtiva, busca, ocultos]);
+  }), [eventos, categoriaAtiva, busca, ocultos, mostrarOcultos]);
 
 
   const hoje = new Date();
@@ -186,6 +188,7 @@ function Eventos({ aoNavegar, aoCriarEvento }: PropriedadesEventos) {
             />
 
 
+            <label className="eventos-filtro-ocultos"><input type="checkbox" checked={mostrarOcultos} onChange={(e) => definirMostrarOcultos(e.target.checked)} /> Mostrar ocultos ({ocultos.length})</label>
             <div className="eventos-lista-ferramentas">
               <label className="eventos-busca">
                 <img src={iconeBusca} alt="" />
@@ -201,7 +204,7 @@ function Eventos({ aoNavegar, aoCriarEvento }: PropriedadesEventos) {
               {carregando && <p className="eventos-vazio">Carregando eventos...</p>}
               {erro && <p className="eventos-vazio" role="alert">{erro}</p>}
               {eventosFiltrados.map((evento) => (
-                <article className="eventos-lista-item" key={evento.id}>
+                <article className="eventos-lista-item" key={evento.id} onClick={() => definirEventoSelecionado(evento)} style={{cursor:"pointer"}} tabIndex={0} role="button" onKeyDown={(e) => { if (e.key === "Enter") definirEventoSelecionado(evento); }}>
                   <div className="eventos-lista-foto" aria-hidden="true"></div>
 
                   <div className="eventos-lista-descricao">
@@ -221,8 +224,8 @@ function Eventos({ aoNavegar, aoCriarEvento }: PropriedadesEventos) {
                   </span>
 
                   <div className="eventos-lista-acoes">
-                    <button type="button" className="eventos-acao-botao" onClick={() => definirOcultos((itens) => [...itens, evento.id])}>
-                      <img src={iconeOcultarEvento} alt="" /> Ocultar
+                    <button type="button" className="eventos-acao-botao" onClick={(e) => { e.stopPropagation(); definirOcultos((itens) => mostrarOcultos ? itens.filter((id) => id !== evento.id) : [...itens, evento.id]); }}>
+                      <img src={iconeOcultarEvento} alt="" /> {mostrarOcultos ? "Desocultar" : "Ocultar"}
                     </button>
                     <button type="button" className="eventos-acao-botao" title="Aguardando integração com o backend" disabled>
                       <img src={iconeReenviarEvento} alt="" /> Reenviar
@@ -259,6 +262,7 @@ function Eventos({ aoNavegar, aoCriarEvento }: PropriedadesEventos) {
           </aside>
           
         </div>
+        {eventoSelecionado && <div className="eventos-detalhe-fundo" onMouseDown={(e) => {if (e.target === e.currentTarget) definirEventoSelecionado(null);}}><section className="eventos-detalhe-modal" role="dialog" aria-modal="true" aria-label="Detalhes do evento"><button type="button" className="eventos-detalhe-fechar" onClick={() => definirEventoSelecionado(null)}>Fechar ×</button><span className="eventos-categoria-rotulo">{eventoSelecionado.categoria}</span><h2>{eventoSelecionado.titulo}</h2><p>{eventoSelecionado.descricao}</p><p><strong>Data:</strong> {formatarData(eventoSelecionado.data)}</p><p><strong>Horário:</strong> {eventoSelecionado.horaInicio} – {eventoSelecionado.horaFim}</p><p><strong>Local:</strong> {eventoSelecionado.local}</p>{eventoSelecionado.observacoes && <p><strong>Observações:</strong> {eventoSelecionado.observacoes}</p>}</section></div>}
       </main>
     </EstruturaInstitucional>
   );

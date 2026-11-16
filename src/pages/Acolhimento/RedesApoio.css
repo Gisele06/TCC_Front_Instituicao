@@ -237,3 +237,29 @@
     padding: 10px;
   }
 }
+
+
+/* Proporções dos painéis e das redes de apoio na referência. */
+@media (min-width: 1150px) {
+  .redes-apoio-layout { grid-template-columns: minmax(0, 1.13fr) minmax(0, 1fr); gap: 24px; }
+  .redes-apoio-painel, .redes-apoio-mapa { padding: 30px; border-radius: 30px; }
+  .redes-apoio-painel h2 { font-size: 29px; gap: 12px; margin-bottom: 18px; }
+  .redes-apoio-painel h2 img { width: 34px; height: 34px; }
+  .redes-apoio-indicadores { gap: 14px; }
+  .redes-apoio-indicadores span { min-height: 67px; padding: 12px 22px; gap: 12px; border-radius: 20px; font-size: 20px; }
+  .redes-apoio-indicadores strong { font-size: 30px; }
+  .redes-apoio-filtros { gap: 5px; margin-bottom: 16px; }
+  .redes-apoio-filtros button { min-height: 39px; padding: 9px 12px; border-radius: 16px; font-size: 15px; }
+  .redes-apoio-ferramentas { gap: 12px; margin-bottom: 18px; }
+  .redes-apoio-ferramentas input { height: 50px; font-size: 17px; }
+  .redes-apoio-ferramentas label { padding: 0 16px; }
+  .redes-apoio-ferramentas label img { width: 22px; height: 22px; }
+  .redes-apoio-ferramentas > button { min-width: 155px; border-radius: 16px; font-size: 18px; }
+  .redes-apoio-lista { gap: 15px; }
+  .rede-apoio-item { min-height: 118px; gap: 14px; padding: 16px 20px; border-radius: 23px; }
+  .rede-apoio-item-icone { width: 59px; height: 59px; }
+  .rede-apoio-item-icone img { width: 38px; height: 38px; }
+  .rede-apoio-item-conteudo strong { font-size: 19px; }
+  .rede-apoio-item-conteudo small { font-size: 14px; }
+  .rede-apoio-item-conteudo > span { font-size: 14px; white-space: normal; }
+}

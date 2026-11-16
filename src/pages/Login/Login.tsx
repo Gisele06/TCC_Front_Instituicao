@@ -53,14 +53,7 @@ function Acesso({ aoEntrar, aoCriarConta, aoRecuperarSenha, googleDisponivel = f
 
   return (
     <main className="acesso-pagina">
-      {/* <video
-        src={videoLogin}
-        autoPlay
-        loop
-        muted
-        playsInline
-        controls
-      /> */}
+      <video className="login-video" src={videoLogin} autoPlay loop muted playsInline aria-hidden="true" />
       <div className="acesso-marca" aria-label="Bloom Institucional">
         <img className="acesso-marca-simbolo" src={iconeLogoBloom} alt="" />
         <span className="acesso-marca-nome">

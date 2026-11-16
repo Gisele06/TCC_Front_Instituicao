@@ -14,7 +14,9 @@ import iconeSeta from "../../assets/icons/Geral/chevron-evento.png";
 import iconeBusca from "../../assets/icons/Geral/busca.png";
 
 import { carregarComunicados, type Comunicado } from "./data/comunicados";
+import { ocorreNoDia } from "./data/programacao";
 import "./Comunicados.css";
+import "../Eventos/Eventos.css";
 
 interface PropriedadesComunicados {
   aoNavegar: (pagina: string) => void;
@@ -102,8 +104,9 @@ function Comunicados({ aoNavegar, aoCriarComunicado }: PropriedadesComunicados) 
     definirDataSelecionada(new Date(novoMes.getFullYear(), novoMes.getMonth(), 1));
   }
 
-  // Os dados atuais de comunicados não fornecem uma data normalizada para montar a agenda.
-  const comunicadosDoDia: { id: string; horario: string; titulo: string; categoria: string }[] = [];
+  const diaISO = `${ano}-${String(mes + 1).padStart(2, "0")}-${String(diaSelecionado).padStart(2, "0")}`;
+  const comunicadosDoDia = comunicados.filter(item => ocorreNoDia(item.data, item.recorrencia, diaISO)).map(item => ({ id: String(item.id), horario: item.hora || "09:00", titulo: item.titulo, categoria: item.categoria }));
+  const diasComComunicados = Array.from({length: new Date(ano, mes + 1, 0).getDate()}, (_, index) => index + 1).filter(dia => comunicados.some(item => ocorreNoDia(item.data, item.recorrencia, `${ano}-${String(mes + 1).padStart(2, "0")}-${String(dia).padStart(2, "0")}`)));
 
   return (
     <EstruturaInstitucional paginaAtiva="comunicados" aoNavegar={aoNavegar}>
@@ -134,7 +137,7 @@ function Comunicados({ aoNavegar, aoCriarComunicado }: PropriedadesComunicados) 
             </div>
 
             <div className="comunicados-lista">
-              {!fonteDisponivel() && <p className="comunicados-vazio">Configure VITE_API_BASE_URL no modo API para consultar comunicados.</p>}
+              {!fonteDisponivel() && <p className="comunicados-vazio">Dados indisponíveis no momento.</p>}
               {carregando && <p className="comunicados-vazio">Carregando comunicados...</p>}
               {erro && <p role="alert" className="comunicados-vazio">{erro}</p>}
               {comunicadosFiltrados.map((comunicado) => (
@@ -148,10 +151,10 @@ function Comunicados({ aoNavegar, aoCriarComunicado }: PropriedadesComunicados) 
                     <p>{comunicado.descricao}</p>
                   </div>
                   <div className="comunicados-lista-detalhes">
-                    <span><img src={iconeCalendarioDaLista} alt="" />{comunicado.data}</span>
-                    <span><img src={iconeRelogio} alt="" />{comunicado.hora}</span>
+                    <span><img src={iconeCalendarioDaLista} alt="" />{comunicado.data ? comunicado.data.split("-").reverse().join("/") : "Sem data"}</span>
+                    <span><img src={iconeRelogio} alt="" />{comunicado.hora || "Não definido"}</span>
                   </div>
-                  <span className="comunicados-situacao">Sem status</span>
+                  <span className="comunicados-situacao">Publicado</span>
                   <div className="comunicados-lista-acoes">
                     <button type="button" className="comunicados-acao-botao" onClick={() => definirOcultos((lista) => [...lista, comunicado.id])}>
                       <img src={iconeOcultar} alt="" /> Ocultar
@@ -171,7 +174,7 @@ function Comunicados({ aoNavegar, aoCriarComunicado }: PropriedadesComunicados) 
 
           <aside className="comunicados-calendario-painel">
             <CalendarioPequeno
-              className="comunicados-pequeno-calendario"
+              className="eventos-pequeno-calendario"
               titulo="Calendário"
               iconeDoTitulo={<img src={iconeCalendario} alt="" />}
               tamanhoDoIconeDoTitulo={36}
@@ -179,7 +182,7 @@ function Comunicados({ aoNavegar, aoCriarComunicado }: PropriedadesComunicados) 
               semanas={criarSemanas(ano, mes)}
               diaSelecionado={diaSelecionado}
               diaDeHoje={hoje.getMonth() === mes && hoje.getFullYear() === ano ? hoje.getDate() : undefined}
-              diasComEvento={[]}
+              diasComEvento={diasComComunicados}
               aoSelecionarDia={(dia) => definirDataSelecionada(new Date(ano, mes, dia))}
               aoVoltarMes={() => mudarMes(-1)}
               aoAvancarMes={() => mudarMes(1)}

@@ -1,4 +1,4 @@
-export type SecaoAcademica = "salas" | "turmas" | "materias";
+export type SecaoAcademica = "salas" | "turmas" | "materias" | "funcionarios";
 export type FiltroStatus = "todas" | "ativas" | "inativas";
 
 export interface Sala {
@@ -47,6 +47,10 @@ export interface Materia {
   descricao: string;
   ativa: boolean;
   cursos: string[];
+}
+
+export interface Funcionario {
+  id: string; usuarioId: number; cargoId: number; nome: string; email: string; cargo: string; foto: string; ativa: boolean;
 }
 
 export interface PropriedadesSalas {

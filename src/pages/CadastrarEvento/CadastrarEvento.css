@@ -356,3 +356,15 @@
 .cadastrar-evento-icones .bloom-seletor-icones-grade button { aspect-ratio: 1.12; }
 
 .cadastrar-evento-erro { margin: 0; color: #a63d32; font-size: 12px; }
+
+
+/* Cadastro proporcional à referência, sem alterar o funcionamento dos campos. */
+@media (min-width: 1150px) {
+  .cadastrar-evento-pagina { gap: 24px; }
+  .cadastrar-evento-titulo-principal { min-height: 98px; padding: 16px 30px; gap: 22px; border-radius: 29px; }
+  .cadastrar-evento-titulo-principal h1 { font-size: 30px; }
+  .cadastrar-evento-titulo-principal p { font-size: 18px; }
+  .cadastrar-evento-voltar { width: 54px; height: 54px; }
+  .cadastrar-evento-area { grid-template-columns: minmax(0, 1.6fr) minmax(360px, 1fr); gap: 22px; }
+  .cadastrar-evento-campos, .cadastrar-evento-lateral { border-radius: 29px; }
+}
