@@ -53,7 +53,9 @@ function Acesso({ aoEntrar, aoCriarConta, aoRecuperarSenha, googleDisponivel = f
 
   return (
     <main className="acesso-pagina">
+
       <video className="login-video" src={videoLogin} autoPlay loop muted playsInline aria-hidden="true" />
+
       <div className="acesso-marca" aria-label="Bloom Institucional">
         <img className="acesso-marca-simbolo" src={iconeLogoBloom} alt="" />
         <span className="acesso-marca-nome">
@@ -121,7 +123,7 @@ function Acesso({ aoEntrar, aoCriarConta, aoRecuperarSenha, googleDisponivel = f
               ? <BotaoGoogle aoEntrar={aoEntrar} aoErro={definirMensagem} />
               : (
                 <button type="button" className="bloom-botao bloom-botao-contorno" disabled title="Configure VITE_GOOGLE_CLIENT_ID no .env">
-                  <img src={iconeGoogle} alt="" /> Google não configurado
+                  <img src={iconeGoogle} alt="" /> Entrar com Google
                 </button>
               )}
           </div>

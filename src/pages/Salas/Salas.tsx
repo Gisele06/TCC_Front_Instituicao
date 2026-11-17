@@ -13,7 +13,8 @@ import EditorMateria from "./components/EditorMateria";
 import EditorFuncionario from "./components/EditorFuncionario";
 import { carregarFuncionarios, gravarFuncionario, solicitarRedefinicaoSenha } from "./data/funcionarios";
 import type { CargoRegistro, UsuarioRegistro } from "../../types/banco";
-import { Resumo, SetaDireita, IconePorta } from "./components/ElementosAcademicos";
+import { Resumo, SetaDireita } from "./components/ElementosAcademicos";
+import IconePorta  from "../../assets/icons/Salas/porta-aberta.svg";
 import iconeBusca from "../../assets/icons/Geral/busca.png";
 import iconePessoas from "../../assets/icons/Geral/pessoas.png";
 import iconeSala from "../../assets/icons/Salas/lousa-grafico.png";
@@ -82,7 +83,7 @@ function Salas({ aoNavegar }: PropriedadesSalas) {
     definirAviso("");
     try {
       const retorno = await solicitarRedefinicaoSenha(Number(pessoa.id));
-      definirAviso(retorno.demonstracao ? `Solicitação simulada para ${pessoa.email}. Nenhum e-mail foi enviado.` : `Solicitação de redefinição registrada para ${pessoa.email}.`);
+      definirAviso(retorno.demonstracao ? `ado ado ado Lucas é....` : `aaaaaAAAAA solicitacao salva :) tchau`);
     } catch (falha) { definirErro(falha instanceof Error ? falha.message : "Não foi possível solicitar a redefinição."); }
   }
 
@@ -332,8 +333,11 @@ function Salas({ aoNavegar }: PropriedadesSalas) {
                         <span className="academico-item-icone"><img src={iconeDeSala(sala.icone)} alt="" /></span>
                         <span className="academico-item-informacoes">
                           <strong>{sala.nome}</strong>
-                          <span>{sala.tipo} · Capacidade: {sala.capacidade}</span>
-                          <small>{sala.descricao}</small>
+                          <span>{sala.descricao} </span>
+                          <span className="sala-capacidade">
+                            <img className="icone-capacidade-sala" src={iconePessoas} alt="" />
+                            <span>Capacidade: {sala.capacidade}</span>
+                          </span>                       
                         </span>
                       </button>
                       <span className={"academico-status " + (!sala.ativa ? "inativo" : "")}>{sala.ativa ? "Ativa" : "Inativa"}</span>
@@ -361,6 +365,11 @@ function Salas({ aoNavegar }: PropriedadesSalas) {
                         <button type="button" className="academico-botao-status" onClick={() => alternarStatusTurma(turma.id)} aria-label={(turma.ativa ? "Desativar " : "Ativar ") + "turma " + turma.nome}>
                           {turma.ativa ? "Desativar" : "Ativar"}
                         </button>
+
+                        <button type="button" className="academico-gerar-codigo" onClick={() => {}} aria-label={"Gerar código"}>
+                          Gerar código
+                        </button>
+
                         <button className="academico-seta" type="button" onClick={() => definirEditor({ secao, id: turma.id })} aria-label={"Abrir " + turma.nome}>
                           <SetaDireita />
                         </button>
@@ -410,7 +419,10 @@ function Salas({ aoNavegar }: PropriedadesSalas) {
 
               {secao !== "materias" && secao !== "funcionarios" && (
                 <aside className="academico-cronograma" aria-label="Cronograma de aulas">
-                  <h2><IconePorta /> Cronograma</h2>
+                  <h2>
+                    <img src={IconePorta} alt="" />
+                    Cronograma
+                  </h2>
                   <ol>
                     {turmas
                       .filter((turma) => turma.ativa && turma.horarios.length > 0)

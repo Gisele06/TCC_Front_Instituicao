@@ -67,13 +67,20 @@
   min-height:0;
   flex:1
 }
-.acolhimento-lista,.acolhimento-detalhe {
+.acolhimento-lista {
   border:1px solid #d2d1c5;
   border-radius:26px;
   padding:24px 28px;
   min-height:0;
   box-shadow:0 1px 5px #00000008
 }
+.acolhimento-detalhe{
+  border:1px solid #d2d1c5;
+  padding:24px 28px;
+  min-height:0;
+  box-shadow:0 1px 5px #00000008
+}
+
 .acolhimento-lista h2,.acolhimento-detalhe h2 {
   font-size:30px;
   margin:0 0 20px;
@@ -236,7 +243,6 @@
   color:#829c95;
   margin:0;
   display:-webkit-box;
-  -webkit-line-clamp:4;
   -webkit-box-orient:vertical;
   overflow:hidden
 }

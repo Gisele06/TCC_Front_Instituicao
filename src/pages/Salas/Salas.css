@@ -221,7 +221,7 @@
   align-items: center;
   padding: 4px 11px;
   border: 0;
-  border-radius: 9px;
+  border-radius: 25px;
   background: transparent;
   color: #263e35;
   font: inherit;
@@ -230,13 +230,8 @@
   cursor: pointer;
 }
 
-.academico-filtros button + button {
-  border-left: 1px solid #e5e2d7;
-  border-radius: 0;
-}
-
 .academico-filtros button.selecionado {
-  border-radius: 9px;
+  border-radius: 18px;
   background: #2c4035;
   color: #fff;
 }
@@ -250,9 +245,8 @@
 
 .academico-busca {
   display: flex;
-  min-width: 0;
+  width: 769px;
   height: 36px;
-  flex: 1 1 auto;
   align-items: center;
   gap: 7px;
   padding: 0 10px;
@@ -261,13 +255,12 @@
   background: #f7f6ef;
   box-shadow: 0 2px 5px rgb(36 51 39 / 3.5%);
   color: #7e9897;
+  margin-right: 212px;
 }
 
 .academico-busca img {
-  width: 15px;
-  height: 15px;
-  flex-shrink: 0;
-  object-fit: contain;
+  width: 34px;
+  height: 34px;
 }
 
 .academico-busca input {
@@ -279,12 +272,13 @@
   background: transparent;
   color: #143532;
   font: inherit;
-  font-size: 13px;
+  font-size: 22px;
 }
 
 .academico-busca input::placeholder {
   color: #7e9897;
   opacity: 1;
+  font-size: 22px;
 }
 
 .academico-botao-principal,
@@ -342,8 +336,7 @@
 
 .academico-item {
   display: flex;
-  min-width: 0;
-  min-height: 58px;
+  height:125px;
   flex-shrink: 0;
   align-items: center;
   gap: 11px;
@@ -354,17 +347,6 @@
   box-shadow: 0 2px 5px rgb(36 51 39 / 3.5%);
 }
 
-/* display: grid;
-  grid-template-columns: 80px 2fr 1fr 75px 106px 22px;
-  align-items: center;
-  min-width: 0;
-  gap: 12px;
-  padding: 18px;
-  border: 1px solid #dedbcf;
-  border-radius: 29px;
-  background: #f8f7f0;
-  box-shadow: 0 2px 5px #22362912;
-   */
 .academico-item-principal {
   display: flex;
   min-width: 0;
@@ -382,8 +364,8 @@
 
 .academico-item-icone {
   display: flex;
-  width: 42px;
-  height: 42px;
+  width: 89px;
+  height: 89;
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
@@ -397,6 +379,16 @@
   width: 24px;
   height: 24px;
   object-fit: contain;
+}
+.icone-capacidade-sala  img{
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.icone-capacidade-sala  {
+  width: 20px;
+  height: 20px;
 }
 
 .academico-item-informacoes {
@@ -472,6 +464,21 @@
   cursor: pointer;
 }
 
+.academico-gerar-codigo {
+  width: 143px;
+  height: 37px;
+  flex-shrink: 0;
+  padding: 2px 8px;
+  border: 1px solid #2c4035;
+  border-radius: 13px;
+  background: #2c4035;
+  color: #fff;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
 .academico-botao-status:hover {
   background: #143532;
 }
@@ -525,7 +532,6 @@
   font-weight: 700;
   line-height: 1.35;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
 }
 
 .academico-lista-vazia {
@@ -557,9 +563,10 @@
   align-items: center;
   gap: 7px;
   margin: 0;
-  color: #143532;
-  font-size: 21px;
+  color: #112D2B;
+  font-size: 32px;
   line-height: 1.2;
+  -webkit-text-stroke: 2px #112D2B;
 }
 
 .academico-cronograma h2 svg {
@@ -1283,13 +1290,13 @@
   }
 
   .academico-item-icone {
-    width: 36px;
-    height: 36px;
+    width: 89px;
+    height: 89px;
   }
 
   .academico-item-icone img {
-    width: 21px;
-    height: 21px;
+    width: 56px;
+    height: 56px;
   }
 
   .academico-status {
@@ -1415,7 +1422,6 @@
 }
 
 
-/* Proporções das telas Gerenciamento e Cadastrar Sala. */
 .academico-pagina { gap: 16px; }
 .academico-titulo-principal, .academico-editor-titulo { min-height: 76px; padding: 14px 22px; }
 .academico-titulo-principal h1, .academico-editor-titulo h1 { font-size: 23px; }
@@ -1447,7 +1453,6 @@
  .academico-form-area > .academico-card-campos { min-height: 0; }
 }
 
-/* Área de gerenciamento: dimensões confortáveis no desktop, sem comprimir os cadastros. */
 .academico-layout-materias .academico-lista-painel { width: 100%; max-width: 1120px; }
 .academico-form-area-funcionario { grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.7fr); }
 .academico-card-funcionario-ajuda { align-self: start; }
@@ -1476,7 +1481,6 @@
   .academico-layout-materias .academico-lista-painel { width: 100%; }
 }
 
-/* Proporções ampliadas das referências em 1920 × 1080 */
 @media (min-width: 1300px) {
   .academico-pagina { gap: 18px; }
   .academico-titulo-principal, .academico-editor-titulo { min-height: 96px; padding: 18px 32px; border-radius: 30px; }
@@ -1495,7 +1499,6 @@
 .academico-curso-opcao:has(input:checked) { background: #e2e9dc; border-color: #91a796; }
 
 
-/* Escala visual da referência institucional (desktop 1920 x 1080). */
 @media (min-width: 1200px) {
   .academico-pagina { gap: 20px; }
   .academico-titulo-principal, .academico-editor-titulo { min-height: 100px; padding: 17px 32px; border-radius: 30px; }

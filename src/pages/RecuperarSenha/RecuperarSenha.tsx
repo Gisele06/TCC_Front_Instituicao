@@ -8,7 +8,7 @@ import {
   RequisitosSenha,
 } from "../../components/Geral/AcessoFluxo/AcessoFluxo";
 import iconeLogoBloom from "../../assets/icons/Geral/logo-b.png";
-import imagemDeFundoDoAcesso from "../../assets/images/Geral/login-hero.png";
+import videoLogin from "../../assets/images/Login/video-login.mp4"
 import iconeSetaVoltar from "../../assets/icons/Geral/seta-voltar.png";
 import "./RecuperarSenha.css";
 
@@ -54,7 +54,7 @@ function RecuperarSenha({ aoVoltar }: PropriedadesRecuperarSenha) {
 
   return (
     <main className="acesso-pagina">
-      <img className="acesso-fundo" src={imagemDeFundoDoAcesso} alt="" />
+      <video className="login-video" src={videoLogin} autoPlay loop muted playsInline aria-hidden="true" />
 
       <div className="acesso-marca" aria-label="Bloom Institucional">
         <img className="acesso-marca-simbolo" src={iconeLogoBloom} alt="" />
