@@ -1,0 +1,14 @@
+.bloom-menu-lateral {
+  position: relative;
+  width: clamp(76px, 5.15vw, 94px);
+  height: 100vh;
+  height: 100svh;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  background: #293f35;
+}

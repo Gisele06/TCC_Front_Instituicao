@@ -1,0 +1,127 @@
+[
+  {
+    "id": "mat-matematica",
+    "nome": "Matemática",
+    "sigla": "MAT",
+    "descricao": "Fundamentos de matemática",
+    "ativa": true,
+    "cursos": [
+      "engenharia",
+      "administracao",
+      "informatica"
+    ]
+  },
+  {
+    "id": "mat-sistemas",
+    "nome": "Sistemas Operacionais",
+    "sigla": "SOP",
+    "descricao": "Sistemas operacionais e redes",
+    "ativa": true,
+    "cursos": [
+      "informatica"
+    ]
+  },
+  {
+    "id": "mat-algoritmos",
+    "nome": "Algoritmos",
+    "sigla": "ALG",
+    "descricao": "Lógica e programação",
+    "ativa": true,
+    "cursos": [
+      "informatica",
+      "engenharia"
+    ]
+  },
+  {
+    "id": "mat-administracao",
+    "nome": "Administração Geral",
+    "sigla": "ADG",
+    "descricao": "Princípios de gestão",
+    "ativa": true,
+    "cursos": [
+      "administracao"
+    ]
+  },
+  {
+    "id": "mat-fisica",
+    "nome": "Física",
+    "sigla": "FIS",
+    "descricao": "Mecânica e movimento",
+    "ativa": true,
+    "cursos": [
+      "engenharia"
+    ]
+  },
+  {
+    "id": "mat-historia",
+    "nome": "História do Brasil",
+    "sigla": "HBR",
+    "descricao": "Formação social brasileira",
+    "ativa": true,
+    "cursos": [
+      "historia"
+    ]
+  },
+  {
+    "id": "mat-estatistica",
+    "nome": "Estatística",
+    "sigla": "EST",
+    "descricao": "Análise de dados",
+    "ativa": true,
+    "cursos": [
+      "engenharia",
+      "administracao"
+    ]
+  },
+  {
+    "id": "mat-banco",
+    "nome": "Banco de Dados",
+    "sigla": "BDD",
+    "descricao": "Modelagem e consulta de dados",
+    "ativa": true,
+    "cursos": [
+      "informatica"
+    ]
+  },
+  {
+    "id": "mat-quimica",
+    "nome": "Química",
+    "sigla": "QUI",
+    "descricao": "Química geral",
+    "ativa": false,
+    "cursos": [
+      "engenharia"
+    ]
+  },
+  {
+    "id": "mat-filosofia",
+    "nome": "Filosofia",
+    "sigla": "FIL",
+    "descricao": "Pensamento e sociedade",
+    "ativa": false,
+    "cursos": [
+      "historia"
+    ]
+  },
+  {
+    "id": "mat-marketing",
+    "nome": "Marketing",
+    "sigla": "MKT",
+    "descricao": "Comunicação e mercado",
+    "ativa": false,
+    "cursos": [
+      "administracao"
+    ]
+  },
+  {
+    "id": "mat-geometria",
+    "nome": "Geometria",
+    "sigla": "GEO",
+    "descricao": "Geometria plana e espacial",
+    "ativa": false,
+    "cursos": [
+      "engenharia",
+      "informatica"
+    ]
+  }
+]

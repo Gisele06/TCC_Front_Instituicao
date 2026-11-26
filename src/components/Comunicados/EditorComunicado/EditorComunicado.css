@@ -1,0 +1,165 @@
+.bloom-editor-comunicado {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bloom-editor-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.bloom-editor-grupo {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #d8d4c2;
+  border-radius: 10px;
+  background: #faf9f2;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgb(21 53 50 / 4%);
+}
+
+.bloom-editor-grupo button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 30px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid #e3e0d3;
+  background: transparent;
+  color: #153532;
+  font-family: var(--familia-da-fonte);
+  font-size: 12px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.45px #153532;
+  cursor: pointer;
+  transition: background-color 0.14s ease, color 0.14s ease;
+}
+
+.bloom-editor-grupo button:last-child {
+  border-right: 0;
+}
+
+.bloom-editor-grupo button:hover {
+  background: #efede3;
+}
+
+.bloom-editor-grupo button.estado-ativo {
+  background: #274036;
+  color: #ffffff;
+  -webkit-text-stroke: 0.4px #ffffff;
+}
+
+.bloom-editor-grupo button svg {
+  width: 15px;
+  height: 15px;
+}
+
+.bloom-editor-btn-negrito {
+  -webkit-text-stroke: 0.85px currentColor !important;
+}
+
+.bloom-editor-btn-italico {
+  font-style: italic;
+}
+
+.bloom-editor-btn-sublinhado {
+  text-decoration: underline;
+}
+
+.bloom-editor-area {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  min-height: 140px;
+  flex-direction: column;
+  padding: 14px 16px;
+  border: 1px solid #d8d4c2;
+  border-radius: 16px;
+  background: #faf9f2;
+  overflow-y: auto;
+  cursor: text;
+  box-sizing: border-box;
+  scrollbar-width: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bloom-editor-area::-webkit-scrollbar {
+  display: none;
+}
+
+.bloom-editor-area:focus-within {
+  border-color: #548d72;
+  box-shadow: 0 0 0 3px rgba(84, 141, 114, 0.12);
+}
+
+.bloom-editor-conteudo {
+  flex: 1;
+  min-height: 100%;
+}
+
+.bloom-editor-conteudo .tiptap {
+  min-height: 100%;
+  outline: none;
+  color: #153532;
+  font-family: var(--familia-da-fonte);
+  font-size: 14.5px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.bloom-editor-conteudo .tiptap p {
+  margin: 0 0 8px;
+}
+
+.bloom-editor-conteudo .tiptap p:last-child {
+  margin-bottom: 0;
+}
+
+.bloom-editor-conteudo .tiptap h1 {
+  margin: 0 0 10px;
+  font-size: 1.45em;
+  font-weight: normal;
+  -webkit-text-stroke: 0.85px #153532;
+  line-height: 1.2;
+}
+
+.bloom-editor-conteudo .tiptap h2 {
+  margin: 0 0 8px;
+  font-size: 1.25em;
+  font-weight: normal;
+  -webkit-text-stroke: 0.7px #153532;
+  line-height: 1.25;
+}
+
+.bloom-editor-conteudo .tiptap h3 {
+  margin: 0 0 6px;
+  color: #466661;
+  font-size: 1.08em;
+  font-weight: normal;
+  -webkit-text-stroke: 0.5px #466661;
+  line-height: 1.3;
+}
+
+.bloom-editor-conteudo .tiptap ul,
+.bloom-editor-conteudo .tiptap ol {
+  margin: 0 0 8px;
+  padding-left: 20px;
+}
+
+.bloom-editor-conteudo .tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  color: #849a96;
+  -webkit-text-stroke: 0.3px #849a96;
+  pointer-events: none;
+}

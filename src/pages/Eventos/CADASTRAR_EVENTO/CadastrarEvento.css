@@ -1,0 +1,862 @@
+.cadastrar-evento-pagina {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: clamp(14px, 1.9vh, 22px);
+  font-family: var(--familia-da-fonte);
+  overflow: hidden;
+}
+
+.cadastrar-evento-pagina button:hover,
+.cadastrar-evento-pagina button:active {
+  transform: none;
+  filter: none;
+  opacity: 1;
+}
+
+/* ===== Cabeçalho ===== */
+.cadastrar-evento-cabecalho {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  flex-shrink: 0;
+  align-items: center;
+  gap: clamp(14px, 1.5vw, 22px);
+  padding: clamp(14px, 2vh, 22px) clamp(18px, 1.9vw, 28px);
+  border: 1px solid #d8d4c2;
+  border-radius: clamp(18px, 1.7vw, 26px);
+  background: #f7f6ee;
+  box-shadow: 0 2px 6px rgb(29 49 39 / 4%);
+  box-sizing: border-box;
+}
+
+.cadastrar-evento-voltar {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #ecebe2;
+  color: #153532;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.cadastrar-evento-voltar:hover,
+.cadastrar-evento-voltar:active {
+  background: #e2e0d4;
+}
+
+.cadastrar-evento-voltar svg {
+  width: 22px;
+  height: 22px;
+}
+
+.cadastrar-evento-cabecalho-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.cadastrar-evento-cabecalho h1 {
+  margin: 0;
+  color: #153532;
+  font-size: clamp(22px, 2vw, 31px);
+  font-weight: normal;
+  -webkit-text-stroke: 1px #153532;
+  line-height: 1.12;
+}
+
+.cadastrar-evento-cabecalho p {
+  margin: 0;
+  color: #728c89;
+  font-size: clamp(13.5px, 1.12vw, 17px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.42px #728c89;
+  line-height: 1.25;
+}
+
+/* ===== Formulário e grade principal ===== */
+.cadastrar-evento-formulario {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: clamp(12px, 1.6vh, 18px);
+}
+
+.cadastrar-evento-area {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+  grid-template-columns: minmax(0, 1.55fr) clamp(320px, 31vw, 440px);
+  gap: clamp(14px, 1.6vw, 24px);
+}
+
+.cadastrar-evento-campos,
+.cadastrar-evento-lateral {
+  min-width: 0;
+  min-height: 0;
+  border: 1px solid #d8d4c2;
+  border-radius: clamp(20px, 1.8vw, 28px);
+  background: #f7f6ee;
+  box-shadow: 0 2px 6px rgb(29 49 39 / 4%);
+  box-sizing: border-box;
+}
+
+/* ===== Coluna esquerda: campos ===== */
+.cadastrar-evento-campos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(10px, 1.5vh, 16px);
+  padding: clamp(18px, 2.3vh, 26px) clamp(20px, 2.1vw, 30px);
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.cadastrar-evento-campos::-webkit-scrollbar {
+  display: none;
+}
+
+.cadastrar-evento-campo-par {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(12px, 1.3vw, 18px);
+}
+
+.cadastrar-evento-campo-par--cresce {
+  flex: 1;
+  min-height: 120px;
+}
+
+.cadastrar-evento-horario-linha {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 1.2vw, 16px);
+}
+
+.cadastrar-evento-linha-opcoes {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(12px, 1.3vw, 18px);
+}
+
+.cadastrar-evento-campo {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cadastrar-evento-rotulo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  color: #153532;
+  font-size: clamp(14px, 1.12vw, 16.5px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.65px #153532;
+}
+
+.cadastrar-evento-rotulo em {
+  color: #d97a29;
+  font-style: normal;
+  -webkit-text-stroke: 0.5px #d97a29;
+}
+
+.cadastrar-evento-rotulo small {
+  color: #7c9390;
+  font-size: 12.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.3px #7c9390;
+}
+
+.cadastrar-evento-input,
+.cadastrar-evento-textarea {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #d8d4c2;
+  border-radius: 13px;
+  background: #faf9f2;
+  color: #153532;
+  font-family: var(--familia-da-fonte);
+  font-size: 14.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.35px #153532;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cadastrar-evento-input {
+  height: 44px;
+  padding: 0 14px;
+}
+
+.cadastrar-evento-textarea {
+  flex: 1;
+  min-height: 96px;
+  padding: 12px 14px;
+  resize: none;
+  line-height: 1.4;
+}
+
+.cadastrar-evento-input::placeholder,
+.cadastrar-evento-textarea::placeholder {
+  color: #849a96;
+  -webkit-text-stroke: 0.3px #849a96;
+  opacity: 1;
+}
+
+.cadastrar-evento-input:focus,
+.cadastrar-evento-textarea:focus {
+  border-color: #548d72;
+  box-shadow: 0 0 0 3px rgba(84, 141, 114, 0.12);
+}
+
+/* Padronização do Input popover (seleção, data e horário) */
+.cadastrar-evento-popover.bloom-campo-popover {
+  height: 44px;
+  border: 1px solid #d8d4c2;
+  border-radius: 13px;
+  background: #faf9f2;
+  box-shadow: none;
+}
+
+.cadastrar-evento-popover.bloom-campo-popover:focus-within,
+.cadastrar-evento-popover.bloom-campo-popover--aberto {
+  border-color: #548d72;
+  background: #faf9f2;
+  box-shadow: 0 0 0 3px rgba(84, 141, 114, 0.12);
+}
+
+.cadastrar-evento-popover .acesso-entrada-gatilho {
+  color: #153532;
+  font-family: var(--familia-da-fonte);
+  font-size: 14.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.35px #153532;
+}
+
+.cadastrar-evento-popover .acesso-entrada-gatilho--placeholder {
+  color: #849a96;
+  -webkit-text-stroke: 0.3px #849a96;
+}
+
+.cadastrar-evento-popover .bloom-popover-seta {
+  width: 13px;
+  height: 13px;
+  right: 13px;
+}
+
+/* ===== Coluna direita: imagem + comunicado ===== */
+.cadastrar-evento-lateral {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 1.8vh, 18px);
+  padding: clamp(18px, 2.3vh, 26px) clamp(18px, 1.8vw, 24px);
+  overflow: hidden;
+}
+
+.cadastrar-evento-arquivo-oculto {
+  display: none;
+}
+
+.cadastrar-evento-upload {
+  position: relative;
+  display: flex;
+  flex: 1;
+  min-height: 148px;
+  border: 1px solid #e1ded0;
+  border-radius: 20px;
+  background: #f8f7f0;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.cadastrar-evento-upload-gatilho {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.16s ease;
+}
+
+.cadastrar-evento-upload-gatilho:hover,
+.cadastrar-evento-upload-gatilho:active {
+  background: #f1efe4;
+}
+
+.cadastrar-evento-upload-icone {
+  display: inline-flex;
+  width: 56px;
+  height: 56px;
+}
+
+.cadastrar-evento-upload-icone svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cadastrar-evento-upload-texto {
+  color: #728c89;
+  font-family: var(--familia-da-fonte);
+  font-size: 13.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.4px #728c89;
+  text-align: center;
+}
+
+.cadastrar-evento-upload-previa {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cadastrar-evento-upload-acoes {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.cadastrar-evento-upload-btn {
+  padding: 6px 14px;
+  border: 1px solid #d8d4c2;
+  border-radius: 999px;
+  background: rgba(250, 249, 242, 0.94);
+  color: #153532;
+  font-family: var(--familia-da-fonte);
+  font-size: 12.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.45px #153532;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(21, 53, 50, 0.14);
+}
+
+.cadastrar-evento-upload-btn:hover {
+  background: #efede3;
+}
+
+.cadastrar-evento-upload-btn--remover {
+  color: #b4331d;
+  -webkit-text-stroke: 0.45px #b4331d;
+}
+
+.cadastrar-evento-divisor {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: #e7e4d7;
+  flex-shrink: 0;
+}
+
+/* Card interno: Comunicado do evento */
+.cadastrar-evento-comunicado {
+  display: flex;
+  flex: 1.05;
+  min-height: 170px;
+  flex-direction: column;
+  padding: clamp(16px, 2vh, 22px) clamp(18px, 1.6vw, 22px);
+  border: 1px solid #d8d4c2;
+  border-radius: 20px;
+  background: #f8f7f0;
+  box-sizing: border-box;
+}
+
+.cadastrar-evento-comunicado-topo h2 {
+  margin: 0;
+  color: #153532;
+  font-size: clamp(17px, 1.35vw, 20px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.85px #153532;
+  line-height: 1.15;
+}
+
+.cadastrar-evento-comunicado-topo p {
+  margin: 4px 0 0;
+  color: #728c89;
+  font-size: 12.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.35px #728c89;
+}
+
+.cadastrar-evento-comunicado-gatilho {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 10px;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.16s ease;
+}
+
+.cadastrar-evento-comunicado-gatilho:hover,
+.cadastrar-evento-comunicado-gatilho:active {
+  background: #efede3;
+}
+
+.cadastrar-evento-comunicado-gatilho img {
+  width: clamp(54px, 4.4vw, 68px);
+  height: clamp(54px, 4.4vw, 68px);
+  object-fit: contain;
+  opacity: 0.65;
+}
+
+.cadastrar-evento-comunicado-gatilho span {
+  color: #728c89;
+  font-family: var(--familia-da-fonte);
+  font-size: 14px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.45px #728c89;
+}
+
+/* ===== Rodapé (Cancelar / Salvar / Excluir) ===== */
+.cadastrar-evento-rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.cadastrar-evento-rodape-esquerda {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cadastrar-evento-erro {
+  margin: 0;
+  color: #c93820;
+  font-size: 14px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.45px #c93820;
+}
+
+.cadastrar-evento-acoes {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.cadastrar-evento-cancelar,
+.cadastrar-evento-salvar,
+.cadastrar-evento-excluir {
+  height: 44px;
+  min-width: 136px;
+  padding: 0 24px;
+  border-radius: 14px;
+  font-family: var(--familia-da-fonte);
+  font-size: 16px;
+  font-weight: normal;
+  cursor: pointer;
+  transition: background-color 0.16s ease, border-color 0.16s ease;
+}
+
+.cadastrar-evento-cancelar {
+  border: 1.5px solid #274036;
+  background: #f7f6ee;
+  color: #153532;
+  -webkit-text-stroke: 0.6px #153532;
+}
+
+.cadastrar-evento-cancelar:hover,
+.cadastrar-evento-cancelar:active {
+  background: #eeece2;
+}
+
+.cadastrar-evento-salvar {
+  border: 0;
+  background: #274036;
+  color: #ffffff;
+  -webkit-text-stroke: 0.55px #ffffff;
+}
+
+.cadastrar-evento-salvar:hover,
+.cadastrar-evento-salvar:active {
+  background: #1f342c;
+}
+
+.cadastrar-evento-excluir {
+  min-width: auto;
+  border: 1px solid #e0c3bc;
+  background: #faf2f0;
+  color: #b4331d;
+  -webkit-text-stroke: 0.5px #b4331d;
+}
+
+.cadastrar-evento-excluir:hover,
+.cadastrar-evento-excluir:active {
+  background: #f5e5e1;
+}
+
+/* ===== Barra de abas (Informações / Perguntas) ===== */
+.cadastrar-evento-abas-linha {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.cadastrar-evento-abas {
+  --aba-altura: 36;
+  --aba-recuo: 16;
+  --aba-gap: 8;
+  --aba-icone: 16;
+  --aba-fonte: 15;
+  --caixa-recuo: 6;
+  --caixa-recuo-v: 5;
+}
+
+.cadastrar-evento-abas .bloom-aba-segmentada-icone svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cadastrar-evento-conteudo-aba {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+}
+
+/* ===== Toggle Permitir perguntas ===== */
+.cadastrar-evento-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  height: 44px;
+  padding: 0 12px 0 14px;
+  border: 1px solid #d8d4c2;
+  border-radius: 13px;
+  background: #faf9f2;
+  color: #7c9390;
+  font-family: var(--familia-da-fonte);
+  font-size: 13.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.35px #7c9390;
+  text-align: left;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: border-color 0.18s ease, background-color 0.18s ease, color 0.18s ease;
+}
+
+.cadastrar-evento-toggle:hover,
+.cadastrar-evento-toggle:active {
+  background: #f2f0e6;
+}
+
+.cadastrar-evento-toggle--ativo {
+  border-color: #b7d2c4;
+  background: #eef6f1;
+  color: #153532;
+  -webkit-text-stroke: 0.45px #153532;
+}
+
+.cadastrar-evento-toggle-texto {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.evento-switch-trilho {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 40px;
+  height: 22px;
+  padding: 2px;
+  border-radius: 999px;
+  background: #d2d0c2;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  transition: background-color 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.evento-switch-bolinha {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #faf9f2;
+  box-shadow: 0 1px 3px rgba(21, 53, 50, 0.22);
+  transform: translateX(0);
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cadastrar-evento-toggle--ativo .evento-switch-trilho,
+.evento-perguntas-switch-btn--ativo .evento-switch-trilho {
+  background: #274036;
+}
+
+.cadastrar-evento-toggle--ativo .evento-switch-bolinha,
+.evento-perguntas-switch-btn--ativo .evento-switch-bolinha {
+  transform: translateX(18px);
+}
+
+.cadastrar-evento-interacoes-par {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+/* ===== Valor do evento (Gratuito / Pago + R$) ===== */
+.cadastrar-evento-valor-linha {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  height: 44px;
+}
+
+.cadastrar-evento-valor-segmento {
+  display: inline-flex;
+  align-items: center;
+  height: 44px;
+  padding: 4px;
+  gap: 4px;
+  border: 1px solid #d8d4c2;
+  border-radius: 13px;
+  background: #faf9f2;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.cadastrar-evento-valor-btn {
+  height: 100%;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: #6b8582;
+  font-family: var(--familia-da-fonte);
+  font-size: 13.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.4px #6b8582;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.16s ease, color 0.16s ease;
+}
+
+.cadastrar-evento-valor-btn:hover {
+  background: #eeece2;
+  color: #153532;
+  -webkit-text-stroke: 0.45px #153532;
+}
+
+.cadastrar-evento-valor-btn--ativo,
+.cadastrar-evento-valor-btn--ativo:hover {
+  background: #274036;
+  color: #ffffff;
+  -webkit-text-stroke: 0.45px #ffffff;
+}
+
+.cadastrar-evento-valor-input-wrap {
+  display: flex;
+  flex: 1;
+  min-width: 108px;
+  height: 44px;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  border: 1px solid #d8d4c2;
+  border-radius: 13px;
+  background: #faf9f2;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cadastrar-evento-valor-input-wrap:focus-within {
+  border-color: #548d72;
+  box-shadow: 0 0 0 3px rgba(84, 141, 114, 0.12);
+}
+
+.cadastrar-evento-valor-input-wrap span {
+  color: #728c89;
+  font-size: 14px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.45px #728c89;
+  flex-shrink: 0;
+}
+
+.cadastrar-evento-valor-input-wrap input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  outline: none;
+  color: #153532;
+  font-family: var(--familia-da-fonte);
+  font-size: 14.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.4px #153532;
+}
+
+.cadastrar-evento-valor-input-wrap input::placeholder {
+  color: #849a96;
+  -webkit-text-stroke: 0.3px #849a96;
+  opacity: 1;
+}
+
+.cadastrar-evento-comunicado-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.cadastrar-evento-comunicado-selo {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 11px;
+  border: 1px solid #b7d7c8;
+  border-radius: 999px;
+  background: #e4f3ec;
+  color: #246f53;
+  font-size: 11.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.45px #246f53;
+  line-height: 1.15;
+  flex-shrink: 0;
+}
+
+.cadastrar-evento-comunicado-selo--oculto {
+  border-color: #d8d4c2;
+  background: #efede3;
+  color: #6b8582;
+  -webkit-text-stroke: 0.4px #6b8582;
+}
+
+.cadastrar-evento-comunicado-vinculado {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.cadastrar-evento-comunicado-resumo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  border: 1px solid #e1ded0;
+  border-radius: 14px;
+  background: #faf9f2;
+}
+
+.cadastrar-evento-comunicado-resumo strong {
+  color: #153532;
+  font-size: 14.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.65px #153532;
+  line-height: 1.25;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cadastrar-evento-comunicado-resumo span {
+  color: #728c89;
+  font-size: 12.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.35px #728c89;
+}
+
+.cadastrar-evento-comunicado-feedback {
+  color: #246f53;
+  font-size: 12.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.4px #246f53;
+}
+
+.cadastrar-evento-comunicado-botoes {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 8px;
+}
+
+.cadastrar-evento-comunicado-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 38px;
+  padding: 0 12px;
+  border-radius: 11px;
+  font-family: var(--familia-da-fonte);
+  font-size: 13px;
+  font-weight: normal;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.16s ease, border-color 0.16s ease;
+}
+
+.cadastrar-evento-comunicado-btn--editar {
+  border: 1.5px solid #274036;
+  background: #faf9f2;
+  color: #153532;
+  -webkit-text-stroke: 0.55px #153532;
+}
+
+.cadastrar-evento-comunicado-btn--editar:hover,
+.cadastrar-evento-comunicado-btn--editar:active {
+  background: #eeece2;
+}
+
+.cadastrar-evento-comunicado-btn--reenviar {
+  border: 0;
+  background: #274036;
+  color: #ffffff;
+  -webkit-text-stroke: 0.45px #ffffff;
+}
+
+.cadastrar-evento-comunicado-btn--reenviar:hover,
+.cadastrar-evento-comunicado-btn--reenviar:active {
+  background: #1f342c;
+}
+
+.cadastrar-evento-comunicado-btn--reenviar img {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  flex-shrink: 0;
+}

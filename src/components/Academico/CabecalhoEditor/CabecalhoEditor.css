@@ -1,0 +1,294 @@
+/* ===== Cabeçalho dos editores acadêmicos ===== */
+.academico-editor-titulo {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  flex-shrink: 0;
+  align-items: center;
+  gap: clamp(14px, 1.5vw, 22px);
+  padding: clamp(14px, 2vh, 22px) clamp(18px, 1.9vw, 28px);
+  border: 1px solid #d8d4c2;
+  border-radius: clamp(18px, 1.7vw, 26px);
+  background: #f7f6ee;
+  box-shadow: 0 2px 6px rgb(29 49 39 / 4%);
+  box-sizing: border-box;
+  font-family: var(--familia-da-fonte);
+}
+
+.academico-editor-voltar {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #ecebe2;
+  color: #153532;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.academico-editor-voltar:hover,
+.academico-editor-voltar:active {
+  background: #e2e0d4;
+  transform: none;
+  filter: none;
+  opacity: 1;
+}
+
+.academico-editor-voltar svg {
+  width: 22px;
+  height: 22px;
+}
+
+.academico-editor-titulo-texto {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.academico-editor-titulo h1 {
+  margin: 0;
+  color: #153532;
+  font-size: clamp(22px, 2vw, 31px);
+  font-weight: normal;
+  -webkit-text-stroke: 1px #153532;
+  line-height: 1.12;
+}
+
+.academico-editor-titulo p {
+  margin: 0;
+  color: #728c89;
+  font-size: clamp(13.5px, 1.12vw, 17px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.42px #728c89;
+  line-height: 1.25;
+}
+
+/* ===== Base compartilhada dos formulários acadêmicos ===== */
+.academico-formulario {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: clamp(12px, 1.6vh, 18px);
+  font-family: var(--familia-da-fonte);
+}
+
+.academico-formulario button:hover,
+.academico-formulario button:active {
+  transform: none;
+  filter: none;
+  opacity: 1;
+}
+
+.academico-form-area {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+  grid-template-columns: minmax(0, 1.45fr) clamp(310px, 32vw, 440px);
+  gap: clamp(14px, 1.6vw, 24px);
+}
+
+.academico-card {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+  gap: clamp(12px, 1.6vh, 18px);
+  padding: clamp(18px, 2.3vh, 26px) clamp(20px, 2.1vw, 30px);
+  border: 1px solid #d8d4c2;
+  border-radius: clamp(20px, 1.8vw, 28px);
+  background: #f7f6ee;
+  box-shadow: 0 2px 6px rgb(29 49 39 / 4%);
+  box-sizing: border-box;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.academico-card::-webkit-scrollbar {
+  display: none;
+}
+
+.academico-card > h2,
+.academico-linha-titulo h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  color: #153532;
+  font-size: clamp(18px, 1.5vw, 22px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.85px #153532;
+  line-height: 1.15;
+}
+
+.academico-linha-titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.academico-linha-titulo h2 img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.academico-botao-pequeno {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: #274036;
+  color: #ffffff;
+  font-family: var(--familia-da-fonte);
+  font-size: 12.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.45px #ffffff;
+  white-space: nowrap;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.15s ease;
+}
+
+.academico-botao-pequeno:hover,
+.academico-botao-pequeno:active {
+  background: #1d322a;
+}
+
+.academico-campos-duplos {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(12px, 1.3vw, 18px);
+}
+
+.academico-campo {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.academico-campo > span:first-child {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  color: #153532;
+  font-size: clamp(14px, 1.1vw, 16px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.65px #153532;
+}
+
+.academico-campo i,
+.academico-campo em {
+  color: #d97a29;
+  font-style: normal;
+  -webkit-text-stroke: 0.5px #d97a29;
+}
+
+.academico-campo small {
+  color: #7c9390;
+  font-size: 12.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.3px #7c9390;
+}
+
+.academico-campo > input,
+.academico-campo > textarea {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #d8d4c2;
+  border-radius: 13px;
+  background: #faf9f2;
+  color: #153532;
+  font-family: var(--familia-da-fonte);
+  font-size: 14.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.35px #153532;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.academico-campo > input {
+  height: 44px;
+  padding: 0 14px;
+}
+
+.academico-campo > textarea {
+  min-height: 108px;
+  padding: 12px 14px;
+  resize: none;
+  line-height: 1.4;
+}
+
+.academico-campo > input::placeholder,
+.academico-campo > textarea::placeholder {
+  color: #849a96;
+  -webkit-text-stroke: 0.3px #849a96;
+  opacity: 1;
+}
+
+.academico-campo > input:focus,
+.academico-campo > textarea:focus {
+  border-color: #548d72;
+  box-shadow: 0 0 0 3px rgba(84, 141, 114, 0.12);
+}
+
+/* Padronização do Input popover dentro dos editores acadêmicos */
+.academico-popover.bloom-campo-popover {
+  height: 44px;
+  border: 1px solid #d8d4c2;
+  border-radius: 13px;
+  background: #faf9f2;
+  box-shadow: none;
+}
+
+.academico-popover.bloom-campo-popover:focus-within,
+.academico-popover.bloom-campo-popover--aberto {
+  border-color: #548d72;
+  background: #faf9f2;
+  box-shadow: 0 0 0 3px rgba(84, 141, 114, 0.12);
+}
+
+.academico-popover .acesso-entrada-gatilho {
+  color: #153532;
+  font-family: var(--familia-da-fonte);
+  font-size: 14.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.35px #153532;
+}
+
+.academico-popover .acesso-entrada-gatilho--placeholder {
+  color: #849a96;
+  -webkit-text-stroke: 0.3px #849a96;
+}
+
+.academico-popover .bloom-popover-seta {
+  width: 13px;
+  height: 13px;
+  right: 13px;
+}
+
+.academico-ajuda {
+  margin: 0;
+  color: #7c9390;
+  font-size: 13px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.35px #7c9390;
+}

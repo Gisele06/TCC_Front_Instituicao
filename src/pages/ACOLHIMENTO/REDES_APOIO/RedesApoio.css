@@ -1,0 +1,42 @@
+.redes-apoio-bloco {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+  gap: clamp(12px, 1.7vh, 20px);
+}
+
+.redes-apoio-estatisticas {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+.redes-apoio-colunas {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+  gap: clamp(14px, 1.5vw, 22px);
+}
+
+.redes-apoio-colunas > * {
+  min-width: 0;
+  min-height: 0;
+}
+
+.redes-apoio-mapa-card {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(14px, 1.8vh, 22px);
+  border: 1px solid #d8d4c2;
+  border-radius: clamp(20px, 1.8vw, 28px);
+  background: #f7f6ee;
+  box-shadow: 0 2px 6px rgb(29 49 39 / 4%);
+  box-sizing: border-box;
+  overflow: hidden;
+}

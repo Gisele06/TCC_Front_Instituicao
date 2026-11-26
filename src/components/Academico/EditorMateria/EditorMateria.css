@@ -1,0 +1,246 @@
+.academico-formulario-materia {
+  gap: clamp(16px, 2.2vh, 24px);
+}
+
+.academico-form-area-materia {
+  grid-template-columns: minmax(0, 1.52fr) minmax(350px, 1fr);
+  gap: clamp(18px, 1.8vw, 28px);
+  align-items: stretch;
+}
+
+/* ===== Card esquerdo: Informações da matéria ===== */
+.academico-card-materia {
+  gap: clamp(16px, 2.2vh, 24px);
+  padding: clamp(22px, 2.8vh, 32px) clamp(24px, 2.4vw, 34px) clamp(32px, 4.5vh, 56px);
+}
+
+.academico-card-materia .academico-campo > span:first-child {
+  font-size: clamp(15px, 1.18vw, 18px);
+  -webkit-text-stroke: 0.72px #153532;
+}
+
+.academico-card-materia .academico-campo > input {
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 14px;
+  font-size: 15.5px;
+}
+
+.academico-card-materia .academico-campo-descricao-materia > textarea {
+  height: clamp(138px, 20vh, 185px);
+  min-height: 132px;
+  padding: 14px 16px;
+  border-radius: 15px;
+  font-size: 15.5px;
+  line-height: 1.45;
+  resize: none;
+}
+
+.academico-card-materia .academico-popover.bloom-campo-popover {
+  height: 48px;
+  border-radius: 14px;
+}
+
+.academico-card-materia .academico-popover .acesso-entrada-gatilho {
+  padding-left: 16px;
+  font-size: 15.5px;
+}
+
+.academico-card-materia .academico-popover .bloom-popover-seta {
+  width: 14px;
+  height: 14px;
+  right: 15px;
+}
+
+.academico-materia-status-linha {
+  max-width: 100%;
+}
+
+/* ===== Card direito: Cursos relacionados ===== */
+.academico-card-cursos {
+  gap: clamp(14px, 2vh, 20px);
+  padding: clamp(22px, 2.8vh, 32px) clamp(22px, 2.2vw, 30px);
+  overflow: hidden;
+}
+
+.academico-card-cursos > h2 {
+  font-size: clamp(17px, 1.38vw, 21px);
+  -webkit-text-stroke: 0.85px #153532;
+}
+
+.academico-cursos-barra {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.academico-cursos-filtro-busca.bloom-busca {
+  flex: 1;
+  min-width: 0;
+  height: 44px;
+  padding: 0 16px;
+  gap: 10px;
+  border: 1px solid #d8d4c2;
+  border-radius: 999px;
+  background: #faf9f2;
+  box-shadow: 0 2px 6px rgb(18 51 48 / 4%);
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.academico-cursos-filtro-busca.bloom-busca:focus-within {
+  border-color: #548d72;
+  box-shadow: 0 0 0 3px rgba(84, 141, 114, 0.12);
+}
+
+.academico-cursos-filtro-busca.bloom-busca input {
+  color: #153532;
+  font-size: 14.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.35px #153532;
+}
+
+.academico-cursos-filtro-busca.bloom-busca input::placeholder {
+  color: #7c9390;
+  -webkit-text-stroke: 0.35px #7c9390;
+  opacity: 1;
+}
+
+.academico-cursos-alternar {
+  flex-shrink: 0;
+  padding: 6px 4px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #728c89;
+  font-family: var(--familia-da-fonte);
+  font-size: 14px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.42px #728c89;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.academico-cursos-alternar:hover {
+  color: #153532;
+  -webkit-text-stroke: 0.5px #153532;
+}
+
+.academico-lista-cursos {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+  gap: 11px;
+  overflow-y: auto;
+  padding: 2px 1px;
+  scrollbar-width: none;
+}
+
+.academico-lista-cursos::-webkit-scrollbar {
+  display: none;
+}
+
+.academico-curso-opcao {
+  position: relative;
+  display: flex;
+  min-height: 48px;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 14px;
+  border: 1px solid #dedbcf;
+  border-radius: 14px;
+  background: #f8f7f0;
+  box-shadow: 0 2px 5px rgb(18 51 48 / 4%);
+  color: #153532;
+  font-size: 15px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.6px #153532;
+  cursor: pointer;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.academico-curso-opcao:hover {
+  background: #f2f0e6;
+}
+
+.academico-curso-opcao--marcado {
+  border-color: #b7d2c4;
+  background: #eef6f1;
+}
+
+.academico-curso-opcao input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.academico-curso-caixa {
+  display: inline-flex;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #d5d2c4;
+  border-radius: 7px;
+  background: #f4f3eb;
+  color: #ffffff;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.academico-curso-opcao--marcado .academico-curso-caixa {
+  border-color: #274036;
+  background: #274036;
+}
+
+.academico-curso-texto {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.academico-cursos-rodape {
+  margin: 0;
+  padding-top: 8px;
+  border-top: 1px solid #e7e4d7;
+  color: #7c9390;
+  font-size: 13px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.35px #7c9390;
+  flex-shrink: 0;
+}
+
+@media (max-width: 960px) {
+  .academico-form-area-materia {
+    grid-template-columns: 1fr;
+  }
+
+  .academico-card-materia {
+    padding-bottom: 26px;
+  }
+
+  .academico-card-cursos {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 600px) {
+  .academico-cursos-barra {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}

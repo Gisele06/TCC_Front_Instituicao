@@ -1,0 +1,29 @@
+[
+  {
+    "id": "comunicado-aviso",
+    "categoria": "Aviso",
+    "titulo": "Porque me sinto triste?",
+    "descricao": "Você já se sentiu triste? Isso é comum e pode acontecer por vários motivos.",
+    "data": "6 jul, 2026",
+    "hora": "14:00 - 16:00",
+    "icone": "iconeAviso"
+  },
+  {
+    "id": "comunicado-orientacao",
+    "categoria": "Orientação",
+    "titulo": "Porque me sinto triste?",
+    "descricao": "Você já se sentiu triste? Isso é comum e pode acontecer por vários motivos.",
+    "data": "6 jul, 2026",
+    "hora": "14:00 - 16:00",
+    "icone": "iconeOrientacao"
+  },
+  {
+    "id": "comunicado-evento",
+    "categoria": "Evento",
+    "titulo": "Porque me sinto triste?",
+    "descricao": "Você já se sentiu triste? Isso é comum e pode acontecer por vários motivos.",
+    "data": "6 jul, 2026",
+    "hora": "14:00 - 16:00",
+    "icone": "iconeComunicadoEvento"
+  }
+]

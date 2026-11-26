@@ -1,0 +1,22 @@
+[
+  {
+    "id": "ds",
+    "nome": "Desenvolvimento de sistemas",
+    "turmas": 4
+  },
+  {
+    "id": "redes",
+    "nome": "Redes",
+    "turmas": 3
+  },
+  {
+    "id": "eletricista",
+    "nome": "Eletricista de manutenção",
+    "turmas": 2
+  },
+  {
+    "id": "mecanico",
+    "nome": "Mecânico de manutenção",
+    "turmas": 5
+  }
+]

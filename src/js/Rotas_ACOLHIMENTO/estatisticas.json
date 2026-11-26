@@ -1,0 +1,17 @@
+[
+  {
+    "icone": "clipboard",
+    "valor": 15,
+    "rotulo": "Recebidas"
+  },
+  {
+    "icone": "repeat",
+    "valor": 8,
+    "rotulo": "Em andamento"
+  },
+  {
+    "icone": "check",
+    "valor": 13,
+    "rotulo": "Resolvidas"
+  }
+]

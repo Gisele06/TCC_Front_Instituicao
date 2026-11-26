@@ -1,0 +1,14 @@
+[
+  {
+    "id": "aviso-do-dia",
+    "horario": "14:00",
+    "titulo": "Porque me sinto triste?",
+    "categoria": "Aviso"
+  },
+  {
+    "id": "evento-do-dia",
+    "horario": "16:00",
+    "titulo": "Porque me sinto triste?",
+    "categoria": "Evento"
+  }
+]

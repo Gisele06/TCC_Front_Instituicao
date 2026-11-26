@@ -1,0 +1,91 @@
+.academico-pagina {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+  color: #153532;
+  font-family: var(--familia-da-fonte);
+  overflow: hidden;
+}
+
+.academico-visao-raiz,
+.academico-gerenciamento-container,
+.academico-editor-container,
+.academico-secao-conteudo,
+.academico-secao-bloco {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+}
+
+.academico-gerenciamento-container,
+.academico-editor-container,
+.academico-secao-bloco {
+  gap: clamp(12px, 1.7vh, 20px);
+}
+
+.academico-abas-faixa {
+  flex-shrink: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.academico-abas-faixa::-webkit-scrollbar {
+  display: none;
+}
+
+.academico-abas {
+  --aba-altura: 38;
+  --aba-recuo: 16;
+  --aba-gap: 8;
+  --aba-icone: 18;
+  --aba-fonte: 15.5;
+  --caixa-recuo: 6;
+  --caixa-recuo-v: 5;
+}
+
+.academico-abas .bloom-aba-segmentada-icone svg {
+  width: 100%;
+  height: 100%;
+}
+
+.academico-resumos {
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.academico-layout,
+.academico-layout-sem-cronograma {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex: 1 1 0;
+  grid-template-columns: minmax(0, 1fr) clamp(290px, 26vw, 370px);
+  gap: clamp(14px, 1.5vw, 22px);
+  overflow: hidden;
+}
+
+.academico-layout > * {
+  min-width: 0;
+  min-height: 0;
+}
+
+@media (max-width: 980px) {
+  .academico-pagina {
+    overflow-y: auto;
+  }
+
+  .academico-layout,
+  .academico-layout-sem-cronograma {
+    grid-template-columns: 1fr;
+    overflow: visible;
+  }
+}

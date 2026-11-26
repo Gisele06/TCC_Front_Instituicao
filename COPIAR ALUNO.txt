@@ -1,0 +1,34 @@
+
+EMAIL E SENHA
+gabriel@gmail.com
+123
+
+EMAIL SENHA INSTITUIÇÃO
+senai@gmail.com
+123
+
+TEXTO CHAT BOT
+Olá queria conversar com você
+
+TEXTO AVALIAÇÃO AULA
+Hoje foi um dia muito legal fiz muitas coisas, afinal foi meu aniversário.
+
+TEXTOS TAREFAS POMODORO
+Preciso terminar 3 atividades até dia 30
+Estudar matemática
+
+
+TEXTOS TAREFA CALENDÁRIO
+Prova de ciencias
+
+Tenho que fazer toda a prova de ciencias, não tenho idéia se vou me sair bem
+
+
+CÓDIGO ENTRAR INSITUIÇÃO
+123
+
+TEXTO AVALIAÇÃO AULA INSITUIÇÃO
+essa aula foi muito tranquila, pois já conhecia a matéria.
+
+TEXTO COMENTÁRIO
+acho esse um tema muito relevante para a comunidade.

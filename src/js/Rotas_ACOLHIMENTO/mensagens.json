@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "autor": "voce",
+    "horario": "10:42",
+    "texto": "Olá, gostaríamos de entender melhor o que aconteceu?"
+  },
+  {
+    "id": 2,
+    "autor": "aluno",
+    "horario": "10:50",
+    "texto": "Estou muito triste com o que vem acontecendo todos os dias comigo me sinto triste, e vazio...."
+  }
+]

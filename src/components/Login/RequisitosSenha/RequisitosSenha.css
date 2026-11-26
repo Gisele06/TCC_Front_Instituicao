@@ -1,0 +1,60 @@
+.acesso-cartao-recuperacao .acesso-requisitos,
+.acesso-cartao-cadastro .acesso-requisitos {
+  gap: 4px;
+  margin: 2px 0 4px;
+  line-height: 1.2;
+}
+
+.acesso-requisitos {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin: 5px 0 7px;
+  padding: 0 0 0 8px;
+  color: #86938f;
+  font-size: clamp(11px, 0.95vw, 13px);
+  font-weight: 700;
+  line-height: 1.2;
+  list-style: none;
+}
+
+.acesso-requisito {
+  display: flex;
+  min-height: 14px;
+  align-items: center;
+  gap: 8px;
+}
+
+.acesso-requisito-marcador {
+  display: grid;
+  width: 11px;
+  height: 11px;
+  flex: 0 0 11px;
+  place-items: center;
+  border-radius: 50%;
+  background: #929d99;
+}
+
+.acesso-requisito-marcador img {
+  width: 8px;
+  height: 8px;
+  color: #f6f5ed;
+}
+
+.acesso-requisito-atendido {
+  color: #183734;
+}
+
+.acesso-requisito-atendido .acesso-requisito-marcador {
+  background: #183734;
+}
+
+@media (max-width: 700px) {
+  .acesso-requisitos {
+    gap: 5px;
+    font-size: 13px;
+  }
+  .acesso-requisito {
+    min-height: 16px;
+  }
+}

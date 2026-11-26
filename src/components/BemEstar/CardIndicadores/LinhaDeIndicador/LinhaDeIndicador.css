@@ -1,0 +1,105 @@
+.bloom-linha-indicador {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  align-items: center;
+  gap: calc(15 * var(--un));
+  padding: calc(6 * var(--un)) 0;
+  font-family: var(--familia-da-fonte);
+  box-sizing: border-box;
+}
+
+.bloom-linha-indicador + .bloom-linha-indicador {
+  border-top: 1px solid #e6e3d6;
+}
+
+.bloom-linha-indicador-icone {
+  display: flex;
+  width: calc(64 * var(--un));
+  height: calc(64 * var(--un));
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d7d4c4;
+  border-radius: 50%;
+  background: #faf9f2;
+  box-shadow: 0 2px 6px rgba(21, 53, 50, 0.05);
+}
+
+.bloom-linha-indicador-icone img {
+  width: calc(38 * var(--un));
+  height: calc(38 * var(--un));
+  object-fit: contain;
+}
+
+.bloom-linha-indicador-texto {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: calc(4 * var(--un));
+}
+
+.bloom-linha-indicador-texto strong {
+  color: #153532;
+  font-size: calc(22 * var(--un));
+  font-weight: normal;
+  -webkit-text-stroke: 0.85px #153532;
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bloom-linha-indicador-texto span {
+  overflow: hidden;
+  color: #728c89;
+  font-size: calc(15.5 * var(--un));
+  font-weight: normal;
+  -webkit-text-stroke: 0.35px #728c89;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bloom-linha-indicador-valor {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: calc(4 * var(--un));
+  padding-left: calc(8 * var(--un));
+}
+
+.bloom-linha-indicador-valor strong {
+  color: #153532;
+  font-size: calc(22 * var(--un));
+  font-weight: normal;
+  -webkit-text-stroke: 0.95px #153532;
+  line-height: 1.1;
+}
+
+.bloom-linha-indicador-variacao {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(4 * var(--un));
+  font-size: calc(16.5 * var(--un));
+  font-weight: normal;
+  -webkit-text-stroke: 0.6px currentColor;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.bloom-linha-indicador-variacao svg {
+  width: calc(14 * var(--un));
+  height: calc(14 * var(--un));
+  flex-shrink: 0;
+}
+
+.bloom-linha-indicador-variacao.tom-bom {
+  color: #299d70;
+}
+
+.bloom-linha-indicador-variacao.tom-ruim {
+  color: #c93820;
+}

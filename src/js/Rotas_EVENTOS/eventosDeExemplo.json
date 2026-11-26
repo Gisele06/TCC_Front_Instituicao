@@ -1,0 +1,38 @@
+[
+  {
+    "id": "evento-pizza",
+    "categoria": "Festa",
+    "titulo": "Vai uma pizza aí?",
+    "descricao": "Pensando no bem-estar dos alunos hoje nossa escola.",
+    "data": "2026-07-06",
+    "horaInicio": "14:00",
+    "horaFim": "16:00",
+    "local": "Refeitório",
+    "recorrencia": "Não se repete",
+    "turmas": "Todas as salas"
+  },
+  {
+    "id": "evento-palestra-1",
+    "categoria": "Palestra",
+    "titulo": "Prevenção Setembro amarelo",
+    "descricao": "Palestra com um psicólogo sobre saúde mental e cuidado no dia a dia.",
+    "data": "2026-07-10",
+    "horaInicio": "14:30",
+    "horaFim": "15:30",
+    "local": "Auditório",
+    "recorrencia": "Não se repete",
+    "turmas": "Todas as salas"
+  },
+  {
+    "id": "evento-palestra-2",
+    "categoria": "Palestra",
+    "titulo": "Prevenção Setembro amarelo",
+    "descricao": "Palestra com um psicólogo sobre saúde mental e cuidado no dia a dia.",
+    "data": "2026-07-10",
+    "horaInicio": "14:30",
+    "horaFim": "15:30",
+    "local": "Auditório",
+    "recorrencia": "Não se repete",
+    "turmas": "Todas as salas"
+  }
+]

@@ -1,0 +1,110 @@
+[
+  {
+    "id": "sala-b09",
+    "nome": "B09",
+    "descricao": "Sala de aula convencional",
+    "capacidade": 28,
+    "tipo": "Sala de aula",
+    "icone": "formacao",
+    "ativa": true
+  },
+  {
+    "id": "sala-auditorio",
+    "nome": "Auditório",
+    "descricao": "Espaço para apresentações e eventos",
+    "capacidade": 120,
+    "tipo": "Auditório",
+    "icone": "pessoas",
+    "ativa": true
+  },
+  {
+    "id": "sala-lab-info",
+    "nome": "Laboratório de Informática",
+    "descricao": "Computadores e recursos digitais",
+    "capacidade": 32,
+    "tipo": "Laboratório",
+    "icone": "livro",
+    "ativa": true
+  },
+  {
+    "id": "sala-b10",
+    "nome": "B10",
+    "descricao": "Sala de aula convencional",
+    "capacidade": 30,
+    "tipo": "Sala de aula",
+    "icone": "calendario",
+    "ativa": true
+  },
+  {
+    "id": "sala-lab-ciencias",
+    "nome": "Laboratório de Ciências",
+    "descricao": "Espaço para atividades práticas",
+    "capacidade": 24,
+    "tipo": "Laboratório",
+    "icone": "folha",
+    "ativa": true
+  },
+  {
+    "id": "sala-biblioteca",
+    "nome": "Biblioteca",
+    "descricao": "Leitura e estudo individual",
+    "capacidade": 40,
+    "tipo": "Biblioteca",
+    "icone": "livro",
+    "ativa": true
+  },
+  {
+    "id": "sala-b11",
+    "nome": "B11",
+    "descricao": "Sala de aula convencional",
+    "capacidade": 28,
+    "tipo": "Sala de aula",
+    "icone": "pessoa",
+    "ativa": true
+  },
+  {
+    "id": "sala-multiuso",
+    "nome": "Sala Multiuso",
+    "descricao": "Atividades em grupo e projetos",
+    "capacidade": 36,
+    "tipo": "Multiuso",
+    "icone": "coracao",
+    "ativa": true
+  },
+  {
+    "id": "sala-b12",
+    "nome": "B12",
+    "descricao": "Em manutenção",
+    "capacidade": 28,
+    "tipo": "Sala de aula",
+    "icone": "formacao",
+    "ativa": false
+  },
+  {
+    "id": "sala-lab-antigo",
+    "nome": "Laboratório 2",
+    "descricao": "Equipamentos em atualização",
+    "capacidade": 24,
+    "tipo": "Laboratório",
+    "icone": "escudo",
+    "ativa": false
+  },
+  {
+    "id": "sala-anexo",
+    "nome": "Anexo A",
+    "descricao": "Sala temporariamente fechada",
+    "capacidade": 20,
+    "tipo": "Sala de aula",
+    "icone": "pessoa",
+    "ativa": false
+  },
+  {
+    "id": "sala-b13",
+    "nome": "B13",
+    "descricao": "Em reforma",
+    "capacidade": 28,
+    "tipo": "Sala de aula",
+    "icone": "calendario",
+    "ativa": false
+  }
+]

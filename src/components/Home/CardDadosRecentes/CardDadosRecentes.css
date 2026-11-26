@@ -1,0 +1,74 @@
+.inicio-inferior > .inicio-dados-recentes {
+  height: 100%;
+  grid-column: 4;
+}
+
+.inicio-painel.inicio-dados-recentes {
+  padding: clamp(16px, 2vh, 24px) clamp(14px, 1.4vw, 20px);
+  border-radius: clamp(18px, 1.7vw, 26px);
+  gap: clamp(10px, 1.4vh, 16px);
+}
+
+.inicio-painel-lista {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.inicio-painel-lista::-webkit-scrollbar {
+  display: none;
+}
+
+.inicio-dados-recentes .bloom-lista-item {
+  flex: 1;
+  min-height: 44px;
+  max-height: 70px;
+  gap: clamp(10px, 0.9vw, 13px);
+  padding: clamp(4px, 0.65vh, 8px) 0;
+  border: 0;
+  border-bottom: 1px solid #e7e4d7;
+  border-radius: 0;
+  background: transparent;
+}
+
+.inicio-dados-recentes .bloom-lista-item:first-child {
+  padding-top: 0;
+}
+
+.inicio-dados-recentes .bloom-lista-item:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.inicio-dados-recentes .bloom-lista-item-icone {
+  border: 1px solid #d7d4c6;
+  background: #faf9f2;
+  box-shadow: 0 1px 3px rgb(18 51 48 / 5%);
+  flex-shrink: 0;
+}
+
+.inicio-dados-recentes .bloom-lista-item-icone img {
+  width: 56%;
+  height: 56%;
+  object-fit: contain;
+}
+
+.inicio-dados-recentes .bloom-lista-item-titulo {
+  color: #153532;
+  font-size: clamp(13.5px, 1.12vw, 16.5px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.6px #153532;
+}
+
+.inicio-dados-recentes .bloom-lista-item-final {
+  color: #153532;
+  font-size: clamp(14px, 1.18vw, 17.5px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.8px #153532;
+  flex-shrink: 0;
+}

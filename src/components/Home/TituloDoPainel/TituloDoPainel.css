@@ -1,0 +1,25 @@
+.inicio-painel-titulo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--cor-texto);
+  font-family: var(--familia-da-fonte);
+  font-size: clamp(12px, 1.2vw, 16px);
+  font-weight: 700;
+}
+
+.inicio-painel-titulo img {
+  width: 18px;
+  height: 18px;
+}
+
+.inicio-painel-titulo {
+  font-size: clamp(16px, 1.45vw, 21px);
+  gap: 10px;
+}
+
+.inicio-painel-titulo img {
+  width: clamp(19px, 1.5vw, 24px);
+  height: clamp(19px, 1.5vw, 24px);
+  object-fit: contain;
+}

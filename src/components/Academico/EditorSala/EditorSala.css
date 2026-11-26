@@ -1,0 +1,187 @@
+.academico-formulario-sala {
+  gap: clamp(16px, 2.2vh, 24px);
+}
+
+.academico-form-area-sala {
+  grid-template-columns: minmax(0, 1.52fr) minmax(350px, 1fr);
+  gap: clamp(18px, 1.8vw, 28px);
+  align-items: start;
+  align-content: start;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.academico-card {
+  height: 100%;
+}
+
+.academico-form-area-sala::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===== Card esquerdo: campos da sala ===== */
+.academico-card-sala {
+  gap: clamp(16px, 2.2vh, 24px);
+  padding: clamp(22px, 2.8vh, 32px) clamp(24px, 2.4vw, 34px) clamp(38px, 5.5vh, 66px);
+  overflow: visible;
+}
+
+.academico-card-sala .academico-campo > span:first-child {
+  font-size: clamp(15px, 1.18vw, 18px);
+  -webkit-text-stroke: 0.72px #153532;
+}
+
+.academico-card-sala .academico-campo > input {
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 14px;
+  font-size: 15.5px;
+}
+
+.academico-card-sala .academico-campo-descricao-sala > textarea {
+  height: clamp(145px, 22vh, 195px);
+  min-height: 145px;
+  padding: 14px 16px;
+  border-radius: 15px;
+  font-size: 15.5px;
+  line-height: 1.45;
+  resize: none;
+}
+
+.academico-card-sala .academico-popover.bloom-campo-popover {
+  height: 48px;
+  border-radius: 14px;
+}
+
+.academico-card-sala .academico-popover .acesso-entrada-gatilho {
+  padding-left: 16px;
+  font-size: 15.5px;
+}
+
+.academico-card-sala .academico-popover .bloom-popover-seta {
+  width: 14px;
+  height: 14px;
+  right: 15px;
+}
+
+.academico-campos-sala {
+  max-width: 100%;
+}
+
+/* ===== Card direito: escolha um ícone (abraça o conteúdo) ===== */
+.academico-card-icones {
+  align-self: start;
+  gap: clamp(14px, 2vh, 20px);
+  padding: clamp(22px, 2.6vh, 30px) clamp(22px, 2.2vw, 30px);
+  overflow: visible;
+}
+
+.academico-card-icones > h2 {
+  font-size: clamp(17px, 1.38vw, 21px);
+  -webkit-text-stroke: 0.85px #153532;
+}
+
+.academico-grade-icones {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(10px, 1.05vw, 14px);
+}
+
+.academico-icone-botao {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 1;
+  place-items: center;
+  padding: 0;
+  border: 1.5px solid #e4e2d5;
+  border-radius: 16px;
+  background: #efeee6;
+  box-shadow: 0 2px 6px rgb(21 53 50 / 5%);
+  color: #153532;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.academico-icone-botao:hover {
+  border-color: #c5cec3;
+  background: #e8e7dc;
+}
+
+.academico-icone-botao.selecionado,
+.academico-icone-botao.selecionado:hover {
+  border-color: #274036;
+  background: #e6f0ea;
+  color: #153532;
+  box-shadow: inset 0 0 0 0.8px #274036;
+}
+
+.academico-icone-botao svg {
+  width: clamp(25px, 2.25vw, 33px);
+  height: clamp(25px, 2.25vw, 33px);
+  display: block;
+}
+
+/* Barra compacta de confirmação logo abaixo da grade */
+.academico-icone-selecionado-rodape {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 13px;
+  border: 1px solid #e1ded0;
+  border-radius: 13px;
+  background: #efeee6;
+  box-sizing: border-box;
+}
+
+.academico-icone-preview-mini {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 1px solid #d8d5c6;
+  border-radius: 9px;
+  background: #faf9f2;
+  color: #153532;
+  flex-shrink: 0;
+}
+
+.academico-icone-preview-mini svg {
+  width: 17px;
+  height: 17px;
+  display: block;
+}
+
+.academico-icone-preview-linha {
+  min-width: 0;
+  color: #55706c;
+  font-size: 13.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.35px #55706c;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.academico-icone-preview-linha strong {
+  color: #153532;
+  font-weight: normal;
+  -webkit-text-stroke: 0.65px #153532;
+}
+
+@media (max-width: 960px) {
+  .academico-form-area-sala {
+    grid-template-columns: 1fr;
+  }
+
+  .academico-card-sala {
+    padding-bottom: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  .academico-grade-icones {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

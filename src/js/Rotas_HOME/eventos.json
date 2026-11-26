@@ -1,0 +1,23 @@
+[
+  {
+    "dia": "06",
+    "mes": "Jul",
+    "titulo": "Dia da pizza",
+    "informacao": "13:00 - 14:00 | D83T, T4, M2",
+    "local": "Refeitório"
+  },
+  {
+    "dia": "10",
+    "mes": "Jul",
+    "titulo": "Porque me sinto triste?",
+    "informacao": "14:00 - 16:00 | Todas as salas",
+    "local": "B09"
+  },
+  {
+    "dia": "20",
+    "mes": "Ago",
+    "titulo": "Festival de talentos",
+    "informacao": "O dia todo | Adm, D83T, DS2M, T1...",
+    "local": "Auditório"
+  }
+]
