@@ -1,0 +1,22 @@
+[
+  {
+    "rotulo": "Total de alunos",
+    "valor": "345",
+    "icone": "iconeHistorico"
+  },
+  {
+    "rotulo": "Avaliações realizadas",
+    "valor": "428",
+    "icone": "iconeNota"
+  },
+  {
+    "rotulo": "Eventos feitos no mês",
+    "valor": "9",
+    "icone": "iconeCalendarioComPontos"
+  },
+  {
+    "rotulo": "Mensagens enviadas",
+    "valor": "3",
+    "icone": "iconeMensagem"
+  }
+]

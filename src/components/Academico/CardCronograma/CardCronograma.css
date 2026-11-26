@@ -1,0 +1,195 @@
+.academico-cronograma {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+  gap: clamp(14px, 1.8vh, 18px);
+  padding: clamp(18px, 2.3vh, 26px) clamp(18px, 1.7vw, 24px);
+  border: 1px solid #d8d4c2;
+  border-radius: clamp(20px, 1.8vw, 28px);
+  background: #f7f6ee;
+  box-shadow: 0 2px 6px rgb(29 49 39 / 4%);
+  box-sizing: border-box;
+  overflow: hidden;
+  font-family: var(--familia-da-fonte);
+}
+
+.academico-cronograma-topo {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 10px;
+}
+
+.academico-cronograma-topo svg {
+  width: clamp(22px, 1.85vw, 26px);
+  height: clamp(22px, 1.85vw, 26px);
+  flex-shrink: 0;
+  fill: #274036;
+}
+
+.academico-cronograma-topo svg .detalhe {
+  fill: none;
+  stroke: #f7f6ee;
+  stroke-linecap: round;
+  stroke-width: 1.8;
+}
+
+.academico-cronograma-topo h2 {
+  margin: 0;
+  color: #153532;
+  font-size: clamp(21px, 1.8vw, 27px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.95px #153532;
+  line-height: 1.1;
+}
+
+.academico-cronograma-lista {
+  position: relative;
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0;
+  padding: 2px 2px 4px 18px;
+  overflow-y: auto;
+  list-style: none;
+  scrollbar-width: none;
+}
+
+.academico-cronograma-lista::-webkit-scrollbar {
+  display: none;
+}
+
+.academico-cronograma-lista li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.academico-cronograma-lista li::before {
+  position: absolute;
+  top: 12px;
+  bottom: -18px;
+  left: -13px;
+  width: 2px;
+  background: #dcd9ca;
+  content: "";
+}
+
+.academico-cronograma-lista li:last-child::before {
+  display: none;
+}
+
+.academico-cronograma-lista li::after {
+  position: absolute;
+  top: 3px;
+  left: -17px;
+  width: 8px;
+  height: 8px;
+  border: 2px solid #548d72;
+  border-radius: 50%;
+  background: #f7f6ee;
+  content: "";
+}
+
+.academico-cronograma-horario {
+  color: #153532;
+  font-size: 12.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.65px #153532;
+  line-height: 1.2;
+}
+
+.academico-cronograma-card {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid #d8d4c2;
+  border-radius: 16px;
+  background: #faf9f2;
+  box-shadow: 0 2px 5px rgb(18 51 48 / 4%);
+  box-sizing: border-box;
+}
+
+.academico-cronograma-icone {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  place-items: center;
+  border: 1px solid #dedbcf;
+  border-radius: 11px;
+  background: #ecebe2;
+}
+
+.academico-cronograma-icone img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.academico-cronograma-texto {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.academico-cronograma-texto strong {
+  overflow: hidden;
+  color: #153532;
+  font-size: clamp(13.5px, 1.05vw, 15px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.7px #153532;
+  line-height: 1.15;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.academico-cronograma-texto small {
+  overflow: hidden;
+  color: #728c89;
+  font-size: clamp(11.5px, 0.9vw, 13px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.35px #728c89;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.academico-cronograma-vazio {
+  margin: auto;
+  max-width: 220px;
+  color: #7c9390;
+  font-size: 13.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.35px #7c9390;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.academico-cronograma-icone {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  place-items: center;
+  border: 1px solid #dedbcf;
+  border-radius: 11px;
+  background: #ecebe2;
+  color: #274036;
+}
+
+.academico-cronograma-icone svg {
+  width: 20px;
+  height: 20px;
+}

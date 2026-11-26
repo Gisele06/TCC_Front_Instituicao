@@ -1,0 +1,23 @@
+[
+  {
+    "icone": "sorriso",
+    "rotulo": "Índice bem-estar",
+    "textoDoSelo": "Bom",
+    "valor": "78%",
+    "textoDaVariacao": "8% de aumento nesse mês"
+  },
+  {
+    "icone": "pessoas",
+    "rotulo": "Participação",
+    "textoDoSelo": "Bom",
+    "valor": "67%",
+    "textoDaVariacao": "12% de aumento nesse mês"
+  },
+  {
+    "icone": "coracao",
+    "rotulo": "Turmas em atenção",
+    "textoDoSelo": "Bom",
+    "valor": "3",
+    "textoDaVariacao": "2% de aumento nesse mês"
+  }
+]

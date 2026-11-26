@@ -1,0 +1,26 @@
+[
+  {
+    "rotulo": "Bem",
+    "valor": 58,
+    "largura": 53,
+    "cor": "var(--cor-bem)"
+  },
+  {
+    "rotulo": "Atenção",
+    "valor": 24,
+    "largura": 21,
+    "cor": "var(--cor-atencao)"
+  },
+  {
+    "rotulo": "Regular",
+    "valor": 13,
+    "largura": 18,
+    "cor": "var(--cor-regular)"
+  },
+  {
+    "rotulo": "Alerta",
+    "valor": 5,
+    "largura": 8,
+    "cor": "var(--cor-alerta-grafico)"
+  }
+]

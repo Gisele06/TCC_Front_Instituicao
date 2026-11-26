@@ -1,0 +1,28 @@
+.acolhimento-estatisticas {
+  display: flex;
+  gap: 9px;
+  flex-shrink: 0;
+}
+
+.acolhimento-estatisticas .acolhimento-estatisticas strong {
+  font-size: clamp(23px,2vw,29px);
+}
+
+.acolhimento-estatisticas img {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+}
+
+@media(max-width:950px) {
+  .acolhimento-estatisticas {
+    overflow: auto;
+  }
+}
+
+.cards-informacao {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}

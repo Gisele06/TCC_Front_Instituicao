@@ -1,0 +1,26 @@
+.panorama-painel-indicadores {
+  --painel-fonte-titulo: 26;
+  --painel-icone: 32;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: calc(28 * var(--un)) calc(28 * var(--un)) calc(18 * var(--un)) calc(26 * var(--un));
+  border-radius: calc(28 * var(--un));
+  box-sizing: border-box;
+}
+
+.panorama-painel-indicadores .bloom-painel-titulo {
+  margin-left: calc(4 * var(--un));
+  gap: calc(11 * var(--un));
+  color: #153532;
+  font-weight: normal;
+  -webkit-text-stroke: 0.9px #153532;
+}
+
+.panorama-indicadores-lista {
+  display: flex;
+  min-height: 0;
+  margin-top: calc(14 * var(--un));
+  flex: 1;
+  flex-direction: column;
+}

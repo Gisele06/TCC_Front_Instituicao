@@ -1,0 +1,201 @@
+.turmas-painel-filtros {
+  --painel-fonte-titulo: 28;
+  --painel-icone: 28;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  padding: clamp(20px, 2.8vh, 32px) clamp(20px, 2.2vw, 34px) clamp(16px, 2vh, 22px);
+  border-radius: calc(28 * var(--un));
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.turmas-painel-filtros .bloom-painel-titulo {
+  margin-left: 2px;
+  gap: clamp(9px, 0.8vw, 12px);
+  color: #153532;
+  font-weight: normal;
+  -webkit-text-stroke: 0.9px #153532;
+}
+
+.turmas-filtros-abas {
+  --aba-altura: 34;
+  --aba-recuo: 15;
+  --aba-fonte: 15;
+  margin-top: clamp(14px, 2vh, 20px);
+}
+
+.turmas-painel-filtros .bloom-busca {
+  width: 100%;
+  height: clamp(44px, 5.2vh, 52px);
+  margin-top: clamp(12px, 1.8vh, 18px);
+  flex-shrink: 0;
+  gap: 12px;
+  padding: 0 18px;
+  border: 1px solid #d8d4c2;
+  border-radius: 999px;
+  background: #faf9f2;
+  box-shadow: 0 2px 6px rgb(29 49 39 / 4%);
+  box-sizing: border-box;
+}
+
+.turmas-painel-filtros .bloom-busca:focus-within {
+  border-color: #548d72;
+  box-shadow: 0 0 0 3px rgba(84, 141, 114, 0.12);
+}
+
+.turmas-painel-filtros .bloom-busca input {
+  color: #153532;
+  font-size: clamp(14.5px, 1.15vw, 17px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.35px #153532;
+}
+
+.turmas-painel-filtros .bloom-busca input::placeholder {
+  color: #7c9390;
+  -webkit-text-stroke: 0.35px #7c9390;
+  opacity: 1;
+}
+
+.turmas-cursos-titulo {
+  flex-shrink: 0;
+  margin: clamp(16px, 2.4vh, 26px) 0 clamp(6px, 0.8vh, 10px) 2px;
+  color: #153532;
+  font-size: clamp(20px, 1.75vw, 27px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.9px #153532;
+  line-height: 1.1;
+}
+
+.turmas-cursos-conteudo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.turmas-cursos-vazio {
+  margin: clamp(16px, 2.4vh, 24px) 0 0;
+  color: #728c89;
+  font-size: clamp(14px, 1.1vw, 16px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.35px #728c89;
+  text-align: center;
+}
+
+.turmas-cursos-lista {
+  position: relative;
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  list-style: none;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.turmas-cursos-lista::-webkit-scrollbar {
+  display: none;
+}
+
+.turmas-cursos-lista li {
+  flex-shrink: 0;
+}
+
+.turmas-cursos-lista li + li {
+  border-top: 1px solid #e6e3d6;
+}
+
+.turmas-curso {
+  position: relative;
+  display: flex;
+  height: clamp(54px, 6.4vh, 68px);
+  align-items: center;
+  gap: clamp(10px, 0.95vw, 14px);
+  padding: 0 4px;
+  border-radius: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: background-color 0.15s ease;
+}
+
+.turmas-curso:hover {
+  background: #f0eee4;
+}
+
+.turmas-curso input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.turmas-curso-caixa {
+  display: flex;
+  width: clamp(30px, 2.3vw, 36px);
+  height: clamp(30px, 2.3vw, 36px);
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d3d1bf;
+  border-radius: 10px;
+  background: #faf9f2;
+  box-shadow: 0 1px 3px rgba(21, 53, 50, 0.06);
+  color: #ffffff;
+  transition: background-color 0.16s ease, border-color 0.16s ease;
+}
+
+.turmas-curso-caixa svg {
+  width: 66%;
+  height: 66%;
+}
+
+.turmas-curso input:checked + .turmas-curso-caixa {
+  border-color: var(--cor-aba-ativa, #29443a);
+  background: var(--cor-aba-ativa, #29443a);
+}
+
+.turmas-curso input:focus-visible + .turmas-curso-caixa {
+  outline: 2px solid var(--cor-anel-claro, #548d72);
+  outline-offset: 2px;
+}
+
+.turmas-curso-nome {
+  min-width: 0;
+  flex: 1;
+  color: #153532;
+  font-size: clamp(15px, 1.3vw, 20px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.75px #153532;
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.turmas-curso-quantidade {
+  color: #728c89;
+  font-size: clamp(13px, 1.05vw, 16px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.45px #728c89;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.turmas-curso img {
+  width: clamp(11px, 0.85vw, 14px);
+  height: clamp(13px, 1vw, 16px);
+  flex-shrink: 0;
+  object-fit: contain;
+  opacity: 0.85;
+}

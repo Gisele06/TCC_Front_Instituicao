@@ -1,0 +1,394 @@
+.turmas-painel-principal {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  padding: clamp(16px, 2.2vh, 26px) clamp(20px, 2.2vw, 36px) clamp(18px, 2.4vh, 30px);
+  border-radius: calc(28 * var(--un));
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.turmas-abas-faixa {
+  flex-shrink: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.turmas-abas-faixa::-webkit-scrollbar {
+  display: none;
+}
+
+.turmas-abas {
+  --aba-altura: 38;
+  --aba-recuo: 14;
+  --aba-gap: 7;
+  --aba-icone: 18;
+  --aba-fonte: 16;
+  --caixa-recuo: 6;
+  --caixa-recuo-v: 5;
+}
+
+.turmas-metrica-corpo {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+}
+
+.turmas-metrica-cabecalho {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: clamp(18px, 2.8vh, 30px);
+}
+
+.turmas-metrica-texto {
+  min-width: 0;
+  flex: 1;
+}
+
+.turmas-metrica-texto h2 {
+  display: flex;
+  margin: 0 0 clamp(4px, 0.7vh, 8px);
+  align-items: center;
+  gap: clamp(10px, 1vw, 16px);
+  color: #153532;
+  font-size: clamp(24px, 2.15vw, 34px);
+  font-weight: normal;
+  -webkit-text-stroke: 1px #153532;
+  line-height: 1.1;
+}
+
+.turmas-metrica-texto h2 img {
+  width: clamp(30px, 2.4vw, 42px);
+  height: clamp(30px, 2.4vw, 42px);
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.turmas-metrica-texto p {
+  max-width: clamp(300px, 30vw, 460px);
+  min-height: 2.44em;
+  margin: 0 0 0 clamp(40px, 3.4vw, 58px);
+  color: #728c89;
+  font-size: clamp(14px, 1.2vw, 20px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.4px #728c89;
+  line-height: 1.22;
+}
+
+.turmas-metrica-cabecalho .bloom-selo {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: clamp(86px, 6.8vw, 118px);
+  height: clamp(36px, 4.2vh, 46px);
+  padding: 0 clamp(16px, 1.4vw, 22px);
+  border-radius: 999px;
+  background: #2f9b78;
+  color: #ffffff;
+  font-size: clamp(16px, 1.35vw, 22px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.65px #ffffff;
+  line-height: 1;
+}
+
+/* ===== Cartão interno: anel + gráfico ===== */
+.turmas-metrica-cartao {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  margin-top: clamp(16px, 2.4vh, 28px);
+  flex: 1;
+  border: 1px solid #d8d4c2;
+  border-radius: calc(26 * var(--un));
+  background: #f8f7f0;
+  box-shadow: 0 2px 6px rgb(29 49 39 / 4%);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.turmas-resumo {
+  position: relative;
+  display: flex;
+  width: clamp(200px, 17vw, 290px);
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 1.8vh, 20px);
+  padding: clamp(16px, 2vh, 24px) clamp(16px, 1.5vw, 24px);
+  box-sizing: border-box;
+}
+
+.turmas-resumo::after {
+  position: absolute;
+  top: clamp(14px, 2vh, 22px);
+  right: 0;
+  bottom: clamp(14px, 2vh, 22px);
+  width: 1.5px;
+  background: #e3e0d3;
+  content: "";
+}
+
+.turmas-resumo-anel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.turmas-resumo-rodape {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+}
+
+.turmas-resumo-variacao {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #153532;
+  font-size: clamp(17px, 1.3vw, 22px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.9px #153532;
+  line-height: 1.1;
+}
+
+.turmas-resumo-variacao svg {
+  width: clamp(14px, 1.05vw, 18px);
+  height: clamp(14px, 1.05vw, 18px);
+}
+
+.turmas-resumo p {
+  margin: 0;
+  color: #728c89;
+  font-size: clamp(13px, 1.05vw, 18px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.4px #728c89;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* ===== Área direita: seletor + gráfico real ===== */
+.turmas-grafico {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: clamp(10px, 1.6vh, 18px);
+  padding: clamp(14px, 1.8vh, 22px) clamp(18px, 1.8vw, 28px) clamp(14px, 2vh, 22px) clamp(16px, 1.5vw, 24px);
+  box-sizing: border-box;
+}
+
+.turmas-periodo-caixa {
+  position: relative;
+  align-self: flex-end;
+  flex-shrink: 0;
+}
+
+.turmas-periodo-botao {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: clamp(6px, 0.8vh, 9px) clamp(13px, 1.2vw, 18px);
+  border: 1px solid #d7d4c6;
+  border-radius: 999px;
+  background: #faf9f2;
+  box-shadow: 0 2px 7px rgb(18 51 48 / 6%);
+  color: #6b8582;
+  font-family: var(--familia-da-fonte);
+  font-size: clamp(12px, 0.98vw, 15px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.45px #6b8582;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.turmas-periodo-botao:hover,
+.turmas-periodo-botao:active {
+  background: #f2f0e6;
+  transform: none;
+  filter: none;
+  opacity: 1;
+}
+
+.turmas-periodo-seta {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.turmas-periodo-seta--aberta {
+  transform: rotate(180deg);
+}
+
+.turmas-periodo-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 155px;
+  padding: 6px;
+  border: 1px solid #dad7c7;
+  border-radius: 14px;
+  background: #faf9f3;
+  box-shadow: 0 14px 30px rgba(18, 51, 48, 0.13);
+}
+
+.turmas-periodo-opcao {
+  padding: 8px 11px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: #55706c;
+  font-family: var(--familia-da-fonte);
+  font-size: 13.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.4px #55706c;
+  text-align: left;
+  cursor: pointer;
+}
+
+.turmas-periodo-opcao:hover {
+  background: #eeece2;
+  color: #153532;
+  -webkit-text-stroke: 0.45px #153532;
+  transform: none;
+  filter: none;
+  opacity: 1;
+}
+
+.turmas-periodo-opcao--ativa {
+  background: #e6efe9;
+  color: #153532;
+  -webkit-text-stroke: 0.55px #153532;
+}
+
+.turmas-grafico-area {
+  position: relative;
+  width: 100%;
+  min-height: 150px;
+  flex: 1;
+  user-select: none;
+}
+
+.turmas-grafico-vetor {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: visible;
+}
+
+.turmas-grafico-fundo-plot {
+  fill: rgba(255, 255, 255, 0.36);
+  stroke: #ece9dd;
+  stroke-width: 1;
+}
+
+.turmas-grafico-grade {
+  stroke: #e8e5d8;
+  stroke-width: 1;
+}
+
+.turmas-grafico-eixo-y,
+.turmas-grafico-eixo-x {
+  fill: #153532;
+  stroke: #153532;
+  stroke-width: 0.45px;
+  paint-order: stroke fill;
+  font-family: var(--familia-da-fonte);
+  font-size: clamp(11px, 0.9vw, 13px);
+  font-weight: normal;
+}
+
+.turmas-grafico-eixo-x--ativo {
+  fill: #df3525;
+  stroke: #df3525;
+}
+
+.turmas-grafico-linha {
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.turmas-grafico-guia {
+  stroke: #c6c3b2;
+  stroke-width: 1.2;
+  stroke-dasharray: 4 4;
+}
+
+.turmas-grafico-marcador {
+  transition: r 0.14s ease;
+}
+
+.turmas-grafico-tooltip {
+  position: absolute;
+  z-index: 25;
+  width: 140px;
+  padding: 9px 11px;
+  border: 1px solid #d7d4c4;
+  border-radius: 12px;
+  background: rgba(250, 249, 242, 0.96);
+  box-shadow: 0 12px 26px rgba(18, 51, 48, 0.13);
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.turmas-grafico-tooltip-data {
+  display: block;
+  margin-bottom: 5px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #ebe8dc;
+  color: #153532;
+  font-family: var(--familia-da-fonte);
+  font-size: 12.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.65px #153532;
+}
+
+.turmas-grafico-tooltip-linha {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--familia-da-fonte);
+  font-size: 12.5px;
+}
+
+.turmas-grafico-tooltip-bolinha {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.turmas-grafico-tooltip-nome {
+  flex: 1;
+  min-width: 0;
+  color: #6b8582;
+  font-weight: normal;
+  -webkit-text-stroke: 0.3px #6b8582;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.turmas-grafico-tooltip-valor {
+  color: #153532;
+  font-weight: normal;
+  -webkit-text-stroke: 0.65px #153532;
+  flex-shrink: 0;
+}

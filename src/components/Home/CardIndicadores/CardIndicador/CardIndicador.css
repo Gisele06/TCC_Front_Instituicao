@@ -1,0 +1,108 @@
+.bloom-indicador-cartao {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(8px, 1.2vh, 14px);
+  padding: clamp(16px, 2.1vh, 24px) clamp(18px, 1.75vw, 26px);
+  border: 1px solid #d8d4c2;
+  border-radius: clamp(20px, 1.9vw, 28px);
+  background: #f7f6ee;
+  box-sizing: border-box;
+  font-family: var(--familia-da-fonte);
+  cursor: default;
+}
+
+.bloom-indicador-cartao--clicavel {
+  cursor: pointer;
+}
+
+.bloom-indicador-cartao:hover,
+.bloom-indicador-cartao:active {
+  transform: none;
+  filter: none;
+  opacity: 1;
+}
+
+.bloom-indicador-cartao-cabecalho {
+  display: flex;
+  align-items: center;
+  gap: clamp(9px, 0.8vw, 13px);
+  min-width: 0;
+}
+
+.bloom-indicador-cartao-icone {
+  flex-shrink: 0;
+}
+
+.bloom-indicador-cartao-rotulo {
+  min-width: 0;
+  flex: 1;
+  color: #153532;
+  font-size: clamp(17px, 1.52vw, 24px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.9px #153532;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bloom-indicador-cartao-valor {
+  color: #153532;
+  font-size: 2.7rem;
+  font-weight: normal;
+  -webkit-text-stroke: 1.75px #153532;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.bloom-indicador-cartao-rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.bloom-indicador-cartao-variacao {
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 0.55vw, 9px);
+  min-width: 0;
+  color: #6b8582;
+  font-size: clamp(13.5px, 1.15vw, 17px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.45px #6b8582;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bloom-indicador-cartao-variacao-texto {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bloom-indicador-cartao-variacao-destaque {
+  color: #153532;
+  font-weight: normal;
+  -webkit-text-stroke: 0.75px #153532;
+}
+
+.bloom-indicador-cartao-seta {
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.bloom-indicador-cartao .bloom-selo {
+  flex-shrink: 0;
+  padding: clamp(6px, 0.7vh, 9px) clamp(14px, 1.3vw, 20px);
+  border-radius: 999px;
+  background: #2f9b78;
+  color: #ffffff;
+  font-size: clamp(13px, 1.05vw, 16px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.55px #ffffff;
+  line-height: 1;
+}

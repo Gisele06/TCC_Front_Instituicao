@@ -1,0 +1,62 @@
+.academico-formulario-funcionario {
+    gap: clamp(16px, 2.2vh, 24px);
+  }
+  
+  .academico-form-area-funcionario {
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    flex: 1;
+  }
+  
+  .academico-card-funcionario {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    justify-content: flex-start;
+    padding: clamp(22px, 2.8vh, 32px) clamp(24px, 2.4vw, 34px);
+  }
+  
+  .academico-funcionario-coluna {
+    display: flex;
+    width: 100%;
+    max-width: 460px;
+    flex-direction: column;
+    gap: clamp(16px, 2.2vh, 24px);
+  }
+  
+  .academico-card-funcionario .academico-campo > span:first-child {
+    font-size: clamp(15px, 1.18vw, 18px);
+    -webkit-text-stroke: 0.72px #153532;
+  }
+  
+  .academico-card-funcionario .academico-campo > input {
+    height: 48px;
+    padding: 0 16px;
+    border-radius: 14px;
+    font-size: 15.5px;
+  }
+  
+  .academico-card-funcionario .academico-popover.bloom-campo-popover {
+    height: 48px;
+    border-radius: 14px;
+  }
+  
+  .academico-card-funcionario .academico-popover .acesso-entrada-gatilho {
+    padding-left: 16px;
+    font-size: 15.5px;
+  }
+  
+  .academico-card-funcionario .academico-popover .bloom-popover-seta {
+    width: 14px;
+    height: 14px;
+    right: 15px;
+  }
+  
+  @media (max-width: 640px) {
+    .academico-funcionario-coluna {
+      max-width: 100%;
+    }
+  }

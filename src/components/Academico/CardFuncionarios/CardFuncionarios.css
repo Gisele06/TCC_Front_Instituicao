@@ -1,0 +1,65 @@
+.academico-item-funcionario {
+    min-height: 82px;
+    gap: clamp(10px, 1.3vw, 18px);
+  }
+  
+  .academico-funcionario-avatar {
+    display: grid;
+    width: clamp(52px, 4.2vw, 62px);
+    height: clamp(52px, 4.2vw, 62px);
+    flex-shrink: 0;
+    place-items: center;
+    border: 1px solid #dedbcf;
+    border-radius: 15px;
+    background: #ecebe2;
+    color: #18352f;
+    font-size: clamp(16px, 1.3vw, 19px);
+    font-weight: normal;
+    -webkit-text-stroke: 0.75px #18352f;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  
+  .academico-funcionario-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .academico-botao-redefinir {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 122px;
+    height: 32px;
+    padding: 0 15px;
+    border: 0;
+    border-radius: 999px;
+    background: #274036;
+    color: #ffffff;
+    font-family: var(--familia-da-fonte);
+    font-size: 12.5px;
+    font-weight: normal;
+    -webkit-text-stroke: 0.4px #ffffff;
+    white-space: nowrap;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color 0.16s ease;
+  }
+  
+  .academico-botao-redefinir:hover,
+  .academico-botao-redefinir:active {
+    background: #1d322a;
+  }
+  
+  .academico-botao-redefinir--enviado,
+  .academico-botao-redefinir--enviado:hover {
+    background: #2f9b78;
+  }
+  
+  @media (max-width: 680px) {
+    .academico-botao-redefinir {
+      display: none;
+    }
+  }

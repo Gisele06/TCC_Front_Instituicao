@@ -1,0 +1,481 @@
+.cadastrar-comunicados-pagina {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: clamp(14px, 1.9vh, 22px);
+  font-family: var(--familia-da-fonte);
+  overflow: hidden;
+}
+
+.cadastrar-comunicados-pagina button:hover,
+.cadastrar-comunicados-pagina button:active {
+  transform: none;
+  filter: none;
+  opacity: 1;
+}
+
+/* ===== Cabeçalho ===== */
+.cadastrar-comunicados-cabecalho {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  flex-shrink: 0;
+  align-items: center;
+  gap: clamp(14px, 1.5vw, 22px);
+  padding: clamp(14px, 2vh, 22px) clamp(18px, 1.9vw, 28px);
+  border: 1px solid #d8d4c2;
+  border-radius: clamp(18px, 1.7vw, 26px);
+  background: #f7f6ee;
+  box-shadow: 0 2px 6px rgb(29 49 39 / 4%);
+  box-sizing: border-box;
+}
+
+.cadastrar-comunicados-voltar {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #ecebe2;
+  color: #153532;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.cadastrar-comunicados-voltar:hover,
+.cadastrar-comunicados-voltar:active {
+  background: #e2e0d4;
+}
+
+.cadastrar-comunicados-voltar svg {
+  width: 22px;
+  height: 22px;
+}
+
+.cadastrar-comunicados-cabecalho-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.cadastrar-comunicados-cabecalho h1 {
+  margin: 0;
+  color: #153532;
+  font-size: clamp(22px, 2vw, 31px);
+  font-weight: normal;
+  -webkit-text-stroke: 1px #153532;
+  line-height: 1.12;
+}
+
+.cadastrar-comunicados-cabecalho p {
+  margin: 0;
+  color: #728c89;
+  font-size: clamp(13.5px, 1.12vw, 17px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.42px #728c89;
+  line-height: 1.25;
+}
+
+/* ===== Formulário e grade principal ===== */
+.cadastrar-comunicados-formulario {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: clamp(12px, 1.6vh, 18px);
+}
+
+.cadastrar-comunicados-area {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+  grid-template-columns: minmax(0, 1.5fr) clamp(340px, 34vw, 480px);
+  gap: clamp(14px, 1.6vw, 24px);
+}
+
+.cadastrar-comunicados-campos,
+.cadastrar-comunicados-lateral {
+  min-width: 0;
+  min-height: 0;
+  border: 1px solid #d8d4c2;
+  border-radius: clamp(20px, 1.8vw, 28px);
+  background: #f7f6ee;
+  box-shadow: 0 2px 6px rgb(29 49 39 / 4%);
+  box-sizing: border-box;
+}
+
+/* ===== Coluna esquerda ===== */
+.cadastrar-comunicados-campos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(10px, 1.5vh, 16px);
+  padding: clamp(18px, 2.3vh, 26px) clamp(20px, 2.1vw, 30px);
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.cadastrar-comunicados-campos::-webkit-scrollbar {
+  display: none;
+}
+
+.cadastrar-comunicados-campo-par {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(12px, 1.3vw, 18px);
+}
+
+.cadastrar-comunicados-campo-par--cresce {
+  flex: 1;
+  min-height: 118px;
+}
+
+.cadastrar-comunicados-horario-linha {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 1.2vw, 16px);
+}
+
+.cadastrar-comunicados-linha-opcoes {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(12px, 1.3vw, 18px);
+}
+
+.cadastrar-comunicados-linha-tags {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(12px, 1.3vw, 18px);
+}
+
+.cadastrar-comunicados-campo {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cadastrar-comunicados-rotulo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  color: #153532;
+  font-size: clamp(14px, 1.12vw, 16.5px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.65px #153532;
+}
+
+.cadastrar-comunicados-rotulo em {
+  color: #d97a29;
+  font-style: normal;
+  -webkit-text-stroke: 0.5px #d97a29;
+}
+
+.cadastrar-comunicados-rotulo small {
+  color: #7c9390;
+  font-size: 12.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.3px #7c9390;
+}
+
+.cadastrar-comunicados-input,
+.cadastrar-comunicados-textarea {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #d8d4c2;
+  border-radius: 13px;
+  background: #faf9f2;
+  color: #153532;
+  font-family: var(--familia-da-fonte);
+  font-size: 14.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.35px #153532;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cadastrar-comunicados-input {
+  height: 44px;
+  padding: 0 14px;
+}
+
+.cadastrar-comunicados-textarea {
+  flex: 1;
+  min-height: 92px;
+  padding: 12px 14px;
+  resize: none;
+  line-height: 1.4;
+}
+
+.cadastrar-comunicados-input::placeholder,
+.cadastrar-comunicados-textarea::placeholder {
+  color: #849a96;
+  -webkit-text-stroke: 0.3px #849a96;
+  opacity: 1;
+}
+
+.cadastrar-comunicados-input:focus,
+.cadastrar-comunicados-textarea:focus {
+  border-color: #548d72;
+  box-shadow: 0 0 0 3px rgba(84, 141, 114, 0.12);
+}
+
+.cadastrar-comunicados-popover.bloom-campo-popover {
+  height: 44px;
+  border: 1px solid #d8d4c2;
+  border-radius: 13px;
+  background: #faf9f2;
+  box-shadow: none;
+}
+
+.cadastrar-comunicados-popover.bloom-campo-popover:focus-within,
+.cadastrar-comunicados-popover.bloom-campo-popover--aberto {
+  border-color: #548d72;
+  background: #faf9f2;
+  box-shadow: 0 0 0 3px rgba(84, 141, 114, 0.12);
+}
+
+.cadastrar-comunicados-popover .acesso-entrada-gatilho {
+  color: #153532;
+  font-family: var(--familia-da-fonte);
+  font-size: 14.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.35px #153532;
+}
+
+.cadastrar-comunicados-popover .acesso-entrada-gatilho--placeholder {
+  color: #849a96;
+  -webkit-text-stroke: 0.3px #849a96;
+}
+
+.cadastrar-comunicados-popover .bloom-popover-seta {
+  width: 13px;
+  height: 13px;
+  right: 13px;
+}
+
+/* ===== Coluna direita: imagem + editor Tiptap ===== */
+.cadastrar-comunicados-lateral {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: clamp(18px, 2.3vh, 26px) clamp(18px, 1.8vw, 24px);
+  overflow: hidden;
+}
+
+.cadastrar-comunicados-corpo-titulo {
+  margin: 0;
+  color: #153532;
+  font-size: clamp(17px, 1.35vw, 20px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.85px #153532;
+  line-height: 1.15;
+  flex-shrink: 0;
+}
+
+.cadastrar-comunicados-arquivo-oculto {
+  display: none;
+}
+
+.cadastrar-comunicados-upload {
+  position: relative;
+  display: flex;
+  height: clamp(112px, 15vh, 146px);
+  flex-shrink: 0;
+  border: 1px solid #e1ded0;
+  border-radius: 18px;
+  background: #f8f7f0;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.cadastrar-comunicados-upload-gatilho {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.16s ease;
+}
+
+.cadastrar-comunicados-upload-gatilho:hover,
+.cadastrar-comunicados-upload-gatilho:active {
+  background: #f1efe4;
+}
+
+.cadastrar-comunicados-upload-icone {
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+}
+
+.cadastrar-comunicados-upload-icone svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cadastrar-comunicados-upload-texto {
+  color: #728c89;
+  font-family: var(--familia-da-fonte);
+  font-size: 13px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.4px #728c89;
+  text-align: center;
+}
+
+.cadastrar-comunicados-upload-previa {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cadastrar-comunicados-upload-acoes {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.cadastrar-comunicados-upload-btn {
+  padding: 5px 12px;
+  border: 1px solid #d8d4c2;
+  border-radius: 999px;
+  background: rgba(250, 249, 242, 0.94);
+  color: #153532;
+  font-family: var(--familia-da-fonte);
+  font-size: 12px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.45px #153532;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(21, 53, 50, 0.14);
+}
+
+.cadastrar-comunicados-upload-btn:hover {
+  background: #efede3;
+}
+
+.cadastrar-comunicados-upload-btn--remover {
+  color: #b4331d;
+  -webkit-text-stroke: 0.45px #b4331d;
+}
+
+/* ===== Rodapé ===== */
+.cadastrar-comunicados-rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.cadastrar-comunicados-rodape-esquerda {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cadastrar-comunicados-erro {
+  margin: 0;
+  color: #c93820;
+  font-size: 14px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.45px #c93820;
+}
+
+.cadastrar-comunicados-acoes {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.cadastrar-comunicados-cancelar,
+.cadastrar-comunicados-salvar,
+.cadastrar-comunicados-excluir {
+  height: 44px;
+  min-width: 136px;
+  padding: 0 24px;
+  border-radius: 14px;
+  font-family: var(--familia-da-fonte);
+  font-size: 16px;
+  font-weight: normal;
+  cursor: pointer;
+  transition: background-color 0.16s ease, border-color 0.16s ease;
+}
+
+.cadastrar-comunicados-cancelar {
+  border: 1.5px solid #274036;
+  background: #f7f6ee;
+  color: #153532;
+  -webkit-text-stroke: 0.6px #153532;
+}
+
+.cadastrar-comunicados-cancelar:hover,
+.cadastrar-comunicados-cancelar:active {
+  background: #eeece2;
+}
+
+.cadastrar-comunicados-salvar {
+  border: 0;
+  background: #274036;
+  color: #ffffff;
+  -webkit-text-stroke: 0.55px #ffffff;
+}
+
+.cadastrar-comunicados-salvar:hover,
+.cadastrar-comunicados-salvar:active {
+  background: #1f342c;
+}
+
+.cadastrar-comunicados-excluir {
+  min-width: auto;
+  border: 1px solid #e0c3bc;
+  background: #faf2f0;
+  color: #b4331d;
+  -webkit-text-stroke: 0.5px #b4331d;
+}
+
+.cadastrar-comunicados-excluir:hover,
+.cadastrar-comunicados-excluir:active {
+  background: #f5e5e1;
+}
+
+@media (max-width: 980px) {
+  .cadastrar-comunicados-pagina {
+    overflow-y: auto;
+  }
+
+  .cadastrar-comunicados-area {
+    grid-template-columns: 1fr;
+  }
+
+  .cadastrar-comunicados-lateral {
+    min-height: 360px;
+  }
+}

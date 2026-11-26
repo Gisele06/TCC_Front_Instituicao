@@ -1,0 +1,18 @@
+[
+  {
+    "id": "administracao",
+    "nome": "Administração"
+  },
+  {
+    "id": "engenharia",
+    "nome": "Engenharia"
+  },
+  {
+    "id": "informatica",
+    "nome": "Informática"
+  },
+  {
+    "id": "historia",
+    "nome": "História"
+  }
+]

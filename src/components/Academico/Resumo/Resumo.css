@@ -1,0 +1,63 @@
+.academico-resumo {
+  display: inline-flex;
+  height: 50px;
+  align-items: center;
+  gap: 10px;
+  padding: 0 18px;
+  border: 1px solid #d8d4c2;
+  border-radius: 16px;
+  background: #f7f6ee;
+  box-shadow: 0 2px 6px rgb(29 49 39 / 4%);
+  white-space: nowrap;
+  box-sizing: border-box;
+  font-family: var(--familia-da-fonte);
+}
+
+.academico-resumo > img,
+.academico-resumo > svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.academico-resumo > svg {
+  fill: #18352f;
+}
+
+.academico-resumo > svg path:not(.academico-grafico-base) {
+  fill: none;
+  stroke: #f7f6ee;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.3;
+}
+
+.academico-resumo > svg .academico-grafico-base {
+  fill: none;
+  stroke: #18352f;
+  stroke-linecap: round;
+  stroke-width: 2.2;
+}
+
+.academico-resumo-conteudo {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.academico-resumo strong {
+  color: #153532;
+  font-size: 22px;
+  font-weight: normal;
+  -webkit-text-stroke: 1.05px #153532;
+  line-height: 1;
+}
+
+.academico-resumo span {
+  color: #153532;
+  font-size: 14.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.6px #153532;
+  white-space: nowrap;
+}

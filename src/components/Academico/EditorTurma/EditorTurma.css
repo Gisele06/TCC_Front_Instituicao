@@ -1,0 +1,471 @@
+.academico-formulario-turma {
+  gap: clamp(14px, 2vh, 20px);
+}
+
+.academico-form-area-turma {
+  grid-template-columns: minmax(0, 1.48fr) minmax(350px, 1fr);
+  gap: clamp(16px, 1.8vw, 26px);
+  align-items: stretch;
+}
+
+.academico-card-turma {
+  gap: clamp(14px, 1.9vh, 20px);
+  padding: clamp(20px, 2.5vh, 28px) clamp(22px, 2.2vw, 32px);
+}
+
+.turma-topo-linha {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) minmax(126px, 0.65fr);
+  gap: clamp(10px, 1.1vw, 16px);
+}
+
+.academico-card-turma .academico-campo > span:first-child {
+  font-size: clamp(14.5px, 1.12vw, 17px);
+  -webkit-text-stroke: 0.72px #153532;
+}
+
+.academico-card-turma .academico-campo > input {
+  height: 46px;
+  padding: 0 15px;
+  border-radius: 14px;
+  font-size: 15px;
+}
+
+.academico-card-turma .turma-campo-descricao > textarea {
+  height: clamp(118px, 16vh, 152px);
+  min-height: 112px;
+  padding: 13px 15px;
+  border-radius: 15px;
+  font-size: 15px;
+  line-height: 1.45;
+  resize: none;
+}
+
+.academico-card-turma .academico-popover.bloom-campo-popover {
+  height: 46px;
+  border-radius: 14px;
+}
+
+.academico-card-turma .academico-popover .acesso-entrada-gatilho {
+  font-size: 15px;
+}
+
+.academico-card-turma .bloom-icone-esquerda-wrap,
+.academico-card-materias .bloom-icone-esquerda-wrap {
+  color: #6b8582;
+  width: 17px;
+  height: 17px;
+}
+
+.turma-botao-adicionar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 114px;
+  height: 36px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 11px;
+  background: #274036;
+  color: #ffffff;
+  font-family: var(--familia-da-fonte);
+  font-size: 14px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.45px #ffffff;
+  white-space: nowrap;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.16s ease;
+}
+
+.turma-botao-adicionar:hover,
+.turma-botao-adicionar:active {
+  background: #1d322a;
+}
+
+.academico-intervalos {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 2px;
+}
+
+.academico-intervalos .academico-linha-titulo h2 {
+  font-size: clamp(16px, 1.25vw, 19px);
+  -webkit-text-stroke: 0.8px #153532;
+}
+
+.academico-intervalos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.academico-intervalo {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) 30px;
+  align-items: center;
+  gap: clamp(10px, 1.2vw, 18px);
+  padding: 10px 16px;
+  border: 1px solid #dedbcf;
+  border-radius: 16px;
+  background: #f8f7f0;
+  box-shadow: 0 2px 5px rgb(18 51 48 / 4%);
+  box-sizing: border-box;
+}
+
+.academico-intervalo > strong {
+  color: #153532;
+  font-size: 14px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.72px #153532;
+  white-space: nowrap;
+  padding-right: 4px;
+}
+
+.academico-intervalo-campo {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 10px;
+}
+
+.academico-intervalo-campo > span {
+  color: #7c9390;
+  font-size: 14px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.4px #7c9390;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.turma-popover-horario.bloom-campo-popover {
+  flex: 0 0 auto;
+  width: 100%;
+  height: 42px;
+  min-height: 42px;
+  border-radius: 12px;
+}
+
+.turma-popover-horario .acesso-entrada-gatilho {
+  height: 100%;
+  font-size: 14.5px;
+}
+
+.turma-popover-horario .bloom-icone-esquerda-wrap {
+  width: 17px;
+  height: 17px;
+  left: 13px;
+}
+
+.turma-popover-horario.bloom-campo-popover--com-icone-esq .acesso-entrada-gatilho {
+  padding-left: 38px;
+}
+
+.turma-popover-horario .bloom-popover-seta {
+  width: 13px;
+  height: 13px;
+  right: 13px;
+}
+
+.academico-intervalo-campo .turma-popover-horario.bloom-campo-popover {
+  flex: 1 1 0;
+  width: auto;
+  height: 40px;
+  min-height: 40px;
+}
+
+.academico-horario-card {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 18px;
+  border: 1px solid #dedbcf;
+  border-radius: 20px;
+  background: #f8f7f0;
+  box-shadow: 0 2px 6px rgb(18 51 48 / 4%);
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.turma-horario-corpo-interno {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 14px;
+}
+
+.academico-horario-card .academico-campo {
+  gap: 7px;
+}
+
+.academico-horario-card .academico-campo > span:first-child {
+  font-size: 14px;
+  -webkit-text-stroke: 0.65px #153532;
+}
+
+.academico-horario-duplo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.turma-materia-titulo-select .bloom-popover-seta {
+  opacity: 0.35;
+  transition: opacity 0.15s ease, transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.turma-materia-titulo-select:hover .bloom-popover-seta,
+.turma-materia-titulo-select.bloom-campo-popover--aberto .bloom-popover-seta {
+  opacity: 0.85;
+}
+
+.academico-card-materias {
+  gap: clamp(14px, 1.9vh, 20px);
+  padding: clamp(20px, 2.5vh, 28px) clamp(20px, 2vw, 28px);
+  overflow: hidden;
+}
+
+.turma-materias-titulo {
+  font-size: clamp(17px, 1.4vw, 21px) !important;
+  -webkit-text-stroke: 0.85px #153532 !important;
+}
+
+.turma-icone-caderno {
+  display: inline-grid;
+  width: 22px;
+  height: 22px;
+  place-items: center;
+  color: #153532;
+  flex-shrink: 0;
+}
+
+.turma-icone-caderno svg {
+  width: 100%;
+  height: 100%;
+}
+
+.turma-icone-caderno--item {
+  width: 20px;
+  height: 20px;
+}
+
+.academico-horarios-lista {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.academico-horarios-lista::-webkit-scrollbar {
+  display: none;
+}
+
+.academico-horario-card {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 16px;
+  border: 1px solid #dedbcf;
+  border-radius: 20px;
+  background: #f8f7f0;
+  box-shadow: 0 2px 6px rgb(18 51 48 / 4%);
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.academico-horario-cabecalho {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 8px;
+}
+
+.turma-materia-select-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.turma-materia-titulo-select.bloom-campo-popover {
+  height: 34px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.turma-materia-titulo-select.bloom-campo-popover:hover,
+.turma-materia-titulo-select.bloom-campo-popover--aberto {
+  border-color: #dcd9ca;
+  background: #faf9f2;
+  box-shadow: none;
+}
+
+.turma-materia-titulo-select .acesso-entrada-gatilho {
+  padding: 0 26px 0 6px;
+  color: #153532;
+  font-family: var(--familia-da-fonte);
+  font-size: clamp(15.5px, 1.2vw, 18px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.8px #153532;
+}
+
+.turma-materia-titulo-select .acesso-entrada-gatilho--placeholder {
+  color: #7c9390;
+  -webkit-text-stroke: 0.45px #7c9390;
+}
+
+.turma-materia-titulo-select .bloom-popover-seta {
+  width: 11px;
+  height: 11px;
+  right: 8px;
+  opacity: 0.65;
+}
+
+.turma-horario-cabecalho-acoes {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.turma-horario-resumo-fechado {
+  margin: 6px 0 0 28px;
+  color: #728c89;
+  font-size: 12.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.35px #728c89;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.turma-horario-corpo {
+  overflow: hidden;
+}
+
+.turma-horario-corpo-interno {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 12px;
+}
+
+.academico-dias {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.academico-dias > span {
+  color: #153532;
+  font-size: 14px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.68px #153532;
+}
+
+.academico-dias > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.academico-dias button {
+  min-width: 48px;
+  height: 30px;
+  padding: 0 12px;
+  border: 1px solid #dedbcf;
+  border-radius: 999px;
+  background: #faf9f2;
+  color: #153532;
+  font-family: var(--familia-da-fonte);
+  font-size: 12.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.5px #153532;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.academico-dias button:hover {
+  background: #eeece2;
+}
+
+.academico-dias button.selecionado,
+.academico-dias button.selecionado:hover {
+  border-color: #279777;
+  background: #279777;
+  color: #ffffff;
+  -webkit-text-stroke: 0.45px #ffffff;
+}
+
+.academico-horario-duplo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.academico-horario-card .academico-campo > span:first-child {
+  font-size: 13.5px;
+  -webkit-text-stroke: 0.65px #153532;
+}
+
+.turma-convite-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 13px 16px;
+  border: 1px solid #d8d4c2;
+  border-radius: 16px;
+  background: #f2f5f2;
+  box-sizing: border-box;
+}
+
+.turma-convite-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.turma-convite-texto strong {
+  color: #153532;
+  font-size: 14.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.7px #153532;
+}
+
+.turma-convite-texto span {
+  color: #5f7a75;
+  font-size: 12.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.35px #5f7a75;
+  line-height: 1.3;
+}
+
+.turma-botao-gerar-codigo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 11px;
+  background: #274036;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.45px #ffffff;
+  white-space: nowrap;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.16s ease;
+}
+
+.turma-botao-gerar-codigo:hover,
+.turma-botao-gerar-codigo:active {
+  background: #1d322a;
+}

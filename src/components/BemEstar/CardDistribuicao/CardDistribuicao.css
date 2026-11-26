@@ -1,0 +1,20 @@
+.panorama-painel-distribuicao {
+  --painel-fonte-titulo: 22;
+  --painel-icone: 30;
+  width: calc(540 * var(--un));
+  flex-shrink: 0;
+  padding: calc(20 * var(--un)) calc(32 * var(--un)) calc(20 * var(--un));
+  border-radius: calc(26 * var(--un));
+  box-sizing: border-box;
+}
+
+.panorama-painel-distribuicao .bloom-painel-titulo {
+  gap: calc(10 * var(--un));
+  color: #153532;
+  font-weight: normal;
+  -webkit-text-stroke: 0.75px #153532;
+}
+
+.panorama-painel-distribuicao .bloom-barra-segmentada {
+  margin-top: calc(24 * var(--un));
+}

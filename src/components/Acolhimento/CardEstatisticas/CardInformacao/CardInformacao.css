@@ -1,0 +1,41 @@
+.card-informacao {
+  display: inline-flex;
+  align-items: center;
+  height: 50px;
+  padding: 0 18px;
+  gap: 10px;
+  background-color: #f7f6ee;
+  border: 1px solid #d8d4c2;
+  border-radius: 16px;
+  box-shadow: 0 2px 6px rgb(29 49 39 / 4%);
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.card-informacao-icone {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.card-informacao-conteudo {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.card-informacao-conteudo strong {
+  font-size: 22px;
+  font-weight: normal;
+  -webkit-text-stroke: 1.05px #153532;
+  line-height: 1;
+  color: #153532;
+}
+
+.card-informacao-conteudo span {
+  font-size: 14.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.6px #153532;
+  color: #153532;
+}

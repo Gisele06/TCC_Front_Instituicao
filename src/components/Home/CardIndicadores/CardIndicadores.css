@@ -1,0 +1,21 @@
+.inicio-indicadores {
+  display: flex;
+  flex: 0 0 39%;
+  min-height: 0;
+  gap: clamp(12px, 1.25vw, 20px);
+}
+
+.inicio-indicadores > * {
+  min-width: 0;
+  flex: 1;
+}
+
+.inicio-indicadores .bloom-indicador-cartao {
+  box-shadow: 0 2px 6px rgb(29 49 39 / 4%);
+}
+
+@media (max-width: 1050px) {
+  .inicio-indicadores .bloom-indicador-cartao {
+    padding: 14px 16px;
+  }
+}

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "estresse",
+    "icone": "desapontado",
+    "titulo": "Estresse acadêmico",
+    "descricao": "Nível de estresse com as tarefas",
+    "valor": "20%",
+    "variacao": "-5%",
+    "sentido": "baixo",
+    "tom": "bom"
+  },
+  {
+    "id": "sono",
+    "icone": "luaCrescente",
+    "titulo": "Qualidade de sono",
+    "descricao": "Níveis de acesso ao app após 22h",
+    "valor": "40%",
+    "variacao": "+10%",
+    "sentido": "cima",
+    "tom": "ruim"
+  },
+  {
+    "id": "ansiedade",
+    "icone": "constrangido",
+    "titulo": "Ansiedade aos estudos",
+    "descricao": "Níveis de relatos de ansiedade",
+    "valor": "20%",
+    "variacao": "+10%",
+    "sentido": "cima",
+    "tom": "ruim"
+  },
+  {
+    "id": "organizacao",
+    "icone": "calendario",
+    "titulo": "Organização",
+    "descricao": "Tem que ver o que vai colocar aqui...",
+    "valor": "40%",
+    "variacao": "+5%",
+    "sentido": "cima",
+    "tom": "bom"
+  },
+  {
+    "id": "pertencimento",
+    "icone": "coracao",
+    "titulo": "Pertencimento",
+    "descricao": "Tem que ver o que vai colocar aqui...",
+    "valor": "40%",
+    "variacao": "+5%",
+    "sentido": "cima",
+    "tom": "bom"
+  }
+]

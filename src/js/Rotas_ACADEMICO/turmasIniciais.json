@@ -1,0 +1,302 @@
+[
+  {
+    "id": "turma-1a",
+    "nome": "1º Ano A",
+    "descricao": "Turma do período da manhã",
+    "ativa": true,
+    "inicio": "08:00",
+    "fim": "12:00",
+    "intervalos": [],
+    "horarios": [
+      {
+        "id": "horario-1a",
+        "materiaId": "mat-matematica",
+        "dias": [
+          "Seg",
+          "Ter",
+          "Qua",
+          "Qui",
+          "Sex"
+        ],
+        "inicio": "08:00",
+        "fim": "09:00",
+        "salaId": "sala-b09"
+      }
+    ]
+  },
+  {
+    "id": "turma-1b",
+    "nome": "1º Ano B",
+    "descricao": "Turma do período da manhã",
+    "ativa": true,
+    "inicio": "08:00",
+    "fim": "12:00",
+    "intervalos": [],
+    "horarios": [
+      {
+        "id": "horario-1b",
+        "materiaId": "mat-sistemas",
+        "dias": [
+          "Seg",
+          "Ter",
+          "Qua",
+          "Qui",
+          "Sex"
+        ],
+        "inicio": "08:00",
+        "fim": "09:00",
+        "salaId": "sala-lab-info"
+      }
+    ]
+  },
+  {
+    "id": "turma-2a",
+    "nome": "2º Ano A",
+    "descricao": "Turma do período da manhã",
+    "ativa": true,
+    "inicio": "08:00",
+    "fim": "12:00",
+    "intervalos": [],
+    "horarios": [
+      {
+        "id": "horario-2a",
+        "materiaId": "mat-algoritmos",
+        "dias": [
+          "Seg",
+          "Ter",
+          "Qua",
+          "Qui",
+          "Sex"
+        ],
+        "inicio": "08:00",
+        "fim": "09:00",
+        "salaId": "sala-lab-info"
+      }
+    ]
+  },
+  {
+    "id": "turma-2b",
+    "nome": "2º Ano B",
+    "descricao": "Turma do período da tarde",
+    "ativa": true,
+    "inicio": "13:00",
+    "fim": "17:00",
+    "intervalos": [],
+    "horarios": [
+      {
+        "id": "horario-2b",
+        "materiaId": "mat-fisica",
+        "dias": [
+          "Seg",
+          "Ter",
+          "Qua",
+          "Qui",
+          "Sex"
+        ],
+        "inicio": "08:00",
+        "fim": "09:00",
+        "salaId": "sala-b10"
+      }
+    ]
+  },
+  {
+    "id": "turma-3a",
+    "nome": "3º Ano A",
+    "descricao": "Turma do período da manhã",
+    "ativa": true,
+    "inicio": "08:00",
+    "fim": "12:00",
+    "intervalos": [],
+    "horarios": [
+      {
+        "id": "horario-3a",
+        "materiaId": "mat-administracao",
+        "dias": [
+          "Seg",
+          "Ter",
+          "Qua",
+          "Qui",
+          "Sex"
+        ],
+        "inicio": "08:00",
+        "fim": "09:00",
+        "salaId": "sala-b11"
+      }
+    ]
+  },
+  {
+    "id": "turma-3b",
+    "nome": "3º Ano B",
+    "descricao": "Turma do período da tarde",
+    "ativa": true,
+    "inicio": "13:00",
+    "fim": "17:00",
+    "intervalos": [],
+    "horarios": [
+      {
+        "id": "horario-3b",
+        "materiaId": "mat-historia",
+        "dias": [
+          "Seg",
+          "Ter",
+          "Qua",
+          "Qui",
+          "Sex"
+        ],
+        "inicio": "08:00",
+        "fim": "09:00",
+        "salaId": "sala-b10"
+      }
+    ]
+  },
+  {
+    "id": "turma-4a",
+    "nome": "4º Ano A",
+    "descricao": "Turma do período da manhã",
+    "ativa": true,
+    "inicio": "08:00",
+    "fim": "12:00",
+    "intervalos": [],
+    "horarios": [
+      {
+        "id": "horario-4a",
+        "materiaId": "mat-estatistica",
+        "dias": [
+          "Seg",
+          "Ter",
+          "Qua",
+          "Qui",
+          "Sex"
+        ],
+        "inicio": "08:00",
+        "fim": "09:00",
+        "salaId": "sala-b09"
+      }
+    ]
+  },
+  {
+    "id": "turma-4b",
+    "nome": "4º Ano B",
+    "descricao": "Turma do período da tarde",
+    "ativa": true,
+    "inicio": "13:00",
+    "fim": "17:00",
+    "intervalos": [],
+    "horarios": [
+      {
+        "id": "horario-4b",
+        "materiaId": "mat-banco",
+        "dias": [
+          "Seg",
+          "Ter",
+          "Qua",
+          "Qui",
+          "Sex"
+        ],
+        "inicio": "08:00",
+        "fim": "09:00",
+        "salaId": "sala-lab-info"
+      }
+    ]
+  },
+  {
+    "id": "turma-5a",
+    "nome": "5º Ano A",
+    "descricao": "Turma inativa",
+    "ativa": false,
+    "inicio": "08:00",
+    "fim": "12:00",
+    "intervalos": [],
+    "horarios": [
+      {
+        "id": "horario-5a",
+        "materiaId": "mat-matematica",
+        "dias": [
+          "Seg",
+          "Ter",
+          "Qua",
+          "Qui",
+          "Sex"
+        ],
+        "inicio": "08:00",
+        "fim": "09:00",
+        "salaId": "sala-b12"
+      }
+    ]
+  },
+  {
+    "id": "turma-5b",
+    "nome": "5º Ano B",
+    "descricao": "Turma inativa",
+    "ativa": false,
+    "inicio": "13:00",
+    "fim": "17:00",
+    "intervalos": [],
+    "horarios": [
+      {
+        "id": "horario-5b",
+        "materiaId": "mat-historia",
+        "dias": [
+          "Seg",
+          "Ter",
+          "Qua",
+          "Qui",
+          "Sex"
+        ],
+        "inicio": "08:00",
+        "fim": "09:00",
+        "salaId": "sala-anexo"
+      }
+    ]
+  },
+  {
+    "id": "turma-6a",
+    "nome": "6º Ano A",
+    "descricao": "Turma inativa",
+    "ativa": false,
+    "inicio": "08:00",
+    "fim": "12:00",
+    "intervalos": [],
+    "horarios": [
+      {
+        "id": "horario-6a",
+        "materiaId": "mat-fisica",
+        "dias": [
+          "Seg",
+          "Ter",
+          "Qua",
+          "Qui",
+          "Sex"
+        ],
+        "inicio": "08:00",
+        "fim": "09:00",
+        "salaId": "sala-b13"
+      }
+    ]
+  },
+  {
+    "id": "turma-6b",
+    "nome": "6º Ano B",
+    "descricao": "Turma inativa",
+    "ativa": false,
+    "inicio": "13:00",
+    "fim": "17:00",
+    "intervalos": [],
+    "horarios": [
+      {
+        "id": "horario-6b",
+        "materiaId": "mat-algoritmos",
+        "dias": [
+          "Seg",
+          "Ter",
+          "Qua",
+          "Qui",
+          "Sex"
+        ],
+        "inicio": "08:00",
+        "fim": "09:00",
+        "salaId": "sala-b12"
+      }
+    ]
+  }
+]

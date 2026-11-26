@@ -1,0 +1,142 @@
+.comunicados-calendario-painel {
+  width: 100%;
+  min-width: 0;
+  padding: 14px 20px;
+}
+
+.comunicados-pequeno-calendario {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.comunicados-pequeno-calendario .bloom-pequeno-calendario-titulo {
+  gap: 7px;
+  margin-bottom: 13px;
+}
+
+.comunicados-pequeno-calendario .bloom-pequeno-calendario-titulo h2 {
+  font-size: clamp(19px, 1.45vw, 21px);
+}
+
+.comunicados-pequeno-calendario .bloom-pequeno-calendario-navegacao {
+  width: min(100%, 140px);
+  margin-bottom: 12px;
+  padding: 4px 7px;
+  font-size: 12px;
+}
+
+.comunicados-pequeno-calendario .bloom-pequeno-calendario-navegacao button {
+  display: flex;
+  padding: 0;
+}
+
+.comunicados-pequeno-calendario .bloom-pequeno-calendario-grade {
+  gap: 2px;
+}
+
+.comunicados-pequeno-calendario .bloom-pequeno-calendario-dia-semana {
+  padding-bottom: 4px;
+  font-size: 12px;
+}
+
+.comunicados-pequeno-calendario .bloom-pequeno-calendario-dia {
+  height: 26px;
+  font-size: 12px;
+}
+
+.comunicados-pequeno-calendario .bloom-pequeno-calendario-eventos {
+  min-height: 155px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+  padding-top: 10px;
+  padding-bottom: 8px;
+  overflow-y: auto;
+}
+
+.comunicados-pequeno-calendario .bloom-pequeno-calendario-eventos-cabecalho {
+  gap: 5px;
+  margin-bottom: 12px;
+}
+
+.comunicados-pequeno-calendario .bloom-pequeno-calendario-eventos-cabecalho h3 {
+  font-size: 15px;
+}
+
+.comunicados-pequeno-calendario .bloom-pequeno-calendario-eventos-cabecalho span {
+  font-size: 11px;
+}
+
+.comunicados-pequeno-calendario .bloom-pequeno-calendario-evento {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 12px;
+  gap: 8px;
+  padding: 9px 0;
+}
+
+.comunicados-pequeno-calendario .bloom-pequeno-calendario-evento:last-child {
+  border-bottom: 0;
+}
+
+.comunicados-pequeno-calendario .bloom-pequeno-calendario-evento-horario {
+  align-self: start;
+  padding-top: 1px;
+  font-size: 14px;
+}
+
+.comunicados-pequeno-calendario .bloom-pequeno-calendario-evento-corpo {
+  min-width: 0;
+  gap: 4px;
+  font-size: 13px;
+}
+
+.comunicados-pequeno-calendario .bloom-pequeno-calendario-evento-corpo > span:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.comunicados-pequeno-calendario .bloom-pequeno-calendario-evento-detalhe {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 7px;
+}
+
+.comunicados-pequeno-calendario .bloom-pequeno-calendario-evento-local {
+  overflow: hidden;
+  color: #789493;
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.comunicados-pequeno-calendario .bloom-pequeno-calendario-evento-categoria {
+  flex-shrink: 0;
+  padding: 1px 8px;
+  font-size: 11px;
+}
+
+.comunicados-pequeno-calendario .bloom-pequeno-calendario-evento > .icone-espaco {
+  width: 12px !important;
+  height: 14px !important;
+  align-self: center;
+}
+
+@media (max-width: 900px) {
+  .comunicados-pequeno-calendario .bloom-pequeno-calendario-eventos {
+    min-height: 180px;
+  }
+}
+
+@media (max-width: 660px) {
+  .comunicados-calendario-painel {
+    min-height: 300px;
+  }
+}

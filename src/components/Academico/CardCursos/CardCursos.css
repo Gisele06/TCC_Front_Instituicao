@@ -1,0 +1,389 @@
+.academico-cursos-painel {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+  gap: clamp(12px, 1.7vh, 18px);
+  padding: clamp(18px, 2.3vh, 26px) clamp(20px, 2vw, 30px);
+  border: 1px solid #d8d4c2;
+  border-radius: clamp(20px, 1.8vw, 28px);
+  background: #f7f6ee;
+  box-shadow: 0 2px 6px rgb(29 49 39 / 4%);
+  box-sizing: border-box;
+  overflow: hidden;
+  font-family: var(--familia-da-fonte);
+}
+
+.academico-cursos-painel button:hover,
+.academico-cursos-painel button:active {
+  transform: none;
+  filter: none;
+  opacity: 1;
+}
+
+.academico-cursos-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.academico-cursos-topo-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.academico-cursos-topo h2 {
+  margin: 0;
+  color: #153532;
+  font-size: clamp(20px, 1.75vw, 26px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.9px #153532;
+  line-height: 1.15;
+}
+
+.academico-cursos-topo p {
+  margin: 0;
+  color: #728c89;
+  font-size: clamp(13px, 1.05vw, 15px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.35px #728c89;
+}
+
+.academico-cursos-contador {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  padding: 6px 14px;
+  border: 1px solid #d8d4c2;
+  border-radius: 999px;
+  background: #faf9f2;
+  color: #6b8582;
+  font-size: 13px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.35px #6b8582;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.academico-cursos-contador strong {
+  color: #153532;
+  font-size: 15px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.75px #153532;
+}
+
+/* ===== Busca + Novo curso ===== */
+.academico-cursos-barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.academico-cursos-busca.bloom-busca {
+  flex: 1;
+  max-width: 460px;
+  min-width: 0;
+  height: 46px;
+  padding: 0 18px;
+  gap: 12px;
+  border: 1px solid #d8d4c2;
+  border-radius: 999px;
+  background: #faf9f2;
+  box-shadow: 0 2px 6px rgb(18 51 48 / 4%);
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.academico-cursos-busca.bloom-busca:focus-within {
+  border-color: #548d72;
+  box-shadow: 0 0 0 3px rgba(84, 141, 114, 0.12);
+}
+
+.academico-cursos-busca.bloom-busca input {
+  color: #153532;
+  font-size: 15px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.35px #153532;
+}
+
+.academico-cursos-busca.bloom-busca input::placeholder {
+  color: #7c9390;
+  -webkit-text-stroke: 0.35px #7c9390;
+  opacity: 1;
+}
+
+.academico-cursos-btn-novo {
+  height: 46px;
+  min-width: 140px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 14px;
+  background: #274036;
+  color: #ffffff;
+  font-family: var(--familia-da-fonte);
+  font-size: clamp(15px, 1.15vw, 17px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.55px #ffffff;
+  white-space: nowrap;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.16s ease;
+}
+
+.academico-cursos-btn-novo:hover,
+.academico-cursos-btn-novo:active {
+  background: #1f342c;
+}
+
+/* ===== Formulário inline ===== */
+.academico-cursos-form {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid #d5d1c0;
+  border-radius: 18px;
+  background: #faf9f2;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.academico-cursos-form-campo {
+  display: flex;
+  flex: 1;
+  min-width: 220px;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.academico-cursos-form-campo span {
+  color: #153532;
+  font-size: 14px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.6px #153532;
+}
+
+.academico-cursos-form-campo em {
+  color: #d97a29;
+  font-style: normal;
+}
+
+.academico-cursos-form-campo input {
+  width: 100%;
+  height: 42px;
+  padding: 0 14px;
+  border: 1px solid #d8d4c2;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #153532;
+  font-family: var(--familia-da-fonte);
+  font-size: 14.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.35px #153532;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.academico-cursos-form-campo input:focus {
+  border-color: #548d72;
+  box-shadow: 0 0 0 3px rgba(84, 141, 114, 0.12);
+}
+
+.academico-cursos-form-acoes {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.academico-cursos-btn-cancelar,
+.academico-cursos-btn-salvar {
+  height: 42px;
+  padding: 0 18px;
+  border-radius: 12px;
+  font-family: var(--familia-da-fonte);
+  font-size: 14.5px;
+  font-weight: normal;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.academico-cursos-btn-cancelar {
+  border: 1.5px solid #274036;
+  background: #f7f6ee;
+  color: #153532;
+  -webkit-text-stroke: 0.55px #153532;
+}
+
+.academico-cursos-btn-cancelar:hover {
+  background: #eeece2;
+}
+
+.academico-cursos-btn-salvar {
+  border: 0;
+  background: #274036;
+  color: #ffffff;
+  -webkit-text-stroke: 0.5px #ffffff;
+}
+
+.academico-cursos-btn-salvar:hover {
+  background: #1f342c;
+}
+
+.academico-cursos-erro {
+  margin: 0;
+  color: #c93820;
+  font-size: 13.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.45px #c93820;
+  flex-shrink: 0;
+}
+
+/* ===== Lista de cursos ===== */
+.academico-cursos-lista {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.academico-cursos-lista::-webkit-scrollbar {
+  display: none;
+}
+
+.academico-cursos-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border: 1px solid #d8d4c2;
+  border-radius: 18px;
+  background: #f8f7f0;
+  box-shadow: 0 2px 5px rgb(18 51 48 / 4%);
+  flex-shrink: 0;
+  box-sizing: border-box;
+  transition: background-color 0.15s ease;
+}
+
+.academico-cursos-item:hover {
+  background: #f3f1e8;
+}
+
+.academico-cursos-item-icone {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid #dedbcf;
+  border-radius: 13px;
+  background: #ecebe2;
+  color: #274036;
+  flex-shrink: 0;
+}
+
+.academico-cursos-item-icone svg {
+  width: 22px;
+  height: 22px;
+}
+
+.academico-cursos-item-nome {
+  flex: 1;
+  min-width: 0;
+  color: #153532;
+  font-size: clamp(15.5px, 1.25vw, 18px);
+  font-weight: normal;
+  -webkit-text-stroke: 0.8px #153532;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.academico-cursos-item-acoes {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.academico-cursos-btn-editar {
+  height: 32px;
+  padding: 0 15px;
+  border: 0;
+  border-radius: 999px;
+  background: #274036;
+  color: #ffffff;
+  font-family: var(--familia-da-fonte);
+  font-size: 12.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.4px #ffffff;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.academico-cursos-btn-editar:hover {
+  background: #1d322a;
+}
+
+.academico-cursos-btn-excluir {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  place-items: center;
+  border: 1px solid #e3cbc5;
+  border-radius: 50%;
+  background: #faf2f0;
+  color: #b4331d;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.academico-cursos-btn-excluir:hover {
+  background: #f3e0dc;
+}
+
+.academico-cursos-vazio {
+  display: flex;
+  flex: 1;
+  min-height: 140px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.academico-cursos-vazio strong {
+  color: #153532;
+  font-size: 16px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.7px #153532;
+}
+
+.academico-cursos-vazio span {
+  color: #7c9390;
+  font-size: 13.5px;
+  font-weight: normal;
+  -webkit-text-stroke: 0.35px #7c9390;
+}
+
+.academico-cursos-lista-painel .academico-curso-item-icone {
+  color: #18352f;
+}
+
+.academico-cursos-lista-painel .academico-curso-item-icone svg {
+  width: 52%;
+  height: 52%;
+  display: block;
+}
